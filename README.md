@@ -2,7 +2,7 @@
 A higher level component that provides a ready-to-use setup of redux and react-router. 
 
 ## Motivation
-Working on different react applications, we ended up writing the same createStore(), `<Provider>` and `<Router>` initialization code ever again. To avoid this duplicity, we extracted this component that covers middleware configuration, routing and dev tool setup. Only the app specific routes and reducers need to be passed as props.
+Working on different react applications, we ended up writing the same `createStore()`, `<Provider>` and `<Router>` initialization code ever again. To avoid this duplicity, we extracted this component that covers middleware configuration, routing and dev tool setup. Only the app specific routes and reducers need to be passed as props.
 
 
 ## Features
@@ -68,7 +68,7 @@ const reducerConfig = {
 }
 
 render(
-  <IndoqaApplication pathToReducers={'./reducers'} routes={routes} />,
+  <IndoqaApplication reducerConfig={reducerConfig} routes={routes} />,
   document.getElementById('app')
 )
 ```
