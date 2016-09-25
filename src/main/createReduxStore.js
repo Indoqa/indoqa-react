@@ -22,8 +22,8 @@ const createInjectMiddleware = () => store => next => action => {
   return result
 }
 
-const createReduxStore = (pathToReducers) => {
-  const combinedReducer = combineReducers(require(pathToReducers).default)
+const createReduxStore = (reducerConfig) => {
+  const combinedReducer = combineReducers(reducerConfig.getReducers())
 
   const promiseMiddleware = createPromiseMiddleware({promiseTypeSuffixes: ['START', 'SUCCESS', 'ERROR']})
   const loggerMiddleware = createLoggerMiddleware({
@@ -42,8 +42,8 @@ const createReduxStore = (pathToReducers) => {
   )
 
   if (module.hot) {
-    module.hot.accept(pathToReducers, () => {
-      const nextRootReducer = combineReducers(require(pathToReducers).default)
+    module.hot.accept(reducerConfig.filePath, () => {
+      const nextRootReducer = combineReducers(reducerConfig.getReducers())
       store.replaceReducer(nextRootReducer)
     })
   }

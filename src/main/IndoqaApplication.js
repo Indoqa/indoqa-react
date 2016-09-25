@@ -11,8 +11,8 @@ class IndoqaApplication extends React.Component {
   }
 
   render() {
-    const {pathToReducers, routes} = this.props
-    const store = createReduxStore(pathToReducers)
+    const {reducerConfig, routes} = this.props
+    const store = createReduxStore(reducerConfig)
 
     return (
       <Provider store={store}>
@@ -25,7 +25,7 @@ class IndoqaApplication extends React.Component {
 }
 
 IndoqaApplication.propTypes = {
-  pathToReducers: PropTypes.string.isRequired,
+  reducerConfig: PropTypes.object.isRequired,
   routes: PropTypes.object.isRequired,
 }
 
