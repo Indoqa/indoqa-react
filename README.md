@@ -1,6 +1,10 @@
 # Indoqa React Application
 A higher level component that provides a ready-to-use setup of redux and react-router. 
 
+## Motivation
+Working on different react applications, we ended up writing the same createStore(), <Provider> and <Router> initializtion code ever again. To avoid this duplicity, we extracted this component that covers dev tool setup and middleware configuration. Only the app specific routes and reducers need to be passed as props.
+
+
 ## Features
 
   * Hot Reloading
@@ -13,8 +17,6 @@ A higher level component that provides a ready-to-use setup of redux and react-r
     * [redux-logger](https://github.com/evgenyrodionov/redux-logger)
   * React Router 
     
-## Configuration
-
 ## Usage
 ```javascript
 <IndoqaApplication reducerConfig={reducerConfig} routes={routes} />
