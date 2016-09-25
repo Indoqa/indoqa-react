@@ -2,12 +2,11 @@
 A higher level component that provides a ready-to-use setup of redux and react-router. 
 
 ## Motivation
-Working on different react applications, we ended up writing the same createStore(), <Provider> and <Router> initializtion code ever again. To avoid this duplicity, we extracted this component that covers dev tool setup and middleware configuration. Only the app specific routes and reducers need to be passed as props.
+Working on different react applications, we ended up writing the same createStore(), `<Provider>` and `<Router>` initialization code ever again. To avoid this duplicity, we extracted this component that covers middleware configuration, routing and dev tool setup. Only the app specific routes and reducers need to be passed as props.
 
 
 ## Features
 
-  * Hot Reloading
   * Redux Middlewares
     * [react-promise-middleware](https://github.com/pburtchaell/redux-promise-middleware)
     * [react-multi](https://github.com/ashaffer/redux-multi)
@@ -15,6 +14,7 @@ Working on different react applications, we ended up writing the same createStor
   * Redux Dev Tools
     * [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
     * [redux-logger](https://github.com/evgenyrodionov/redux-logger)
+    * Hot Reloading
   * React Router 
     
 ## Usage
