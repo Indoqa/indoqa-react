@@ -26,17 +26,6 @@ The *reducerConfig* configures the main reducer for redux. To make hot-reloading
     
 ## Example
 
-List all reducers and expose them in a separate 'reducer.js' module file. 
-```javascript
-import reducerFoo from './path/to/reducer/foo'
-import reducerBar from './path/to/reducer/bar'
-
-export default {
-  reducerFoo,
-  reducerBar
-}
-```
-
 Define routes in 'routes.js'.
 ```javascript
 import React from 'react'
@@ -51,6 +40,17 @@ export default (
     <Route component={BarPage} path="/bar" />
   </Route>
 )
+```
+
+List all reducers and expose them in a separate 'reducer.js' module file. 
+```javascript
+import reducerFoo from './path/to/reducer/foo'
+import reducerBar from './path/to/reducer/bar'
+
+export default {
+  reducerFoo,
+  reducerBar
+}
 ```
 
 Finally, render the app in 'index.js'
