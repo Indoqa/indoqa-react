@@ -1,9 +1,12 @@
 # Indoqa React Application
 A higher level component that provides a ready-to-use setup of redux and react-router. 
 
+## Motivation
+Working on different react applications, we ended up writing the same `createStore()`, `<Provider>` and `<Router>` initialization code ever again. To avoid this duplicity, we extracted this component that covers middleware configuration, routing and dev tool setup. Only app specific routes and reducers need to be passed as props.
+
+
 ## Features
 
-  * Hot Reloading
   * Redux Middlewares
     * [react-promise-middleware](https://github.com/pburtchaell/redux-promise-middleware)
     * [react-multi](https://github.com/ashaffer/redux-multi)
@@ -11,10 +14,9 @@ A higher level component that provides a ready-to-use setup of redux and react-r
   * Redux Dev Tools
     * [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
     * [redux-logger](https://github.com/evgenyrodionov/redux-logger)
+    * Hot Reloading
   * React Router 
     
-## Configuration
-
 ## Usage
 ```javascript
 <IndoqaApplication reducerConfig={reducerConfig} routes={routes} />
@@ -66,7 +68,7 @@ const reducerConfig = {
 }
 
 render(
-  <IndoqaApplication pathToReducers={'./reducers'} routes={routes} />,
+  <IndoqaApplication reducerConfig={reducerConfig} routes={routes} />,
   document.getElementById('app')
 )
 ```
