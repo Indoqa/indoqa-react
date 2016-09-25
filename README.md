@@ -4,6 +4,7 @@ A higher level component that provides a ready-to-use setup of redux and react-r
 ## Motivation
 
 
+
 ## Features
 
   * Hot Reloading
@@ -16,4 +17,30 @@ A higher level component that provides a ready-to-use setup of redux and react-r
     * [redux-logger](https://github.com/evgenyrodionov/redux-logger)
   * React Router
     * Basic router setup.
+    
+## Usage
+
+First, list all reducers and expose them in a separate 'reducer.js' module file. 
+```
+import reducerFoo from './reducers/foo'
+import reducerBar from './reducers/bar'
+
+export default {
+  reducerFoo,
+  reducerBar
+}
+```
+
+Finally, render the app in the main 'index.js'
+```
+import React from 'react'
+import {render} from 'react-dom'
+import IndoqaApplication from 'indoqa-react-app'
+import routes from './routes'
+
+render(
+  <IndoqaApplication pathToReducers={'./reducers'} routes={routes} />,
+  document.getElementById('app')
+)
+```
     
