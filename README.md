@@ -18,10 +18,14 @@ A higher level component that provides a ready-to-use setup of redux and react-r
   * React Router
     * Basic router setup.
     
+## Configuration
+
+
+    
 ## Usage
 
-First, list all reducers and expose them in a separate 'reducer.js' module file. 
-```
+List all reducers and expose them in a separate 'reducer.js' module file. 
+```javascript
 import reducerFoo from './reducers/foo'
 import reducerBar from './reducers/bar'
 
@@ -32,7 +36,7 @@ export default {
 ```
 
 Finally, render the app in the main 'index.js'
-```
+```javascript
 import React from 'react'
 import {render} from 'react-dom'
 import IndoqaApplication from 'indoqa-react-app'
