@@ -1,10 +1,6 @@
 # Indoqa React Application
 A higher level component that provides a ready-to-use setup of redux and react-router. 
 
-## Motivation
-
-
-
 ## Features
 
   * Hot Reloading
@@ -19,9 +15,16 @@ A higher level component that provides a ready-to-use setup of redux and react-r
     
 ## Configuration
 
-
-    
 ## Usage
+```javascript
+<IndoqaApplication reducerConfig={reducerConfig} routes={routes} />
+```
+
+The *routes* property configures the react-router and accepts a single Route, nested Routes or an array of (optionally nested) Routes. 
+
+The *reducerConfig* configures the main reducer for redux. To make hot-reloading available, the main reducer is not passed directly. An object containing the *filePath* of the reducer definition file and a *getReducers()* factory function that actually interpretes this file is accepted instead. 
+    
+## Example
 
 List all reducers and expose them in a separate 'reducer.js' module file. 
 ```javascript
@@ -50,12 +53,17 @@ export default (
 )
 ```
 
-Finally, render the app in the main 'index.js'
+Finally, render the app in 'index.js'
 ```javascript
 import React from 'react'
 import {render} from 'react-dom'
 import IndoqaApplication from 'indoqa-react-app'
 import routes from './routes'
+
+const reducerConfig = {
+  filePath: './reducers',
+  getReducers: () => require('./reducers').default
+}
 
 render(
   <IndoqaApplication pathToReducers={'./reducers'} routes={routes} />,
