@@ -1,0 +1,49 @@
+{
+  "name": "indoqa-react-app",
+  "version": "0.1.0",
+  "main": "./dist/IndoqaReactApp.min.js",
+  "scripts": {
+    "start": "node ./src/dev/server.js",
+    "dist": "indoqa-webpack ./indoqa-webpack-options.js",
+    "prepublish": "npm run dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react-app.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/."
+  },
+  "keywords": [
+    "redux",
+    "store",
+    "indpqa",
+    "middleware"
+  ],
+  "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Indoqa/indoqa-react-app/issues"
+  },
+  "homepage": "https://github.com/Indoqa/indoqa-react-app#readme",
+  "peerDependencies": {
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
+    "redux-multi": "^0.1.12",
+    "redux-promise-middleware": "^4.0.0"
+  },
+  "dependencies": {
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
+    "redux-multi": "^0.1.12",
+    "redux-promise-middleware": "^4.0.0"
+  },
+  "devDependencies": {
+    "indoqa-webpack": "^0.6.5"
+  }
+}
