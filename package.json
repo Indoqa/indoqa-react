@@ -1,9 +1,8 @@
 {
   "name": "indoqa-react-app",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "./dist/IndoqaReactApp.min.js",
   "scripts": {
-    "start": "node ./src/dev/server.js",
     "dist": "indoqa-webpack ./indoqa-webpack-options.js",
     "prepublish": "npm run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,10 +15,13 @@
     "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
+    "react",
+    "react-router",
     "redux",
     "store",
-    "indpqa",
-    "middleware"
+    "Indoqa",
+    "middleware",
+    "bootstrap"
   ],
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "license": "Apache-2.0",
