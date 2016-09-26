@@ -38,7 +38,7 @@ const reduxConfig = {
 }
 ```
 
-To get hot-reloading working, the root reducer is not passed directly. Specify the disk location of the root reducer file in *reducerFilePath*. The *getReducers()* factory function actually interpretes this file is accepted instead. 
+To get hot-reloading working, the root reducer is not passed directly. Specify the disk location of the root reducer file in *reducerFilePath*. The *getReducers()* factory function should actually interprete this file and return the root reducer object. 
     
 ## Example
 
