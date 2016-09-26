@@ -11,13 +11,14 @@ class IndoqaApplication extends React.Component {
   }
 
   render() {
-    const {reducerConfig, routes} = this.props
-    const store = createReduxStore(reducerConfig)
+    const {reduxConfig, routerConfig} = this.props
+    const store = createReduxStore(reduxConfig)
+    const history = (routerConfig.history) ? routerConfig.history : browserHistory
 
     return (
       <Provider store={store}>
-        <Router history={browserHistory}>
-          {routes}
+        <Router history={history}>
+          {routerConfig.routes}
         </Router>
       </Provider>
     )
@@ -25,8 +26,8 @@ class IndoqaApplication extends React.Component {
 }
 
 IndoqaApplication.propTypes = {
-  reducerConfig: PropTypes.object.isRequired,
-  routes: PropTypes.object.isRequired,
+  reduxConfig: PropTypes.object.isRequired,
+  routerConfig: PropTypes.object.isRequired,
 }
 
 export default IndoqaApplication

@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-app",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "./dist/IndoqaReactApp.min.js",
   "scripts": {
     "start": "node ./src/dev/server.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/Indoqa/indoqa-react-app.git"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/."
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "redux",

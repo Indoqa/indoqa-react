@@ -19,12 +19,26 @@ Working on different react applications, we ended up writing the same `createSto
     
 ## Usage
 ```javascript
-<IndoqaApplication reducerConfig={reducerConfig} routes={routes} />
+<IndoqaApplication reduxConfig={reduxConfig} routerConfig={routerConfig} />
+```
+Application specific configuration of redux and router is passed as config objects.
+### routerConfig
+```javascript
+const routerConfig = {
+  routes: myRoutes, // a single (optionally nested Route) or an array of Routes
+  history: browserHistory|hashHistory // optional, defaults to browserHistory
+}
+```
+### reduxConfig
+
+```javascript
+const reduxConfig = {
+  reducerFilePath: './reducers', // location of root reducer file
+  getReducers: () => require('./reducers').default // root reducer factory
+}
 ```
 
-The *routes* property configures the react-router and accepts a single Route, nested Routes or an array of (optionally nested) Routes. 
-
-The *reducerConfig* configures the main reducer for redux. To make hot-reloading available, the main reducer is not passed directly. An object containing the *filePath* of the reducer definition file and a *getReducers()* factory function that actually interpretes this file is accepted instead. 
+To get hot-reloading working, the root reducer is not passed directly. Specify the disk location of the root reducer file in *reducerFilePath*. The *getReducers()* factory function actually interpretes this file is accepted instead. 
     
 ## Example
 
@@ -62,13 +76,13 @@ import {render} from 'react-dom'
 import IndoqaApplication from 'indoqa-react-app'
 import routes from './routes'
 
-const reducerConfig = {
-  filePath: './reducers',
+const reduxConfig = {
+  reducerFilePath: './reducers',
   getReducers: () => require('./reducers').default
 }
 
 render(
-  <IndoqaApplication reducerConfig={reducerConfig} routes={routes} />,
+  <IndoqaApplication reduxConfig={reduxConfig} routerConfig={{routes}} />,
   document.getElementById('app')
 )
 ```
