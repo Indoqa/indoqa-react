@@ -22,10 +22,30 @@ const createInjectMiddleware = () => store => next => action => {
   return result
 }
 
+// see https://github.com/pburtchaell/redux-promise-middleware/issues/75
+const createPromiseErrorCatchingMiddleware = () => () => next => action => {
+  const handleError = () => {
+    // Currently we swallow all global "Uncaught (in Promise)" errors.
+    // _ERROR actions (including the cause) are dispatched anyways,
+    // so they are not "uncaught" in a logical sense.
+  }
+
+  const result = next(action)
+  const resultIsPromise = result && typeof result.then === 'function'
+
+  if (resultIsPromise) {
+    return result.catch(handleError)
+  }
+
+  return result
+}
+
+
 const createReduxStore = (reduxConfig) => {
   const combinedReducer = combineReducers(reduxConfig.getReducers())
 
   const promiseMiddleware = createPromiseMiddleware({promiseTypeSuffixes: ['START', 'SUCCESS', 'ERROR']})
+  const promiseErrorCatchingMiddleware = createPromiseErrorCatchingMiddleware()
   const loggerMiddleware = createLoggerMiddleware({
     collapsed: true,
     stateTransformer: state => JSON.parse(JSON.stringify(state))
@@ -36,7 +56,7 @@ const createReduxStore = (reduxConfig) => {
   const store = createStore(
     combinedReducer,
     compose(
-      applyMiddleware(injectMiddleware, promiseMiddleware, loggerMiddleware, multiMiddleware),
+      applyMiddleware(injectMiddleware, promiseErrorCatchingMiddleware, promiseMiddleware, loggerMiddleware, multiMiddleware),
       devToolsEnhancer
     )
   )
