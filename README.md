@@ -22,13 +22,7 @@ Working on different react applications, we ended up writing the same `createSto
 <IndoqaApplication reduxConfig={reduxConfig} routerConfig={routerConfig} />
 ```
 Application specific configuration of redux and router is passed as config objects.
-### routerConfig
-```javascript
-const routerConfig = {
-  routes: myRoutes, // a single (optionally nested Route) or an array of Routes
-  history: browserHistory|hashHistory // optional, defaults to browserHistory
-}
-```
+
 ### reduxConfig
 
 ```javascript
@@ -39,6 +33,14 @@ const reduxConfig = {
 ```
 
 To get hot-reloading working, the root reducer is not passed directly. Specify the disk location of the root reducer file in *reducerFilePath*. The *getReducers()* factory function should actually interprete this file and return the root reducer object. 
+
+### routerConfig
+```javascript
+const routerConfig = {
+  routes: myRoutes, // a single (optionally nested Route) or an array of Routes
+  history: browserHistory|hashHistory // optional, defaults to browserHistory
+}
+```
     
 ## Example
 
