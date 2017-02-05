@@ -62,6 +62,7 @@ const createReduxStore = (reduxConfig) => {
 
   const store = createStore(
     combinedReducer,
+    reduxConfig.initialState,
     compose(
       applyMiddleware(injectMiddleware, promiseErrorCatchingMiddleware, promiseMiddleware, loggerMiddleware, multiMiddleware),
       devToolsEnhancer
