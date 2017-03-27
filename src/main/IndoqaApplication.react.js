@@ -1,10 +1,10 @@
-import React, {PropTypes} from 'react'
+import React, {PropTypes, Component} from 'react'
 import {Provider} from 'react-redux'
 import {Router, browserHistory} from 'react-router'
 import createReduxStore from './createReduxStore'
 import enableHotReloading from './enableHotReloading'
 
-class IndoqaApplication extends React.Component {
+class IndoqaApplication extends Component {
 
   componentWillMount() {
     enableHotReloading()
