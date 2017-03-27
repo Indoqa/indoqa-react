@@ -7,10 +7,8 @@ Working on different react applications, we ended up writing the same `createSto
 
 ## Features
 
-  * Redux Middlewares
-    * [react-promise-middleware](https://github.com/pburtchaell/redux-promise-middleware)
-    * [react-multi](https://github.com/ashaffer/redux-multi)
-    * Dependency injection
+  * Redux Middleware
+    * [react-observable](https://github.com/redux-observable/redux-observable)
   * Redux Dev Tools
     * [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
     * [redux-logger](https://github.com/evgenyrodionov/redux-logger)
@@ -27,12 +25,13 @@ Application specific configuration of redux and router is passed as config objec
 
 ```javascript
 const reduxConfig = {
-  reducerFilePath: './reducers', // location of root reducer file
-  getReducers: () => require('./reducers').default // root reducer factory
+  epicFilePath: './reducers', // location of root epix file, defaults to './epics.js'
+  reducerFilePath: './reducers', // location of root reducer file, defaults to './reducers.js'
+  lazyLoad: (path) => require(path).default // lazy load epic and reducer files for hot reloading
 }
 ```
 
-To get hot-reloading working, the root reducer is not passed directly. Specify the disk location of the root reducer file in *reducerFilePath*. The *getReducers()* factory function should actually interprete this file and return the root reducer object. 
+To get hot-reloading working, the root reducer and the epics are not passed directly. Specify the disk location of the root reducer file in *reducerFilePath* and a list of epics in *epicFilePath*. The *lazyLoad()* factory function should actually interprete these files and return the objects. This function needs to be bound to current scope in yout index.js (using an arrow function). 
 
 ### routerConfig
 ```javascript
@@ -71,6 +70,18 @@ export default {
 }
 ```
 
+List all epics and expose them in a separate 'epics.js' module file
+```javascript
+import epicsFoo from './path/to/epics/foo'
+import epicsBar from './path/to/epics/bar'
+
+export default [
+  ...epicsFoo,
+  ...epicsBar
+]
+
+```
+
 Finally, render the app in 'index.js'
 ```javascript
 import React from 'react'
@@ -79,8 +90,7 @@ import IndoqaApplication from 'indoqa-react-app'
 import routes from './routes'
 
 const reduxConfig = {
-  reducerFilePath: './reducers',
-  getReducers: () => require('./reducers').default
+  lazyLoad: (path) => require(path).default
 }
 
 render(

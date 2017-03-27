@@ -1,77 +1,41 @@
 import {createStore, compose, applyMiddleware, combineReducers} from 'redux'
-import createPromiseMiddleware from 'redux-promise-middleware'
-import multiMiddleware from 'redux-multi'
-import createLoggerMiddleware from 'redux-logger'
-
-const createInjectMiddleware = () => store => next => action => {
-  const injectedDependencies = {
-    store,
-    dispatch: store.dispatch,
-    getState: store.getState,
-  }
-
-  if (typeof action !== 'function') {
-    return next(action)
-  }
-
-  const result = action(injectedDependencies)
-  if (typeof result !== 'undefined') {
-    return next(result)
-  }
-
-  return result
-}
-
-// see https://github.com/pburtchaell/redux-promise-middleware/issues/75
-const createPromiseErrorCatchingMiddleware = () => () => next => action => {
-  const result = next(action)
-  const resultIsPromise = result && typeof result.then === 'function'
-
-  if (resultIsPromise) {
-    return result.catch(() => {
-      /* Currently we swallow all global "Uncaught (in Promise)" errors.
-       * _ERROR actions (including the cause) are dispatched anyways,
-       * so they are not "uncaught" in a logical sense. */
-    })
-  }
-
-  return result
-}
+import {createEpicMiddleware, combineEpics} from 'redux-observable'
 
 const createReduxStore = (reduxConfig) => {
   const isProduction = process.env.NODE_ENV === 'production'
+  const reducerFilePath = (reduxConfig.reducerFilePath) ? reduxConfig.reducerFilePath : './reducers'
+  const epicFilePath = (reduxConfig.epicFilePath) ? reduxConfig.epicFilePath : './epics'
 
-  const combinedReducer = combineReducers(reduxConfig.getReducers())
+  const reducers = reduxConfig.lazyLoad(reducerFilePath)
+  const combinedReducer = combineReducers(reducers)
 
-  const promiseMiddleware = createPromiseMiddleware({promiseTypeSuffixes: ['START', 'SUCCESS', 'ERROR']})
-  const promiseErrorCatchingMiddleware = createPromiseErrorCatchingMiddleware()
-  const injectMiddleware = createInjectMiddleware()
+  const epics = (reduxConfig.epicFilePath) ? reduxConfig.lazyLoad(epicFilePath) : undefined
+  const epicMiddleware = (epics) ? createEpicMiddleware(combineEpics(...epics)) : undefined
+
+  const middlewares = (epicMiddleware) ? applyMiddleware(epicMiddleware) : (createStore_) => createStore_
 
   if (isProduction) {
     return createStore(
       combinedReducer,
-      applyMiddleware(injectMiddleware, promiseErrorCatchingMiddleware, promiseMiddleware, multiMiddleware)
+      reduxConfig.initialState,
+      middlewares
     )
   }
 
-  const devToolsEnhancer = window.devToolsExtension ? window.devToolsExtension() : f => f
-  const loggerMiddleware = createLoggerMiddleware({
-    collapsed: true,
-    stateTransformer: state => JSON.parse(JSON.stringify(state))
-  })
+  const devToolsEnhancer = window.devToolsExtension ? window.devToolsExtension() : (f) => f
 
   const store = createStore(
     combinedReducer,
     reduxConfig.initialState,
     compose(
-      applyMiddleware(injectMiddleware, promiseErrorCatchingMiddleware, promiseMiddleware, loggerMiddleware, multiMiddleware),
+      middlewares,
       devToolsEnhancer
     )
   )
 
   if (module.hot) {
     module.hot.accept(reduxConfig.reducerFilePath, () => {
-      const nextRootReducer = combineReducers(reduxConfig.getReducers())
+      const nextRootReducer = combineReducers(reduxConfig.lazyLoad(reducerFilePath))
       store.replaceReducer(nextRootReducer)
     })
   }

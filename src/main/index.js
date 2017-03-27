@@ -1,3 +1,4 @@
+import 'rxjs'
 import IndoqaApplication from './IndoqaApplication'
 import _enableHotReloading from './enableHotReloading'
 import _createReduxStore from './createReduxStore'
