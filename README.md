@@ -25,13 +25,15 @@ Application specific configuration of redux and router is passed as config objec
 
 ```javascript
 const reduxConfig = {
-  epicFilePath: './reducers', // location of root epix file, defaults to './epics.js'
-  reducerFilePath: './reducers', // location of root reducer file, defaults to './reducers.js'
-  lazyLoad: (path) => require(path).default // lazy load epic and reducer files for hot reloading
+  epics: require('./epics').default,, // factory function that creates a list of epics
+  reducers: require('./reducers').default,, // factory function that creates an object of reducers,
+  epicHotReloadingPath: './epics' // file path to listen to epic file changes (default './epics')
+  reducerHotReloadingPath: './reducers' // file path to listen to reducer file changes (default './reducers')
 }
 ```
 
-To get hot-reloading working, the root reducer and the epics are not passed directly. Specify the disk location of the root reducer file in *reducerFilePath* and a list of epics in *epicFilePath*. The *lazyLoad()* factory function should actually interprete these files and return the objects. This function needs to be bound to current scope in yout index.js (using an arrow function). 
+To get hot-reloading working, the root reducer and the epics are not passed directly. The factory functions need to be bound to current scope in your index.js (using an arrow function). The hot reloading paths are used
+to discover file changes. After a file change the factory function is executed again and epics/reducers are replaced. Hot reloading paths are optional (with fallbacks to defaults). 
 
 ### routerConfig
 ```javascript
@@ -90,7 +92,8 @@ import IndoqaApplication from 'indoqa-react-app'
 import routes from './routes'
 
 const reduxConfig = {
-  lazyLoad: (path) => require(path).default
+  reducers: require('./reducers').default,
+  epics: require('./epics').default,
 }
 
 render(

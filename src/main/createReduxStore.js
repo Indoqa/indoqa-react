@@ -28,9 +28,16 @@ const createReduxStore = (reduxConfig) => {
   )
 
   if (module.hot) {
-    module.hot.accept(reduxConfig.reducerFilePath, () => {
+    const reducerPath = (reduxConfig.reducerHotReloadingPath) ? reduxConfig.reducerHotReloadingPath : './reducers'
+    const epicPath = (reduxConfig.epicHotReloadingPath) ? reduxConfig.reducerHotReloadingPath : './epics'
+
+    module.hot.accept(reducerPath, () => {
       const nextRootReducer = combineReducers(reduxConfig.reducers)
       store.replaceReducer(nextRootReducer)
+    })
+
+    module.hot.accept(epicPath, () => {
+      store.replaceEpic(...reduxConfig.epics)
     })
   }
 

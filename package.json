@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-app",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./dist/IndoqaReactApp.min.js",
   "scripts": {
     "dist": "indoqa-webpack ./indoqa-webpack-options.js",
