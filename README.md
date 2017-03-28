@@ -32,8 +32,8 @@ const reduxConfig = {
 }
 ```
 
-To get hot-reloading working, the root reducer and the epics are not passed directly. The factory functions need to be bound to current scope in your index.js (using an arrow function). The hot reloading paths are used
-to discover file changes. After a file change the factory function is executed again and epics/reducers are replaced. Hot reloading paths are optional (with fallbacks to defaults). 
+To get hot-reloading working, the root reducer and the epics are not passed directly. Factory functions *epics* and *reducers* need to be bound to current scope in your index.js (using an arrow function). Hot reloading paths *epicHotReloadingPath* and *reducerHotReloadingPath* are used
+to detect file changes. After a file change is detected, the factory function is executed again and epics/reducers are replaced. Hot reloading paths are optional and fall back to './epics' and './reducers'
 
 ### routerConfig
 ```javascript
