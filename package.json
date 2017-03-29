@@ -3,9 +3,9 @@
   "version": "2.0.1",
   "main": "./dist/IndoqaReactApp.min.js",
   "scripts": {
-    "dist": "indoqa-webpack ./indoqa-webpack-options.js",
+    "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint src/main",
-    "prepublish": "npm run dist",
+    "prepublish": "yarn run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
