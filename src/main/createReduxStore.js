@@ -36,13 +36,11 @@ const createReduxStore = (reduxConfig) => {
       store.replaceReducer(nextRootReducer)
     })
 
-    if (!epicMiddleware) {
-      return;
+    if (epicMiddleware) {
+      module.hot.accept(epicPath, () => {
+        epicMiddleware.replaceEpic(reduxConfig.epics)
+      })
     }
-
-    module.hot.accept(epicPath, () => {
-      epicMiddleware.replaceEpic(reduxConfig.epics)
-    })
   }
 
   return store
