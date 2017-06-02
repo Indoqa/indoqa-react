@@ -1,3 +1,4 @@
+import 'rxjs'
 import IndoqaApplication from './IndoqaApplication.react.js'
 import _createIndoqaStore from './createIndoqaStore.js'
 
