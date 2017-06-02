@@ -1,9 +1,5 @@
-import 'rxjs'
-import IndoqaApplication from './IndoqaApplication.react'
-import _enableHotReloading from './enableHotReloading'
-import _createReduxStore from './createReduxStore'
+import IndoqaApplication from './IndoqaApplication.react.js'
+import _createIndoqaStore from './createIndoqaStore.js'
 
 export default IndoqaApplication
-
-export const createReduxStore = _createReduxStore
-export const enableHotReloading = _enableHotReloading
+export const createIndoqaStore = _createIndoqaStore

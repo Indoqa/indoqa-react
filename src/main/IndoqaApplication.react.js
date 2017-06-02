@@ -1,33 +1,30 @@
-import React, {PropTypes, Component} from 'react'
-import {Provider} from 'react-redux'
+import React, {PropTypes} from 'react'
+import {Provider as Redux} from 'react-redux'
 import {Router, browserHistory} from 'react-router'
-import createReduxStore from './createReduxStore'
-import enableHotReloading from './enableHotReloading'
+import {IndoqaFela} from 'indoqa-react-fela'
 
-class IndoqaApplication extends Component {
+const IndoqaApplication = ({store, routerConfig, fela}) => {
+  const history = (routerConfig.history) ? routerConfig.history : browserHistory
 
-  componentWillMount() {
-    enableHotReloading()
-  }
-
-  render() {
-    const {reduxConfig, routerConfig} = this.props
-    const store = createReduxStore(reduxConfig)
-    const history = (routerConfig.history) ? routerConfig.history : browserHistory
-
-    return (
-      <Provider store={store}>
+  return (
+    <Redux store={store}>
+      <IndoqaFela init={fela}>
         <Router history={history}>
           {routerConfig.routes}
         </Router>
-      </Provider>
-    )
-  }
+      </IndoqaFela>
+    </Redux>
+  )
 }
 
 IndoqaApplication.propTypes = {
-  reduxConfig: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
   routerConfig: PropTypes.object.isRequired,
+  fela: PropTypes.func,
+}
+
+IndoqaApplication.defaultProps = {
+  fela: null,
 }
 
 export default IndoqaApplication
