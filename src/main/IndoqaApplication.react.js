@@ -9,7 +9,7 @@ const IndoqaApplication = ({store, routerConfig, fela}) => {
 
   return (
     <Redux store={store}>
-      <IndoqaFela init={fela}>
+      <IndoqaFela fela={fela}>
         <Router history={history}>
           {routerConfig.routes}
         </Router>
@@ -21,11 +21,11 @@ const IndoqaApplication = ({store, routerConfig, fela}) => {
 IndoqaApplication.propTypes = {
   store: PropTypes.object.isRequired,
   routerConfig: PropTypes.object.isRequired,
-  fela: PropTypes.func,
+  fela: PropTypes.object,
 }
 
 IndoqaApplication.defaultProps = {
-  fela: null,
+  fela: {},
 }
 
 export default IndoqaApplication
