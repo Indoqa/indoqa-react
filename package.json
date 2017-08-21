@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-app",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "main": "./dist/IndoqaReactApp.min.js",
   "scripts": {
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
@@ -31,15 +31,15 @@
   },
   "homepage": "https://github.com/Indoqa/indoqa-react-app#readme",
   "peerDependencies": {
-    "indoqa-react-fela": "^0.3.0",
+    "indoqa-react-fela": "^0.4.0",
     "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.5",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
     "react-router": "^3.0.5",
     "redux": "^3.6.0",
-    "redux-observable": "^0.14.1",
-    "rxjs": "^5.4.0"
+    "redux-observable": "^0.16.0",
+    "rxjs": "^5.4.3"
   },
   "dependencies": {
     "indoqa-react-fela": "^0.3.0",
@@ -54,6 +54,6 @@
     "rxjs": "^5.4.0"
   },
   "devDependencies": {
-    "indoqa-webpack": "^0.9.0"
+    "indoqa-webpack": "^0.9.1"
   }
 }
