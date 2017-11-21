@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-app",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "main": "./dist/IndoqaReactApp.min.js",
   "scripts": {
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
