@@ -27,13 +27,13 @@ const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}}) => {
 
   return {
     reduxStore: createStore(
-        rootReducer,
-        initialState,
-        compose(
-          applyMiddleware(...middlewares),
-          devToolsEnhancer
-        )
-      ),
+      rootReducer,
+      initialState,
+      compose(
+        applyMiddleware(...middlewares),
+        devToolsEnhancer
+      )
+    ),
     epicMiddleware,
   }
 }

@@ -31,31 +31,31 @@
   },
   "homepage": "https://github.com/Indoqa/indoqa-react-app#readme",
   "peerDependencies": {
-    "indoqa-react-fela": "^0.4.3",
-    "prop-types": "^15.5.10",
-    "react": "^15.0.0-0 || ^16.0.0-0",
-    "react-dom": "^15.0.0-0 || ^16.0.0-0",
-    "react-fela": "^5.0.0-0 || ^6.0.0-0",
-    "react-redux": "^5.0.0",
-    "react-router": "^3.0.5",
-    "redux": "^3.6.0",
-    "redux-observable": "^0.16.0",
-    "rxjs": "^5.4.3"
+    "indoqa-react-fela": ">=0.4.4",
+    "prop-types": ">=15.6.0",
+    "react": ">=15.6.2",
+    "react-dom": ">=15.6.2",
+    "react-fela": ">=6.0.5",
+    "react-redux": ">=5.0.6",
+    "react-router": ">=3.2.0 <4.0.0",
+    "redux": ">=3.7.2",
+    "redux-observable": ">=0.17.0",
+    "rxjs": ">=5.5.2"
   },
   "dependencies": {
-    "indoqa-react-fela": "^0.4.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-fela": "^5.2.0",
+    "indoqa-react-fela": "^0.4.4",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-fela": "^6.1.0",
     "react-redux": "^5.0.6",
-    "react-router": "^3.0.5",
-    "redux": "^3.6.0",
+    "react-router": "^3.2.0",
+    "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-observable": "^0.16.0",
-    "rxjs": "^5.4.3"
+    "redux-observable": "^0.17.0",
+    "rxjs": "^5.5.2"
   },
   "devDependencies": {
-    "indoqa-webpack": "^0.9.1"
+    "indoqa-webpack": "^1.0.5"
   }
 }
