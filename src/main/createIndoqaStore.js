@@ -1,4 +1,4 @@
-import {createStore, compose, applyMiddleware} from 'redux'
+import {applyMiddleware, compose, createStore} from 'redux'
 import {createEpicMiddleware} from 'redux-observable'
 import {createLogger} from 'redux-logger'
 
@@ -23,7 +23,7 @@ const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}}) => {
   })
   middlewares.push(logger)
 
-  const devToolsEnhancer = window.devToolsExtension ? window.devToolsExtension() : (f) => f
+  const devToolsExtension = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (f) => f
 
   return {
     reduxStore: createStore(
@@ -31,7 +31,7 @@ const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}}) => {
       initialState,
       compose(
         applyMiddleware(...middlewares),
-        devToolsEnhancer
+        devToolsExtension
       )
     ),
     epicMiddleware,
