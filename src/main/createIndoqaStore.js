@@ -7,7 +7,7 @@ const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}}) => {
   const epicMiddleware = createEpicMiddleware(rootEpic)
   const middlewares = [epicMiddleware]
 
-  if (isProduction) {
+  if (isProduction || typeof window === 'undefined') {
     return {
       reduxStore: createStore(
         rootReducer,
@@ -23,7 +23,7 @@ const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}}) => {
   })
   middlewares.push(logger)
 
-  const devToolsExtension = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (f) => f
+  const devToolsExtension = window.devToolsExtension ? window.devToolsExtension() : (f) => f
 
   return {
     reduxStore: createStore(
