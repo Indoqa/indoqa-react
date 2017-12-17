@@ -3507,9 +3507,9 @@ indoqa-react-fela@0.5.1:
     react-router "4.2.0"
     react-router-dom "4.2.2"
 
-indoqa-webpack@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-1.0.5.tgz#cbf403062cfddbccfca3e3770692a850ed937fd6"
+indoqa-webpack@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-1.0.6.tgz#d681a45dcc21c047407a847f6d7ebf6efe062f7f"
   dependencies:
     autoprefixer "^7.1.6"
     babel-core "^6.26.0"
