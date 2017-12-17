@@ -31,6 +31,7 @@ const createStore = () => {
     rootReducer: require('./rootReducer.js').default,
     rootEpic: require('./rootEpic.js').default,
     initialState: {},
+    enableLogging: process.env.NODE_ENV !== 'production',
   })
 
   if (module.hot) {
