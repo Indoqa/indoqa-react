@@ -2,10 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Provider as Redux} from 'react-redux'
 import {Router, browserHistory} from 'react-router'
+import {syncHistoryWithStore} from 'react-router-redux'
 import {IndoqaFela} from 'indoqa-react-fela'
 
 const IndoqaApplication = ({store, routerConfig, fela}) => {
-  const history = (routerConfig.history) ? routerConfig.history : browserHistory
+  const history = syncHistoryWithStore(
+    (routerConfig.history) ? routerConfig.history : browserHistory,
+    store
+  )
 
   return (
     <Redux store={store}>
