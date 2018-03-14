@@ -54,8 +54,11 @@ const createStore = () => {
 export default createStore()
 ```
 
-  * The indoqaStore is a wrapper around a Redux store and the rxjs-observable epic middleware.
+  * The indoqaStore is a wrapper around a Redux store, the rxjs-observable epic middleware and the react-router-redux middleware.
   * After a file change of the rootEpic/rootReducers or of any referenced file is detected, the root epic and root reducer are reloaded.
+  * By default the react-router-redux middleware is applied using the browserHistory of react-router.
+    This can be overridden with the property 'history'. In this case make sure that the routerConfig of the
+    IndoqaApplication uses the same history implementation (see 'routerConfig' below).
 
 ### routerConfig
 ```javascript
@@ -64,6 +67,20 @@ const routerConfig = {
   history: browserHistory|hashHistory // optional, defaults to browserHistory
 }
 ```
+
+### combineReducersWithRouter
+If react-router-redux should be used, its routing reducers has to be added to the applications reducers:
+
+```javascript
+import {combineReducersWithRouter} from 'indoqa-react-app'
+
+const reducers = {
+ ...
+}
+
+export default combineReducersWithRouter(reducers)
+```
+
 
 ### Fela
 

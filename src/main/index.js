@@ -1,6 +1,11 @@
 import 'rxjs'
 import IndoqaApplication from './IndoqaApplication.react.js'
-import _createIndoqaStore from './createIndoqaStore.js'
+import createIndoqaStore from './createIndoqaStore.js'
+import combineReducersWithRouter from './combineReducersWithRouter.js'
 
 export default IndoqaApplication
-export const createIndoqaStore = _createIndoqaStore
+export {
+  createIndoqaStore,
+  combineReducersWithRouter,
+}
+

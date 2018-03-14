@@ -7,7 +7,7 @@ import {IndoqaFela} from 'indoqa-react-fela'
 
 const IndoqaApplication = ({store, routerConfig, fela}) => {
   const history = syncHistoryWithStore(
-    (routerConfig.history) ? routerConfig.history : browserHistory,
+    routerConfig.history ? routerConfig.history : browserHistory,
     store
   )
 
