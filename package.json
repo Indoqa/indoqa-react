@@ -34,30 +34,31 @@
     "indoqa-react-fela": ">=0.5.0",
     "react": ">=15.6.2",
     "react-dom": ">=15.6.2",
-    "react-fela": ">=6.0.5",
-    "react-redux": ">=5.0.6",
+    "react-fela": ">=6.1.7",
+    "react-redux": ">=5.0.7",
     "react-router": ">=3.2.0 <4.0.0",
-    "redux": ">=3.7.2",
-    "redux-observable": ">=0.17.0",
     "react-router-redux": ">=4.0.8 <5.0.0",
-    "rxjs": ">=5.5.2"
+    "redux": ">=3.7.2",
+    "redux-observable": ">=0.18.0",
+    "rxjs": ">=5.5.10"
   },
   "dependencies": {
-    "fela": "6.1.5",
-    "indoqa-react-fela": "0.5.4",
+    "fela": "6.1.7",
+    "fela-preset-web": "^8.0.5",
+    "indoqa-react-fela": "next",
     "prop-types": "15.6.1",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "react-fela": "7.1.0",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-fela": "7.2.0",
     "react-redux": "5.0.7",
-    "react-router": "3.2.0",
+    "react-router": "4.2.0",
     "react-router-redux": "4.0.8",
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
     "redux-observable": "0.18.0",
-    "rxjs": "5.5.7"
+    "rxjs": "5.5.10"
   },
   "devDependencies": {
-    "indoqa-webpack": "1.0.6"
+    "indoqa-webpack": "1.2.0"
   }
 }
