@@ -5,7 +5,7 @@
   "scripts": {
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint src/main",
-    "prepublish": "yarn run dist",
+    "prepublishOnly": "yarn run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,11 +30,16 @@
     "url": "https://github.com/Indoqa/indoqa-react-app/issues"
   },
   "homepage": "https://github.com/Indoqa/indoqa-react-app#readme",
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
-    "indoqa-react-fela": ">=0.5.0",
+    "fela": ">=6.1.7",
+    "fela-preset-web": ">= 8.0.5",
+    "indoqa-react-fela": ">=0.6.0",
     "react": ">=15.6.2",
     "react-dom": ">=15.6.2",
-    "react-fela": ">=6.1.7",
+    "react-fela": ">=7.2.0",
     "react-redux": ">=5.0.7",
     "react-router": ">=3.2.0 <4.0.0",
     "react-router-redux": ">=4.0.8 <5.0.0",
@@ -44,8 +49,8 @@
   },
   "dependencies": {
     "fela": "6.1.7",
-    "fela-preset-web": "^8.0.5",
-    "indoqa-react-fela": "next",
+    "fela-preset-web": "8.0.5",
+    "indoqa-react-fela": "0.6.0-alpha.2",
     "prop-types": "15.6.1",
     "react": "16.3.2",
     "react-dom": "16.3.2",
