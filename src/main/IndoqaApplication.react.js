@@ -3,13 +3,12 @@ import PropTypes from 'prop-types'
 import {Provider as Redux} from 'react-redux'
 import {IndoqaFela} from 'indoqa-react-fela'
 import {ConnectedRouter} from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
 
-const IndoqaApplication = ({store, fela, children}) => {
+const IndoqaApplication = ({store, fela, history, children}) => {
   return (
     <Redux store={store}>
       <IndoqaFela fela={fela}>
-        <ConnectedRouter history={createHistory()}>
+        <ConnectedRouter history={history}>
           {children}
         </ConnectedRouter>
       </IndoqaFela>
@@ -19,6 +18,7 @@ const IndoqaApplication = ({store, fela, children}) => {
 
 IndoqaApplication.propTypes = {
   store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   fela: PropTypes.object,
 }
 

@@ -36,12 +36,13 @@
   "peerDependencies": {
     "fela": ">=6.1.7",
     "fela-preset-web": ">= 8.0.5",
+    "history": ">=4.7.2",
     "indoqa-react-fela": ">=0.6.0",
     "react": ">=15.6.2",
     "react-dom": ">=15.6.2",
     "react-fela": ">=7.2.0",
     "react-redux": ">=5.0.7",
-    "react-router-redux": ">=4.0.8 <5.0.0",
+    "react-router-redux": ">5.0.0",
     "redux": ">=3.7.2",
     "redux-observable": ">=0.18.0",
     "rxjs": ">=5.5.10"
@@ -49,7 +50,6 @@
   "dependencies": {
     "fela": "6.1.7",
     "fela-preset-web": "8.0.5",
-    "history": "^4.7.2",
     "indoqa-react-fela": "0.6.0",
     "prop-types": "15.6.1",
     "react": "16.3.2",
