@@ -2,11 +2,11 @@ import {applyMiddleware, compose, createStore} from 'redux'
 import {createEpicMiddleware} from 'redux-observable'
 import {createLogger} from 'redux-logger'
 import {routerMiddleware} from 'react-router-redux'
-import {browserHistory} from 'react-router'
+import createHistory from 'history/createBrowserHistory'
 
-const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}, enableLogging = false, history = browserHistory}) => {
+const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}, enableLogging = false}) => {
   const epicMiddleware = createEpicMiddleware(rootEpic)
-  const middlewares = [epicMiddleware, routerMiddleware(history)]
+  const middlewares = [epicMiddleware, routerMiddleware(createHistory())]
   if (enableLogging) {
     const logger = createLogger({
       collapsed: true,
