@@ -18,7 +18,7 @@ Working on different react applications, we ended up writing the same initializa
 
 ## Usage
 ```javascript
-<IndoqaApplication store={store} routerConfig={{routes}} fela={fela} />
+<IndoqaApplication store={store} history={history} fela={fela} />
 ```
 
 ### store
@@ -26,12 +26,13 @@ Working on different react applications, we ended up writing the same initializa
 ```javascript
 import {createIndoqaStore} from 'indoqa-react-app'
 
-const createStore = () => {
+const createStore = (history) => {
   const indoqaStore = createIndoqaStore({
     rootReducer: require('./rootReducer.js').default,
     rootEpic: require('./rootEpic.js').default,
     initialState: {},
     enableLogging: process.env.NODE_ENV !== 'production',
+    history
   })
 
   if (module.hot) {
@@ -56,16 +57,15 @@ export default createStore()
 
   * The indoqaStore is a wrapper around a Redux store, the rxjs-observable epic middleware and the react-router-redux middleware.
   * After a file change of the rootEpic/rootReducers or of any referenced file is detected, the root epic and root reducer are reloaded.
-  * By default the react-router-redux middleware is applied using the browserHistory of react-router.
-    This can be overridden with the property 'history'. In this case make sure that the routerConfig of the
-    IndoqaApplication uses the same history implementation (see 'routerConfig' below).
+  * react-router-redux middleware is applied using the history object of react-router
 
-### routerConfig
+### history
+Import your browser history of choice and pass it to IndoqApplication. 
 ```javascript
-const routerConfig = {
-  routes: myRoutes, // a single (optionally nested Route) or an array of Routes
-  history: browserHistory|hashHistory // optional, defaults to browserHistory
-}
+import createHistory from 'history/createBrowserHistory'
+const history = createHistory()
+
+<IndoqaApplication .... history={history}/>
 ```
 
 ### combineReducersWithRouter
