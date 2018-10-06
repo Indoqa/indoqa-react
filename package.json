@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-app",
-  "version": "4.0.0",
+  "version": "4.0.0-alpha.1",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "license": "Apache-2.0",
   "main": "dist/indoqa-react-app.cjs.js",
@@ -47,8 +47,8 @@
     "rxjs": ">=6"
   },
   "dependencies": {
-    "indoqa-react-fela": "next",
     "fela": "^6.2.2",
+    "indoqa-react-fela": "next",
     "react": "16.5.2",
     "react-fela": "^7.3.1",
     "react-redux": "5.0.7",
