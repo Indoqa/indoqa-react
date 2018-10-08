@@ -49,9 +49,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.4.14":
-  version "16.4.15"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.15.tgz#1f24f1d03b1fc682d92f8485be99d59bf7981191"
-  integrity sha512-EFQyVZhZCrRjwYDVziTEUGri/ygArIi/ES+JAI0j+3FR0LZ0uRfq2Ed7YnZ1CCn9CM3malSWwTKw5Jo0gVV82A==
+  version "16.4.16"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.16.tgz#99f91b1200ae8c2062030402006d3b3c3a177043"
+  integrity sha512-lxyoipLWweAnLnSsV4Ho2NAZTKKmxeYgkTQ6PaDiPDU9JJBUY2zJVVGiK1smzYv8+ZgbqEmcm5xM74GCpunSEA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -463,10 +463,10 @@ iconv-lite@~0.4.13:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-indoqa-react-fela@next:
-  version "0.7.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/indoqa-react-fela/-/indoqa-react-fela-0.7.0-alpha.6.tgz#4e7149071abae1bcaf703d50bc42f867cdee63e4"
-  integrity sha512-tFvjI3sH29n88G9oM6+fjjGd+y5Keqy0czV3sHDRs+GEvyX/uRHwWI2R5CFYkEBNwrjyj7/g5HkWFIswWERP+A==
+indoqa-react-fela@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/indoqa-react-fela/-/indoqa-react-fela-0.7.0.tgz#e23663fd26e6503af4a441380f54b5e2920ba97c"
+  integrity sha512-C1dFK8b3JR39VVDUmGkYcYUu6c0IfPbAU1Ljo+rV+MiaB23HHfH1h5wwsaCTvxtM940ZL8N2xSj6ZBHQs2cXcw==
   dependencies:
     deepmerge "^2.2.1"
     fela "^6.2.2"
