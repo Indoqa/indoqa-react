@@ -42,6 +42,7 @@
     "react-fela": ">=7",
     "react-redux": ">=5",
     "react-router-redux": ">=5",
+    "redux": ">=4",
     "redux-logger": ">=3",
     "redux-observable": ">=1",
     "rxjs": ">=6"
