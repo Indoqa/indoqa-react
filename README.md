@@ -4,6 +4,8 @@ A component that provides a ready-to-use setup of [Redux](http://redux.js.org/),
 ## Motivation
 Working on different react applications, we ended up writing the same initialization code again and again. To avoid this duplicity, we extracted this component that covers middleware configuration, routing, Fela and dev tool setup. Only app specific routes, reducers, epics and a Fela configuration need to be passed as props.
 
+## Changelog
+[Learn about the lastest improvements](./CHANGELOG.md)
 
 ## Features
 
@@ -18,74 +20,15 @@ Working on different react applications, we ended up writing the same initializa
 
 ## Usage
 ```javascript
-<IndoqaApplication store={store} history={history} fela={fela} />
+ReactDOM.render(
+  <IndoqaApplication history={history} store={store} renderer={renderer}>
+    <App />
+  </IndoqaApplication>,
+  rootEl,
+)
 ```
-
-### store
-
-```javascript
-import {createIndoqaStore} from 'indoqa-react-app'
-
-const createStore = (history) => {
-  const indoqaStore = createIndoqaStore({
-    rootReducer: require('./rootReducer.js').default,
-    rootEpic: require('./rootEpic.js').default,
-    initialState: {},
-    enableLogging: process.env.NODE_ENV !== 'production',
-    history
-  })
-
-  if (module.hot) {
-    module.hot.accept('./rootReducer', () => {
-      const nextRootReducer = require('./rootReducer.js').default
-      indoqaStore.reduxStore.replaceReducer(nextRootReducer)
-    })
-
-    if (indoqaStore.epicMiddleware) {
-      module.hot.accept('./rootEpic', () => {
-        const nextRootEpic = require('./rootEpic.js').default
-        indoqaStore.epicMiddleware.replaceEpic(nextRootEpic)
-      })
-    }
-  }
-
-  return indoqaStore.reduxStore
-}
-
-export default createStore()
-```
-
-  * The indoqaStore is a wrapper around a Redux store, the rxjs-observable epic middleware and the react-router-redux middleware.
-  * After a file change of the rootEpic/rootReducers or of any referenced file is detected, the root epic and root reducer are reloaded.
-  * react-router-redux middleware is applied using the history object of react-router
-
-### history
-Import your browser history of choice and pass it to IndoqApplication. 
-```javascript
-import createHistory from 'history/createBrowserHistory'
-const history = createHistory()
-
-<IndoqaApplication .... history={history}/>
-```
-
-### combineReducersWithRouter
-If react-router-redux should be used, its routing reducers has to be added to the applications reducers:
-
-```javascript
-import {combineReducersWithRouter} from 'indoqa-react-app'
-
-const reducers = {
- ...
-}
-
-export default combineReducersWithRouter(reducers)
-```
-
-
-### Fela
-
-Provide a [Indoqa-Fela](https://github.com/Indoqa/indoqa-react-fela) configuration.
 
 ## Example
 
-See [indoqa-react-redux](https://github.com/Indoqa/indoqa-react-redux)
+See [indoqa-react-redux-ts](https://github.com/Indoqa/indoqa-react-redux-ts)
+for an example of how to setup the store, the history and the fela renderer with hot-reload enabled.
