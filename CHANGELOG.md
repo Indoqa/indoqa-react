@@ -1,4 +1,4 @@
-# v4.2.0 | TBA
+# v4.2.0 | 2018-12-28
 * upgrade to indoqa-react-fela@0.8.0
 
 # v4.1.1 | 2018-10-17

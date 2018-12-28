@@ -452,10 +452,10 @@ iconv-lite@~0.4.13:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-indoqa-react-fela@next:
-  version "0.8.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/indoqa-react-fela/-/indoqa-react-fela-0.8.0-alpha.1.tgz#c5faf88a5f53123d0de556b41038178ab36da7c2"
-  integrity sha512-VvOwDJqffAmLCEutQnhSPtjX/fy8Yw0nyqOp+Lx/YNyySERzUvRMpJi7PCqw7tMDYYUalXgaY8osdrrK5UiJCg==
+indoqa-react-fela@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/indoqa-react-fela/-/indoqa-react-fela-0.8.0.tgz#606d9d4c10d97ec7361078f6bdf7cd58b97475d2"
+  integrity sha512-lvxhTpF1/yNqNM5Aq1midWuqoi0h1loEaLWHmBZa+g01kYA5w/otr8XUI9GMSdKun2uJuUuRDc2sqGlx/4K4tg==
   dependencies:
     deepmerge "^2.2.1"
     fela "^10.0.2"
@@ -950,10 +950,10 @@ rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.3:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup@^0.66.2:
-  version "0.66.6"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.66.6.tgz#ce7d6185beb7acea644ce220c25e71ae03275482"
-  integrity sha512-J7/SWanrcb83vfIHqa8+aVVGzy457GcjA6GVZEnD0x2u4OnOd0Q1pCrEoNe8yLwM6z6LZP02zBT2uW0yh5TqOw==
+rollup@^0.68.2:
+  version "0.68.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.68.2.tgz#c26afb5d981ca7a1a32f76087dbde9dad4fcc653"
+  integrity sha512-WgjNCXYv7ZbtStIap1+tz4pd2zwz0XYN//OILwEY6dINIFLVizK1iWdu+ZtUURL/OKnp8Lv2w8FBds8YihzX7Q==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
