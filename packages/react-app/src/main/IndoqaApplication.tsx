@@ -1,7 +1,7 @@
 import {IRenderer} from 'fela'
 import {History} from 'history'
 import * as React from 'react'
-import {RendererProvider} from "react-fela"
+import {RendererProvider} from 'react-fela'
 import {Provider as Redux} from 'react-redux'
 import {Router} from 'react-router'
 import {Store} from 'redux'
