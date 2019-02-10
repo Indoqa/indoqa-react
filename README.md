@@ -1,5 +1,7 @@
-# Indoqa React Fela
-This project components to use [Fela](https://fela.js.org) in React projects:
+# Indoqa Frontend
+
+## Indoqa Style-System
+This project provides a style-system and base components for React projects:
 
 * a component `<IndoqaFela>` to provide the Fela renderer
 * a base theme typed with Typescript
@@ -8,6 +10,6 @@ This project components to use [Fela](https://fela.js.org) in React projects:
   * `<Flex>`
   * `<Text>`
 
-## Changelog
+### Changelog
 [Learn about the lastest improvements](./CHANGELOG.md)
 

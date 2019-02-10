@@ -1,4 +1,5 @@
-# v0.9.2 | TBA
+# v1.0.0-alpha.1 | TBA
+* move from indoqa-react-fela into the indoqa-react multi-module repository
 * upgrade libs (patch level upgrades only)
 * add <Col> and <ColRow> for Bootstrap like container/col
 
