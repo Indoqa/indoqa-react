@@ -1,9 +1,0 @@
-var BREAKPOINT_TABLET = 768;
-var BREAKPOINT_DESKTOP = 1024;
-var BREAKPOINTS = {
-    mobile: 0,
-    tablet: BREAKPOINT_TABLET,
-    desktop: BREAKPOINT_DESKTOP,
-};
-export { BREAKPOINT_DESKTOP, BREAKPOINT_TABLET, BREAKPOINTS, };
-//# sourceMappingURL=breakpoints.js.map

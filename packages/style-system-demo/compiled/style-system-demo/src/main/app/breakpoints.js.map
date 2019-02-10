@@ -1,1 +1,0 @@
-{"version":3,"file":"breakpoints.js","sourceRoot":"","sources":["../../../../../src/main/app/breakpoints.ts"],"names":[],"mappings":"AAAA,IAAM,iBAAiB,GAAG,GAAG,CAAA;AAC7B,IAAM,kBAAkB,GAAG,IAAI,CAAA;AAE/B,IAAM,WAAW,GAAG;IAClB,MAAM,EAAE,CAAC;IACT,MAAM,EAAE,iBAAiB;IACzB,OAAO,EAAE,kBAAkB;CAC5B,CAAA;AAED,OAAO,EACL,kBAAkB,EAClB,iBAAiB,EACjB,WAAW,GACZ,CAAA"}
