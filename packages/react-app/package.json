@@ -1,0 +1,78 @@
+{
+  "name": "indoqa-react-app",
+  "version": "4.2.0",
+  "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "license": "Apache-2.0",
+  "main": "dist/indoqa-react-app.cjs.js",
+  "module": "dist/indoqa-react-app.es.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./compiled ./dist",
+    "compile": "yarn clean && tsc -p tsconfig.base.json",
+    "package": "yarn compile && rollup -c",
+    "prepublishOnly": "yarn package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react-app.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "redux",
+    "store",
+    "Indoqa",
+    "middleware",
+    "bootstrap"
+  ],
+  "bugs": {
+    "url": "https://github.com/Indoqa/indoqa-react-app/issues"
+  },
+  "peerDependencies": {
+    "fela": ">=6",
+    "history": ">=4.7",
+    "indoqa-react-fela": ">=0.7",
+    "react": ">=16",
+    "react-fela": ">=7",
+    "react-redux": ">=5",
+    "react-router": ">=4",
+    "redux": ">=4",
+    "redux-logger": ">=3",
+    "redux-observable": ">=1",
+    "rxjs": ">=6"
+  },
+  "dependencies": {
+    "fela": "^10.0.2",
+    "indoqa-react-fela": "^0.8.0",
+    "react": "16.7.0",
+    "react-fela": "^10.0.2",
+    "react-redux": "6.0.0",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/history": "^4.7.2",
+    "@types/react": "^16.7.18",
+    "@types/react-redux": "^6.0.11",
+    "@types/react-router": "^4.4.3",
+    "@types/redux-logger": "^3.0.6",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.68.2",
+    "rollup-plugin-cleanup": "^3.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  }
+}
