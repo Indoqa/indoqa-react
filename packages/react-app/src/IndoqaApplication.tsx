@@ -1,7 +1,7 @@
 import {IRenderer} from 'fela'
 import {History} from 'history'
-import {IndoqaFela} from 'indoqa-react-fela'
 import * as React from 'react'
+import {RendererProvider} from "react-fela"
 import {Provider as Redux} from 'react-redux'
 import {Router} from 'react-router'
 import {Store} from 'redux'
@@ -18,11 +18,11 @@ export class IndoqaApplication extends React.Component<Props> {
   public render() {
     return (
       <Redux store={this.props.store}>
-        <IndoqaFela renderer={this.props.renderer}>
+        <RendererProvider renderer={this.props.renderer}>
           <Router history={this.props.history}>
             {this.props.children}
           </Router>
-        </IndoqaFela>
+        </RendererProvider>
       </Redux>
     )
   }

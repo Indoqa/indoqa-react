@@ -1,6 +1,6 @@
-import {BaseCssProps, createRenderer, IndoqaFela, renderRebootCss} from '@indoqa/style-system'
+import {BaseCssProps, createRenderer, renderRebootCss} from '@indoqa/style-system'
 import * as React from 'react'
-import {ThemeProvider} from 'react-fela'
+import {RendererProvider, ThemeProvider} from 'react-fela'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import DemoStyleGuide from '../style-guide/DemoStyleGuide'
@@ -41,7 +41,7 @@ class App extends React.Component {
 
   public render() {
     return (
-      <IndoqaFela renderer={renderer}>
+      <RendererProvider renderer={renderer}>
         <Router history={history}>
           <ThemeProvider theme={theme}>
             <Switch>
@@ -49,7 +49,7 @@ class App extends React.Component {
             </Switch>
           </ThemeProvider>
         </Router>
-      </IndoqaFela>
+      </RendererProvider>
     )
   }
 }

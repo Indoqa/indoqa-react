@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3747bfe9-2e53-43d3-89fa-b0a8a9a13943" name="Default Changelist" comment="" />
+    <list default="true" id="3747bfe9-2e53-43d3-89fa-b0a8a9a13943" name="Default Changelist" comment="fix repo reference">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiled/IndoqaApplication.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiled/IndoqaApplication.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiled/createIndoqaStore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiled/createIndoqaStore.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiled/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiled/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/react-app/src/IndoqaApplication.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/react-app/src/IndoqaApplication.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/style-system-demo/compiled/style-system-demo/src/main/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/style-system-demo/compiled/style-system-demo/src/main/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/style-system-demo/compiled/style-system-demo/src/main/app/App.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/packages/style-system-demo/compiled/style-system-demo/src/main/app/App.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/style-system/src/main/fela/IndoqaFela.tsx" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/packages/indoqa-react-app/node_modules/" />
     <ignored path="$PROJECT_DIR$/packages/indoqa-react-fela/node_modules/" />
@@ -22,10 +36,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packages/react-app/src/IndoqaApplication.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="25" selection-start-line="20" selection-end-line="21" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            <state relative-caret-position="528">
+              <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
               <folding>
                 <element signature="e#0#94#0" expanded="true" />
               </folding>
@@ -33,40 +59,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lerna.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packages/style-system/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/packages/style-system-demo/package.json">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+            <state relative-caret-position="102">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/packages/react-app/src/index.ts">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -79,7 +83,6 @@
       <list>
         <option value="$PROJECT_DIR$/packages/style-system/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/packages/style-system-demo/src/main/style-guide/DemoStyleGuide.tsx" />
-        <option value="$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx" />
         <option value="$PROJECT_DIR$/packages/style-system-demo/package.json" />
         <option value="$PROJECT_DIR$/packages/style-system/src/main/components/grid/Grid.tsx" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -87,6 +90,9 @@
         <option value="$PROJECT_DIR$/packages/style-system/src/main/components/grid/Panel.tsx" />
         <option value="$PROJECT_DIR$/packages/style-system/package.json" />
         <option value="$PROJECT_DIR$/lerna.json" />
+        <option value="$PROJECT_DIR$/packages/react-app/src/IndoqaApplication.tsx" />
+        <option value="$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -109,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,11 +127,42 @@
               <item name="indoqa-react" type="462c0819:PsiDirectoryNode" />
               <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="indoqa-react" type="b2602c69:ProjectViewProjectNode" />
+              <item name="indoqa-react" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="style-system-demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indoqa-react" type="b2602c69:ProjectViewProjectNode" />
+              <item name="indoqa-react" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="style-system-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indoqa-react" type="b2602c69:ProjectViewProjectNode" />
+              <item name="indoqa-react" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="style-system-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indoqa-react" type="b2602c69:ProjectViewProjectNode" />
+              <item name="indoqa-react" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="style-system-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,19 +241,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4881000" />
+    <option name="totallyTimeSpent" value="5052000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="-4" width="1317" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="npm" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48363096" visible="true" weight="0.3110762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48363096" visible="true" weight="0.31578946" />
       <window_info id="Structure" order="1" sideWeight="0.51636904" side_tool="true" weight="0.37865612" />
       <window_info id="Favorites" order="2" sideWeight="0.5208333" side_tool="true" weight="0.24848817" />
       <window_info id="Designer" order="3" />
-      <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info id="npm" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.49960473" weight="0.26190478" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.39583334" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5019763" weight="0.6875" />
@@ -232,7 +266,8 @@
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.4103261" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32427537" />
       <window_info anchor="bottom" id="Terminal" order="13" weight="0.32886904" />
-      <window_info anchor="right" id="Maven" />
+      <window_info anchor="bottom" id="TypeScript" order="14" />
+      <window_info anchor="bottom" id="Docker" order="15" show_stripe_button="false" />
       <window_info anchor="right" id="Dynamic Properties" order="0" show_stripe_button="false" weight="0.32964426" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="right" id="Maven Projects" order="2" weight="0.33438736" />
@@ -242,6 +277,7 @@
       <window_info anchor="right" id="Database" order="6" show_stripe_button="false" weight="0.3290469" />
       <window_info anchor="right" id="Coverage" order="7" sideWeight="0.5027668" side_tool="true" weight="0.5675889" />
       <window_info anchor="right" id="PlantUML" order="8" weight="0.32964426" />
+      <window_info anchor="right" id="Maven" order="9" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,13 +297,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/style-system/src/main/fela/IndoqaFela.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/style-system/src/main/fela/IndoqaFela.tsx" />
     <entry file="file://$PROJECT_DIR$/packages/style-system-demo/src/main/app/theme.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -359,19 +389,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#94#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lerna-debug.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lerna-debug.log" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -397,6 +415,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/react-app/src/IndoqaApplication.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="25" selection-start-line="20" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/style-system-demo/src/main/app/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
         </state>
       </provider>
     </entry>
