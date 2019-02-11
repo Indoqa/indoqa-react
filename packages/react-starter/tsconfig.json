@@ -1,12 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "compiled",
-    "paths": {
-      "@indoqa/style-system": [
-        "./packages/style-system/src/main"
-      ]
-    }
+    "outDir": "compiled"
   },
   "include": [
     "src/main/**/*",

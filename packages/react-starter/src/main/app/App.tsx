@@ -1,5 +1,5 @@
 import {IRenderer} from 'fela'
-import {Box, withRenderer} from '@indoqa/style-system'
+import {BaseCssProps, Box, withRenderer} from '@indoqa/style-system'
 import * as React from 'react'
 import {ThemeProvider} from 'react-fela'
 import {I18nextProvider} from 'react-i18next'
@@ -11,7 +11,7 @@ import MainMenuTemplate from '../commons/components/templates/MainMenuTemplate'
 import UploadPage from '../upload/components/UploadPage'
 import WordsPage from '../words/components/WordsPage'
 import i18n from './i18n'
-import renderBaseCss, {BaseCssProps} from './renderBaseCss'
+import renderBaseCss from './renderBaseCss'
 import theme from './theme'
 
 interface Props {
