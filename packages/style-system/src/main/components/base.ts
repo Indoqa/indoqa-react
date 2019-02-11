@@ -222,10 +222,19 @@ const knownProps = [
   'theme',
 ]
 
+const isUnknownProps = (prop: string) => {
+  for (const eachKnownProps of knownProps) {
+    if (eachKnownProps === prop) {
+      return true
+    }
+  }
+  return false
+}
+
 export function filterProps<T>(props: any): any {
   return Object
     .keys(props)
-    .filter((key) => !knownProps.includes(key))
+    .filter(isUnknownProps)
     .reduce((obj, key) => {
       obj[key] = props[key]
       return obj
