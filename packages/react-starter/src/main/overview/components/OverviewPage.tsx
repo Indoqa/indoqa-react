@@ -5,14 +5,14 @@ import MainMenuTemplate from '../../commons/components/templates/MainMenuTemplat
 
 import './OverviewPage.css'
 
-export default class OverviewPage extends React.Component<{}> {
+export default class OverviewPage extends React.Component {
 
   public render() {
     return (
       <MainMenuTemplate title="Overview">
         <h1>Indoqa React Starter</h1>
         <p>
-          Welcome to the <span className="indoqa">Indoqa React-Redux Typescript</span>. This project demonstrates how
+          Welcome to the <span className="indoqa">Indoqa React Starter</span>. This project demonstrates how
           we at <a href="https://www.indoqa.com" target="new">Indoqa</a> setup a Typescript-based React-Redux. After
           removing the the samples it can also serve as a starter for new projects.
         </p>
