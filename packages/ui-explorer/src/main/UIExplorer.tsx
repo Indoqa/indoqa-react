@@ -71,6 +71,36 @@ const createComponentRoute = (name: string, component: React.ReactNode, mountPat
   )
 }
 
+const createMenuGroups = (groups: Group[], mountPath: string) => {
+  return groups.map((componentDescription) => {
+    const {name, descriptions} = componentDescription
+    const menuItems = descriptions.map((description) => {
+      const componentMountPath = `${mountPath}/${name.toLowerCase()}/${description.name.toLowerCase()}`
+      return <MenuItem key={componentMountPath} to={componentMountPath}>{description.name}</MenuItem>
+    })
+    return (
+      <MenuGroup name={name} key={name}>
+        {menuItems}
+      </MenuGroup>
+    )
+  })
+}
+
+const createRoutes = (groups: Group[], mountPath: string, uieTheme: UIETheme) => {
+  const routes: JSX.Element[] = []
+  groups.forEach((componentDescription) => {
+    const {name, descriptions} = componentDescription
+    descriptions.forEach((description) => {
+      routes.push(createComponentRoute(
+        description.name,
+        description.component,
+        `${mountPath}/${name.toLowerCase()}`,
+        uieTheme,
+      ))
+    })
+  })
+  return routes
+}
 
 /**
  * Todos
@@ -129,33 +159,6 @@ class UIExplorer extends React.Component<Props, WithUIETheme> {
       projectName,
     } = this.props
     const {uieTheme} = this.state
-
-    const menuGroups = groups.map((componentDescription) => {
-      const {name, descriptions} = componentDescription
-      const menuItems = descriptions.map((description) => {
-        const componentMountPath = `${mountPath}/${name.toLowerCase()}/${description.name.toLowerCase()}`
-        return <MenuItem key={componentMountPath} to={componentMountPath}>{description.name}</MenuItem>
-      })
-      return (
-        <MenuGroup name={name} key={name}>
-          {menuItems}
-        </MenuGroup>
-      )
-    })
-
-    const routes: JSX.Element[] = []
-    groups.forEach((componentDescription) => {
-      const {name, descriptions} = componentDescription
-      descriptions.forEach((description) => {
-        routes.push(createComponentRoute(
-          description.name,
-          description.component,
-          `${mountPath}/${name.toLowerCase()}`,
-          uieTheme,
-        ))
-      })
-    })
-
     return (
       <StyleGuideThemeContext.Provider value={uieTheme}>
         <Grid spacing={0}>
@@ -170,7 +173,7 @@ class UIExplorer extends React.Component<Props, WithUIETheme> {
                   <MenuItem to={`${mountPath}/colors`}>Colors</MenuItem>
                   <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
                 </MenuGroup>
-                {menuGroups}
+                {createMenuGroups(groups, mountPath)}
               </StyleGuideMenu>
             </Panel>
             <Panel>
@@ -201,7 +204,7 @@ class UIExplorer extends React.Component<Props, WithUIETheme> {
                     />
                   </InnerContentPanel>
                 )}/>
-                {routes}
+                {createRoutes(groups, mountPath, uieTheme)}
               </ContentPanel>
             </Panel>
           </Row>
