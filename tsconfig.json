@@ -3,14 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@indoqa/style-system": [
-        "./packages/style-system/src/main"
-      ],
-      "@indoqa/react-app": [
-        "./packages/react-app/src/main"
-      ],
-      "@indoqa/ui-explorer": [
-        "./packages/ui-explorer/src/main"
+      "@indoqa/*": [
+        "./packages/*/src/main"
       ]
     }
   }

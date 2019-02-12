@@ -1,8 +1,13 @@
 # Indoqa React/Redux Typescript
 
-This project is a ready-to-use setup for React/Redux web applications we use at [Indoqa](https://indoqa.com). It is based on the
+This project is a ready-to-use setup for Typescript based React/Redux web applications we use at [Indoqa](https://indoqa.com). It is based on the
 Redux [todos example](https://github.com/reactjs/redux/tree/master/examples/todos) and inspired by a lot of good ideas from the [este](https://github.com/este/este) dev stack.
 The main focus is to create a consistent environment for client side web applications that are consuming business logic using REST services over HTTP.
+
+The codebase was initially developed with ES6/Flowtype and at the end of 2018 migrated to Typescript because of the more mature tooling support.
+
+## Changelog
+[Learn about the lastest improvements](./CHANGELOG.md)
 
 ## Features
 
@@ -19,7 +24,7 @@ We invent nothing new, this archetype is just a composition of useful libraries,
   * [Jest](https://facebook.github.io/jest/docs/en/getting-started.html) as test framework
   * [indoqa-webpack](https://github.com/Indoqa/indoqa-webpack) build system
     * [hot reloading](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html) of React components, Fela themes, epics, actions and reducers
-  * several demos
+  * several demos, including [Formik](https://jaredpalmer.com/formik/) and [i18next](https://react.i18next.com/).
   * a simple and clean application layout separating application setup, features and common components and following the [atomic design](http://atomicdesign.bradfrost.com/) methodology by Brad Frost.
     ```
     src
@@ -73,14 +78,6 @@ We invent nothing new, this archetype is just a composition of useful libraries,
   * Learn about the new [es6 features](https://github.com/lukehoban/es6features#readme) and take a deep look at [arrow functions](http://exploringjs.com/es6/ch_arrow-functions.html), [destructuring](https://gist.github.com/mikaelbr/9900818), [defaults/spread](https://medium.com/ecmascript-2015/default-rest-spread-f3ab0d2e0a5e#.xn5wo78hb) and [modules](http://exploringjs.com/es6/ch_modules.html).
   * The [Fela Workshop](https://github.com/tajo/fela-workshop) projects helps you to get familiar with Fela
   * Install [nodejs](https://nodejs.org/en/download/package-manager/) including [yarn](https://yarnpkg.com/lang/en/docs/install/).
-
-## Installation
-
-```
-git clone https://github.com/Indoqa/indoqa-react-redux-ts.git
-cd indoqa-react-redux-ts
-yarn install
-```
 
 ## Usage
 
