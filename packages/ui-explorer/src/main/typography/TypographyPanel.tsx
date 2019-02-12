@@ -1,6 +1,6 @@
 import {Flex} from '@indoqa/style-system'
 import * as React from 'react'
-import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import {Font, FontMix, FontSize, FontSizes} from '../types'
 import FontMixPanel from './FontMixPanel'
 import HeadlineFontStylePanel from './HeadlineFontPanel'

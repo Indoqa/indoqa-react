@@ -2,7 +2,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {NavLink} from 'react-router-dom'
-import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface MenuLinkProps extends WithUIETheme {
   to: string,

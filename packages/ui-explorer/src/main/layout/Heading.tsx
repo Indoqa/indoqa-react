@@ -1,8 +1,8 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {UIETheme} from '../sgtheme/UIETheme'
-import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
+import {UIETheme} from '../uietheme/UIETheme'
+import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 
 type HeadingType = 'h1' | 'h2' | 'h3'
 

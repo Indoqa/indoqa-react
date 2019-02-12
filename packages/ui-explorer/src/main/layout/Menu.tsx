@@ -1,13 +1,13 @@
 import {Box} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface StyleGuideMenuCSSProps extends IStyle {
   tablet: IStyle,
 }
 
-const StyleGuideMenu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
+const Menu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: StyleGuideMenuCSSProps = {
     boxSizing: 'border-box',
     backgroundColor: uieTheme.colors.primary,
@@ -24,4 +24,4 @@ const StyleGuideMenu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   )
 }
 
-export default withUIETheme(StyleGuideMenu)
+export default withUIETheme(Menu)

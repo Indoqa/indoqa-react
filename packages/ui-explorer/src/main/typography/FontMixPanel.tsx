@@ -1,6 +1,6 @@
 import {Grid, Panel, Row} from '@indoqa/style-system'
 import * as React from 'react'
-import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
+import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 import {FontMix, FontSize, FontSizes} from '../types'
 import FontMixContent from './FontMixContent'
 import FontStylePanel from './FontStylePanel'

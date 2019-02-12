@@ -1,7 +1,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
+import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
   name: string,

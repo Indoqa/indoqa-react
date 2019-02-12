@@ -1,7 +1,7 @@
 import {Grid, Panel, Row} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
+import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 import FontStylePanel from './FontStylePanel'
 import TextSample from './TextSample'
 import {characters, longText, longTextInlineStyle} from './TextSpecimen'

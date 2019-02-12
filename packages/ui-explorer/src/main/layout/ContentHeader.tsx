@@ -1,7 +1,7 @@
 import {Flex} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
+import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 
 const ContentHeader: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: IStyle = {

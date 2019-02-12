@@ -2,7 +2,7 @@ import {Box, Flex} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import ColorsPanel from '../colors/ColorsPanel'
-import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import {Color, FontMix, FontSize, FontSizes} from '../types'
 import FontMixContent from '../typography/FontMixContent'
 

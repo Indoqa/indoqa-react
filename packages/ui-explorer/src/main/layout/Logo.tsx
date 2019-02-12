@@ -4,7 +4,7 @@ import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {Link} from 'react-router-dom'
 import Heading from '../layout/Heading'
-import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
   to: string,
