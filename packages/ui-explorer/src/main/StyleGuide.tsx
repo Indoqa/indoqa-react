@@ -112,7 +112,7 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
     const {sgTheme} = this.state
     const {fontFamilyCSSImports} = sgTheme
     importCss('style-guide-fonts', fontFamilyCSSImports)
-    document.title = `${this.props.projectName} | Style-Guide`
+    document.title = `${this.props.projectName} | UI-Explorer`
   }
 
   public render() {
@@ -211,4 +211,4 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
   }
 }
 
-export default StyleGuide
+export {StyleGuide}

@@ -8,6 +8,9 @@
       ],
       "@indoqa/react-app": [
         "./packages/react-app/src/main"
+      ],
+      "@indoqa/ui-explorer": [
+        "./packages/ui-explorer/src/main"
       ]
     }
   }

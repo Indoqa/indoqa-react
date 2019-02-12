@@ -3,8 +3,7 @@ import {withTheme} from 'react-fela'
 
 import {Theme} from '../app/theme'
 import GridSamples from '../grid/GridSamples'
-import StyleGuide from './StyleGuide'
-import {Color, Font, FontMix, FontSize, FontSizes, Group} from './types'
+import {StyleGuide, Color, Font, FontMix, FontSize, FontSizes, Group} from '@indoqa/ui-explorer'
 
 interface Props {
   theme: Theme,

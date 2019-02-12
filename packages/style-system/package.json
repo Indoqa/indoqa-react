@@ -5,7 +5,7 @@
   "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
   "license": "Apache-2.0",
   "main": "dist/indoqa-style-system.cjs.js",
-  "module": "dist/indoqa-indoqa-style-system.es.js",
+  "module": "dist/indoqa-style-system.es.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
