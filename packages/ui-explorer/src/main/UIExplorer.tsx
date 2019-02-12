@@ -23,17 +23,17 @@ import {WithUIETheme} from './uietheme/withUIETheme'
 import importCss from './utils/importCss'
 
 interface Props {
-  projectName: string,
-  description?: string,
-  logo?: React.ReactNode,
   colors: Color[],
-  textFonts: Font[],
-  headlineFonts: Font[],
-  fontSizes: FontSizes,
-  textFontSize: FontSize,
+  description?: string,
   fontMixes: FontMix[],
+  fontSizes: FontSizes,
   groups: Group[],
+  headlineFonts: Font[],
+  logo?: React.ReactNode,
   mountPath: string,
+  projectName: string,
+  textFonts: Font[],
+  textFontSize: FontSize,
   uieTheme?: UIETheme,
 }
 
@@ -86,7 +86,7 @@ const createMenuGroups = (groups: Group[], mountPath: string) => {
   })
 }
 
-const createRoutes = (groups: Group[], mountPath: string, uieTheme: UIETheme) => {
+const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIETheme) => {
   const routes: JSX.Element[] = []
   groups.forEach((componentDescription) => {
     const {name, descriptions} = componentDescription
@@ -148,15 +148,15 @@ class UIExplorer extends React.Component<Props, WithUIETheme> {
   public render() {
     const {
       colors,
-      textFonts,
       headlineFonts,
       fontMixes,
       fontSizes,
-      textFontSize,
       groups,
-      mountPath,
       logo,
+      mountPath,
       projectName,
+      textFonts,
+      textFontSize,
     } = this.props
     const {uieTheme} = this.state
     return (
@@ -204,7 +204,7 @@ class UIExplorer extends React.Component<Props, WithUIETheme> {
                     />
                   </InnerContentPanel>
                 )}/>
-                {createRoutes(groups, mountPath, uieTheme)}
+                {createGroupsRoutes(groups, mountPath, uieTheme)}
               </ContentPanel>
             </Panel>
           </Row>
