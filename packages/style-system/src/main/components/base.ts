@@ -225,10 +225,10 @@ const knownProps = [
 const isUnknownProps = (prop: string) => {
   for (const eachKnownProps of knownProps) {
     if (eachKnownProps === prop) {
-      return true
+      return false
     }
   }
-  return false
+  return true
 }
 
 export function filterProps<T>(props: any): any {
