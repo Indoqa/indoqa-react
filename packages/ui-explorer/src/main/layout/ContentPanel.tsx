@@ -1,12 +1,12 @@
 import {Box} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {withSGTheme, WithSGTheme} from './sgtheme/withSGTheme'
+import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
 
-const ContentPanel: React.FC<WithSGTheme> = ({children, sgTheme}) => {
+const ContentPanel: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: IStyle = {
     boxSizing: 'border-box',
-    backgroundColor: sgTheme.colors.background,
+    backgroundColor: uieTheme.colors.background,
     overflow: 'auto',
   }
   return (
@@ -16,4 +16,4 @@ const ContentPanel: React.FC<WithSGTheme> = ({children, sgTheme}) => {
   )
 }
 
-export default withSGTheme(ContentPanel)
+export default withUIETheme(ContentPanel)

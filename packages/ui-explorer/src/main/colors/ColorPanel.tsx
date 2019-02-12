@@ -2,9 +2,9 @@ import {Box} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   color?: string,
   name: string,
 }
@@ -27,7 +27,7 @@ const calcTextColor = (color?: string) => {
   return (red * 0.299 + green * 0.587 + blue * 0.114) > 180 ? '#000' : '#fff'
 }
 
-const ColorPanel = ({color, name, sgTheme}: Props) => {
+const ColorPanel = ({color, name, uieTheme}: Props) => {
   const textColor = calcTextColor(color)
   const style: IStyle = {
     boxSizing: 'border-box',
@@ -38,19 +38,19 @@ const ColorPanel = ({color, name, sgTheme}: Props) => {
     backgroundColor: color,
     textAlign: 'center',
     textTransform: 'uppercase',
-    padding: sgTheme.spacing.space1,
-    marginRight: sgTheme.spacing.space2,
-    marginBottom: sgTheme.spacing.space2,
+    padding: uieTheme.spacing.space1,
+    marginRight: uieTheme.spacing.space2,
+    marginBottom: uieTheme.spacing.space2,
     borderRadius: '3px',
-    border: sgTheme.layout.colorPanelBorder,
+    border: uieTheme.layout.colorPanelBorder,
   }
   return (
     <FelaComponent style={style}>
       <Box
         style={{
-          ...sgTheme.fontStyles.base,
+          ...uieTheme.fontStyles.base,
           color: textColor,
-          fontSize: sgTheme.fontSizes.small,
+          fontSize: uieTheme.fontSizes.small,
           marginBottom: 'auto',
         }}
       >
@@ -58,9 +58,9 @@ const ColorPanel = ({color, name, sgTheme}: Props) => {
       </Box>
       <Box
         style={{
-          ...sgTheme.fontStyles.base,
+          ...uieTheme.fontStyles.base,
           color: textColor,
-          fontSize: sgTheme.fontSizes.verySmall,
+          fontSize: uieTheme.fontSizes.verySmall,
         }}
       >
         {color}
@@ -69,4 +69,4 @@ const ColorPanel = ({color, name, sgTheme}: Props) => {
   )
 }
 
-export default withSGTheme(ColorPanel)
+export default withUIETheme(ColorPanel)

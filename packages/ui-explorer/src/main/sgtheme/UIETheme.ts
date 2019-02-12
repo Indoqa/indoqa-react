@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 
-export interface SGTheme {
+export interface UIETheme {
   colors: {
     primary: string,
     primaryDark: string,

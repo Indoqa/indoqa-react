@@ -1,12 +1,12 @@
 import {Flex} from '@indoqa/style-system'
 import * as React from 'react'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 import {Font, FontMix, FontSize, FontSizes} from '../types'
 import FontMixPanel from './FontMixPanel'
 import HeadlineFontStylePanel from './HeadlineFontPanel'
 import TextFontStylePanel from './TextFontPanel'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   textFonts: Font[],
   headlineFonts: Font[],
   fontSizes: FontSizes,
@@ -62,4 +62,4 @@ const TypographyPanel: React.FC<Props> = ({textFonts, headlineFonts, fontMixes, 
   )
 }
 
-export default withSGTheme(TypographyPanel)
+export default withUIETheme(TypographyPanel)

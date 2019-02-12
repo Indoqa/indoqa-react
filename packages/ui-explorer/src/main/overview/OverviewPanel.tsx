@@ -2,20 +2,20 @@ import {Box, Flex} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import ColorsPanel from '../colors/ColorsPanel'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 import {Color, FontMix, FontSize, FontSizes} from '../types'
 import FontMixContent from '../typography/FontMixContent'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   colors: Color[],
   fontMixes: FontMix[],
   fontSizes: FontSizes,
   textFontSize: FontSize,
 }
 
-const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, colors, sgTheme}) => {
+const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, colors, uieTheme}) => {
   const panelStyle: IStyle = {
-    marginTop: sgTheme.spacing.space4,
+    marginTop: uieTheme.spacing.space4,
   }
   const textFont = fontMixes[0].textFont
   const headlineFont = fontMixes[0].headlineFont
@@ -38,4 +38,4 @@ const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, col
   )
 }
 
-export default withSGTheme(OverviewPanel)
+export default withUIETheme(OverviewPanel)

@@ -1,13 +1,13 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   color?: string,
 }
 
-const ColorPanel = ({color, sgTheme}: Props) => {
+const ColorPanel = ({color, uieTheme}: Props) => {
   const style: IStyle = {
     boxSizing: 'border-box',
     display: 'flex',
@@ -15,15 +15,15 @@ const ColorPanel = ({color, sgTheme}: Props) => {
     minWidth: '5rem',
     height: '5rem',
     backgroundColor: color,
-    padding: sgTheme.spacing.space1,
-    marginRight: sgTheme.spacing.space1,
-    marginBottom: sgTheme.spacing.space1,
+    padding: uieTheme.spacing.space1,
+    marginRight: uieTheme.spacing.space1,
+    marginBottom: uieTheme.spacing.space1,
     borderRadius: '3px',
-    border: sgTheme.layout.colorPanelBorder,
+    border: uieTheme.layout.colorPanelBorder,
   }
   return (
     <FelaComponent style={style} />
   )
 }
 
-export default withSGTheme(ColorPanel)
+export default withUIETheme(ColorPanel)

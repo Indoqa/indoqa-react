@@ -1,10 +1,10 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import Heading from '../Heading'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import Heading from '../layout/Heading'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   name?: string,
 }
 
@@ -21,10 +21,10 @@ const List: React.FC = ({children}) => {
   )
 }
 
-const MenuGroup: React.FC<Props> = ({sgTheme, name, children}) => {
+const MenuGroup: React.FC<Props> = ({uieTheme, name, children}) => {
   const style: IStyle = {
-    paddingTop: sgTheme.spacing.space2,
-    paddingLeft: sgTheme.spacing.space4,
+    paddingTop: uieTheme.spacing.space2,
+    paddingLeft: uieTheme.spacing.space4,
   }
   return (
     <FelaComponent style={style}>
@@ -36,4 +36,4 @@ const MenuGroup: React.FC<Props> = ({sgTheme, name, children}) => {
   )
 }
 
-export default withSGTheme(MenuGroup)
+export default withUIETheme(MenuGroup)

@@ -3,10 +3,10 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {Link} from 'react-router-dom'
-import Heading from '../Heading'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import Heading from '../layout/Heading'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   to: string,
 }
 
@@ -14,7 +14,7 @@ interface MenuLinkStyle extends IStyle {
   '> a': IStyle,
 }
 
-const Logo: React.FC<Props> = ({sgTheme, to, children}) => {
+const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
   if (typeof children !== 'string') {
     return (
       <Flex fullWidth justifyContent="center">
@@ -27,7 +27,7 @@ const Logo: React.FC<Props> = ({sgTheme, to, children}) => {
 
   const style: MenuLinkStyle = {
     listStyle: 'none',
-    paddingLeft: sgTheme.spacing.space3,
+    paddingLeft: uieTheme.spacing.space3,
     '> a': {
       textDecoration: 'none',
     },
@@ -43,4 +43,4 @@ const Logo: React.FC<Props> = ({sgTheme, to, children}) => {
   )
 }
 
-export default withSGTheme(Logo)
+export default withUIETheme(Logo)

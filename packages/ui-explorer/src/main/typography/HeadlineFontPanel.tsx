@@ -2,13 +2,13 @@ import {Grid, Panel, Row} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {SGTheme} from '../sgtheme/SGTheme'
-import {withSGTheme, WithSGTheme} from '../sgtheme/withSGTheme'
+import {UIETheme} from '../sgtheme/UIETheme'
+import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
 import {FontSizes} from '../types'
 import FontStylePanel from './FontStylePanel'
 import {characters} from './TextSpecimen'
 
-interface HeadlineProps extends WithSGTheme {
+interface HeadlineProps extends WithUIETheme {
   fontStyles: IStyle,
 }
 
@@ -21,9 +21,9 @@ interface Props extends HeadlineProps {
   fontSizes: FontSizes,
 }
 
-const HeadlineSample: React.FC<HeadlineProps & WithFontSize> = ({fontStyles, fontSize, sgTheme, children}) => {
+const HeadlineSample: React.FC<HeadlineProps & WithFontSize> = ({fontStyles, fontSize, uieTheme, children}) => {
   const style: IStyle = {
-    marginBottom: sgTheme.spacing.space2,
+    marginBottom: uieTheme.spacing.space2,
     fontSize,
   }
   return (
@@ -33,28 +33,28 @@ const HeadlineSample: React.FC<HeadlineProps & WithFontSize> = ({fontStyles, fon
   )
 }
 
-const renderHeadlineSizeSamples = (fontStyles: IStyle, fontSizes: FontSizes, sgTheme: SGTheme) => {
+const renderHeadlineSizeSamples = (fontStyles: IStyle, fontSizes: FontSizes, uieTheme: UIETheme) => {
   return fontSizes.map((fontSize) => {
     return (
-      <HeadlineSample fontStyles={fontStyles} fontSize={fontSize} sgTheme={sgTheme} key={fontSize}>
+      <HeadlineSample fontStyles={fontStyles} fontSize={fontSize} uieTheme={uieTheme} key={fontSize}>
         The quick brown fox jumps over the lazy dog.
       </HeadlineSample>
     )
   })
 }
 
-const HeadlineFontPanel: React.FC<Props> = ({fontStyles, fontSizes, name, sgTheme}) => {
+const HeadlineFontPanel: React.FC<Props> = ({fontStyles, fontSizes, name, uieTheme}) => {
   return (
     <Grid fullWidth spacing="1rem">
       <Row>
         <Panel>
           <FontStylePanel name={`${name} / sizes`}>
-            {renderHeadlineSizeSamples(fontStyles, fontSizes, sgTheme)}
+            {renderHeadlineSizeSamples(fontStyles, fontSizes, uieTheme)}
           </FontStylePanel>
         </Panel>
         <Panel>
           <FontStylePanel name={`${name} / characters`}>
-            <HeadlineSample fontStyles={fontStyles} fontSize={fontSizes[0]} sgTheme={sgTheme}>
+            <HeadlineSample fontStyles={fontStyles} fontSize={fontSizes[0]} uieTheme={uieTheme}>
               {characters}
             </HeadlineSample>
           </FontStylePanel>
@@ -64,4 +64,4 @@ const HeadlineFontPanel: React.FC<Props> = ({fontStyles, fontSizes, name, sgThem
   )
 }
 
-export default withSGTheme(HeadlineFontPanel)
+export default withUIETheme(HeadlineFontPanel)

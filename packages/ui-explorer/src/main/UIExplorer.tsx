@@ -5,19 +5,19 @@ import {FelaComponent} from 'react-fela'
 import {Route} from 'react-router'
 
 import ColorsPanel from './colors/ColorsPanel'
-import ContentHeader from './ContentHeader'
-import ContentPanel from './ContentPanel'
-import Heading from './Heading'
+import ContentHeader from './layout/ContentHeader'
+import ContentPanel from './layout/ContentPanel'
+import Heading from './layout/Heading'
 import Logo from './menu/Logo'
 import MenuGroup from './menu/MenuGroup'
 import MenuHeader from './menu/MenuHeader'
 import MenuItem from './menu/MenuItem'
 import StyleGuideMenu from './menu/StyleGuideMenu'
 import OverviewPanel from './overview/OverviewPanel'
-import {SGTheme} from './sgtheme/SGTheme'
-import StyleGuideThemeContext from './sgtheme/SGThemeContext'
-import {lightTheme} from './sgtheme/sgThemes'
-import {WithSGTheme} from './sgtheme/withSGTheme'
+import {UIETheme} from './sgtheme/UIETheme'
+import StyleGuideThemeContext from './sgtheme/UIEThemeContext'
+import {lightTheme} from './sgtheme/uieThemes'
+import {WithUIETheme} from './sgtheme/withUIETheme'
 import {Color, Font, FontMix, FontSize, FontSizes, Group} from './types'
 import TypographyPanel from './typography/TypographyPanel'
 import importCss from './utils/importCss'
@@ -34,19 +34,19 @@ interface Props {
   fontMixes: FontMix[],
   groups: Group[],
   mountPath: string,
-  sgTheme?: SGTheme,
+  uieTheme?: UIETheme,
 }
 
-interface InnerContentPanelProps extends WithSGTheme {
+interface InnerContentPanelProps extends WithUIETheme {
   name: string,
 }
 
-const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, sgTheme, children}) => {
+const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, children}) => {
   const style: IStyle = {
-    paddingTop: sgTheme.spacing.space4,
-    paddingRight: sgTheme.spacing.space4,
-    paddingBottom: sgTheme.spacing.space4,
-    paddingLeft: sgTheme.spacing.space4,
+    paddingTop: uieTheme.spacing.space4,
+    paddingRight: uieTheme.spacing.space4,
+    paddingBottom: uieTheme.spacing.space4,
+    paddingLeft: uieTheme.spacing.space4,
   }
   return (
     <React.Fragment>
@@ -60,11 +60,11 @@ const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, sgTheme, chi
   )
 }
 
-const createComponentRoute = (name: string, component: React.ReactNode, mountPath: string, sgTheme: SGTheme) => {
+const createComponentRoute = (name: string, component: React.ReactNode, mountPath: string, uieTheme: UIETheme) => {
   const componentMountPath = `${mountPath}/${name.toLowerCase()}`
   return (
     <Route key={componentMountPath} exact path={componentMountPath} render={() => (
-      <InnerContentPanel name={name} sgTheme={sgTheme}>
+      <InnerContentPanel name={name} uieTheme={uieTheme}>
         {component}
       </InnerContentPanel>
     )}/>
@@ -90,13 +90,13 @@ const createComponentRoute = (name: string, component: React.ReactNode, mountPat
  * - https://www.producthunt.com/posts/fontspark
  * - https://github.com/pitr12/base-styling-components/blob/master/README.md
  */
-class StyleGuide extends React.Component<Props, WithSGTheme> {
+class UIExplorer extends React.Component<Props, WithUIETheme> {
 
   constructor(props: Props) {
     super(props)
-    const {sgTheme} = props
+    const {uieTheme} = props
     this.state = {
-      sgTheme: sgTheme || lightTheme,
+      uieTheme: uieTheme || lightTheme,
     }
   }
 
@@ -105,12 +105,12 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
     if (description || description === '') {
       return description
     }
-    return `Styleguide ${projectName}`
+    return `UI-Explorer ${projectName}`
   }
 
   public componentDidMount() {
-    const {sgTheme} = this.state
-    const {fontFamilyCSSImports} = sgTheme
+    const {uieTheme} = this.state
+    const {fontFamilyCSSImports} = uieTheme
     importCss('style-guide-fonts', fontFamilyCSSImports)
     document.title = `${this.props.projectName} | UI-Explorer`
   }
@@ -128,7 +128,7 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
       logo,
       projectName,
     } = this.props
-    const {sgTheme} = this.state
+    const {uieTheme} = this.state
 
     const menuGroups = groups.map((componentDescription) => {
       const {name, descriptions} = componentDescription
@@ -151,13 +151,13 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
           description.name,
           description.component,
           `${mountPath}/${name.toLowerCase()}`,
-          sgTheme,
+          uieTheme,
         ))
       })
     })
 
     return (
-      <StyleGuideThemeContext.Provider value={sgTheme}>
+      <StyleGuideThemeContext.Provider value={uieTheme}>
         <Grid spacing={0}>
           <Row height="100vh">
             <Panel width="15rem">
@@ -165,7 +165,7 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
                 <MenuHeader>
                   <Logo to={mountPath}>{logo || projectName}</Logo>
                 </MenuHeader>
-                <FelaComponent style={{height: sgTheme.spacing.space3}}/>
+                <FelaComponent style={{height: uieTheme.spacing.space3}}/>
                 <MenuGroup name="Base Styles">
                   <MenuItem to={`${mountPath}/colors`}>Colors</MenuItem>
                   <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
@@ -176,7 +176,7 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
             <Panel>
               <ContentPanel>
                 <Route exact path={mountPath} render={() => (
-                  <InnerContentPanel name={this.getDescription()} sgTheme={sgTheme}>
+                  <InnerContentPanel name={this.getDescription()} uieTheme={uieTheme}>
                     <OverviewPanel
                       colors={colors}
                       fontMixes={fontMixes}
@@ -186,12 +186,12 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
                   </InnerContentPanel>
                 )}/>
                 <Route exact path={`${mountPath}/colors`} render={() => (
-                  <InnerContentPanel name="Color Scheme" sgTheme={sgTheme}>
+                  <InnerContentPanel name="Color Scheme" uieTheme={uieTheme}>
                     <ColorsPanel colors={colors}/>
                   </InnerContentPanel>
                 )}/>
                 <Route exact path={`${mountPath}/typography`} render={() => (
-                  <InnerContentPanel name="Typography" sgTheme={sgTheme}>
+                  <InnerContentPanel name="Typography" uieTheme={uieTheme}>
                     <TypographyPanel
                       textFonts={textFonts}
                       headlineFonts={headlineFonts}
@@ -211,4 +211,4 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
   }
 }
 
-export {StyleGuide}
+export {UIExplorer}

@@ -1,2 +1,2 @@
 export * from './types'
-export * from './StyleGuide'
+export * from './UIExplorer'

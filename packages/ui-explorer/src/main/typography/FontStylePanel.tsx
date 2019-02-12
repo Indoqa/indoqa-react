@@ -1,22 +1,22 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {withSGTheme, WithSGTheme} from '../sgtheme/withSGTheme'
+import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   name: string,
 }
 
-const Header: React.FunctionComponent<WithSGTheme> = ({sgTheme, children}) => {
+const Header: React.FunctionComponent<WithUIETheme> = ({uieTheme, children}) => {
   const style: IStyle = {
-    backgroundColor: sgTheme.colors.primaryLight,
+    backgroundColor: uieTheme.colors.primaryLight,
     textTransform: 'uppercase',
-    ...sgTheme.fontStyles.headline,
-    fontSize: sgTheme.fontSizes.small,
-    color: sgTheme.colors.primaryDark,
-    padding: sgTheme.spacing.space2,
+    ...uieTheme.fontStyles.headline,
+    fontSize: uieTheme.fontSizes.small,
+    color: uieTheme.colors.primaryDark,
+    padding: uieTheme.spacing.space2,
     borderRadius: '1px',
-    marginBottom: sgTheme.spacing.space2,
+    marginBottom: uieTheme.spacing.space2,
   }
   return (
     <FelaComponent style={style}>
@@ -25,9 +25,9 @@ const Header: React.FunctionComponent<WithSGTheme> = ({sgTheme, children}) => {
   )
 }
 
-const Container: React.FC<WithSGTheme> = ({sgTheme, children}) => {
+const Container: React.FC<WithUIETheme> = ({uieTheme, children}) => {
   const style: IStyle = {
-    backgroundColor: sgTheme.colors.background,
+    backgroundColor: uieTheme.colors.background,
     borderRadius: '3px',
     marginBottom: '2rem',
     width: '100%',
@@ -39,10 +39,10 @@ const Container: React.FC<WithSGTheme> = ({sgTheme, children}) => {
   )
 }
 
-const Content: React.FC<WithSGTheme> = ({sgTheme, children}) => {
+const Content: React.FC<WithUIETheme> = ({uieTheme, children}) => {
   const style: IStyle = {
-    paddingLeft: sgTheme.spacing.space2,
-    paddingTop: sgTheme.spacing.space2,
+    paddingLeft: uieTheme.spacing.space2,
+    paddingTop: uieTheme.spacing.space2,
   }
   return (
     <FelaComponent style={style}>
@@ -51,13 +51,13 @@ const Content: React.FC<WithSGTheme> = ({sgTheme, children}) => {
   )
 }
 
-const FontStylePanel: React.FC<Props> = ({sgTheme, name, children}) => {
+const FontStylePanel: React.FC<Props> = ({uieTheme, name, children}) => {
   return (
-    <Container sgTheme={sgTheme}>
-      <Header sgTheme={sgTheme}>{name}</Header>
-      <Content sgTheme={sgTheme}>{children}</Content>
+    <Container uieTheme={uieTheme}>
+      <Header uieTheme={uieTheme}>{name}</Header>
+      <Content uieTheme={uieTheme}>{children}</Content>
     </Container>
   )
 }
 
-export default withSGTheme(FontStylePanel)
+export default withUIETheme(FontStylePanel)

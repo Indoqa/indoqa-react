@@ -2,9 +2,9 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {NavLink} from 'react-router-dom'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 
-interface MenuLinkProps extends WithSGTheme {
+interface MenuLinkProps extends WithUIETheme {
   to: string,
 }
 
@@ -14,7 +14,7 @@ interface MenuLinkStyle extends IStyle {
   '> a.active': IStyle,
 }
 
-const MenuItem: React.FC<MenuLinkProps> = ({sgTheme, to, children}) => {
+const MenuItem: React.FC<MenuLinkProps> = ({uieTheme, to, children}) => {
   const style: MenuLinkStyle = {
     paddingBottom: '0.15rem',
     marginLeft: 0,
@@ -22,13 +22,13 @@ const MenuItem: React.FC<MenuLinkProps> = ({sgTheme, to, children}) => {
     listStyle: 'none',
     '> a': {
       textDecoration: 'none',
-      ...sgTheme.fontStyles.base,
-      color: sgTheme.colors.text,
-      fontSize: sgTheme.fontSizes.text,
+      ...uieTheme.fontStyles.base,
+      color: uieTheme.colors.text,
+      fontSize: uieTheme.fontSizes.text,
     },
     '> a:visited': {
       textDecoration: 'none',
-      ...sgTheme.fontStyles.base,
+      ...uieTheme.fontStyles.base,
     },
     '> a.active': {
       fontWeight: 'bold',
@@ -41,4 +41,4 @@ const MenuItem: React.FC<MenuLinkProps> = ({sgTheme, to, children}) => {
   )
 }
 
-export default withSGTheme(MenuItem)
+export default withUIETheme(MenuItem)

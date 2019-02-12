@@ -1,16 +1,16 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {SGTheme} from './sgtheme/SGTheme'
-import {withSGTheme, WithSGTheme} from './sgtheme/withSGTheme'
+import {UIETheme} from '../sgtheme/UIETheme'
+import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
 
 type HeadingType = 'h1' | 'h2' | 'h3'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   as: HeadingType
 }
 
-const getConcreteStyle = (level: HeadingType, sgTheme: SGTheme) => {
+const getConcreteStyle = (level: HeadingType, sgTheme: UIETheme) => {
   switch (level) {
     case 'h1': {
       return {
@@ -38,20 +38,20 @@ const getConcreteStyle = (level: HeadingType, sgTheme: SGTheme) => {
   }
 }
 
-const Heading: React.FC<Props> = ({children, sgTheme, as}) => {
+const Heading: React.FC<Props> = ({children, uieTheme, as}) => {
   const baseStyle: IStyle = {
     textTransform: 'uppercase',
     margin: 0,
-    paddingBottom: sgTheme.spacing.space1,
-    marginBottom: sgTheme.spacing.space0,
-    color: sgTheme.colors.primaryDark,
+    paddingBottom: uieTheme.spacing.space1,
+    marginBottom: uieTheme.spacing.space0,
+    color: uieTheme.colors.primaryDark,
   }
 
   return (
-    <FelaComponent style={[baseStyle, sgTheme.fontStyles.headline, getConcreteStyle(as, sgTheme)]} as={as}>
+    <FelaComponent style={[baseStyle, uieTheme.fontStyles.headline, getConcreteStyle(as, uieTheme)]} as={as}>
       {children}
     </FelaComponent>
   )
 }
 
-export default withSGTheme(Heading)
+export default withUIETheme(Heading)

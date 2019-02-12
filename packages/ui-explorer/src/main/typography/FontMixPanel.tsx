@@ -1,11 +1,11 @@
 import {Grid, Panel, Row} from '@indoqa/style-system'
 import * as React from 'react'
-import {withSGTheme, WithSGTheme} from '../sgtheme/withSGTheme'
+import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
 import {FontMix, FontSize, FontSizes} from '../types'
 import FontMixContent from './FontMixContent'
 import FontStylePanel from './FontStylePanel'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   fontSizes: FontSizes,
   fontMix: FontMix,
   textFontSize: FontSize,
@@ -31,4 +31,4 @@ const FontMixPanel: React.FC<Props> = ({fontSizes, textFontSize, fontMix}) => {
   )
 }
 
-export default withSGTheme(FontMixPanel)
+export default withUIETheme(FontMixPanel)

@@ -1,12 +1,12 @@
 import {Grid, Panel, Row} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {withSGTheme, WithSGTheme} from '../sgtheme/withSGTheme'
+import {withUIETheme, WithUIETheme} from '../sgtheme/withUIETheme'
 import FontStylePanel from './FontStylePanel'
 import TextSample from './TextSample'
 import {characters, longText, longTextInlineStyle} from './TextSpecimen'
 
-interface Props extends WithSGTheme {
+interface Props extends WithUIETheme {
   name: string,
   fontStyles: IStyle,
 }
@@ -37,4 +37,4 @@ const TextFontPanel: React.FC<Props> = ({fontStyles, name}) => {
   )
 }
 
-export default withSGTheme(TextFontPanel)
+export default withUIETheme(TextFontPanel)

@@ -1,11 +1,11 @@
-import {SGTheme} from './SGTheme'
+import {UIETheme} from './UIETheme'
 
 const fontFamilies = {
   base: 'Lato, sans-serif',
   heading: 'Oswald, sans-serif',
 }
 
-export const lightTheme: SGTheme = {
+export const lightTheme: UIETheme = {
   colors: {
     primaryDark: '#868E96',
     primary: '#E9ECEF',

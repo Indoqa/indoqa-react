@@ -1,18 +1,18 @@
 import * as React from 'react'
-import {SGTheme} from './SGTheme'
-import StyleGuideThemeContext from './SGThemeContext'
+import {UIETheme} from './UIETheme'
+import StyleGuideThemeContext from './UIEThemeContext'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-export interface WithSGTheme {sgTheme: SGTheme}
+export interface WithUIETheme {uieTheme: UIETheme}
 
 // see https://github.com/Microsoft/TypeScript/issues/28748
-export function withSGTheme<P extends WithSGTheme, R = Omit<P, 'sgTheme'>>(
+export function withUIETheme<P extends WithUIETheme, R = Omit<P, 'uieTheme'>>(
   Component: React.ComponentClass<P> | React.FC<P>,
 ): React.FC<R> {
   return function BoundComponent(props: R) {
     return (
       <StyleGuideThemeContext.Consumer>
-        {(value) => <Component sgTheme={value} {...(props as any)} />}
+        {(value) => <Component uieTheme={value} {...(props as any)} />}
       </StyleGuideThemeContext.Consumer>
     )
   }

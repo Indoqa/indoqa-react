@@ -1,17 +1,17 @@
 import {Box} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {WithSGTheme, withSGTheme} from '../sgtheme/withSGTheme'
+import {WithUIETheme, withUIETheme} from '../sgtheme/withUIETheme'
 
 interface StyleGuideMenuCSSProps extends IStyle {
   tablet: IStyle,
 }
 
-const StyleGuideMenu: React.FC<WithSGTheme> = ({children, sgTheme}) => {
+const StyleGuideMenu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: StyleGuideMenuCSSProps = {
     boxSizing: 'border-box',
-    backgroundColor: sgTheme.colors.primary,
-    marginBottom: sgTheme.spacing.space4,
+    backgroundColor: uieTheme.colors.primary,
+    marginBottom: uieTheme.spacing.space4,
     tablet: {
       overflowY: 'auto',
       borderBottom: 'none',
@@ -24,4 +24,4 @@ const StyleGuideMenu: React.FC<WithSGTheme> = ({children, sgTheme}) => {
   )
 }
 
-export default withSGTheme(StyleGuideMenu)
+export default withUIETheme(StyleGuideMenu)

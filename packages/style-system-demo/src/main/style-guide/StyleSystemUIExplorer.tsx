@@ -3,7 +3,7 @@ import {withTheme} from 'react-fela'
 
 import {Theme} from '../app/theme'
 import GridSamples from '../grid/GridSamples'
-import {StyleGuide, Color, Font, FontMix, FontSize, FontSizes, Group} from '@indoqa/ui-explorer'
+import {UIExplorer, Color, Font, FontMix, FontSize, FontSizes, Group} from '@indoqa/ui-explorer'
 
 interface Props {
   theme: Theme,
@@ -75,7 +75,7 @@ class StyleSystemUIExplorer extends React.Component<Props> {
     const groups = [atomsGroup, moleculesGroup]
 
     return (
-      <StyleGuide
+      <UIExplorer
         projectName="Indoqa Style-System"
         description="Overview"
         textFonts={textFonts}
