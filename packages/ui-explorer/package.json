@@ -1,0 +1,47 @@
+{
+  "name": "@indoqa/ui-explorer",
+  "version": "1.0.0-alpha.3",
+  "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
+  "license": "Apache-2.0",
+  "main": "dist/indoqa-ui-explorer.cjs.js",
+  "module": "dist/indoqa-ui-explorer.es.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./compiled ./dist",
+    "compile": "yarn clean && tsc -p tsconfig.json",
+    "package": "yarn compile && rollup -c -v",
+    "prepublishOnly": "yarn package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "react-fela",
+    "fela"
+  ],
+  "peerDependencies": {
+    "fela": ">=10",
+    "react": ">=16",
+    "react-fela": ">=10",
+    "react-router": ">4",
+    "react-router-dom": ">4"
+  },
+  "dependencies": {
+    "deepmerge": "^2.2.1",
+    "fela": "^10.1.3",
+    "react": "16.7.0",
+    "react-fela": "^10.1.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "tslib": "^1.9.3"
+  }
+}

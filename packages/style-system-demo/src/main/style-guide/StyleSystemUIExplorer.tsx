@@ -9,7 +9,7 @@ interface Props {
   theme: Theme,
 }
 
-class DemoStyleGuide extends React.Component<Props> {
+class StyleSystemUIExplorer extends React.Component<Props> {
 
   public render() {
     const {theme} = this.props
@@ -86,10 +86,9 @@ class DemoStyleGuide extends React.Component<Props> {
         colors={colors}
         groups={groups}
         mountPath=""
-        // sgTheme={demoTheme}
       />
     )
   }
 }
 
-export default withTheme(DemoStyleGuide)
+export default withTheme(StyleSystemUIExplorer)

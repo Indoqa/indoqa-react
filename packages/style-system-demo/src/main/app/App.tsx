@@ -3,7 +3,7 @@ import * as React from 'react'
 import {RendererProvider, ThemeProvider} from 'react-fela'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
-import DemoStyleGuide from '../style-guide/DemoStyleGuide'
+import StyleSystemUIExplorer from '../style-guide/StyleSystemUIExplorer'
 import fela from './fela'
 import history from './history'
 import theme from './theme'
@@ -45,7 +45,7 @@ class App extends React.Component {
         <Router history={history}>
           <ThemeProvider theme={theme}>
             <Switch>
-              <Route path="/" component={DemoStyleGuide}/>
+              <Route path="/" component={StyleSystemUIExplorer}/>
             </Switch>
           </ThemeProvider>
         </Router>
