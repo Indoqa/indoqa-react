@@ -1,15 +1,24 @@
 # Indoqa Frontend
 
 ## Indoqa Style-System
-This project provides a style-system and base components for React projects:
+This project provides style-system with Typescript based theme support
+and several base components.
 
-* a component `<IndoqaFela>` to provide the Fela renderer
-* a base theme typed with Typescript
-* base components as building blocks which integrate with the base theme:
-  * `<Box>`
-  * `<Flex>`
-  * `<Text>`
+[Details](./packages/style-system/README.md)
 
-### Changelog
-[Learn about the lastest improvements](./CHANGELOG.md)
+## Indoqa Style-System Demo
+
+[Details](./packages/style-system-demo/README.md)
+
+## Indoqa React App
+
+[Details](./packages/react-app/README.md)
+
+## Indoqa UI-Explorer
+
+[Details](./packages/ui-explorer/README.md)
+
+## React Starter
+
+[Details](./packages/react-starter/README.md)
 
