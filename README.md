@@ -1,18 +1,18 @@
 # Indoqa Frontend
 
-## Indoqa Style-System
+## Style-System
 This project provides style-system with Typescript based theme support
 and several base components.
 
 [Details](./packages/style-system/README.md)
 
-## Indoqa Style-System Demo
+## Style-System Demo
 
 A demo for the Indoqa Style-System theming support and base components.
 
 [Details](./packages/style-system-demo/README.md)
 
-## Indoqa React Application
+## React Application
 
 A component that provides a ready-to-use setup of [Redux](http://redux.js.org/),
 [react-router](https://github.com/reactjs/react-router),
@@ -21,7 +21,7 @@ A component that provides a ready-to-use setup of [Redux](http://redux.js.org/),
 
 [Details](./packages/react-app/README.md)
 
-## Indoqa UI-Explorer
+## UI-Explorer
 
 A React component to showcase isolated React components and an
 Indoqa Style-System based theme.
