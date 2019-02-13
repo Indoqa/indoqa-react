@@ -1,5 +1,5 @@
 # Indoqa Style-System
-This project provides style-system with Typescript based theme support
+This project provides a React style system with Typescript typed theme support
 and several base components.
 
 * a base theme typed with Typescript
