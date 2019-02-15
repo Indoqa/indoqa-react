@@ -1,5 +1,5 @@
-import * as Types from 'Types'
+import {RootState} from './types'
 
-export const selectTimeState = (state: Types.RootState) => state.time
-export const selectWordsState = (state: Types.RootState) => state.words
-export const selectFormsState = (state: Types.RootState) => state.forms
+export const selectTimeState = (state: RootState) => state.time
+export const selectWordsState = (state: RootState) => state.words
+export const selectFormsState = (state: RootState) => state.forms

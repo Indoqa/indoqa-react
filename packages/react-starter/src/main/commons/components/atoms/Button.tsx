@@ -1,10 +1,10 @@
 import {CSSProperties} from 'react'
 import {createComponentWithProxy} from 'react-fela'
-import Types from 'Types'
+import {FelaProps, WithChildren} from '../../../app/types'
 
-const buttonStyles = ({theme}: Types.FelaProps): CSSProperties => ({
+const buttonStyles = ({theme}: FelaProps): CSSProperties => ({
   color: theme.colors.text,
 })
 
-export default createComponentWithProxy<Types.WithChildren>(buttonStyles, 'button')
+export default createComponentWithProxy<WithChildren>(buttonStyles, 'button')
 

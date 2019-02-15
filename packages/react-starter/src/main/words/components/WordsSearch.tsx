@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Box, Text} from '@indoqa/style-system'
 import {createComponentWithProxy} from 'react-fela'
-import Types from 'Types'
+import {FelaProps, WithChildren} from '../../app/types'
 
 type Props = {
   fetchWords: any,
@@ -11,12 +11,12 @@ type Props = {
   isLoadingFlag: boolean,
 }
 
-const inputFieldStyles = ({theme}: Types.FelaProps) => ({
+const inputFieldStyles = ({theme}: FelaProps) => ({
   width: 300,
   padding: 4,
   marginRight: theme.spacing.space2,
 })
-const InputField = createComponentWithProxy<Types.WithChildren>(inputFieldStyles, 'input')
+const InputField = createComponentWithProxy<WithChildren>(inputFieldStyles, 'input')
 
 const WordsSearch = ({fetchWords, cancelFetchWords, prefix, isLoadingFlag, error}: Props) => {
   return (

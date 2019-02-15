@@ -3,12 +3,12 @@ import {of} from 'rxjs/internal/observable/of'
 import {switchMap, map, catchError, retry, mergeMap, timeout} from 'rxjs/operators'
 import {Epic, ofType} from 'redux-observable'
 
-import Types from 'Types'
+import {RootAction, RootState, Services} from '../../app/types'
 import {FetchTime, fetchTimeError, fetchTimeSuccess, FetchTimes} from './time.actions'
 import {geonamesService$} from './time.service'
 import {TimeAction, TimeActionKeys} from './time.types'
 
-interface TimeEpic extends Epic<Types.RootAction, TimeAction, Types.RootState, Types.Services> {}
+interface TimeEpic extends Epic<RootAction, TimeAction, RootState, Services> {}
 
 /*
  * Learn more about piping observables:

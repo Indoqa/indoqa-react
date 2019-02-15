@@ -1,12 +1,12 @@
 import {CSSProperties} from 'react'
 import {createComponentWithProxy} from 'react-fela'
-import Types from 'Types'
+import {FelaProps, WithChildren} from '../../../app/types'
 
 interface Props extends CSSProperties {
   '& > a': CSSProperties,
 }
 
-const ButtonLink = ({theme}: Types.FelaProps): Props => ({
+const ButtonLink = ({theme}: FelaProps): Props => ({
   '& > a': {
     color: theme.colors.text,
     display: 'block',
@@ -15,4 +15,4 @@ const ButtonLink = ({theme}: Types.FelaProps): Props => ({
   },
 })
 
-export default createComponentWithProxy<Types.WithChildren>(ButtonLink, 'button')
+export default createComponentWithProxy<WithChildren>(ButtonLink, 'button')

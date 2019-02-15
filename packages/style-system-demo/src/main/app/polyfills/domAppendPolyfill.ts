@@ -1,5 +1,6 @@
 /* tslint:disable */
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
+// @ts-ignore
 (function (arr) {
   arr.forEach(function (item) {
     if (item.hasOwnProperty('append')) {

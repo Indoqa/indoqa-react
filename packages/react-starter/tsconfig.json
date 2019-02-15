@@ -4,8 +4,7 @@
     "outDir": "compiled"
   },
   "include": [
-    "src/main/**/*",
-    "src/typings/*"
+    "src/main"
   ],
   "exclude": [
     "node_modules",

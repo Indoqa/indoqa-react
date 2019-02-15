@@ -1,7 +1,7 @@
 import {createComponent} from 'react-fela'
-import Types from 'Types'
+import {CSSPropertiesWithBreakpointExtensions, FelaProps, WithChildren} from '../../../app/types'
 
-const Content = ({theme}: Types.FelaProps): Types.CSSPropertiesWithBreakpointExtensions => ({
+const Content = ({theme}: FelaProps): CSSPropertiesWithBreakpointExtensions => ({
   padding: theme.spacing.space2,
   width: '100%',
   desktop: {
@@ -12,4 +12,4 @@ const Content = ({theme}: Types.FelaProps): Types.CSSPropertiesWithBreakpointExt
   },
 })
 
-export default createComponent<Types.WithChildren, any, HTMLDivElement>(Content, 'div')
+export default createComponent<WithChildren, any, HTMLDivElement>(Content, 'div')

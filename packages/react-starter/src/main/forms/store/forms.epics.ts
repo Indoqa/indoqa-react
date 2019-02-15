@@ -4,11 +4,11 @@ import {of} from 'rxjs/internal/observable/of'
 import {mergeMap} from 'rxjs/operators'
 import shortid from 'shortid'
 
-import Types from 'Types'
+import {RootAction, RootState, Services} from '../../app/types'
 import {SaveUser, saveUserError, saveUserSuccess} from './forms.actions'
 import {FormsAction, FormsActionKeys} from './forms.types'
 
-interface FormsEpic extends Epic<Types.RootAction, FormsAction, Types.RootState, Types.Services> {}
+interface FormsEpic extends Epic<RootAction, FormsAction, RootState, Services> {}
 
 const doSaveForm = (action: SaveUser, history: any): Observable<FormsAction> => {
   const {user, setErrors} = action

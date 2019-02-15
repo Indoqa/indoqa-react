@@ -1,8 +1,8 @@
 import {CSSProperties} from 'react'
 import {createComponent} from 'react-fela'
-import Types from 'Types'
+import {FelaProps, WithChildren} from '../../../app/types'
 
-const Bar = ({theme}: Types.FelaProps): CSSProperties => ({
+const Bar = ({theme}: FelaProps): CSSProperties => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-start',
@@ -13,4 +13,4 @@ const Bar = ({theme}: Types.FelaProps): CSSProperties => ({
   width: 'auto',
 })
 
-export default createComponent<Types.WithChildren, any, HTMLDivElement>(Bar, 'div')
+export default createComponent<WithChildren, any, HTMLDivElement>(Bar, 'div')

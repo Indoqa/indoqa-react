@@ -1,16 +1,16 @@
 import {CSSProperties} from 'react'
 import {createComponentWithProxy} from 'react-fela'
-import Types from 'Types'
+import {FelaProps, WithChildren} from '../../../app/types'
 
 interface LogoStyleProps extends CSSProperties {
   '> a': CSSProperties,
 }
 
-export declare interface Props extends Types.WithChildren {
+export declare interface Props extends WithChildren {
   'data-logo-height': number,
 }
 
-const Logo = ({theme, 'data-logo-height': logoHeight}: Props & Types.FelaProps): LogoStyleProps => {
+const Logo = ({theme, 'data-logo-height': logoHeight}: Props & FelaProps): LogoStyleProps => {
   return ({
     cursor: 'pointer',
     display: 'inline-flex',

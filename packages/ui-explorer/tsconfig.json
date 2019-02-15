@@ -3,6 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "dist",
+    "isolatedModules": false,
     "outDir": "compiled"
   },
   "include": [
