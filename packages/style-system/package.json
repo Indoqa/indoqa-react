@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/style-system",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "license": "Apache-2.0",
   "main": "dist/indoqa-style-system.cjs.js",

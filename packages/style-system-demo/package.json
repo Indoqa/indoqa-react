@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/style-system-demo",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "Indoqa Style-System Demo",
   "license": "Apache-2.0",
   "repository": {
@@ -20,8 +20,8 @@
     "start": "indoqa-dev-server ./indoqa-webpack-options.js"
   },
   "dependencies": {
-    "@indoqa/style-system": "^1.0.0-alpha.5",
-    "@indoqa/ui-explorer": "^1.0.0-alpha.5",
+    "@indoqa/style-system": "^1.0.0-alpha.6",
+    "@indoqa/ui-explorer": "^1.0.0-alpha.6",
     "fela": "^10.1.3",
     "fela-monolithic": "^10.1.3",
     "fela-plugin-named-keys": "^10.1.3",
