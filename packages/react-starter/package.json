@@ -3,10 +3,6 @@
   "version": "1.0.0-alpha.6",
   "description": "Typescript based React + Redux + Redux-Observable + Formik starter",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Indoqa/indoqa-react.git"
-  },
   "files": [
     "src"
   ],
@@ -20,6 +16,21 @@
     "postinstall": "yarn run package",
     "start": "indoqa-dev-server ./indoqa-webpack-options.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Indoqa/indoqa-react.git"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "redux",
+    "redux-observable",
+    "rxjs",
+    "store",
+    "middleware",
+    "bootstrap",
+    "starter"
+  ],
   "dependencies": {
     "@indoqa/react-app": "^1.0.0-alpha.6",
     "@indoqa/style-system": "^1.0.0-alpha.6",

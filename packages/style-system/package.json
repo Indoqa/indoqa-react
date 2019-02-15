@@ -2,6 +2,7 @@
   "name": "@indoqa/style-system",
   "version": "1.0.0-alpha.6",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "description": "A style system for React with Typescript typed theme support and several base components.",
   "license": "Apache-2.0",
   "main": "dist/indoqa-style-system.cjs.js",
   "module": "dist/indoqa-style-system.es.js",
@@ -18,9 +19,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Indoqa/indoqa-react.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "react",

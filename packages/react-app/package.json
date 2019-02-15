@@ -19,21 +19,14 @@
     "type": "git",
     "url": "git+https://github.com/Indoqa/indoqa-react.git"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "keywords": [
     "react",
     "react-router",
     "redux",
-    "store",
-    "Indoqa",
-    "middleware",
-    "bootstrap"
+    "redux-observable",
+    "rxjs",
+    "store"
   ],
-  "bugs": {
-    "url": "https://github.com/Indoqa/indoqa-react/issues"
-  },
   "peerDependencies": {
     "fela": ">=6",
     "history": ">=4.7",

@@ -2,7 +2,7 @@
   "name": "@indoqa/ui-explorer",
   "version": "1.0.0-alpha.6",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
-  "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
+  "description": "A React component to showcase isolated React components and an Indoqa Style-System based theme",
   "license": "Apache-2.0",
   "main": "dist/indoqa-ui-explorer.cjs.js",
   "module": "dist/indoqa-ui-explorer.es.js",
@@ -19,9 +19,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Indoqa/indoqa-react.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "react",

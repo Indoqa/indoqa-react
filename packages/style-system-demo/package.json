@@ -1,12 +1,8 @@
 {
   "name": "@indoqa/style-system-demo",
   "version": "1.0.0-alpha.6",
-  "description": "Indoqa Style-System Demo",
+  "description": "A demo for the Indoqa Style-System theming support and base components.",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Indoqa/indoqa-react.git"
-  },
   "files": [
     "src"
   ],
@@ -19,6 +15,18 @@
     "postinstall": "yarn run package",
     "start": "indoqa-dev-server ./indoqa-webpack-options.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Indoqa/indoqa-react.git"
+  },
+  "keywords": [
+    "react",
+    "react-fela",
+    "fela",
+    "css-in-js",
+    "style-system",
+    "demo"
+  ],
   "dependencies": {
     "@indoqa/style-system": "^1.0.0-alpha.6",
     "@indoqa/ui-explorer": "^1.0.0-alpha.6",
