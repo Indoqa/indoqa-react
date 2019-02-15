@@ -11,7 +11,7 @@ import fela from './app/fela'
 import history from './app/history'
 
 const store = createStore()
-const rootEl =  document.getElementById('app')
+const rootEl =  document.getElementById('root')
 const renderer = createRenderer(fela)
 
 ReactDOM.render(

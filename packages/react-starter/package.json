@@ -11,14 +11,10 @@
     "src"
   ],
   "scripts": {
-    "analyze": "source-map-explorer ./target/assets/vendors-*",
-    "build": "indoqa-webpack ./indoqa-webpack-options.js",
-    "clean": "rimraf ./target",
-    "compile": "yarn clean && tsc --outdir ./target/js",
-    "lint": "tslint --project .",
-    "package": "yarn clean && yarn build",
-    "postinstall": "yarn run package",
-    "start": "indoqa-dev-server ./indoqa-webpack-options.js"
+    "start": "react-scripts start",
+    "package": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@indoqa/react-app": "^1.0.0-alpha.6",
@@ -52,21 +48,10 @@
     "typesafe-actions": "^2.0.4",
     "yup": "^0.26.10"
   },
-  "proxy": {
-    "/geonames": {
-      "target": "http://api.geonames.org",
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      },
-      "pathRewrite": {
-        "/geonames": ""
-      }
-    },
-    "/words": {
-      "target": "http://api.wordnik.com",
-      "pathRewrite": {
-        "/words": ""
-      }
-    }
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

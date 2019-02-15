@@ -1,13 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "compiled"
+    "noEmit": true,
+    "jsx": "preserve"
   },
   "include": [
-    "src/main"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/*.spec.*"
+    "src"
   ]
 }

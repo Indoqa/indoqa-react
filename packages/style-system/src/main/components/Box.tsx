@@ -38,7 +38,7 @@ export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithSty
       <FelaComponent<T, BoxProps> style={styles} {...rest}>
         {({className}) => (
           <div className={className} {...filterProps(rest)}>
-            {children}
+            {children}x
           </div>
         )}
       </FelaComponent>
