@@ -2,7 +2,6 @@
   "name": "@indoqa/style-system",
   "version": "1.0.0-alpha.5",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
-  "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
   "license": "Apache-2.0",
   "main": "dist/indoqa-style-system.cjs.js",
   "module": "dist/indoqa-style-system.es.js",
@@ -13,7 +12,7 @@
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
     "compile": "yarn clean && tsc -p tsconfig.json",
-    "package": "yarn compile && rollup -c -v",
+    "package": "yarn compile && rollup -c",
     "prepublishOnly": "yarn package"
   },
   "repository": {
@@ -26,7 +25,9 @@
   "keywords": [
     "react",
     "react-fela",
-    "fela"
+    "fela",
+    "css-in-js",
+    "style-system"
   ],
   "peerDependencies": {
     "fela": ">=10",

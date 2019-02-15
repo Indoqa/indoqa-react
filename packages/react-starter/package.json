@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git@github.com:Indoqa/indoqa-react.git"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "analyze": "source-map-explorer ./target/assets/vendors-*",
     "build": "indoqa-webpack ./indoqa-webpack-options.js",
