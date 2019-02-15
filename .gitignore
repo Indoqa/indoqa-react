@@ -7,3 +7,4 @@ compiled
 target
 .cache-loader
 yarn-error.log
+lerna-debug.log
