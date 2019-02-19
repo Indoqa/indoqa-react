@@ -5,6 +5,7 @@ import * as React from 'react'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
+import Button from '../../commons/components/atoms/Button'
 import ButtonLink from '../../commons/components/atoms/ButtonLink'
 import FormRow from '../../commons/components/molecules/FormRow'
 import {User} from '../store/forms.types'
@@ -37,7 +38,7 @@ class UserForm extends React.Component<Props> {
         onSubmit={(values, {setErrors}) => saveUser(values, setErrors)}
         initialValues={user}
         validationSchema={validationSchema(t)}
-        render={({values, errors, touched}: FormikProps<User>) => {
+        render={({values, errors, touched, submitForm}: FormikProps<User>) => {
           return (
             <Form>
               <FormRow name="name" label={t('name')} errors={errors} touched={touched}/>
@@ -47,7 +48,7 @@ class UserForm extends React.Component<Props> {
                 <ButtonLink>
                   <Link to={cancelUrl}>{t('cancel')}</Link>
                 </ButtonLink>
-                <button type="submit">{t('save')}</button>
+                <Button onClick={() => submitForm()}>{t('save')}</Button>
               </Box>
             </Form>
           )

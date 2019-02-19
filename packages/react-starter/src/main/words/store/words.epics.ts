@@ -11,6 +11,7 @@ interface TimeEpic extends Epic<RootAction, WordsAction, RootState, Services> {}
 
 const fetchWordsEpic$: TimeEpic = (action$, state, {ajax, scheduler}) =>
   action$.pipe(
+    // @ts-ignore
     ofType<FetchWords>(WordsActionKeys.FETCH),
     // the scheduler is only needed for the test environment,
     // in the browser environment the scheduler is undefined and RxJS uses the default scheduler

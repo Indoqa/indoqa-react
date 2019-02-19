@@ -1,16 +1,24 @@
-import i18next from 'i18next'
 import {Box} from '@indoqa/style-system'
+import i18next from 'i18next'
 import * as React from 'react'
-import {createComponent} from 'react-fela'
+import {FelaComponent, StyleFunction} from 'react-fela'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
+import {Theme} from '../../app/theme'
 
 import ButtonLink from '../../commons/components/atoms/ButtonLink'
 import {User} from '../store/forms.types'
 
-const TableData = createComponent(({theme}) => ({
-  padding: theme.spacing.space1,
-}), 'td') as any
+const TableData: React.FC = ({children}) => {
+  const style: StyleFunction<Theme> = ({theme}) => ({
+    padding: theme.spacing.space1,
+  })
+  return (
+    <FelaComponent style={style} as="td">
+      {children}
+    </FelaComponent>
+  )
+}
 
 const renderUserRow = (user: User, baseurl: string, t: i18next.TranslationFunction) => (
   <tr key={user.id}>
@@ -25,7 +33,7 @@ const renderUserRow = (user: User, baseurl: string, t: i18next.TranslationFuncti
 )
 
 export interface Props {
-  users: {[key: string]: User},
+  users: { [key: string]: User },
   baseurl: string,
 }
 
@@ -37,7 +45,7 @@ class UsersTable extends React.Component<Props & WithNamespaces> {
       <Box>
         <table>
           <tbody>
-            {Object.keys(users).map((key) => renderUserRow(users[key], baseurl, t))}
+          {Object.keys(users).map((key) => renderUserRow(users[key], baseurl, t))}
           </tbody>
         </table>
       </Box>

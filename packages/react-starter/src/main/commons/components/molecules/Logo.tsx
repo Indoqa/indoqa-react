@@ -1,17 +1,19 @@
+import * as React from 'react'
 import {CSSProperties} from 'react'
-import {createComponentWithProxy} from 'react-fela'
-import {FelaProps, WithChildren} from '../../../app/types'
+import {FelaComponent, StyleFunction} from 'react-fela'
+import {Theme} from '../../../app/theme'
+import {WithChildren} from '../../../app/types'
 
 interface LogoStyleProps extends CSSProperties {
   '> a': CSSProperties,
 }
 
-export declare interface Props extends WithChildren {
-  'data-logo-height': number,
+interface Props extends WithChildren {
+  logoHeight: number,
 }
 
-const Logo = ({theme, 'data-logo-height': logoHeight}: Props & FelaProps): LogoStyleProps => {
-  return ({
+const Logo: React.FC<Props> = ({children}) => {
+  const style: StyleFunction<Theme, Props> = ({theme, logoHeight}): LogoStyleProps => ({
     cursor: 'pointer',
     display: 'inline-flex',
     alignItems: 'center',
@@ -23,6 +25,11 @@ const Logo = ({theme, 'data-logo-height': logoHeight}: Props & FelaProps): LogoS
       color: theme.colors.text,
     },
   })
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
 }
 
-export default createComponentWithProxy<Props, any, HTMLDivElement>(Logo, 'div')
+export default Logo

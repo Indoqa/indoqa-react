@@ -77,11 +77,11 @@ const ContentOverlay = createComponentWithProxy(({'data-show': show}) => ({
 
 const renderHeaderContent = (title?: string, header?: string) => (
   <React.Fragment>
-    <Logo data-logo-height={50}>
+    <Logo logoHeight={50}>
       <Link to="/">{BASE_TITLE}</Link>
     </Logo>
     <Box>{title}</Box>
-    <Box grow={1} />
+    <Box grow={1}/>
     <Box mr={3}>{header}</Box>
   </React.Fragment>
 )
@@ -129,11 +129,11 @@ export default class MainMenuTemplate extends React.Component<Props, State> {
     const documentTitle = title === undefined ? BASE_TITLE : `${BASE_TITLE} | ${title}`
     return (
       <Flex stretch height="100%">
-        <DocumentTitle title={documentTitle} />
+        <DocumentTitle title={documentTitle}/>
         <MobileMenu data-show={this.state.showMobileMenu}>
-          <MainMenu />
+          <MainMenu/>
         </MobileMenu>
-        <ContentOverlay data-show={this.state.showMobileMenu} onClick={() => this.toggleMenu()} />
+        <ContentOverlay data-show={this.state.showMobileMenu} onClick={() => this.toggleMenu()}/>
         <Box grow={1}>
           <FixedBar>
             <Bar>
@@ -144,7 +144,7 @@ export default class MainMenuTemplate extends React.Component<Props, State> {
           </FixedBar>
           <Main data-menu-open={this.state.showMobileMenu}>
             <TabletDesktopMenu>
-              <MainMenu />
+              <MainMenu/>
             </TabletDesktopMenu>
             <Content>
               {children}

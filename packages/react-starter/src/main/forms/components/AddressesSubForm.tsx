@@ -3,6 +3,7 @@ import i18next from 'i18next'
 import {Box, Flex, Text} from '@indoqa/style-system'
 import * as React from 'react'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
+import Button from '../../commons/components/atoms/Button'
 import FormRow from '../../commons/components/molecules/FormRow'
 
 import Optional from '../../commons/components/utils/Optional'
@@ -17,12 +18,12 @@ const renderAddressHeader = (
 ) =>  (
   <Box grow={1}>
     <Text mr={1}>{t('address')} {index + 1}</Text>
-    <button type="button" onClick={() => arrayHelpers.remove(index)}>-</button>
+    <Button onClick={() => arrayHelpers.remove(index)}>-</Button>
     <Optional test={index > 0}>
-      <button type="button" onClick={() => arrayHelpers.move(index, index - 1)}>↑</button>
+      <Button onClick={() => arrayHelpers.move(index, index - 1)}>↑</Button>
     </Optional>
     <Optional test={index < count - 1}>
-      <button type="button" onClick={() => arrayHelpers.move(index, index + 1)}>↓</button>
+      <Button onClick={() => arrayHelpers.move(index, index + 1)}>↓</Button>
     </Optional>
   </Box>
 )
@@ -66,7 +67,7 @@ const renderHeader = (arrayHelpers: ArrayHelpers, t: i18next.TranslationFunction
   <Box>
     <Box>
       <Text mr={1}>{t('addresses')}</Text>
-      <button type="button" onClick={() => arrayHelpers.push(createNewAddress())}>+</button>
+      <Button onClick={() => arrayHelpers.push(createNewAddress())}>+</Button>
     </Box>
   </Box>
 )

@@ -1,10 +1,28 @@
-import {CSSProperties} from 'react'
-import {createComponentWithProxy} from 'react-fela'
-import {FelaProps, WithChildren} from '../../../app/types'
+import {IStyle} from 'fela'
+import * as React from 'react'
+import {FelaComponent, StyleFunction} from 'react-fela'
+import {Theme} from '../../../app/theme'
 
-const buttonStyles = ({theme}: FelaProps): CSSProperties => ({
-  color: theme.colors.text,
-})
+interface Props {
+  onClick: any,
+}
 
-export default createComponentWithProxy<WithChildren>(buttonStyles, 'button')
+const Button: React.FC<Props> = ({onClick, children}) => {
+  const style: StyleFunction<Theme> = ({theme}): IStyle => {
+    return {
+      color: theme.colors.text,
+    }
+  }
+  const renderButton = () => (
+    <button onClick={onClick} type="button">
+      {children}
+    </button>
+  )
+  return (
+    <FelaComponent style={style}>
+      {renderButton}
+    </FelaComponent>
+  )
+}
 
+export default Button

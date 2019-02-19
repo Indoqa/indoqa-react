@@ -7,7 +7,7 @@ const initialState: WordsState = {
   error: '',
 }
 
-export default (state: WordsState = initialState, action: WordsAction) => {
+export default (state: WordsState = initialState, action: WordsAction): WordsState => {
   switch (action.type) {
     case WordsActionKeys.FETCH:
       return {
@@ -19,7 +19,7 @@ export default (state: WordsState = initialState, action: WordsAction) => {
     case WordsActionKeys.FETCH_SUCCESS:
       return {
         ...state,
-        error: null,
+        error: '',
         isLoading: false,
         results: action.results,
       }

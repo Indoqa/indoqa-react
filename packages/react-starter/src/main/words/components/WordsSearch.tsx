@@ -1,7 +1,7 @@
-import * as React from 'react'
 import {Box, Text} from '@indoqa/style-system'
-import {createComponentWithProxy} from 'react-fela'
-import {FelaProps, WithChildren} from '../../app/types'
+import * as React from 'react'
+import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
+import {Theme} from '../../app/theme'
 
 type Props = {
   fetchWords: any,
@@ -11,12 +11,28 @@ type Props = {
   isLoadingFlag: boolean,
 }
 
-const inputFieldStyles = ({theme}: FelaProps) => ({
-  width: 300,
-  padding: 4,
-  marginRight: theme.spacing.space2,
-})
-const InputField = createComponentWithProxy<WithChildren>(inputFieldStyles, 'input')
+interface InputFieldProps {
+  type: string,
+  placeholder: string,
+  onChange: any,
+  value: string,
+}
+
+const InputField: React.FC<InputFieldProps> = (props) => {
+  const style: StyleFunction<Theme> = ({theme}) => ({
+    width: 300,
+    padding: 4,
+    marginRight: theme.spacing.space2,
+  })
+  const renderInputField = ({className}: RenderProps<Theme>) => {
+    return <input className={className} {...props} />
+  }
+  return (
+    <FelaComponent style={style}>
+      {renderInputField}
+    </FelaComponent>
+  )
+}
 
 const WordsSearch = ({fetchWords, cancelFetchWords, prefix, isLoadingFlag, error}: Props) => {
   return (
@@ -25,7 +41,7 @@ const WordsSearch = ({fetchWords, cancelFetchWords, prefix, isLoadingFlag, error
         <InputField
           type="text"
           placeholder="Search for an English word"
-          onChange={(e) => fetchWords(e.currentTarget.value)}
+          onChange={(e: any) => fetchWords(e.currentTarget.value)}
           value={prefix}
         />
         {isLoadingFlag && <button onClick={cancelFetchWords}>Cancel</button>}

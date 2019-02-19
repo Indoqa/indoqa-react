@@ -1,11 +1,18 @@
-import {CSSProperties} from 'react'
-import {createComponentWithProxy} from 'react-fela'
-import {FelaProps, WithChildren} from '../../../app/types'
+import * as React from 'react'
+import {FelaComponent, StyleFunction} from 'react-fela'
+import {Theme} from '../../../app/theme'
 
-const Menu = ({theme}: FelaProps): CSSProperties => ({
-  width: theme.layout.menuWidth,
-  height: '100%',
-  backgroundColor: theme.colors.primaryLight,
-})
+const Menu: React.FC = ({children}) => {
+  const style: StyleFunction<Theme> = ({theme}) => ({
+    width: theme.layout.menuWidth,
+    height: '100%',
+    backgroundColor: theme.colors.primaryLight,
+  })
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
+}
 
-export default createComponentWithProxy<WithChildren>(Menu)
+export default Menu
