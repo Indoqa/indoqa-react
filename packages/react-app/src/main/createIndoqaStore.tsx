@@ -27,17 +27,13 @@ export const createIndoqaStore = ({rootReducer, rootEpic, initialState = {}, ena
   }
 
   const w: any = window as any
-  const devToolsExtension = typeof window !== 'undefined' && w.devToolsExtension ?
-    w.devToolsExtension() :
-    (f: any) => f
-
   const indoqaStore = {
     reduxStore: createStore(
       rootReducer,
       initialState,
       compose(
         applyMiddleware(...middleware),
-        devToolsExtension,
+        w.__REDUX_DEVTOOLS_EXTENSION__ && w.__REDUX_DEVTOOLS_EXTENSION__(),
       ),
     ),
     epicMiddleware,
