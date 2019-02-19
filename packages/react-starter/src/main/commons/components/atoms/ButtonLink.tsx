@@ -9,19 +9,26 @@ interface ButtonStyleProps extends CSSProperties {
 
 const ButtonLink: React.FC = ({children}) => {
   const style: StyleFunction<Theme> = ({theme}): ButtonStyleProps => {
+    // TODO: style as button
     return ({
+      marginRight: theme.spacing.space1,
+      cursor: 'pointer',
       '& > a': {
         color: theme.colors.text,
-        display: 'block',
-        height: '100%',
+        paddingTop: 3,
+        paddingRight: 5,
+        paddingBottom: 3,
+        paddingLeft: 5,
+        background: '#dedede',
         textDecoration: 'none',
+        borderRadius: 3,
       },
     })
   }
   const renderButton = ({className}: RenderProps<Theme>) => (
-    <button className={className}>
+    <span className={className}>
       {children}
-    </button>
+    </span>
   )
   return (
     <FelaComponent style={style}>

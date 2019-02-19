@@ -62,13 +62,12 @@ const InputField: React.FC<InputFieldProps> = ({children, fieldProps, autoComple
       borderColor: 'rgba(81, 203, 238, 1)',
     },
   }
+  const renderInputField = () => {
+    return <input autoComplete={autoComplete} {...fieldProps.field} />
+  }
   return (
     <FelaComponent style={style}>
-      {
-        () => {
-          return <input autoComplete={autoComplete} {...fieldProps.field} />
-        }
-      }
+      {renderInputField}
     </FelaComponent>
   )
 }

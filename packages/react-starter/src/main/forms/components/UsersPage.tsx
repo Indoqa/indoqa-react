@@ -2,6 +2,7 @@ import {Box} from '@indoqa/style-system'
 import * as React from 'react'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link, RouteComponentProps} from 'react-router-dom'
+import ButtonLink from '../../commons/components/atoms/ButtonLink'
 
 import {User} from '../store/forms.types'
 import UsersTable from './UsersTable'
@@ -18,7 +19,9 @@ class UsersPage extends React.Component<Props & WithNamespaces> {
       <Box>
         <UsersTable users={users} baseurl={match.url}/>
         <Box p={1}>
-          <Link to={`${match.url}add`}>{t('addUser')}</Link>
+          <ButtonLink>
+            <Link to={`${match.url}add`}>{t('addUser')}</Link>
+          </ButtonLink>
         </Box>
       </Box>
     )
