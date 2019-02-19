@@ -1,10 +1,11 @@
 import {Box, Flex, Text} from '@indoqa/style-system'
+import i18next from 'i18next'
 import * as React from 'react'
 import DocumentTitle from 'react-document-title'
 import {createComponentWithProxy} from 'react-fela'
+import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
 
-import i18n from '../../../app/i18n'
 import Bar from '../molecules/Bar'
 import Content from '../molecules/Content'
 import Logo from '../molecules/Logo'
@@ -86,24 +87,24 @@ const renderHeaderContent = (title?: string, header?: string) => (
   </React.Fragment>
 )
 
-const changeLanguage = (lang: string) => i18n.changeLanguage(lang)
+const changeLanguage = (i18n: i18next.i18n, lang: string) => i18n.changeLanguage(lang)
 
-const renderLanguage = (lang: string) => {
-  if (lang === i18n.language) {
-    return <Text>{lang}</Text>
+const renderLanguage = (i18n: i18next.i18n, langLabel: string, lang: string) => {
+  if (i18n.language.substring(0, lang.length) === lang) {
+    return <Text>{langLabel}</Text>
   }
   return (
-    <a href="#" onClick={() => changeLanguage(lang)}>{lang}</a>
+    <a href="#" onClick={() => changeLanguage(i18n, lang)}>{langLabel}</a>
   )
 }
 
-const renderLanguageSwitcher = () => (
+const renderLanguageSwitcher = (i18n: i18next.i18n) => (
   <Box>
-    {renderLanguage('en')} | {renderLanguage('de')}
+    {renderLanguage(i18n, 'EN', 'en')} | {renderLanguage(i18n, 'DE', 'de')}
   </Box>
 )
 
-interface Props {
+interface Props extends WithNamespaces {
   children?: React.ReactNode,
   header?: string,
   title?: string,
@@ -113,7 +114,7 @@ interface State {
   showMobileMenu: boolean,
 }
 
-export default class MainMenuTemplate extends React.Component<Props, State> {
+class MainMenuTemplate extends React.Component<Props, State> {
 
   public static defaultProps = {
     title: '',
@@ -125,7 +126,7 @@ export default class MainMenuTemplate extends React.Component<Props, State> {
   }
 
   public render() {
-    const {title, header, children} = this.props
+    const {title, header, children, i18n} = this.props
     const documentTitle = title === undefined ? BASE_TITLE : `${BASE_TITLE} | ${title}`
     return (
       <Flex stretch height="100%">
@@ -139,7 +140,7 @@ export default class MainMenuTemplate extends React.Component<Props, State> {
             <Bar>
               <MenuIcon onClick={() => this.toggleMenu()}>[Menu]</MenuIcon>
               {renderHeaderContent(title, header)}
-              {renderLanguageSwitcher()}
+              {renderLanguageSwitcher(i18n)}
             </Bar>
           </FixedBar>
           <Main data-menu-open={this.state.showMobileMenu}>
@@ -159,3 +160,5 @@ export default class MainMenuTemplate extends React.Component<Props, State> {
     this.setState({showMobileMenu: !this.state.showMobileMenu})
   }
 }
+
+export default withNamespaces('translation')(MainMenuTemplate)

@@ -4,7 +4,7 @@ import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
 
 interface Props {
-  onClick: any,
+  onClick: (e: React.MouseEvent) => void,
 }
 
 const Button: React.FC<Props> = ({onClick, children}) => {

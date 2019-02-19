@@ -3,12 +3,12 @@ import {CSSProperties} from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
 
-interface ButtonStyleProps extends CSSProperties {
+interface StyleProps extends CSSProperties {
   '& > a': CSSProperties,
 }
 
-const ButtonLink: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): ButtonStyleProps => ({
+const LinkButton: React.FC = ({children}) => {
+  const style: StyleFunction<Theme> = ({theme}): StyleProps => ({
     marginRight: theme.spacing.space1,
     cursor: 'pointer',
     '& > a': {
@@ -34,4 +34,4 @@ const ButtonLink: React.FC = ({children}) => {
   )
 }
 
-export default ButtonLink
+export default LinkButton

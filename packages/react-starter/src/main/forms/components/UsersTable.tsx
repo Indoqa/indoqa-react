@@ -6,7 +6,7 @@ import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../app/theme'
 
-import ButtonLink from '../../commons/components/atoms/ButtonLink'
+import LinkButton from '../../commons/components/atoms/LinkButton'
 import {User} from '../store/forms.types'
 
 const TableData: React.FC = ({children}) => {
@@ -25,9 +25,9 @@ const renderUserRow = (user: User, baseurl: string, t: i18next.TranslationFuncti
     <TableData>{user.name}</TableData>
     <TableData>{user.email}</TableData>
     <TableData>
-      <ButtonLink>
+      <LinkButton>
         <Link to={`${baseurl}${user.id}`}>{t('edit')}</Link>
-      </ButtonLink>
+      </LinkButton>
     </TableData>
   </tr>
 )

@@ -2,13 +2,13 @@ import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
 import {RootAction} from '../../app/types'
 import {clear, fetchTime, fetchTimes} from '../store/time.actions'
-import Buttons, {ButtonDispatchProps} from './Buttons'
+import Buttons, {Props} from './Buttons'
 
 const VIENNA_COORDINATES = {lon: 10, lat: 47}
 const NEW_YORK_COORDINATES = {lon: -74.0059700, lat: 40.7142700}
 const INVALID_COORDINATES = {lon: -1000, lat: -1000}
 
-const mapDispatchToProps = (dispatch: Dispatch<RootAction>): ButtonDispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<RootAction>): Props => ({
   loadVienna: () => {
     dispatch(fetchTime(VIENNA_COORDINATES))
   },
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch: Dispatch<RootAction>): ButtonDispatchProps
   },
 })
 
-export default connect<{}, ButtonDispatchProps>(null, mapDispatchToProps)(Buttons)
+export default connect<{}, Props>(null, mapDispatchToProps)(Buttons)

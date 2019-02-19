@@ -1,12 +1,12 @@
+import {Box} from '@indoqa/style-system'
 import {Form, Formik, FormikProps} from 'formik'
 import i18next from 'i18next'
-import {Box} from '@indoqa/style-system'
 import * as React from 'react'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
 import Button from '../../commons/components/atoms/Button'
-import ButtonLink from '../../commons/components/atoms/ButtonLink'
+import LinkButton from '../../commons/components/atoms/LinkButton'
 import FormRow from '../../commons/components/molecules/FormRow'
 import {User} from '../store/forms.types'
 
@@ -45,9 +45,9 @@ class UserForm extends React.Component<Props> {
               <FormRow name="email" label={t('email')} errors={errors} touched={touched}/>
               <AddressesSubForm addresses={values.addresses} errors={errors} touched={touched}/>
               <Box mt={2}>
-                <ButtonLink>
+                <LinkButton>
                   <Link to={cancelUrl}>{t('cancel')}</Link>
-                </ButtonLink>
+                </LinkButton>
                 <Button onClick={() => submitForm()}>{t('save')}</Button>
               </Box>
             </Form>
