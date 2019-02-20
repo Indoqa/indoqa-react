@@ -16,16 +16,11 @@ const MOBILE_ONLY: CSSPropertiesWithBreakpointExtensions = {
   },
 }
 
-interface MobileMenuProps {
-  show: boolean,
-}
-
-const MobileMenu: React.FC<MobileMenuProps> = ({show, children}) => {
+const MobileMenu: React.FC = ({children}) => {
   const style: StyleFunction<Theme, CSSPropertiesWithBreakpointExtensions> = ({theme}) => ({
     position: 'absolute',
     zIndex: 10,
     top: theme.layout.actionBarHeight,
-    left: show ? 0 : theme.layout.menuWidth * -1,
     height: `calc(100% - ${theme.layout.actionBarHeight}px)`,
     width: theme.layout.menuWidth,
     transition: 'left 0.15s',
@@ -43,6 +38,24 @@ const FixedBar: React.FC = ({children}) => {
     position: 'fixed',
     width: '100%',
   }
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
+}
+
+const NavBar: React.FC = ({children}) => {
+  const style: StyleFunction<Theme> = ({theme}) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingLeft: theme.spacing.space2,
+    paddingRight: theme.spacing.space2,
+    height: theme.layout.actionBarHeight,
+    backgroundColor: theme.colors.primaryLight,
+    width: 'auto',
+  })
   return (
     <FelaComponent style={style}>
       {children}
@@ -109,7 +122,6 @@ const Main: React.FC<MainProps> = ({menuOpen, children}) => {
     paddingTop: theme.layout.actionBarHeight,
     height: '100%',
     width: '100%',
-    overflow: menuOpen ? 'hidden' : 'auto',
   })
   return (
     <FelaComponent style={style}>
@@ -118,9 +130,33 @@ const Main: React.FC<MainProps> = ({menuOpen, children}) => {
   )
 }
 
+interface MenuIconProps {
+  onClick: (e: React.MouseEvent) => void,
+}
+
+const MenuIcon: React.FC<MenuIconProps> = ({onClick, children}) => {
+  const style: StyleFunction<Theme, CSSPropertiesWithBreakpointExtensions> = ({theme}) => {
+    return {
+      marginRight: theme.spacing.space2,
+      ...MOBILE_ONLY,
+    }
+  }
+  const renderIcon = ({className}: RenderProps<Theme>) => (
+    <span className={className} onClick={onClick}>
+      {children}
+    </span>
+  )
+  return (
+    <FelaComponent style={style}>
+      {renderIcon}
+    </FelaComponent>
+  )
+}
+
 interface Props {
   title?: string,
   renderMainMenu: () => React.ReactNode,
+  renderNavBar: () => React.ReactNode,
 }
 
 interface State {
@@ -139,29 +175,55 @@ class NavBarWithLeftMenuLayout extends React.Component<Props, State> {
   }
 
   public render() {
-    const {title, children, renderMainMenu} = this.props
+    const {title, children, renderNavBar} = this.props
     const {showMobileMenu} = this.state
     return (
-      <Flex stretch height="100%">
+      <Flex stretch height="100%" style={{overflow: showMobileMenu ? 'hidden' : 'auto'}}>
         <DocumentTitle title={title || ''}/>
-        <MobileMenu show={showMobileMenu}>
-          {renderMainMenu()}
-        </MobileMenu>
-        <ContentOverlay show={showMobileMenu} onClick={() => this.toggleMenu()}/>
+        {this.renderMobileMenu()}
         <Box grow={1}>
           <FixedBar>
-            {renderMainMenu()}
+            <NavBar>
+              <MenuIcon onClick={() => this.toggleMenu()}>[Menu]</MenuIcon>
+              {renderNavBar()}
+            </NavBar>
           </FixedBar>
           <Main menuOpen={showMobileMenu}>
-            <TabletDesktopMenu>
-              {renderMainMenu()}
-            </TabletDesktopMenu>
+            {this.renderTabletDesktopMenu()}
             <Content>
               {children}
             </Content>
           </Main>
         </Box>
       </Flex>
+    )
+  }
+
+  private renderTabletDesktopMenu() {
+    if (this.state.showMobileMenu) {
+      return null
+    }
+    const {renderMainMenu} = this.props
+    return (
+      <TabletDesktopMenu>
+        {renderMainMenu()}
+      </TabletDesktopMenu>
+    )
+  }
+
+  private renderMobileMenu() {
+    const {showMobileMenu} = this.state
+    if (!this.state.showMobileMenu) {
+      return null
+    }
+    const {renderMainMenu} = this.props
+    return (
+      <>
+        <MobileMenu>
+          {renderMainMenu()}
+        </MobileMenu>
+        <ContentOverlay show={showMobileMenu} onClick={() => this.toggleMenu()}/>
+      </>
     )
   }
 
