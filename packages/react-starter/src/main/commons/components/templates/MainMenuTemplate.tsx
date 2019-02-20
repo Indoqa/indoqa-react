@@ -1,10 +1,13 @@
 import {Box, Flex, Text} from '@indoqa/style-system'
+import {IStyle} from 'fela'
 import i18next from 'i18next'
 import * as React from 'react'
 import DocumentTitle from 'react-document-title'
-import {createComponentWithProxy} from 'react-fela'
+import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
+import {Theme} from '../../../app/theme'
+import {CSSPropertiesWithBreakpointExtensions} from '../../../app/types'
 
 import Bar from '../molecules/Bar'
 import Content from '../molecules/Content'
@@ -13,7 +16,7 @@ import MainMenu from '../organisms/MainMenu'
 
 const BASE_TITLE = 'Indoqa React Starter'
 
-const MOBILE_ONLY = {
+const MOBILE_ONLY: CSSPropertiesWithBreakpointExtensions = {
   desktop: {
     display: 'none',
   },
@@ -22,59 +25,130 @@ const MOBILE_ONLY = {
   },
 }
 
-const Main = createComponentWithProxy(({theme, 'data-menu-open': menuOpen}: any): any => ({
-  display: 'flex',
-  paddingTop: theme.layout.actionBarHeight,
-  height: '100%',
-  width: '100%',
-  overflow: menuOpen ? 'hidden' : 'auto',
-}))
+interface MainProps {
+  menuOpen: boolean,
+}
 
-const MenuIcon = createComponentWithProxy(({theme}: any): any => ({
-  marginRight: theme.spacing.space2,
-  ...MOBILE_ONLY,
-}), 'span')
-
-const FixedBar = createComponentWithProxy(() => ({
-  position: 'fixed',
-  width: '100%',
-}))
-
-const MobileMenu = createComponentWithProxy(({theme, 'data-show': show}: any): any => ({
-  position: 'absolute',
-  zIndex: 10,
-  top: theme.layout.actionBarHeight,
-  left: show ? 0 : theme.layout.menuWidth * -1,
-  height: `calc(100% - ${theme.layout.actionBarHeight}px)`,
-  width: theme.layout.menuWidth,
-  transition: 'left 0.15s',
-  ...MOBILE_ONLY,
-}))
-
-const TabletDesktopMenu = createComponentWithProxy(() => ({
-  display: 'none',
-  desktop: {
-    position: 'fixed',
-    display: 'block',
+const Main: React.FC<MainProps> = ({menuOpen, children}) => {
+  const style: StyleFunction<Theme> = ({theme}) => ({
+    display: 'flex',
+    paddingTop: theme.layout.actionBarHeight,
     height: '100%',
-  },
-  tablet: {
-    position: 'fixed',
-    display: 'block',
-    height: '100%',
-  },
-}))
+    width: '100%',
+    overflow: menuOpen ? 'hidden' : 'auto',
+  })
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
+}
 
-const ContentOverlay = createComponentWithProxy(({'data-show': show}) => ({
-  visibility: show ? 'visible' : 'hidden',
-  position: 'absolute',
-  backgroundColor: 'black',
-  height: '100%',
-  width: '100%',
-  opacity: show ? 0.6 : 0,
-  transition: 'opacity .15s, visibility 0s',
-  ...MOBILE_ONLY,
-}))
+interface MenuIconProps {
+  onClick: (e: React.MouseEvent) => void,
+}
+
+const MenuIcon: React.FC<MenuIconProps> = ({onClick, children}) => {
+  const style: StyleFunction<Theme, CSSPropertiesWithBreakpointExtensions> = ({theme}) => {
+    return {
+      marginRight: theme.spacing.space2,
+      ...MOBILE_ONLY,
+    }
+  }
+  const renderIcon = ({className}: RenderProps<Theme>) => (
+    <span className={className} onClick={onClick}>
+      {children}
+    </span>
+  )
+  return (
+    <FelaComponent style={style}>
+      {renderIcon}
+    </FelaComponent>
+  )
+}
+
+const FixedBar: React.FC = ({children}) => {
+  const style: IStyle = {
+    position: 'fixed',
+    width: '100%',
+  }
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
+}
+
+interface MobileMenuProps {
+  show: boolean,
+}
+
+const MobileMenu: React.FC<MobileMenuProps> = ({show, children}) => {
+  const style: StyleFunction<Theme, CSSPropertiesWithBreakpointExtensions> = ({theme}) => ({
+    position: 'absolute',
+    zIndex: 10,
+    top: theme.layout.actionBarHeight,
+    left: show ? 0 : theme.layout.menuWidth * -1,
+    height: `calc(100% - ${theme.layout.actionBarHeight}px)`,
+    width: theme.layout.menuWidth,
+    transition: 'left 0.15s',
+    ...MOBILE_ONLY,
+  })
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
+}
+
+const TabletDesktopMenu: React.FC = ({children}) => {
+  const style: CSSPropertiesWithBreakpointExtensions = {
+    display: 'none',
+    desktop: {
+      position: 'fixed',
+      display: 'block',
+      height: '100%',
+    },
+    tablet: {
+      position: 'fixed',
+      display: 'block',
+      height: '100%',
+    },
+  }
+  return (
+    <FelaComponent style={style}>
+      {children}
+    </FelaComponent>
+  )
+}
+
+interface ContentOverlayProps {
+  show: boolean,
+  onClick: (e: React.MouseEvent) => void,
+}
+
+const ContentOverlay: React.FC<ContentOverlayProps> = ({show, onClick, children}) => {
+  const style: CSSPropertiesWithBreakpointExtensions = {
+    visibility: show ? 'visible' : 'hidden',
+    position: 'absolute',
+    backgroundColor: 'black',
+    height: '100%',
+    width: '100%',
+    opacity: show ? 0.6 : 0,
+    transition: 'opacity .15s, visibility 0s',
+    ...MOBILE_ONLY,
+  }
+  const renderContentOverlay = ({className}: RenderProps<Theme>) => (
+    <div className={className} onClick={onClick}>
+      {children}
+    </div>
+  )
+  return (
+    <FelaComponent style={style}>
+      {renderContentOverlay}
+    </FelaComponent>
+  )
+}
 
 const renderHeaderContent = (title?: string, header?: string) => (
   <React.Fragment>
@@ -131,10 +205,10 @@ class MainMenuTemplate extends React.Component<Props, State> {
     return (
       <Flex stretch height="100%">
         <DocumentTitle title={documentTitle}/>
-        <MobileMenu data-show={this.state.showMobileMenu}>
+        <MobileMenu show={this.state.showMobileMenu}>
           <MainMenu/>
         </MobileMenu>
-        <ContentOverlay data-show={this.state.showMobileMenu} onClick={() => this.toggleMenu()}/>
+        <ContentOverlay show={this.state.showMobileMenu} onClick={() => this.toggleMenu()}/>
         <Box grow={1}>
           <FixedBar>
             <Bar>
@@ -143,7 +217,7 @@ class MainMenuTemplate extends React.Component<Props, State> {
               {renderLanguageSwitcher(i18n)}
             </Bar>
           </FixedBar>
-          <Main data-menu-open={this.state.showMobileMenu}>
+          <Main menuOpen={this.state.showMobileMenu}>
             <TabletDesktopMenu>
               <MainMenu/>
             </TabletDesktopMenu>

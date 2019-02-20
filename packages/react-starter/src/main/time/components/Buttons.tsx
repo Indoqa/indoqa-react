@@ -4,7 +4,7 @@ import {WithNamespaces, withNamespaces} from 'react-i18next'
 
 import Button from '../../commons/components/atoms/Button'
 
-export interface Props extends WithNamespaces {
+export interface Props {
   loadVienna: () => void,
   loadNewYork: () => void,
   loadViennaAndNewYork: () => void,
@@ -12,7 +12,7 @@ export interface Props extends WithNamespaces {
   clear: () => void,
 }
 
-const Buttons: React.FunctionComponent<Props> =
+const Buttons: React.FunctionComponent<Props & WithNamespaces> =
   ({t, loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => (
     <Box mb={2}>
       <Button onClick={loadVienna}>{t('Vienna')}</Button>
