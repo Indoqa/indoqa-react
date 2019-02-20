@@ -8,7 +8,6 @@ import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../../app/theme'
 import {CSSPropertiesWithBreakpointExtensions} from '../../../app/types'
-
 import Bar from '../molecules/Bar'
 import Content from '../molecules/Content'
 import Logo from '../molecules/Logo'
