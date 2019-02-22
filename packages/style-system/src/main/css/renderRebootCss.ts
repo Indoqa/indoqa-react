@@ -369,4 +369,17 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   renderer.renderStatic({
     listStyleType: 'circle',
   }, 'ul ul, ol ul')
+
+  // printing
+  renderer.renderStatic(`
+    @page {
+      margin: 2cm;
+    }
+    @media print {
+      h1, h2, h3, h4, h5, h6 { 
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      } 
+    }
+  `)
 }

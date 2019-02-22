@@ -1,4 +1,3 @@
-import {IStyle} from 'fela'
 import {StateType} from 'typesafe-actions'
 import {FormsAction} from '../forms/store/forms.types'
 import {TimeAction} from '../time/store/time.types'
@@ -11,8 +10,3 @@ export type RootAction = FormsAction
   | TimeAction
   | WordsAction
 export type Services = typeof services
-
-export interface IStyleProject extends IStyle {
-  desktop?: IStyle,
-  tablet?: IStyle,
-}

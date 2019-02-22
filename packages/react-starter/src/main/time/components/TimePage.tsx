@@ -1,8 +1,8 @@
+import {Box} from '@indoqa/style-system'
 import * as React from 'react'
 import MainMenuTemplate from '../../commons/components/templates/MainMenuTemplate'
-import Buttons from './Buttons.redux'
+import CitySelector from './CitySelector.redux'
 import Result from './Result.redux'
-import {Box} from '@indoqa/style-system'
 
 export default class TimePage extends React.Component<{}> {
 
@@ -10,10 +10,10 @@ export default class TimePage extends React.Component<{}> {
 
     return (
       <MainMenuTemplate title="Time">
-        <div />
+        <div/>
         <Box>
-          <Buttons />
-          <Result />
+          <CitySelector/>
+          <Result/>
         </Box>
       </MainMenuTemplate>
     )

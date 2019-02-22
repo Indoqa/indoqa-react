@@ -1,10 +1,10 @@
+import {PStyle} from '@indoqa/style-system'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
-import {IStyleProject} from '../../../app/types'
 
-interface StyleProps extends IStyleProject {
-  '> .active': IStyleProject,
+interface StyleProps extends PStyle {
+  '> .active': PStyle,
 }
 
 const MenuLink: React.FC = ({children}) => {

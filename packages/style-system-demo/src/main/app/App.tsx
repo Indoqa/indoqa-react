@@ -1,14 +1,15 @@
-import {BaseCssProps, createRenderer, renderRebootCss} from '@indoqa/style-system'
+import {BaseCssProps, createFelaConfig, renderRebootCss} from '@indoqa/style-system'
+import {createRenderer} from 'fela'
 import * as React from 'react'
 import {RendererProvider, ThemeProvider} from 'react-fela'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import StyleSystemUIExplorer from '../StyleSystemUIExplorer'
-import fela from './fela'
 import history from './history'
 import theme from './theme'
 
-const renderer = createRenderer(fela)
+const felaConfig = createFelaConfig()
+const renderer = createRenderer(felaConfig)
 
 const baseCssProps: BaseCssProps = {
   spacing: {

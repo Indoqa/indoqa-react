@@ -1,13 +1,11 @@
-import {Box, Flex} from '@indoqa/style-system'
-import {IStyle} from 'fela'
+import {Box, Flex, PStyle} from '@indoqa/style-system'
 import * as React from 'react'
 import DocumentTitle from 'react-document-title'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
-import {IStyleProject} from '../../../app/types'
 import Content from '../molecules/Content'
 
-export const MOBILE_ONLY: IStyleProject = {
+export const MOBILE_ONLY: PStyle = {
   tablet: {
     display: 'none',
   },
@@ -18,7 +16,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({show, children}) => {
-  const style: StyleFunction<Theme, IStyleProject> = ({theme}) => ({
+  const style: StyleFunction<Theme, PStyle> = ({theme}) => ({
     display: show ? 'block' : 'none',
     position: 'fixed',
     zIndex: 10,
@@ -36,9 +34,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({show, children}) => {
 }
 
 const FixedBar: React.FC = ({children}) => {
-  const style: IStyle = {
+  const style: PStyle = {
     position: 'fixed',
     width: '100%',
+    print: {
+      position: 'absolute',
+    },
   }
   return (
     <FelaComponent style={style}>
@@ -71,7 +72,7 @@ interface ContentOverlayProps {
 }
 
 const ContentOverlay: React.FC<ContentOverlayProps> = ({show, onClick, children}) => {
-  const style: IStyleProject = {
+  const style: PStyle = {
     visibility: show ? 'visible' : 'hidden',
     position: 'fixed',
     backgroundColor: 'black',
@@ -94,12 +95,15 @@ const ContentOverlay: React.FC<ContentOverlayProps> = ({show, onClick, children}
 }
 
 const TabletDesktopMenu: React.FC = ({children}) => {
-  const style: IStyleProject = {
+  const style: PStyle = {
     display: 'none',
     tablet: {
       position: 'fixed',
       display: 'block',
       height: '100%',
+    },
+    print: {
+      display: 'none',
     },
   }
   return (

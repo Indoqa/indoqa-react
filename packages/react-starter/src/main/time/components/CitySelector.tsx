@@ -12,7 +12,7 @@ export interface Props {
   clear: () => void,
 }
 
-const Buttons: React.FunctionComponent<Props & WithNamespaces> =
+const CitySelector: React.FunctionComponent<Props & WithNamespaces> =
   ({t, loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => (
     <Box mb={2}>
       <Button onClick={loadVienna}>{t('Vienna')}</Button>
@@ -23,4 +23,4 @@ const Buttons: React.FunctionComponent<Props & WithNamespaces> =
     </Box>
   )
 
-export default withNamespaces('translations')(Buttons)
+export default withNamespaces('translations')(CitySelector)

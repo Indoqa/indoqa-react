@@ -1,19 +1,17 @@
-import {Breakpoint} from './baseTheme'
+import {BaseBreakpoints, Breakpoint} from './baseTheme'
 
 export const toMinMediaQuery = (breakpoint: Breakpoint): string => {
-  return `@media (min-width: ${breakpoint.value})`
+  return `@media (min-width: ${breakpoint.minWidth})`
 }
 
 interface MediaQueryMap {
   [key: string]: string
 }
 
-export const toMediaQueryMap = (breakpoints: Breakpoint[]): MediaQueryMap => {
+export function toMediaQueryMap<B extends BaseBreakpoints>(breakpoints: B): MediaQueryMap {
   const mediaQueryMap: MediaQueryMap = {}
-  breakpoints.forEach((breakpoint) => {
-    Object.assign(mediaQueryMap, {
-      [breakpoint.name]: toMinMediaQuery(breakpoint),
-    })
+  Object.keys(breakpoints).forEach((key) => {
+    Object.assign(mediaQueryMap, {[key]: toMinMediaQuery(breakpoints[key])})
   })
   return mediaQueryMap
 }

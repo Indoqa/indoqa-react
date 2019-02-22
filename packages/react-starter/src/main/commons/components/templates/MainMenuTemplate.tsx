@@ -1,11 +1,10 @@
-import {Box, Text} from '@indoqa/style-system'
+import {Box, PStyle, Text} from '@indoqa/style-system'
 import i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../../app/theme'
-import {IStyleProject} from '../../../app/types'
 import Logo from '../molecules/Logo'
 import MainMenu from '../organisms/MainMenu'
 import NavBarWithLeftMenuLayout, {MOBILE_ONLY} from './NavBarWithLeftMenuLayout'
@@ -52,7 +51,7 @@ interface MenuIconProps {
 }
 
 const MenuIcon: React.FC<MenuIconProps> = ({onClick, children}) => {
-  const style: StyleFunction<Theme, IStyleProject> = ({theme}) => {
+  const style: StyleFunction<Theme, PStyle> = ({theme}) => {
     return {
       marginRight: theme.spacing.space2,
       ...MOBILE_ONLY,

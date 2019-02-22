@@ -1,10 +1,10 @@
+import {PStyle} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
-import {IStyleProject} from '../../../app/types'
 
-interface LogoStyleProps extends IStyleProject {
+interface LogoStyleProps extends PStyle {
   '> a': IStyle,
 }
 

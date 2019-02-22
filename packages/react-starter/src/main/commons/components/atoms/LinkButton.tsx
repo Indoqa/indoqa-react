@@ -1,10 +1,10 @@
+import {PStyle} from '@indoqa/style-system'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
-import {IStyleProject} from '../../../app/types'
 
-interface StyleProps extends IStyleProject {
-  '& > a': IStyleProject,
+interface StyleProps extends PStyle {
+  '& > a': PStyle,
 }
 
 const LinkButton: React.FC = ({children}) => {

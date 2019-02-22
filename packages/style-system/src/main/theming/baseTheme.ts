@@ -40,8 +40,13 @@ export interface BaseZIndexes {
 }
 
 export interface Breakpoint {
-  name: string,
-  value: string,
+  minWidth: string,
+}
+
+export interface BaseBreakpoints {
+  tablet: Breakpoint,
+  desktop: Breakpoint,
+  largeDesktop: Breakpoint,
 }
 
 export interface BaseTheme {
@@ -50,7 +55,7 @@ export interface BaseTheme {
   readonly colors: BaseColors,
   readonly spacing: BaseSpacing,
   readonly zIndexes: BaseZIndexes,
-  readonly breakpoints: Breakpoint[],
+  readonly breakpoints: BaseBreakpoints,
   readonly layout: {},
 }
 
@@ -62,11 +67,11 @@ export const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Robot
   'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;'
 
-export const breakpoints: Breakpoint[] = [
-  {name: 'tablet', value: '768px'},
-  {name: 'desktop', value: '992px'},
-  {name: 'largeDesktop', value: '1400px'},
-]
+export const breakpoints: BaseBreakpoints = {
+  tablet: {minWidth: '768px'},
+  desktop: {minWidth: '992px'},
+  largeDesktop: {minWidth: '1400px'},
+}
 
 export const baseTheme: BaseTheme = {
   fontSizes: {
@@ -104,6 +109,7 @@ export const baseTheme: BaseTheme = {
     space3: '2rem',
     space4: '4rem',
   },
+  // see https://github.com/sumup/circuit-ui/blob/master/src/themes/circuit.js
   zIndexes: {
     default: 0,
     absolute: 1,
