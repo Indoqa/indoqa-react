@@ -1,11 +1,14 @@
 import {Box, Text} from '@indoqa/style-system'
 import i18next from 'i18next'
 import * as React from 'react'
+import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import {Link} from 'react-router-dom'
+import {Theme} from '../../../app/theme'
+import {IStyleProject} from '../../../app/types'
 import Logo from '../molecules/Logo'
 import MainMenu from '../organisms/MainMenu'
-import NavBarWithLeftMenuLayout from './NavBarWithLeftMenuLayout'
+import NavBarWithLeftMenuLayout, {MOBILE_ONLY} from './NavBarWithLeftMenuLayout'
 
 const BASE_TITLE = 'Indoqa React Starter'
 
@@ -44,6 +47,29 @@ interface LanguageSwitcherProps {
   i18n: i18next.i18n,
 }
 
+interface MenuIconProps {
+  onClick: (e: React.MouseEvent) => void,
+}
+
+const MenuIcon: React.FC<MenuIconProps> = ({onClick, children}) => {
+  const style: StyleFunction<Theme, IStyleProject> = ({theme}) => {
+    return {
+      marginRight: theme.spacing.space2,
+      ...MOBILE_ONLY,
+    }
+  }
+  const renderIcon = ({className}: RenderProps<Theme>) => (
+    <span className={className} onClick={onClick}>
+      {children}
+    </span>
+  )
+  return (
+    <FelaComponent style={style}>
+      {renderIcon}
+    </FelaComponent>
+  )
+}
+
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({i18n}) => (
   <Box>
     <Language i18n={i18n} lang="en" langLabel="EN"/> | <Language i18n={i18n} lang="de" langLabel="DE"/>
@@ -56,10 +82,15 @@ interface Props extends WithNamespaces {
   title?: string,
 }
 
+interface NavBarProps {
+  toggleMenu: () => void
+}
+
 const MainMenuTemplate: React.FC<Props> = ({title, header, i18n, children}) => {
   const documentTitle = title === undefined ? BASE_TITLE : `${BASE_TITLE} | ${title}`
-  const NavBar: React.FC = () => (
+  const NavBar: React.FC<NavBarProps> = ({toggleMenu}) => (
     <>
+      <MenuIcon onClick={() => toggleMenu()}>[Menu]</MenuIcon>
       <NavBarContent title={title} header={header}/>
       <LanguageSwitcher i18n={i18n}/>
     </>
@@ -68,7 +99,7 @@ const MainMenuTemplate: React.FC<Props> = ({title, header, i18n, children}) => {
     <NavBarWithLeftMenuLayout
       title={documentTitle}
       renderMainMenu={() => <MainMenu/>}
-      renderNavBar={() => <NavBar/>}
+      renderNavBar={(toggleMenu) => <NavBar toggleMenu={toggleMenu}/>}
     >
       {children}
     </NavBarWithLeftMenuLayout>

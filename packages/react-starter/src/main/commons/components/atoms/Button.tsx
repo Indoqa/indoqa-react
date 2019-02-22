@@ -16,6 +16,7 @@ const Button: React.FC<Props> = ({onClick, children}) => {
       paddingRight: 8,
       paddingBottom: 6,
       paddingLeft: 8,
+      marginBottom: 8,
       background: '#dedede',
       textDecoration: 'none',
       borderRadius: 3,

@@ -1,6 +1,6 @@
+import {Box, Flex, Text} from '@indoqa/style-system'
 import {ArrayHelpers, FieldArray, FormikErrors, FormikTouched} from 'formik'
 import i18next from 'i18next'
-import {Box, Flex, Text} from '@indoqa/style-system'
 import * as React from 'react'
 import {WithNamespaces, withNamespaces} from 'react-i18next'
 import Button from '../../commons/components/atoms/Button'
@@ -14,8 +14,8 @@ const renderAddressHeader = (
   arrayHelpers: ArrayHelpers,
   count: number,
   index: number,
-  t: i18next.TranslationFunction,
-) =>  (
+  t: i18next.TFunction,
+) => (
   <Box grow={1}>
     <Text mr={1}>{t('address')} {index + 1}</Text>
     <Button onClick={() => arrayHelpers.remove(index)}>-</Button>
@@ -35,7 +35,7 @@ const renderAddressForm = (
   touched: FormikTouched<{}>,
   address: Address,
   index: number,
-  t: i18next.TranslationFunction,
+  t: i18next.TFunction,
 ) => (
   <Flex key={index} mt={2}>
     {renderAddressHeader(arrayHelpers, addresses.length, index, t)}
@@ -52,7 +52,7 @@ const renderForms = (
   addresses: Address[],
   errors: FormikErrors<{}>,
   touched: FormikTouched<{}>,
-  t: i18next.TranslationFunction,
+  t: i18next.TFunction,
 ) => (
   <Optional test={addresses && addresses.length > 0}>
     {
@@ -63,7 +63,7 @@ const renderForms = (
   </Optional>
 )
 
-const renderHeader = (arrayHelpers: ArrayHelpers, t: i18next.TranslationFunction) => (
+const renderHeader = (arrayHelpers: ArrayHelpers, t: i18next.TFunction) => (
   <Box>
     <Box>
       <Text mr={1}>{t('addresses')}</Text>
@@ -80,15 +80,15 @@ export interface AddressFormProps {
 
 const AddressesSubForm: React.FunctionComponent<AddressFormProps & WithNamespaces> =
   ({addresses, errors, touched, t}) => (
-  <FieldArray
-    name="addresses"
-    render={(arrayHelpers) => (
-      <Box mt={2}>
-        {renderHeader(arrayHelpers, t)}
-        {renderForms(arrayHelpers, addresses, errors, touched, t)}
-      </Box>
-    )}
-  />
-)
+    <FieldArray
+      name="addresses"
+      render={(arrayHelpers) => (
+        <Box mt={2}>
+          {renderHeader(arrayHelpers, t)}
+          {renderForms(arrayHelpers, addresses, errors, touched, t)}
+        </Box>
+      )}
+    />
+  )
 
 export default withNamespaces('forms')(AddressesSubForm)

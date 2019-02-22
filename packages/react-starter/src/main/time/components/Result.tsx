@@ -1,5 +1,5 @@
-import * as React from 'react'
 import {Box, Text} from '@indoqa/style-system'
+import * as React from 'react'
 
 import {Result} from '../store/time.types'
 
@@ -19,11 +19,11 @@ const createResult = (result: Result) => {
   )
 }
 
-const renderResult = (result: Result) => {
+const renderResult = (result: Result, i: number) => {
   return (
     <Box key={result.timezoneId}>
+      {i > 0 && <hr/>}
       {createResult(result)}
-      <hr />
     </Box>
   )
 }

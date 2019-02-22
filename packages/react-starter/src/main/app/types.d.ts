@@ -1,5 +1,4 @@
-import * as React from 'react'
-import {CSSProperties} from 'react'
+import {IStyle} from 'fela'
 import {StateType} from 'typesafe-actions'
 import {FormsAction} from '../forms/store/forms.types'
 import {TimeAction} from '../time/store/time.types'
@@ -13,11 +12,7 @@ export type RootAction = FormsAction
   | WordsAction
 export type Services = typeof services
 
-export interface CSSPropertiesWithBreakpointExtensions extends CSSProperties {
-  desktop: CSSProperties,
-  tablet: CSSProperties,
-}
-
-export interface WithChildren {
-  readonly children?: React.ReactNode,
+export interface IStyleProject extends IStyle {
+  desktop?: IStyle,
+  tablet?: IStyle,
 }

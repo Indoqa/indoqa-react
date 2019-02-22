@@ -1,10 +1,10 @@
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
-import {CSSPropertiesWithBreakpointExtensions} from '../../../app/types'
+import {IStyleProject} from '../../../app/types'
 
 const Content: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): CSSPropertiesWithBreakpointExtensions => ({
+  const style: StyleFunction<Theme> = ({theme}): IStyleProject => ({
     padding: theme.spacing.space2,
     width: '100%',
     desktop: {

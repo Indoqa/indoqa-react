@@ -1,14 +1,14 @@
+import {IStyle} from 'fela'
 import * as React from 'react'
-import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
-import {WithChildren} from '../../../app/types'
+import {IStyleProject} from '../../../app/types'
 
-interface LogoStyleProps extends CSSProperties {
-  '> a': CSSProperties,
+interface LogoStyleProps extends IStyleProject {
+  '> a': IStyle,
 }
 
-interface Props extends WithChildren {
+interface Props {
   logoHeight: number,
 }
 

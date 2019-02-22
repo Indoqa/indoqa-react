@@ -20,7 +20,7 @@ const TableData: React.FC = ({children}) => {
   )
 }
 
-const renderUserRow = (user: User, baseurl: string, t: i18next.TranslationFunction) => (
+const renderUserRow = (user: User, baseurl: string, t: i18next.TFunction) => (
   <tr key={user.id}>
     <TableData>{user.name}</TableData>
     <TableData>{user.email}</TableData>

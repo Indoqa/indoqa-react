@@ -11,7 +11,6 @@ const Menu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: StyleGuideMenuCSSProps = {
     boxSizing: 'border-box',
     backgroundColor: uieTheme.colors.primary,
-    marginBottom: uieTheme.spacing.space4,
     tablet: {
       overflowY: 'auto',
       borderBottom: 'none',

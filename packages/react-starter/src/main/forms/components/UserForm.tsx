@@ -12,7 +12,7 @@ import {User} from '../store/forms.types'
 
 import AddressesSubForm from './AddressesSubForm'
 
-const validationSchema = (t: i18next.TranslationFunction) =>
+const validationSchema = (t: i18next.TFunction) =>
   Yup.object().shape({
     name: Yup.string().required(),
     email: Yup.string().required(t('errorMissingEmail')),

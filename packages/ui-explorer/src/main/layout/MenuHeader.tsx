@@ -7,9 +7,10 @@ const MenuHeader: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: IStyle = {
     boxSizing: 'border-box',
     height: uieTheme.layout.topMenuHeight,
+    paddingRight: uieTheme.spacing.space4,
   }
   return (
-    <Flex fullWidth style={style} alignItems="center">
+    <Flex fullWidth style={style} alignItems="center" justifyContent="space-between">
       {children}
     </Flex>
   )

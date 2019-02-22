@@ -1,5 +1,5 @@
 import {BaseColors, BaseFonts, BaseFontSizes, BaseTheme, buildTheme, typeScale} from '@indoqa/style-system'
-import {CSSProperties} from 'react'
+import {IStyle} from 'fela'
 
 interface FontSizes extends Partial<BaseFontSizes> {
   readonly extraBig: number | string,
@@ -19,8 +19,8 @@ interface Fonts extends Partial<BaseFonts> {
 }
 
 interface FontStyles {
-  readonly text: CSSProperties,
-  readonly headline: CSSProperties,
+  readonly text: IStyle,
+  readonly headline: IStyle,
 }
 
 interface Layout {

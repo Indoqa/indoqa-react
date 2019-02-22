@@ -1,10 +1,10 @@
 import * as React from 'react'
-import {CSSProperties} from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
+import {IStyleProject} from '../../../app/types'
 
-interface StyleProps extends CSSProperties {
-  '& > a': CSSProperties,
+interface StyleProps extends IStyleProject {
+  '& > a': IStyleProject,
 }
 
 const LinkButton: React.FC = ({children}) => {

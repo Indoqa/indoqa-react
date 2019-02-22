@@ -1,11 +1,10 @@
-import {IStyle} from 'fela'
 import * as React from 'react'
-import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
+import {IStyleProject} from '../../../app/types'
 
-interface StyleProps extends IStyle {
-  '> .active': CSSProperties,
+interface StyleProps extends IStyleProject {
+  '> .active': IStyleProject,
 }
 
 const MenuLink: React.FC = ({children}) => {
