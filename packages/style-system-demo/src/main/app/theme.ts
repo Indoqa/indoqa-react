@@ -18,7 +18,7 @@ interface Layout {
   readonly menuWidth: number,
 }
 
-export declare interface Theme extends BaseTheme {
+export interface Theme extends BaseTheme {
   readonly fontSizes: FontSizes,
   readonly colors: Colors,
   readonly layout: Layout,
@@ -47,8 +47,7 @@ const baseFontSizes: FontSizes = {
 }
 
 const theme: Theme = {
-  fontStyles: baseTheme.fontStyles,
-  fontSizes: baseFontSizes,
+  breakpoints: baseTheme.breakpoints,
   colors: {
     primary: baseColors.blue_2,
     primaryDark: baseColors.blue_3,
@@ -58,11 +57,14 @@ const theme: Theme = {
     textSecondary: baseColors.grey_1,
     divider: baseColors.white_1,
   },
-  spacing: baseTheme.spacing,
+  fontSizes: baseFontSizes,
+  fontStyles: baseTheme.fontStyles,
   layout: {
     actionBarHeight: 50,
     menuWidth: 300,
   },
+  spacing: baseTheme.spacing,
+  zIndexes: baseTheme.zIndexes,
 }
 
 export default theme

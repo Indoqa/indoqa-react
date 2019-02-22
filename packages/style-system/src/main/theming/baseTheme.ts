@@ -26,11 +26,31 @@ export interface BaseSpacing {
   readonly space4: number | string,
 }
 
+export interface BaseZIndexes {
+  default: number,
+  absolute: number,
+  drawer: number,
+  select: number,
+  popover: number,
+  tooltip: number,
+  header: number,
+  backdrop: number,
+  sidebar: number,
+  modal: number,
+}
+
+export interface Breakpoint {
+  name: string,
+  value: string,
+}
+
 export interface BaseTheme {
   readonly fontSizes: BaseFontSizes,
   readonly fontStyles: BaseFontStyles,
   readonly colors: BaseColors,
   readonly spacing: BaseSpacing,
+  readonly zIndexes: BaseZIndexes,
+  readonly breakpoints: Breakpoint[],
   readonly layout: {},
 }
 
@@ -41,6 +61,12 @@ export const typeScale = (level: number) => typeScaleBase + (typeScaleFactor * l
 export const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, ' +
   'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;'
+
+export const breakpoints: Breakpoint[] = [
+  {name: 'tablet', value: '768px'},
+  {name: 'desktop', value: '992px'},
+  {name: 'largeDesktop', value: '1400px'},
+]
 
 export const baseTheme: BaseTheme = {
   fontSizes: {
@@ -78,5 +104,18 @@ export const baseTheme: BaseTheme = {
     space3: '2rem',
     space4: '4rem',
   },
+  zIndexes: {
+    default: 0,
+    absolute: 1,
+    drawer: 10,
+    select: 20,
+    popover: 30,
+    tooltip: 31,
+    header: 600,
+    backdrop: 700,
+    sidebar: 800,
+    modal: 1000,
+  },
+  breakpoints,
   layout: {},
 }
