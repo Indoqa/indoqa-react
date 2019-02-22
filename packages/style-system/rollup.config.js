@@ -1,4 +1,5 @@
 import cleanup from 'rollup-plugin-cleanup'
+import commonJS from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 
@@ -16,6 +17,7 @@ const buildCjs = () => ({
     sourceMap: true,
   },
   plugins: [
+    commonJS(),
     resolve(),
     sourceMaps(),
     cleanup({}),
@@ -31,6 +33,7 @@ const buildEs = () => ({
     sourceMap: true,
   },
   plugins: [
+    commonJS(),
     resolve(),
     sourceMaps(),
     cleanup({}),

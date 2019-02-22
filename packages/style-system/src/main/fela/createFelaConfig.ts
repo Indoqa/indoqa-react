@@ -1,10 +1,8 @@
-import {BaseBreakpoints, baseTheme, toMediaQueryMap} from '@indoqa/style-system'
 import monolithic from 'fela-monolithic'
-import extend from 'fela-plugin-extend'
-import fallbackValue from 'fela-plugin-fallback-value'
 import namedKeys from 'fela-plugin-named-keys'
-import prefixer from 'fela-plugin-prefixer'
-import unit from 'fela-plugin-unit'
+import webPreset from 'fela-preset-web'
+import {BaseBreakpoints, baseTheme} from '../theming/baseTheme'
+import {toMediaQueryMap} from '../theming/mediaQueryHelper'
 
 function createNamedKeys<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpoints) {
   return namedKeys({
@@ -14,13 +12,16 @@ function createNamedKeys<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpo
   )
 }
 
+/*
+
+    fela-plugin-embedded
+
+ */
+
 export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpoints = baseTheme.breakpoints) {
   const config: any = {
     plugins: [
-      extend(),
-      prefixer(),
-      fallbackValue(),
-      unit(),
+      ...webPreset,
       createNamedKeys(breakpoints),
     ],
     enhancers: [],

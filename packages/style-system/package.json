@@ -28,12 +28,18 @@
     "style-system"
   ],
   "peerDependencies": {
-    "fela": ">=10",
-    "react": ">=16",
-    "react-fela": ">=10"
+    "fela": ">=10.2.1",
+    "fela-monolithic": ">=10.2.1",
+    "fela-plugin-named-keys": ">=10.2.1",
+    "fela-preset-web": ">=10.2.1",
+    "react": ">=16.7",
+    "react-fela": ">=10.2.1"
   },
   "dependencies": {
     "fela": "^10.2.1",
+    "fela-monolithic": "^10.2.1",
+    "fela-plugin-named-keys": "^10.2.1",
+    "fela-preset-web": "^10.2.1",
     "react": "^16.8.2",
     "react-fela": "^10.2.1",
     "tslib": "^1.9.3"
