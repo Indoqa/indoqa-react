@@ -1,26 +1,16 @@
-import {BaseColors, BaseFonts, BaseFontSizes, BaseTheme, buildTheme, typeScale} from '@indoqa/style-system'
-import {CSSProperties} from 'react'
+import {BaseColors, BaseFontSizes, baseTheme, BaseTheme, typeScale} from '@indoqa/style-system'
 
-interface FontSizes extends Partial<BaseFontSizes> {
+interface FontSizes extends BaseFontSizes {
   readonly extraBig: number | string,
 }
 
-interface Colors extends Partial<BaseColors> {
+interface Colors extends BaseColors {
   readonly primary: string,
   readonly primaryDark: string,
   readonly primaryLight: string,
   readonly accent: string,
   readonly textSecondary: string
   readonly divider: string,
-}
-
-interface Fonts extends Partial<BaseFonts> {
-  readonly headline: string,
-}
-
-interface FontStyles {
-  readonly text: CSSProperties,
-  readonly headline: CSSProperties,
 }
 
 interface Layout {
@@ -31,17 +21,7 @@ interface Layout {
 export declare interface Theme extends BaseTheme {
   readonly fontSizes: FontSizes,
   readonly colors: Colors,
-  readonly fonts: Fonts,
-  readonly fontStyles: FontStyles,
   readonly layout: Layout,
-}
-
-const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, ' +
-  'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-
-const baseFontFamilies = {
-  text: systemFonts,
-  headline: systemFonts,
 }
 
 const baseColors = {
@@ -67,25 +47,8 @@ const baseFontSizes: FontSizes = {
 }
 
 const theme: Theme = {
+  fontStyles: baseTheme.fontStyles,
   fontSizes: baseFontSizes,
-  fonts: {
-    text: baseFontFamilies.text,
-    headline: baseFontFamilies.headline,
-  },
-  fontStyles: {
-    text: {
-      fontFamily: baseFontFamilies.text,
-      lineHeight: 1.3,
-      fontWeight: 400,
-      color: baseColors.black_2,
-    },
-    headline: {
-      fontFamily: baseFontFamilies.headline,
-      lineHeight: 1.2,
-      fontWeight: 700,
-      color: baseColors.black_2,
-    },
-  },
   colors: {
     primary: baseColors.blue_2,
     primaryDark: baseColors.blue_3,
@@ -95,11 +58,11 @@ const theme: Theme = {
     textSecondary: baseColors.grey_1,
     divider: baseColors.white_1,
   },
-  spacing: {},
+  spacing: baseTheme.spacing,
   layout: {
     actionBarHeight: 50,
     menuWidth: 300,
   },
 }
 
-export default buildTheme(theme)
+export default theme

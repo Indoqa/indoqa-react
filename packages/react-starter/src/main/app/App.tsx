@@ -1,5 +1,5 @@
-import {IRenderer} from 'fela'
 import {BaseCssProps, Box, renderRebootCss, withRenderer} from '@indoqa/style-system'
+import {IRenderer} from 'fela'
 import * as React from 'react'
 import {ThemeProvider} from 'react-fela'
 import {I18nextProvider} from 'react-i18next'
@@ -28,8 +28,8 @@ const baseCssProps: BaseCssProps = {
     h3: theme.fontSizes.big,
   },
   fontStyles: {
-    text: theme.fontStyles.text,
-    headline: theme.fontStyles.headline,
+    base: theme.fontStyles.base,
+    alt: theme.fontStyles.alt,
   },
   links: {
     base: theme.colors.primaryDark,
@@ -73,9 +73,9 @@ class App extends React.Component<Props> {
           <Switch>
             <Route exact path="/" component={OverviewPage}/>
             <Route exact path="/time" component={TimePage}/>
-            <Route exact path="/words" component={WordsPage} />
-            <Route path="/forms" component={FormsApp} />
-            <Route path="/upload" component={UploadPage} />
+            <Route exact path="/words" component={WordsPage}/>
+            <Route path="/forms" component={FormsApp}/>
+            <Route path="/upload" component={UploadPage}/>
           </Switch>
         </I18nextProvider>
       </ThemeProvider>

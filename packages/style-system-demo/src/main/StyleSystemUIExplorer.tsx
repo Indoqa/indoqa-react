@@ -1,4 +1,4 @@
-import {UIExplorer, Color, Font, FontMix, FontSizes, Group} from '@indoqa/ui-explorer'
+import {Color, Font, FontMix, FontSizes, Group, UIExplorer} from '@indoqa/ui-explorer'
 import * as React from 'react'
 import {withTheme} from 'react-fela'
 
@@ -22,12 +22,12 @@ const getColors = (theme: Theme): Color[] =>
 
 const getTextFonts = (theme: Theme): Font[] =>
   [
-    {name: 'text', fontStyle: theme.fontStyles.text},
+    {name: 'base', fontStyle: theme.fontStyles.base},
   ]
 
 const getHeadlineFonts = (theme: Theme): Font[] =>
   [
-    {name: 'headline', fontStyle: theme.fontStyles.headline},
+    {name: 'alternative', fontStyle: theme.fontStyles.alt},
   ]
 
 const getFontSizes = (theme: Theme): FontSizes =>
@@ -40,7 +40,7 @@ const getFontSizes = (theme: Theme): FontSizes =>
 
 const getFontMixes = (theme: Theme): FontMix[] =>
   [
-    {name: 'System fonts', textFont: theme.fontStyles.text, headlineFont: theme.fontStyles.headline},
+    {name: 'System fonts', textFont: theme.fontStyles.base, headlineFont: theme.fontStyles.alt},
   ]
 
 const getGridGroup = (): Group => ({

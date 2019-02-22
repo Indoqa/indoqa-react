@@ -21,8 +21,8 @@ export interface BaseCssProps {
     h3: CssValue,
   },
   fontStyles: {
-    text: IStyle,
-    headline: IStyle,
+    base: IStyle,
+    alt: IStyle,
   },
 }
 
@@ -344,10 +344,10 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
 
   // set the base fonts for body and headlines
   renderer.renderStatic({
-    ...props.fontStyles.text,
+    ...props.fontStyles.base,
   }, 'body')
   renderer.renderStatic({
-    ...props.fontStyles.headline,
+    ...props.fontStyles.alt,
   }, 'h1, h2, h3, h4, h5, h6')
   renderer.renderStatic({
     marginTop: props.spacing.space2,

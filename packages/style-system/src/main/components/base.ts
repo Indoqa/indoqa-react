@@ -109,11 +109,10 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
 }
 
 export const createFontCSSProps = ({theme, font, fontSize, color, bold, ellipsis}: FontProps & WithBaseTheme): IStyle => {
-  if (theme === undefined || theme.fonts === undefined || theme.fontSizes === undefined || theme.colors === undefined) {
+  if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
   const styles: IStyle = {
-    fontFamily: (font) ? theme.fonts[font] : theme.fonts.text,
     fontSize: (fontSize) ? theme.fontSizes[fontSize] : theme.fontSizes.text,
     color: (color) ? theme.colors[color] : theme.colors.text,
     fontWeight: (bold) ? 700 : 400,

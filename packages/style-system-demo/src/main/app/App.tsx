@@ -22,8 +22,8 @@ const baseCssProps: BaseCssProps = {
     h3: theme.fontSizes.big,
   },
   fontStyles: {
-    text: theme.fontStyles.text,
-    headline: theme.fontStyles.headline,
+    base: theme.fontStyles.base,
+    alt: theme.fontStyles.alt,
   },
   links: {
     base: theme.colors.primaryDark,

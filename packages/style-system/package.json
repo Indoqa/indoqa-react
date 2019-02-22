@@ -33,7 +33,6 @@
     "react-fela": ">=10"
   },
   "dependencies": {
-    "deepmerge": "^2.2.1",
     "fela": "^10.2.1",
     "react": "^16.8.2",
     "react-fela": "^10.2.1",

@@ -1,9 +1,6 @@
-const typeScaleFactor = 1.333
-const typeScaleBase = 14
-const standardFont = 'sans-serif'
-export const typeScale = (level: number) => typeScaleBase + (typeScaleFactor * level)
+import {IStyle} from 'fela'
 
-export declare interface BaseFontSizes {
+export interface BaseFontSizes {
   readonly verySmall: number | string,
   readonly small: number | string,
   readonly text: number | string,
@@ -11,15 +8,17 @@ export declare interface BaseFontSizes {
   readonly veryBig: number | string,
 }
 
-export declare interface BaseFonts {
+export interface BaseFontStyles {
+  readonly base: IStyle,
+  readonly alt: IStyle,
+  readonly mono: IStyle,
+}
+
+export interface BaseColors {
   readonly text: string,
 }
 
-export declare interface BaseColors {
-  readonly text: string,
-}
-
-export declare interface BaseSpacing {
+export interface BaseSpacing {
   readonly space0: number | string,
   readonly space1: number | string,
   readonly space2: number | string,
@@ -27,13 +26,21 @@ export declare interface BaseSpacing {
   readonly space4: number | string,
 }
 
-export declare interface BaseTheme {
-  readonly fontSizes: Partial<BaseFontSizes>,
-  readonly fonts: Partial<BaseFonts>,
-  readonly colors: Partial<BaseColors>,
-  readonly spacing: Partial<BaseSpacing>,
+export interface BaseTheme {
+  readonly fontSizes: BaseFontSizes,
+  readonly fontStyles: BaseFontStyles,
+  readonly colors: BaseColors,
+  readonly spacing: BaseSpacing,
   readonly layout: {},
 }
+
+const typeScaleFactor = 1.333
+const typeScaleBase = 14
+export const typeScale = (level: number) => typeScaleBase + (typeScaleFactor * level)
+
+export const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, ' +
+  'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;'
 
 export const baseTheme: BaseTheme = {
   fontSizes: {
@@ -43,8 +50,23 @@ export const baseTheme: BaseTheme = {
     small: typeScale(-1),
     verySmall: typeScale(-2),
   },
-  fonts: {
-    text: standardFont,
+  fontStyles: {
+    base: {
+      fontFamily: systemFonts,
+      lineHeight: 1.3,
+      fontWeight: 400,
+      color: '#000000',
+    },
+    alt: {
+      fontFamily: systemFonts,
+      lineHeight: 1.3,
+      fontWeight: 700,
+      color: '#000000',
+    },
+    mono: {
+      fontFamily: monoSystemFonts,
+      color: '#000000',
+    },
   },
   colors: {
     text: '#000000',
