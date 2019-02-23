@@ -4,6 +4,7 @@ import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
 import GridSamples from './grid/GridSamples'
+import ResponsiveCols from './grid/ResponsiveCols'
 
 interface Props {
   theme: Theme,
@@ -47,8 +48,8 @@ const getGridGroup = (): Group => ({
   name: 'Grid',
   descriptions: [
     {
-      name: 'Button',
-      component: <button>Click me!</button>,
+      name: 'Responsive Cols',
+      component: <ResponsiveCols/>,
     },
     {
       name: 'Grid',
