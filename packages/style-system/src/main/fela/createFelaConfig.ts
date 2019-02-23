@@ -12,12 +12,6 @@ function createNamedKeys<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpo
   )
 }
 
-/*
-
-    fela-plugin-embedded
-
- */
-
 export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpoints = baseTheme.breakpoints) {
   const config: any = {
     plugins: [

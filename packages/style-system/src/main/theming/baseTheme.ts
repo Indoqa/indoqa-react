@@ -41,6 +41,7 @@ export interface BaseZIndexes {
 
 export interface Breakpoint {
   minWidth: string,
+  sort: number,
 }
 
 export interface BaseBreakpoints {
@@ -68,9 +69,9 @@ export const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Robot
 export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;'
 
 export const breakpoints: BaseBreakpoints = {
-  tablet: {minWidth: '768px'},
-  desktop: {minWidth: '992px'},
-  largeDesktop: {minWidth: '1400px'},
+  tablet: {minWidth: '768px', sort: 1},
+  desktop: {minWidth: '992px', sort: 2},
+  largeDesktop: {minWidth: '1400px', sort: 3},
 }
 
 export const baseTheme: BaseTheme = {
