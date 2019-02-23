@@ -17,6 +17,9 @@ const ResponsiveCols: React.FC = () => {
         <ColRow>
           <Col>{innerBox}</Col>
         </ColRow>
+        <ColRow>
+          <Col size={[2, 3, 4, 5]}>{innerBox}</Col>
+        </ColRow>
       </Grid>
     </Box>
   )

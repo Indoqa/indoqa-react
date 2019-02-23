@@ -13,7 +13,7 @@ type Size = SizeValue | SizeValue[]
 export const GRID_SIZE: Size = 12
 
 interface Props {
-  size?: Size | Size[],
+  size?: Size,
 }
 
 interface ColManipulatedProps extends Props {
@@ -32,16 +32,18 @@ interface RowContainerProps extends Props {
 const calcWidth = (size: number, spacing?: Spacing): string => {
   const spacingWithUnit = addUnitIfNeeded(spacing)
   const availableSpace = `(100% - ${spacingWithUnit} * ${(GRID_SIZE as any) - 1})`
-  const coveredSpacing = `${spacingWithUnit} * ${(size) - 1}`
+  const coveredSpacing = `${spacingWithUnit} * ${size - 1}`
   return `calc(${availableSpace} / ${GRID_SIZE} * ${size} + ${coveredSpacing})`
 }
 
 /*
  * calc width for all breakpoints
  */
-const calcWidths = (size: number, theme: BaseTheme, spacing?: Spacing): PStyle => {
+const calcWidths = (theme: BaseTheme, size: Size, spacing?: Spacing, rowBreak?: boolean): PStyle => {
+  const marginRight = rowBreak ? '0px' : spacing
   return {
-    width: calcWidth(size, spacing),
+    width: calcWidth(size as number, spacing),
+    marginRight,
   }
 }
 
@@ -54,10 +56,9 @@ export class Col extends React.Component<Props> {
   public render() {
     const internalProps = this.props as ColManipulatedProps
     const {children, rowBreak, marginTop, size} = internalProps
-    const colStyle: StyleFunction<BaseTheme, RowContainerProps> = ({spacing, theme}): IStyle => {
+    const colStyle: StyleFunction<BaseTheme, RowContainerProps> = ({theme, spacing}): IStyle => {
       return ({
-        ...calcWidths(size as number, theme, spacing),
-        marginRight: rowBreak ? '0px' : spacing,
+        ...calcWidths(theme, size || GRID_SIZE, spacing, rowBreak),
         marginTop,
       })
     }
