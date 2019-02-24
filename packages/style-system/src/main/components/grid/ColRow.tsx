@@ -1,15 +1,43 @@
 /* tslint:disable */
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent, StyleFunction} from 'react-fela'
+import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '../..'
+import {BaseBreakpoints, BaseTheme} from '../..'
 import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
 import {GRID_SIZE} from './Col'
-import {GridContext} from './GridContext'
+import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps {
+const getAdditionalColProps = (child: any, willBreakAfter: boolean, needsMarginTop: boolean, spacing?: Spacing) => {
+  return {
+    willBreakAfter,
+    marginTop: needsMarginTop ? spacing : 0
+  }
+}
+
+const rewriteCols = (breakpoints: BaseBreakpoints, children: React.ReactNode, spacing?: Spacing) => {
+  let currentRowSize = 0
+  let rowsCount = 0
+
+  // see https://mxstbr.blog/2017/02/react-children-deepdive/#looping-over-children
+  return React.Children.map(children, (child) => {
+    const currentChild = child as any
+    const size = currentChild.props.size
+    currentRowSize += size
+    const isLastCol = currentRowSize === GRID_SIZE
+    const willOverflow = currentRowSize > GRID_SIZE
+
+    if (willOverflow) {
+      currentRowSize = size
+    }
+    const needsMarginTop = willOverflow || rowsCount > 0
+    if (isLastCol || willOverflow) {
+      rowsCount++
+    }
+    const additionalColProps = getAdditionalColProps(currentChild, isLastCol, needsMarginTop, spacing)
+    return React.cloneElement((currentChild), additionalColProps)
+  })
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
@@ -35,53 +63,25 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
         marginTop: 0,
       },
     })
-    const {children, style, ...otherProps} = this.props
+    const {style, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
+    const renderCols = ({className, theme}: RenderProps<T>) => (
+      <div className={className}>
+        {rewriteCols(theme.breakpoints, this.props.children, this.props.spacing)}
+      </div>
+    )
     return (
       <FelaComponent<T> style={styles} {...otherProps}>
-        {children}
+        {renderCols}
       </FelaComponent>
     )
   }
 }
 
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps {
+}
+
 export class ColRow<T extends BaseTheme> extends React.Component<Props<T>> {
-
-  renderChildren(spacing: string | number) {
-    let currentRowSize = 0
-    let rowsCount = 0
-
-    // see https://mxstbr.blog/2017/02/react-children-deepdive/#looping-over-children
-    return React.Children.map(this.props.children, (child) => {
-      const currentChild = child as any
-      // calculate the sum of all <Col> sizes
-      currentRowSize += currentChild.props.size
-
-      // the <Col> child fills up the full space -> manipulate rowBreak and marginTop
-      if (currentRowSize === GRID_SIZE) {
-        currentRowSize = 0
-        rowsCount++
-        return React.cloneElement((currentChild), {
-          rowBreak: true,
-          marginTop: rowsCount > 1 ? spacing : 0
-        })
-      }
-
-      // increase the row count if the current <Col> will be rendered at the next line
-      if (currentRowSize >= GRID_SIZE) {
-        rowsCount++
-      }
-
-      // for all rows except the first manipulate the marginTop of the <Col> child
-      if (rowsCount > 0) {
-        return React.cloneElement((currentChild), {
-          rowBreak: false,
-          marginTop: spacing
-        })
-      }
-      return currentChild
-    })
-  }
 
   public render() {
     return (
@@ -89,7 +89,7 @@ export class ColRow<T extends BaseTheme> extends React.Component<Props<T>> {
         {({spacing}) => {
           const child = (
             <RowContainer spacing={spacing} {...this.props}>
-              {this.renderChildren(spacing)}
+              {this.props.children}
             </RowContainer>
           )
           return testGridContext(spacing, child)

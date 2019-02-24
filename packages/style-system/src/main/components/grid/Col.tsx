@@ -17,7 +17,7 @@ interface Props {
 }
 
 interface ColManipulatedProps extends Props {
-  rowBreak?: boolean,
+  willBreakAfter?: boolean,
   marginTop?: string | number,
   children: React.ReactNode
 }
@@ -29,22 +29,36 @@ interface RowContainerProps extends Props {
 /*
  * evenly distribute the full width considering the spacing
  */
-const calcWidth = (size: number, spacing?: Spacing): string => {
+const calcWidthValue = (size: number, spacing?: Spacing): string => {
   const spacingWithUnit = addUnitIfNeeded(spacing)
   const availableSpace = `(100% - ${spacingWithUnit} * ${(GRID_SIZE as any) - 1})`
   const coveredSpacing = `${spacingWithUnit} * ${size - 1}`
   return `calc(${availableSpace} / ${GRID_SIZE} * ${size} + ${coveredSpacing})`
 }
 
-/*
- * calc width for all breakpoints
- */
-const calcWidths = (theme: BaseTheme, size: Size, spacing?: Spacing, rowBreak?: boolean): PStyle => {
+const calcWidth = (size: number, spacing?: Spacing, rowBreak?: boolean): PStyle => {
   const marginRight = rowBreak ? '0px' : spacing
-  return {
-    width: calcWidth(size as number, spacing),
+  return ({
+    width: calcWidthValue(size, spacing),
     marginRight,
+  })
+}
+
+/*
+ * calc width and marginRight for all breakpoints
+ */
+const calcWidths = (size: Size, spacing?: Spacing, rowBreak?: boolean): PStyle => {
+  if (Array.isArray(size)) {
+    return (
+      {
+        ...calcWidth(size[0], spacing, rowBreak),
+        tablet: {
+          ...calcWidth(size[1], spacing, rowBreak),
+        },
+      }
+    )
   }
+  return calcWidth(size, spacing, rowBreak)
 }
 
 export class Col extends React.Component<Props> {
@@ -55,10 +69,10 @@ export class Col extends React.Component<Props> {
 
   public render() {
     const internalProps = this.props as ColManipulatedProps
-    const {children, rowBreak, marginTop, size} = internalProps
+    const {children, willBreakAfter, marginTop, size} = internalProps
     const colStyle: StyleFunction<BaseTheme, RowContainerProps> = ({theme, spacing}): IStyle => {
       return ({
-        ...calcWidths(theme, size || GRID_SIZE, spacing, rowBreak),
+        ...calcWidths(size || GRID_SIZE, spacing, willBreakAfter),
         marginTop,
       })
     }
