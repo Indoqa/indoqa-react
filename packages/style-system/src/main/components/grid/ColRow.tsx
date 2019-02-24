@@ -8,11 +8,20 @@ import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, Padding
 import {GRID_SIZE} from './Col'
 import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
+import {addUnitIfNeeded} from './utils'
 
-const getAdditionalColProps = (child: any, willBreakAfter: boolean, needsMarginTop: boolean, spacing?: Spacing) => {
+const calcWidthValue = (size: number, spacing?: Spacing): string => {
+  const spacingWithUnit = addUnitIfNeeded(spacing)
+  const availableSpace = `(100% - ${spacingWithUnit} * ${(GRID_SIZE as any) - 1})`
+  const coveredSpacing = `${spacingWithUnit} * ${size - 1}`
+  return `calc(${availableSpace} / ${GRID_SIZE} * ${size} + ${coveredSpacing})`
+}
+
+const getEnhancedColStyles = (child: any, size: number, willBreakAfter: boolean, needsMarginTop: boolean, spacing?: Spacing) => {
   return {
-    willBreakAfter,
-    marginTop: needsMarginTop ? spacing : 0
+    width: calcWidthValue(size, spacing),
+    marginTop: needsMarginTop ? spacing : 0,
+    marginRight: willBreakAfter ? '0px' : spacing
   }
 }
 
@@ -23,7 +32,7 @@ const rewriteCols = (breakpoints: BaseBreakpoints, children: React.ReactNode, sp
   // see https://mxstbr.blog/2017/02/react-children-deepdive/#looping-over-children
   return React.Children.map(children, (child) => {
     const currentChild = child as any
-    const size = currentChild.props.size
+    const size: number = currentChild.props.size
     currentRowSize += size
     const isLastCol = currentRowSize === GRID_SIZE
     const willOverflow = currentRowSize > GRID_SIZE
@@ -35,8 +44,8 @@ const rewriteCols = (breakpoints: BaseBreakpoints, children: React.ReactNode, sp
     if (isLastCol || willOverflow) {
       rowsCount++
     }
-    const additionalColProps = getAdditionalColProps(currentChild, isLastCol, needsMarginTop, spacing)
-    return React.cloneElement((currentChild), additionalColProps)
+    const enhancedColStyles = getEnhancedColStyles(currentChild, size, isLastCol, needsMarginTop, spacing)
+    return React.cloneElement((currentChild), {style: enhancedColStyles})
   })
 }
 
