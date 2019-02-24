@@ -18,7 +18,13 @@ const ResponsiveCols: React.FC = () => {
           <Col>{innerBox}</Col>
         </ColRow>
         <ColRow>
-          <Col size={[12, 2]}>{innerBox}</Col>
+          <Col size={[12, 8, 4]}>{innerBox}</Col>
+        </ColRow>
+        <ColRow>
+          <Col size={[12, 12, 6, 3]}>{innerBox}</Col>
+        </ColRow>
+        <ColRow>
+          <Col size={[12, 12, 6, 3]} style={{color: 'red'}}>a</Col>
         </ColRow>
       </Grid>
     </Box>

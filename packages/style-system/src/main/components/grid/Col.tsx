@@ -6,7 +6,6 @@ import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
 type SizeValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
-
 export type Size = SizeValue | SizeValue[]
 
 interface Props<T extends BaseTheme> extends WithStyle<T> {
