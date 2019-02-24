@@ -4,6 +4,7 @@ import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
 import GridSamples from './grid/GridSamples'
+import NestedResponsiveCols from './grid/NestedResponsiveCols'
 import ResponsiveCols from './grid/ResponsiveCols'
 
 interface Props {
@@ -50,6 +51,10 @@ const getGridGroup = (): Group => ({
     {
       name: 'Responsive Cols',
       component: <ResponsiveCols/>,
+    },
+    {
+      name: 'Nested Responsive Cols',
+      component: <NestedResponsiveCols/>,
     },
     {
       name: 'Grid',
