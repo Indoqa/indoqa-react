@@ -1,5 +1,5 @@
-import {BaseTheme, Box, Grid, Panel, Row} from '@indoqa/style-system'
-import {IStyle} from 'fela'
+import {BaseTheme, Box, Grid, Panel, Row, withRenderer} from '@indoqa/style-system'
+import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps} from 'react-fela'
 import {Route, RouteComponentProps, withRouter} from 'react-router'
@@ -22,6 +22,7 @@ import StyleGuideThemeContext from './uietheme/UIEThemeContext'
 import {lightTheme} from './uietheme/uieThemes'
 import {WithUIETheme} from './uietheme/withUIETheme'
 import importCss from './utils/importCss'
+import {cleanUrlPathPart} from './utils/urlUtils'
 
 interface InnerContentPanelProps extends WithUIETheme {
   name: string,
@@ -102,7 +103,7 @@ const MenuIconWrapper: React.FC<MenuIconProps> = ({show, toggleMenu, uieTheme}) 
 }
 
 const createComponentRoute = (name: string, component: React.ReactNode, mountPath: string, uieTheme: UIETheme) => {
-  const componentMountPath = `${mountPath}/${name.toLowerCase()}`
+  const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}`
   return (
     <Route key={componentMountPath} exact path={componentMountPath} render={() => (
       <InnerContentPanel name={name} uieTheme={uieTheme}>
@@ -116,7 +117,7 @@ const createMenuGroups = (groups: Group[], mountPath: string) => {
   return groups.map((componentDescription) => {
     const {name, descriptions} = componentDescription
     const menuItems = descriptions.map((description) => {
-      const componentMountPath = `${mountPath}/${name.toLowerCase()}/${description.name.toLowerCase()}`
+      const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}/${cleanUrlPathPart(description.name)}`
       return <MenuItem key={componentMountPath} to={componentMountPath}>{description.name}</MenuItem>
     })
     return (
@@ -135,7 +136,7 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
       routes.push(createComponentRoute(
         description.name,
         description.component,
-        `${mountPath}/${name.toLowerCase()}`,
+        `${mountPath}/${cleanUrlPathPart(name)}`,
         uieTheme,
       ))
     })
@@ -156,6 +157,7 @@ interface Props extends RouteComponentProps {
   textFonts: Font[],
   textFontSize: FontSize,
   uieTheme?: UIETheme,
+  renderer?: IRenderer,
 }
 
 interface State extends WithUIETheme {
@@ -179,6 +181,17 @@ class UIExplorerImpl extends React.Component<Props, State> {
       return description
     }
     return `UI-Explorer ${projectName}`
+  }
+
+  public componentWillMount() {
+    if (this.props.renderer) {
+      this.props.renderer.renderStatic({
+        backgroundColor: '#F0F2F5',
+        paddingTop: '4px',
+        paddingRight: '2px',
+        paddingLeft: '2px',
+      }, 'p code')
+    }
   }
 
   public componentWillUpdate(nextProps: Readonly<Props>) {
@@ -272,5 +285,5 @@ class UIExplorerImpl extends React.Component<Props, State> {
   }
 }
 
-const UIExplorer = withRouter(UIExplorerImpl)
+const UIExplorer = withRouter(withRenderer(UIExplorerImpl))
 export {UIExplorer}

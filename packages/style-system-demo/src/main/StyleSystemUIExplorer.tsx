@@ -3,9 +3,8 @@ import * as React from 'react'
 import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
-import GridSamples from './grid/GridSamples'
-import NestedResponsiveCols from './grid/NestedResponsiveCols'
-import ResponsiveCols from './grid/ResponsiveCols'
+import NestedResponsiveGrid from './grid/NestedResponsiveGrid'
+import SimpleGrid from './grid/SimpleGrid'
 
 interface Props {
   theme: Theme,
@@ -49,17 +48,14 @@ const getGridGroup = (): Group => ({
   name: 'Grid',
   descriptions: [
     {
-      name: 'Responsive Cols',
-      component: <ResponsiveCols/>,
+      name: 'Simple Grid',
+      component: <SimpleGrid/>,
     },
     {
-      name: 'Nested Responsive Cols',
-      component: <NestedResponsiveCols/>,
+      name: 'Nested Responsive Grid',
+      component: <NestedResponsiveGrid/>,
     },
-    {
-      name: 'Grid',
-      component: <GridSamples/>,
-    },
+
   ],
 })
 
