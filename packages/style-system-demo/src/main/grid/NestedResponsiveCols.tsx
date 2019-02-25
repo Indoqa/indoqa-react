@@ -1,16 +1,26 @@
-import {Box, Col, ColRow, Grid} from '@indoqa/style-system'
+import {Box, Col, ColRow, Grid, PStyle} from '@indoqa/style-system'
 import * as React from 'react'
+import {StyleFunction} from 'react-fela'
+import {Theme} from '../app/theme'
+
+const boxStyle: StyleFunction<Theme> = ({theme}): PStyle => {
+  return {
+    ...theme.fontStyles.base,
+    fontSize: theme.fontSizes.verySmall,
+    height: 100,
+  }
+}
 
 const BoxFirstRow: React.FC = ({children}) => (
-  <Box bg="accent" p={1} fullWidth fullHeight style={{height: '100px'}}>{children}</Box>
+  <Box bg="accent" p={1} fullWidth fullHeight style={boxStyle}>{children}</Box>
 )
 
 const BoxSecondRow: React.FC = ({children}) => (
-  <Box bg="primaryLight" p={1} fullWidth fullHeight style={{height: '100px'}}>{children}</Box>
+  <Box bg="primaryLight" p={1} fullWidth fullHeight style={boxStyle}>{children}</Box>
 )
 
 const BoxThirdRow: React.FC = ({children}) => (
-  <Box bg="primary" p={1} fullWidth fullHeight style={{height: '100px'}}>{children}</Box>
+  <Box bg="primary" p={1} fullWidth fullHeight style={boxStyle}>{children}</Box>
 )
 
 const NestedResponsiveCols: React.FC = () => {
@@ -20,6 +30,12 @@ const NestedResponsiveCols: React.FC = () => {
         <ColRow>
           <Col size={[12, 12, 6]}>
             <Grid spacing="0.5rem">
+              <ColRow>
+                <Col size={[6, 3]}><BoxFirstRow>innerGrid:[12,12,6] | col:[6,3]</BoxFirstRow></Col>
+                <Col size={[6, 3]}><BoxFirstRow>innerGrid:[12,12,6] | col:[6,3]</BoxFirstRow></Col>
+                <Col size={[6, 3]}><BoxFirstRow>innerGrid:[12,12,6] | col:[6,3]</BoxFirstRow></Col>
+                <Col size={[6, 3]}><BoxFirstRow>innerGrid:[12,12,6] | col:[6,3]</BoxFirstRow></Col>
+              </ColRow>
               <ColRow>
                 <Col size={[6, 3]}><BoxFirstRow>innerGrid:[12,12,6] | col:[6,3]</BoxFirstRow></Col>
                 <Col size={[6, 3]}><BoxFirstRow>innerGrid:[12,12,6] | col:[6,3]</BoxFirstRow></Col>
