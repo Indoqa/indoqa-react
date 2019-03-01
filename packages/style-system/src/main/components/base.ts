@@ -1,6 +1,11 @@
 import {IStyle} from 'fela'
+import * as React from 'react'
 import {FelaStyle, StyleFunction} from 'react-fela'
 import {BaseTheme} from '..'
+
+type Direction = 'column' | 'row'
+type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
+type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 
 export interface BoxModelProps {
   inline?: boolean,
@@ -18,14 +23,12 @@ export interface BoxProps extends MarginProps,
   BoxModelProps {
 }
 
-type Direction = 'column' | 'row'
-
 export interface FlexChildProps {
   grow?: number,
   shrink?: number,
   basis?: number | string,
   order?: number,
-  align?: string,
+  align?: AlignItems,
 }
 
 export interface FlexContainerProps {
@@ -33,8 +36,8 @@ export interface FlexContainerProps {
   direction?: Direction,
   nowrap?: boolean,
   center?: string,
-  justifyContent?: string,
-  alignItems?: string,
+  justifyContent?: JustifyContent,
+  alignItems?: AlignItems,
   stretch?: boolean,
 }
 
@@ -83,6 +86,10 @@ interface WithBaseTheme {
 export interface WithStyle<T extends BaseTheme> {
   style?: FelaStyle<T>,
 }
+
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
+export type HtmlSpanAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'>
 
 const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
   'Check if the Fela ThemeProvider is configured correctly.'

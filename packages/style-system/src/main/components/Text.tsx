@@ -1,7 +1,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {BaseTheme} from '..'
+import {BaseTheme, HtmlSpanAttributesWithoutStyle} from '..'
 import {
   BoxProps,
   createFlexChildCSSProps,
@@ -23,7 +23,7 @@ const themedTextStyle: StyleFunction<BaseTheme, TextProps> = (props: TextProps):
   ...createFontCSSProps(props),
 })
 
-export class Text<T extends BaseTheme> extends React.Component<TextProps & WithStyle<T> & React.HTMLAttributes<HTMLSpanElement>> {
+export class Text<T extends BaseTheme> extends React.Component<TextProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>> {
 
   public render() {
     const {children, style, ...rest} = this.props

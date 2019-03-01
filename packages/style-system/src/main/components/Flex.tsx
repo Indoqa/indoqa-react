@@ -2,7 +2,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '..'
+import {BaseTheme, HtmlDivAttributesWithoutStyle} from '..'
 import {BoxProps, filterProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
 import {createBoxCSSStyles} from './Box'
 
@@ -40,7 +40,7 @@ const themedFlexStyles: StyleFunction<BaseTheme, FlexProps> = (props: FlexProps)
   ...createFlexContainerCSSStyle(props),
 })
 
-export class Flex<T extends BaseTheme> extends React.Component<FlexProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
+export class Flex<T extends BaseTheme> extends React.Component<FlexProps & HtmlDivAttributesWithoutStyle & WithStyle<T>> {
 
   public render() {
     const {children, style, ...rest} = this.props

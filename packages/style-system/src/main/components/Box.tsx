@@ -2,7 +2,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '..'
+import {BaseTheme, HtmlSpanAttributesWithoutStyle} from '..'
 import {
   BoxProps,
   createBoxModelCSSProps,
@@ -29,7 +29,7 @@ const themedBoxStyles: StyleFunction<BaseTheme, BoxProps> = (props: BoxProps): I
   ...createBoxCSSStyles(props),
 })
 
-export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
+export class Box<T extends BaseTheme> extends React.Component<BoxProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>> {
 
   public render() {
     const {children, style, ...rest} = this.props

@@ -23,7 +23,6 @@ const List: React.FC = ({children}) => {
 
 const MenuGroup: React.FC<Props> = ({uieTheme, name, children}) => {
   const style: IStyle = {
-    paddingTop: uieTheme.spacing.space2,
     paddingLeft: uieTheme.spacing.space4,
     paddingBottom: uieTheme.spacing.space3,
   }
