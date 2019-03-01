@@ -4,19 +4,24 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 
 interface Props {
   initialShow?: boolean,
+  showToggle?: boolean,
+  showLineNumbers?: boolean,
+  language?: string,
 }
 
-const Code: React.FC<Props> = ({initialShow, children}) => {
+const Code: React.FC<Props> = ({initialShow, showToggle = true, showLineNumbers = true, language, children}) => {
   const [show, setShow] = React.useState(initialShow)
   return (
     <Box mt={1}>
+      {showToggle &&
       <Box mb={1}>
         <a href="#" onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'} code</a>
       </Box>
+      }
       {show && <SyntaxHighlighter
-        showLineNumbers
-        language="xml"
-        customStyle={{fontSize: '75%'}}>
+        showLineNumbers={showLineNumbers}
+        language={language || 'xml'}
+        customStyle={{fontSize: '75%', backgroundColor: '#F1F3F5'}}>
         {children}
       </SyntaxHighlighter>}
     </Box>

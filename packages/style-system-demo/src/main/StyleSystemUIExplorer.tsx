@@ -3,8 +3,10 @@ import * as React from 'react'
 import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
+import NestedGrid from './grid/NestedGrid'
 import NestedResponsiveGrid from './grid/NestedResponsiveGrid'
 import SimpleGrid from './grid/SimpleGrid'
+import StyleSystemDemoOverview from './StyleSystemDemoOverview'
 
 interface Props {
   theme: Theme,
@@ -44,18 +46,57 @@ const getFontMixes = (theme: Theme): FontMix[] =>
     {name: 'System fonts', textFont: theme.fontStyles.base, headlineFont: theme.fontStyles.alt},
   ]
 
+const getBaseComponentGroup = (): Group => ({
+  name: 'Base Components',
+  descriptions: [
+    {
+      name: 'Box',
+      component: <div/>,
+    },
+    {
+      name: 'Flex',
+      component: <div/>,
+    },
+    {
+      name: 'Text',
+      component: <div/>,
+    },
+  ],
+})
+
 const getGridGroup = (): Group => ({
   name: 'Grid',
   descriptions: [
     {
-      name: 'Simple Grid',
+      name: 'Simple grid',
       component: <SimpleGrid/>,
     },
     {
-      name: 'Nested Responsive Grid',
+      name: 'Nested grid',
+      component: <NestedGrid/>,
+    },
+    {
+      name: 'Nested responsive grid',
       component: <NestedResponsiveGrid/>,
     },
+  ],
+})
 
+const getFelaGroup = (): Group => ({
+  name: 'Fela Styling',
+  descriptions: [
+    {
+      name: 'Fela Component',
+      component: <div/>,
+    },
+    {
+      name: 'useFela hook',
+      component: <div/>,
+    },
+    {
+      name: 'Static rules',
+      component: <div/>,
+    },
   ],
 })
 
@@ -66,16 +107,18 @@ class StyleSystemUIExplorer extends React.Component<Props> {
 
     return (
       <UIExplorer
-        projectName="Indoqa Style-System"
+        colors={getColors(theme)}
         description="Overview"
-        textFonts={getTextFonts(theme)}
-        headlineFonts={getHeadlineFonts(theme)}
         fontMixes={getFontMixes(theme)}
         fontSizes={getFontSizes(theme)}
-        textFontSize={theme.fontSizes.text}
-        colors={getColors(theme)}
-        groups={[getGridGroup()]}
+        headlineFonts={getHeadlineFonts(theme)}
+        groups={[getBaseComponentGroup(), getGridGroup(), getFelaGroup()]}
         mountPath=""
+        overviewPanel={<StyleSystemDemoOverview/>}
+        projectName="Indoqa Style-System"
+        showBaseStyles={false}
+        textFonts={getTextFonts(theme)}
+        textFontSize={theme.fontSizes.text}
       />
     )
   }

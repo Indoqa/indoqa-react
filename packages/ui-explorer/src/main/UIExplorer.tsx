@@ -153,7 +153,9 @@ interface Props extends RouteComponentProps {
   headlineFonts: Font[],
   logo?: React.ReactNode,
   mountPath: string,
+  overviewPanel?: React.ReactNode,
   projectName: string,
+  showBaseStyles?: boolean,
   textFonts: Font[],
   textFontSize: FontSize,
   uieTheme?: UIETheme,
@@ -165,6 +167,10 @@ interface State extends WithUIETheme {
 }
 
 class UIExplorerImpl extends React.Component<Props, State> {
+
+  public static defaultProps = {
+    showBaseStyles: true,
+  }
 
   constructor(props: Props) {
     super(props)
@@ -209,6 +215,22 @@ class UIExplorerImpl extends React.Component<Props, State> {
     document.title = `${this.props.projectName} | UI-Explorer`
   }
 
+  public renderOverviewPanel() {
+    if (this.props.overviewPanel) {
+      return this.props.overviewPanel
+    }
+
+    const {colors, fontMixes, fontSizes, textFontSize} = this.props
+    return (
+      <OverviewPanel
+        colors={colors}
+        fontMixes={fontMixes}
+        fontSizes={fontSizes}
+        textFontSize={textFontSize}
+      />
+    )
+  }
+
   public render() {
     const {
       colors,
@@ -219,6 +241,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
       logo,
       mountPath,
       projectName,
+      showBaseStyles,
       textFonts,
       textFontSize,
     } = this.props
@@ -234,10 +257,12 @@ class UIExplorerImpl extends React.Component<Props, State> {
                   <MenuIconWrapper toggleMenu={this.toggleMenu.bind(this)} show={showMenu} uieTheme={uieTheme}/>
                 </MenuHeader>
                 <InnerStyleGuideMenu show={showMenu} uieTheme={uieTheme}>
+                  {showBaseStyles &&
                   <MenuGroup name="Base Styles">
                     <MenuItem to={`${mountPath}/colors`}>Colors</MenuItem>
                     <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
                   </MenuGroup>
+                  }
                   {createMenuGroups(groups, mountPath)}
                 </InnerStyleGuideMenu>
               </StyleGuideMenu>
@@ -246,12 +271,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
               <ContentPanel>
                 <Route exact path={mountPath} render={() => (
                   <InnerContentPanel name={this.getDescription()} uieTheme={uieTheme}>
-                    <OverviewPanel
-                      colors={colors}
-                      fontMixes={fontMixes}
-                      fontSizes={fontSizes}
-                      textFontSize={textFontSize}
-                    />
+                    {this.renderOverviewPanel()}
                   </InnerContentPanel>
                 )}/>
                 <Route exact path={`${mountPath}/colors`} render={() => (

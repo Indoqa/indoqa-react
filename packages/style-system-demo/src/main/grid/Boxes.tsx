@@ -1,26 +1,54 @@
-import {Box, PStyle} from '@indoqa/style-system'
+import {Box, BoxProps, Flex} from '@indoqa/style-system'
 import * as React from 'react'
 import {StyleFunction} from 'react-fela'
 import {Theme} from '../app/theme'
 
-const boxStyle: StyleFunction<Theme> = ({theme}): PStyle => {
-  return {
-    ...theme.fontStyles.base,
-    fontSize: theme.fontSizes.verySmall,
-    height: 100,
+interface Props {
+  height?: number | string,
+  width?: number | string,
+  boxProp?: BoxProps
+}
+
+const bgBoxStyle = (boxBackground: string, width: number | string, height: number | string): StyleFunction<Theme> => {
+  return ({theme}) => {
+    return {
+      ...theme.fontStyles.base,
+      fontSize: theme.fontSizes.verySmall,
+      backgroundColor: boxBackground,
+      width,
+      height,
+    }
   }
 }
 
-const Box1: React.FC = ({children}) => (
-  <Box bg="accent" p={1} fullWidth fullHeight style={boxStyle}>{children}</Box>
-)
+const OrangeBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+  return (
+    <Box p={1} style={bgBoxStyle('orange', width, height)}>{children}</Box>
+  )
+}
 
-const Box2: React.FC = ({children}) => (
-  <Box bg="primaryLight" p={1} fullWidth fullHeight style={boxStyle}>{children}</Box>
-)
+const YellowBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+  return (
+    <Box p={1} style={bgBoxStyle('yellow', width, height)}>{children}</Box>
+  )
+}
 
-const Box3: React.FC = ({children}) => (
-  <Box bg="primary" p={1} fullWidth fullHeight style={boxStyle}>{children}</Box>
-)
+const BlueBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+  return (
+    <Box p={1} style={bgBoxStyle('blue', width, height)}>{children}</Box>
+  )
+}
 
-export {Box1, Box2, Box3}
+const RedBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+  return (
+    <Box p={1} style={bgBoxStyle('red', width, height)}>{children}</Box>
+  )
+}
+
+const BlueFlexBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+  return (
+    <Flex p={1} style={bgBoxStyle('blue', width, height)} justifyContent="space-between">{children}</Flex>
+  )
+}
+
+export {OrangeBox, YellowBox, BlueBox, RedBox, BlueFlexBox}
