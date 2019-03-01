@@ -3,6 +3,7 @@ import * as React from 'react'
 import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
+import BoxSamples from './base-components/BoxSamples'
 import FelaComponentSamples from './fela/FelaComponentSamples'
 import FelaHookSamples from './fela/FelaHookSamples'
 import NestedGrid from './grid/NestedGrid'
@@ -53,7 +54,7 @@ const getBaseComponentGroup = (): Group => ({
   descriptions: [
     {
       name: 'Box',
-      component: <div/>,
+      component: <BoxSamples/>,
     },
     {
       name: 'Flex',

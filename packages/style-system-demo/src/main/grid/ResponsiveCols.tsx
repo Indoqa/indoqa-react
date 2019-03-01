@@ -20,7 +20,6 @@ const ResponsiveCols: React.FC = () => (
       <ColRow>
         <Col size={[12, 12, 6, 3]} style={{color: 'red'}}>a</Col>
       </ColRow>
-
     </Grid>
   </Box>
 )
