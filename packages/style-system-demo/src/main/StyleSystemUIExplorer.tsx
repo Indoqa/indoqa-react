@@ -3,6 +3,8 @@ import * as React from 'react'
 import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
+import FelaComponentSamples from './fela/FelaComponentSamples'
+import FelaHookSamples from './fela/FelaHookSamples'
 import NestedGrid from './grid/NestedGrid'
 import NestedResponsiveGrid from './grid/NestedResponsiveGrid'
 import SimpleGrid from './grid/SimpleGrid'
@@ -87,15 +89,11 @@ const getFelaGroup = (): Group => ({
   descriptions: [
     {
       name: 'Fela Component',
-      component: <div/>,
+      component: <FelaComponentSamples/>,
     },
     {
-      name: 'useFela hook',
-      component: <div/>,
-    },
-    {
-      name: 'Static rules',
-      component: <div/>,
+      name: 'useFela React hook',
+      component: <FelaHookSamples/>,
     },
   ],
 })
