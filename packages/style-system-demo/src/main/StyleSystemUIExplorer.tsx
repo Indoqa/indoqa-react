@@ -4,6 +4,7 @@ import {withTheme} from 'react-fela'
 
 import {Theme} from './app/theme'
 import BoxSamples from './base-components/BoxSamples'
+import FlexSamples from './base-components/FlexSamples'
 import FelaComponentSamples from './fela/FelaComponentSamples'
 import FelaHookSamples from './fela/FelaHookSamples'
 import NestedGrid from './grid/NestedGrid'
@@ -58,11 +59,7 @@ const getBaseComponentGroup = (): Group => ({
     },
     {
       name: 'Flex',
-      component: <div/>,
-    },
-    {
-      name: 'Text',
-      component: <div/>,
+      component: <FlexSamples/>,
     },
   ],
 })

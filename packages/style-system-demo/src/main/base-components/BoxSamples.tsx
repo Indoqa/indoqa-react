@@ -21,8 +21,8 @@ const BoxSamples: React.FC = () => (
     </Box>
     <Code initialShow showToggle={false}>{sample3}</Code>
 
-    <h3>Styled box</h3>
-    <Box my={2} p={2} bg="primary" style={{color: 'white'}}>box4</Box>
+    <h3>Multiple styled box</h3>
+    <Box my={2} p={2} style={[{color: 'white'}, {backgroundColor: 'green'}]}>box4</Box>
     <Code initialShow showToggle={false}>{sample4}</Code>
   </>
 )
