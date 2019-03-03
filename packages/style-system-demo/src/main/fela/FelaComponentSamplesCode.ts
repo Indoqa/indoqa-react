@@ -1,9 +1,11 @@
-const felaComponentSamplesCode = `const style: IStyle = {
-  backgroundColor: 'blue',
-  width: 50,
-  height: 50,
+const felaComponentSamplesCode = `const StyledDiv: React.FC = () => {
+  const style: IStyle = {
+    backgroundColor: 'blue',
+    width: 50,
+    height: 50,
+  }
+  return <FelaComponent style={style}/>
 }
-return <FelaComponent style={style}/>
 `
 
 const styledElementWithChildrenCode = `const StyledParagraph: React.FC = ({children}) => {
