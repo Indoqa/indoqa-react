@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent, StyleFunction} from 'react-fela'
+import {FelaComponent} from 'react-fela'
 
 import {BaseTheme, HtmlSpanAttributesWithoutStyle} from '..'
 import {
@@ -16,24 +16,28 @@ import {
   WithStyle,
 } from './base'
 
-export const createBoxCSSStyles = (props: BoxProps): IStyle => ({
-  ...createBoxModelCSSProps(props),
-  ...createMarginCSSProps(props),
-  ...createPaddingCSSProps(props),
-  ...createFlexChildCSSProps(props),
-  ...createStylingCSSProps(props),
-  ...createFontCSSProps(props),
-})
+export function createBoxCSSStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
+  return {
+    ...createBoxModelCSSProps(props),
+    ...createMarginCSSProps(props),
+    ...createPaddingCSSProps(props),
+    ...createFlexChildCSSProps(props),
+    ...createStylingCSSProps(props),
+    ...createFontCSSProps(props),
+  }
+}
 
-const themedBoxStyles: StyleFunction<BaseTheme, BoxProps> = (props: BoxProps): IStyle => ({
-  ...createBoxCSSStyles(props),
-})
+function themedBoxStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
+  return {
+    ...createBoxCSSStyles(props),
+  }
+}
 
-export function Box<T extends BaseTheme>(props: BoxProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>) {
+export function Box<T extends BaseTheme>(props: BoxProps<T> & HtmlSpanAttributesWithoutStyle & WithStyle<T>) {
   const {children, style, ...rest} = props
-  const styles = mergeThemedStyles<T, BoxProps>(themedBoxStyles, style)
+  const styles = mergeThemedStyles<T, BoxProps<T>>(themedBoxStyles, style)
   return (
-    <FelaComponent<T, BoxProps> style={styles} {...rest}>
+    <FelaComponent<T, BoxProps<T>> style={styles} {...rest}>
       {({className}) => (
         <div className={className} {...filterProps(rest)}>
           {children}

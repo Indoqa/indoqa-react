@@ -8,7 +8,7 @@ import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, Padding
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps {
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T> {
   height?: number | string,
   minHeight?: number | string,
 }

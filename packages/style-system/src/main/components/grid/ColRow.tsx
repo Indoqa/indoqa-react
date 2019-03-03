@@ -10,7 +10,7 @@ import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
 import {addUnitIfNeeded} from './utils'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps {
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T> {
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {

@@ -6,7 +6,7 @@ import {Theme} from '../app/theme'
 interface Props {
   height?: number | string,
   width?: number | string,
-  boxProp?: BoxProps
+  boxProp?: BoxProps<Theme>
 }
 
 const bgBoxStyle = (boxBackground: string, width: number | string, height: number | string): StyleFunction<Theme> => {

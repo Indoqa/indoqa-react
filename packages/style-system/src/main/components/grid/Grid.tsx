@@ -20,8 +20,12 @@ import {
 
 import {GridContext} from './GridContext'
 
-interface GridContainerStyleProps<T extends BaseTheme> extends
-  WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
+interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
+  PaddingProps,
+  FlexChildProps,
+  StylingProps<T>,
+  BoxModelProps,
+  MarginProps {
   children?: React.ReactNode,
   maxWidth?: number | string,
   center?: boolean,

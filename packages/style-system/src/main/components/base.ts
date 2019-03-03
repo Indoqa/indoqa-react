@@ -6,6 +6,7 @@ import {BaseTheme} from '..'
 type Direction = 'column' | 'row'
 type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+type Spacing = 0 | 1 | 2 | 3 | 4
 
 export interface BoxModelProps {
   inline?: boolean,
@@ -15,11 +16,11 @@ export interface BoxModelProps {
   fullHeight?: boolean,
 }
 
-export interface BoxProps extends MarginProps,
+export interface BoxProps<T extends BaseTheme> extends MarginProps,
   PaddingProps,
   FlexChildProps,
   FontProps,
-  StylingProps,
+  StylingProps<T>,
   BoxModelProps {
 }
 
@@ -41,7 +42,7 @@ export interface FlexContainerProps {
   stretch?: boolean,
 }
 
-export interface FlexProps extends BoxProps, FlexContainerProps {
+export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, FlexContainerProps {
 }
 
 export interface FontProps {
@@ -53,27 +54,27 @@ export interface FontProps {
 }
 
 export interface MarginProps {
-  m?: number,
-  mt?: number,
-  mb?: number,
-  ml?: number,
-  mr?: number,
-  mx?: number,
-  my?: number,
+  m?: Spacing,
+  mt?: Spacing,
+  mb?: Spacing,
+  ml?: Spacing,
+  mr?: Spacing,
+  mx?: Spacing,
+  my?: Spacing,
 }
 
 export declare interface PaddingProps {
-  p?: number,
-  pt?: number,
-  pb?: number,
-  pl?: number,
-  pr?: number,
-  px?: number,
-  py?: number,
+  p?: Spacing,
+  pt?: Spacing,
+  pb?: Spacing,
+  pl?: Spacing,
+  pr?: Spacing,
+  px?: Spacing,
+  py?: Spacing,
 }
 
-export interface StylingProps {
-  bg?: string,
+export interface StylingProps<T extends BaseTheme> {
+  bg?: string | keyof T['colors'],
 }
 
 export interface TextProps extends MarginProps, PaddingProps, FlexChildProps, FontProps {
@@ -197,24 +198,20 @@ export const createPaddingCSSProps = ({theme, p, pt, pb, pl, pr, px, py}: Paddin
   return styles
 }
 
-export const createStylingCSSProps = ({theme, bg}: StylingProps & WithBaseTheme) => {
+function getColor<T extends BaseTheme>(theme: T, color: string = 'transparent'): string {
+  if (color in theme.colors) {
+    return theme.colors[color]
+  }
+  return color
+}
+
+export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingProps<T> & WithBaseTheme) {
   if (theme === undefined || theme.colors === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
-
-  if (bg === undefined) {
-    return {}
-  }
-
-  if (bg in theme.colors) {
-    return ({
-      backgroundColor: (bg) ? theme.colors[bg] : 'transparent',
-    })
-  }
-  if (process.env.NODE_ENV !== 'production') {
-    console.warn(`The bg color ${bg} is not available in theme.colors.`)
-  }
-  return {}
+  return ({
+    backgroundColor: getColor(theme, bg as string),
+  })
 }
 
 const knownProps = [
@@ -261,11 +258,8 @@ export function mergeThemedStyles<T extends BaseTheme, P>(
   return [componentStyle, passedStyle]
 }
 
-const spacing = (theme: BaseTheme, propValue: number) => {
-  if (!propValue) {
-    throw new Error('A spacing value must not be null.')
-  }
-  if (theme === undefined || theme.spacing === undefined) {
+const spacing = (theme: BaseTheme, propValue: Spacing) => {
+  if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
 
