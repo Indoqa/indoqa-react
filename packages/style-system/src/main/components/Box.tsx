@@ -29,20 +29,17 @@ const themedBoxStyles: StyleFunction<BaseTheme, BoxProps> = (props: BoxProps): I
   ...createBoxCSSStyles(props),
 })
 
-export class Box<T extends BaseTheme> extends React.Component<BoxProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>> {
-
-  public render() {
-    const {children, style, ...rest} = this.props
-    const styles = mergeThemedStyles<T, BoxProps>(themedBoxStyles, style)
-    return (
-      <FelaComponent<T, BoxProps> style={styles} {...rest}>
-        {({className}) => (
-          <div className={className} {...filterProps(rest)}>
-            {children}
-          </div>
-        )}
-      </FelaComponent>
-    )
-  }
+export function Box<T extends BaseTheme>(props: BoxProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>) {
+  const {children, style, ...rest} = props
+  const styles = mergeThemedStyles<T, BoxProps>(themedBoxStyles, style)
+  return (
+    <FelaComponent<T, BoxProps> style={styles} {...rest}>
+      {({className}) => (
+        <div className={className} {...filterProps(rest)}>
+          {children}
+        </div>
+      )}
+    </FelaComponent>
+  )
 }
 

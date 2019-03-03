@@ -23,19 +23,16 @@ const themedTextStyle: StyleFunction<BaseTheme, TextProps> = (props: TextProps):
   ...createFontCSSProps(props),
 })
 
-export class Text<T extends BaseTheme> extends React.Component<TextProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>> {
-
-  public render() {
-    const {children, style, ...rest} = this.props
-    const styles = mergeThemedStyles<T, BoxProps>(themedTextStyle, style)
-    return (
-      <FelaComponent<T, FlexProps> style={styles} {...rest}>
-        {({className}) => (
-          <span className={className} {...filterProps(rest)}>
+export function Text<T extends BaseTheme>(props: TextProps & HtmlSpanAttributesWithoutStyle & WithStyle<T>) {
+  const {children, style, ...rest} = props
+  const styles = mergeThemedStyles<T, BoxProps>(themedTextStyle, style)
+  return (
+    <FelaComponent<T, FlexProps> style={styles} {...rest}>
+      {({className}) => (
+        <span className={className} {...filterProps(rest)}>
             {children}
           </span>
-        )}
-      </FelaComponent>
-    )
-  }
+      )}
+    </FelaComponent>
+  )
 }

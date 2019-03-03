@@ -40,19 +40,16 @@ const themedFlexStyles: StyleFunction<BaseTheme, FlexProps> = (props: FlexProps)
   ...createFlexContainerCSSStyle(props),
 })
 
-export class Flex<T extends BaseTheme> extends React.Component<FlexProps & HtmlDivAttributesWithoutStyle & WithStyle<T>> {
-
-  public render() {
-    const {children, style, ...rest} = this.props
-    const styles = mergeThemedStyles<T, BoxProps>(themedFlexStyles, style)
-    return (
-      <FelaComponent<T, FlexProps> style={styles} {...rest}>
-        {({className}) => (
-          <div className={className} {...filterProps(rest)}>
-            {children}
-          </div>
-        )}
-      </FelaComponent>
-    )
-  }
+export function Flex<T extends BaseTheme>(props: FlexProps & HtmlDivAttributesWithoutStyle & WithStyle<T>) {
+  const {children, style, ...rest} = props
+  const styles = mergeThemedStyles<T, BoxProps>(themedFlexStyles, style)
+  return (
+    <FelaComponent<T, FlexProps> style={styles} {...rest}>
+      {({className}) => (
+        <div className={className} {...filterProps(rest)}>
+          {children}
+        </div>
+      )}
+    </FelaComponent>
+  )
 }
