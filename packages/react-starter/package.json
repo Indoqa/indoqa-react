@@ -7,10 +7,9 @@
     "src"
   ],
   "scripts": {
-    "analyze": "source-map-explorer ./target/assets/vendors-*",
-    "build": "indoqa-webpack ./indoqa-webpack-options.js",
+    "analyze": "source-map-explorer ./build/static/*.js{,.map}",
+    "build": "indoqa-webpack-ts ./indoqa-webpack-options.js",
     "clean": "rimraf ./target",
-    "compile": "yarn clean && tsc --outdir ./target/js",
     "lint": "tslint --project .",
     "package": "yarn clean && yarn build",
     "postinstall": "yarn run package",
