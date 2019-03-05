@@ -57,6 +57,7 @@ export interface FontProps<T extends BaseTheme> {
   fontSize?: keyof T['fontSizes'],
   color?: string | keyof T['colors'],
   bold?: boolean,
+  italic?: boolean,
   ellipsis?: boolean,
 }
 
@@ -151,18 +152,19 @@ export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingP
 }
 
 export function createFontCSSProps<T extends BaseTheme>(
-  {theme, fontStyle, fontSize, color, bold, ellipsis}: FontProps<T> & WithBaseTheme) {
+  {theme, fontStyle, fontSize, color, bold, italic, ellipsis}: FontProps<T> & WithBaseTheme) {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
   const styles: IStyle = {
     fontWeight: (bold) ? 700 : 400,
   }
-
+  if (italic) {
+    Object.assign(styles, {fontStyle: 'italic'})
+  }
   if (fontStyle) {
     Object.assign(styles, getFontStyle(theme, fontStyle as string))
   }
-
   if (fontSize) {
     Object.assign(styles, {fontSize: getFontSize(theme, fontSize as string)})
   }
@@ -246,7 +248,7 @@ const knownProps = [
   'inline', 'width', 'height', 'fullWidth', 'fullHeight',
   'grow', 'shrink', 'basis', 'order', 'align',
   'direction', 'nowrap', 'center', 'justifyContent', 'alignItems', 'stretch',
-  'fontStyle', 'fontSize', 'color', 'bold', 'ellipsis',
+  'fontStyle', 'fontSize', 'color', 'bold', 'italic', 'ellipsis',
   'm', 'mt', 'mb', 'ml', 'mr', 'mx', 'my',
   'p', 'pt', 'pb', 'pl', 'pr', 'px', 'py',
   'bg',
