@@ -8,20 +8,30 @@ type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 type Spacing = 0 | 1 | 2 | 3 | 4
 
+export interface BoxProps<T extends BaseTheme> extends MarginProps,
+  PaddingProps,
+  FlexChildProps,
+  FontProps<T>,
+  StylingProps<T>,
+  BoxModelProps {
+}
+
+export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, FlexContainerProps {
+}
+
+export interface TextProps<T extends BaseTheme> extends MarginProps,
+  PaddingProps,
+  FlexChildProps,
+  FontProps<T>,
+  StylingProps<T> {
+}
+
 export interface BoxModelProps {
   inline?: boolean,
   width?: number | string,
   height?: number | string,
   fullWidth?: boolean,
   fullHeight?: boolean,
-}
-
-export interface BoxProps<T extends BaseTheme> extends MarginProps,
-  PaddingProps,
-  FlexChildProps,
-  FontProps,
-  StylingProps<T>,
-  BoxModelProps {
 }
 
 export interface FlexChildProps {
@@ -42,13 +52,10 @@ export interface FlexContainerProps {
   stretch?: boolean,
 }
 
-export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, FlexContainerProps {
-}
-
-export interface FontProps {
-  font?: string,
-  fontSize?: number | string,
-  color?: string,
+export interface FontProps<T extends BaseTheme> {
+  fontStyle?: keyof T['fontStyles']
+  fontSize?: keyof T['fontSizes'],
+  color?: string | keyof T['colors'],
   bold?: boolean,
   ellipsis?: boolean,
 }
@@ -75,9 +82,6 @@ export declare interface PaddingProps {
 
 export interface StylingProps<T extends BaseTheme> {
   bg?: string | keyof T['colors'],
-}
-
-export interface TextProps extends MarginProps, PaddingProps, FlexChildProps, FontProps {
 }
 
 interface WithBaseTheme {
@@ -116,14 +120,54 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
   return styles
 }
 
-export const createFontCSSProps = ({theme, font, fontSize, color, bold, ellipsis}: FontProps & WithBaseTheme): IStyle => {
+function getColor<T extends BaseTheme>(theme: T, color: string = 'transparent'): string {
+  if (color in theme.colors) {
+    return theme.colors[color]
+  }
+  return color
+}
+
+function getFontSize<T extends BaseTheme>(theme: T, fontSize: string): string {
+  if (fontSize in theme.fontSizes) {
+    return theme.fontSizes[fontSize]
+  }
+  return ''
+}
+
+function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string {
+  if (fontStyle in theme.fontStyles) {
+    return theme.fontStyles[fontStyle]
+  }
+  return ''
+}
+
+export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingProps<T> & WithBaseTheme) {
+  if (theme === undefined || theme.colors === undefined) {
+    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
+  }
+  return ({
+    backgroundColor: getColor(theme, bg as string),
+  })
+}
+
+export function createFontCSSProps<T extends BaseTheme>(
+  {theme, fontStyle, fontSize, color, bold, ellipsis}: FontProps<T> & WithBaseTheme) {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
   const styles: IStyle = {
-    fontSize: (fontSize) ? theme.fontSizes[fontSize] : theme.fontSizes.text,
-    color: (color) ? theme.colors[color] : theme.colors.text,
     fontWeight: (bold) ? 700 : 400,
+  }
+
+  if (fontStyle) {
+    Object.assign(styles, getFontStyle(theme, fontStyle as string))
+  }
+
+  if (fontSize) {
+    Object.assign(styles, {fontSize: getFontSize(theme, fontSize as string)})
+  }
+  if (color) {
+    Object.assign(styles, {color: getColor(theme, color as string)})
   }
   if (ellipsis) {
     const ellipsisStyles: IStyle = {
@@ -198,27 +242,11 @@ export const createPaddingCSSProps = ({theme, p, pt, pb, pl, pr, px, py}: Paddin
   return styles
 }
 
-function getColor<T extends BaseTheme>(theme: T, color: string = 'transparent'): string {
-  if (color in theme.colors) {
-    return theme.colors[color]
-  }
-  return color
-}
-
-export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingProps<T> & WithBaseTheme) {
-  if (theme === undefined || theme.colors === undefined) {
-    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
-  }
-  return ({
-    backgroundColor: getColor(theme, bg as string),
-  })
-}
-
 const knownProps = [
   'inline', 'width', 'height', 'fullWidth', 'fullHeight',
   'grow', 'shrink', 'basis', 'order', 'align',
   'direction', 'nowrap', 'center', 'justifyContent', 'alignItems', 'stretch',
-  'font', 'fontSize', 'color', 'bold', 'ellipsis',
+  'fontStyle', 'fontSize', 'color', 'bold', 'ellipsis',
   'm', 'mt', 'mb', 'ml', 'mr', 'mx', 'my',
   'p', 'pt', 'pb', 'pl', 'pr', 'px', 'py',
   'bg',

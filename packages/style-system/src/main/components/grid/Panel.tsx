@@ -21,7 +21,7 @@ import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 import {addUnitIfNeeded} from './utils'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T>, FontProps, FlexContainerProps {
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T>, FontProps<T>, FlexContainerProps {
   size?: number,
   width?: string | number,
 }
