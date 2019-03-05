@@ -8,7 +8,7 @@ const BoxSamples: React.FC = () => (
   <>
     <h3>Box with margin, padding and background color</h3>
     <Box<Theme> my={2} p={2} bg="primary">Box1</Box>
-    <Box<Theme> my={2} p={2} bg="accent">Box2</Box>
+    <Box<Theme> my={2} p={2} bg="accent" fontStyle="mono" italic>Box2</Box>
     <Code initialShow showToggle={false}>{sample1}</Code>
 
     <h3>Box with onClick event</h3>
