@@ -6,6 +6,7 @@
   "main": "dist/indoqa-react-app.cjs.js",
   "module": "dist/indoqa-react-app.es.js",
   "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
