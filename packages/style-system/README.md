@@ -168,4 +168,5 @@ Complete samples can be found at [Indoqa Style-System demo](../style-system-demo
 * [Base components](./docs/base-components.md#Box) (Box, Flex, Text)
 * [Grid](./docs/grid.md)
 * [PStyle and breakpoints](./docs/pstyle-and-breakpoints.md)
+* [Theming](./docs/theming.md)
 
