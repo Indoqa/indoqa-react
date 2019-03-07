@@ -2,7 +2,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {BaseTheme} from '../..'
+import {BaseTheme, Spacing} from '../..'
 import {
   BoxModelProps,
   createBoxModelCSSProps,
@@ -32,7 +32,7 @@ interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
 }
 
 interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
-  spacing: number | string,
+  spacing: Spacing,
 }
 
 class GridContainer<T extends BaseTheme> extends React.Component<GridContainerStyleProps<T>> {
