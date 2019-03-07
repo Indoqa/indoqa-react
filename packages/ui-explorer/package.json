@@ -26,6 +26,7 @@
     "fela"
   ],
   "peerDependencies": {
+    "@indoqa/style-system": ">=1.0.0-alpha.6",
     "fela": ">=10",
     "react": ">=16",
     "react-fela": ">=10",
@@ -33,6 +34,7 @@
     "react-router-dom": ">4"
   },
   "dependencies": {
+    "@indoqa/style-system": "^1.0.0-alpha.6",
     "deepmerge": "^2.2.1",
     "fela": "^10.2.1",
     "react": "^16.8.2",

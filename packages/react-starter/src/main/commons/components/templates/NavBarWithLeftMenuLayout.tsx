@@ -155,7 +155,7 @@ class NavBarWithLeftMenuLayout extends React.Component<Props, State> {
     const {title, children, renderNavBar} = this.props
     const {showMobileMenu} = this.state
     return (
-      <Flex stretch height="100%">
+      <Flex height="100%">
         <DocumentTitle title={title || ''}/>
         {this.renderMobileMenu()}
         <Box grow={1}>
