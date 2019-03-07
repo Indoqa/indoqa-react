@@ -3,10 +3,11 @@ import * as React from 'react'
 import {FelaStyle, StyleFunction} from 'react-fela'
 import {BaseTheme} from '..'
 
-type Direction = 'column' | 'row'
-type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
-type JustifyContent = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
+type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
+type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 type Spacing = 0 | 1 | 2 | 3 | 4
+type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
 
 export interface BoxProps<T extends BaseTheme> extends MarginProps,
   PaddingProps,
@@ -46,10 +47,9 @@ export interface FlexContainerProps {
   inline?: boolean,
   direction?: Direction,
   nowrap?: boolean,
-  center?: string,
+  center?: boolean,
   justifyContent?: JustifyContent,
   alignItems?: AlignItems,
-  stretch?: boolean,
 }
 
 export interface FontProps<T extends BaseTheme> {
@@ -59,6 +59,7 @@ export interface FontProps<T extends BaseTheme> {
   bold?: boolean,
   italic?: boolean,
   ellipsis?: boolean,
+  textAlign?: TextAlign,
 }
 
 export interface MarginProps {
@@ -121,7 +122,7 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
   return styles
 }
 
-function getColor<T extends BaseTheme>(theme: T, color: string = 'transparent'): string {
+function getColor<T extends BaseTheme>(theme: T, color: string): string {
   if (color in theme.colors) {
     return theme.colors[color]
   }
@@ -146,18 +147,23 @@ export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingP
   if (theme === undefined || theme.colors === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
-  return ({
-    backgroundColor: getColor(theme, bg as string),
-  })
+
+  const styles: IStyle = {}
+  if (bg) {
+    Object.assign(styles, {backgroundColor: getColor(theme, bg as string)})
+  }
+  return styles
 }
 
 export function createFontCSSProps<T extends BaseTheme>(
-  {theme, fontStyle, fontSize, color, bold, italic, ellipsis}: FontProps<T> & WithBaseTheme) {
+  {theme, fontStyle, fontSize, color, bold, italic, ellipsis, textAlign}: FontProps<T> & WithBaseTheme) {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
-  const styles: IStyle = {
-    fontWeight: (bold) ? 700 : 400,
+
+  const styles: IStyle = {}
+  if (bold) {
+    Object.assign(styles, {fontWeight: 700})
   }
   if (italic) {
     Object.assign(styles, {fontStyle: 'italic'})
@@ -178,6 +184,9 @@ export function createFontCSSProps<T extends BaseTheme>(
       whiteSpace: 'nowrap',
     }
     Object.assign(styles, ellipsisStyles)
+  }
+  if (textAlign) {
+    Object.assign(styles, {textAlign})
   }
   return styles
 }
@@ -247,8 +256,8 @@ export const createPaddingCSSProps = ({theme, p, pt, pb, pl, pr, px, py}: Paddin
 const knownProps = [
   'inline', 'width', 'height', 'fullWidth', 'fullHeight',
   'grow', 'shrink', 'basis', 'order', 'align',
-  'direction', 'nowrap', 'center', 'justifyContent', 'alignItems', 'stretch',
-  'fontStyle', 'fontSize', 'color', 'bold', 'italic', 'ellipsis',
+  'direction', 'nowrap', 'center', 'justifyContent', 'alignItems',
+  'fontStyle', 'fontSize', 'color', 'bold', 'italic', 'ellipsis', 'textAlign',
   'm', 'mt', 'mb', 'ml', 'mr', 'mx', 'my',
   'p', 'pt', 'pb', 'pl', 'pr', 'px', 'py',
   'bg',

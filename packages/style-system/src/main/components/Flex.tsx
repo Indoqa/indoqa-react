@@ -6,34 +6,32 @@ import {BaseTheme, HtmlDivAttributesWithoutStyle} from '..'
 import {BoxProps, filterProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
 import {createBoxCSSStyles} from './Box'
 
-const align = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
-  if (center) {
-    return 'center'
-  }
-
-  if (value) {
-    return value
-  }
-
-  return (stretch) ? 'stretch' : 'flex-start'
-}
-
 export const createFlexContainerCSSStyle = (
   {
     inline,
-    direction = 'row',
+    direction,
     nowrap,
     center,
     justifyContent,
     alignItems,
-    stretch,
-  }: FlexContainerProps): IStyle => ({
-  display: (inline) ? 'inline-flex' : 'flex',
-  flexDirection: direction,
-  flexWrap: (nowrap) ? 'nowrap' : 'wrap',
-  justifyContent: align(center, stretch, justifyContent),
-  alignItems: align(center, stretch, alignItems),
-})
+  }: FlexContainerProps): IStyle => {
+  const styles: IStyle = ({
+    display: (inline) ? 'inline-flex' : 'flex',
+    flexDirection: direction || 'row',
+    flexWrap: (nowrap) ? 'nowrap' : 'wrap',
+    justifyContent: justifyContent || 'flex-start',
+    alignItems: alignItems || 'stretch',
+  })
+  if (center) {
+    const centerStyles: IStyle = {
+      justifyContent: justifyContent || 'center',
+      alignItems: alignItems || 'center',
+      textAlign: 'center',
+    }
+    Object.assign(styles, centerStyles)
+  }
+  return styles
+}
 
 function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
   return {

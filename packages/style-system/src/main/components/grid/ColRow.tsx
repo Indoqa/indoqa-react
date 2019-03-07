@@ -121,7 +121,7 @@ const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, 
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
 
   public render() {
-    const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = ({style, spacing, ...otherProps}): RowStyle => ({
+    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): RowStyle => ({
       ...createPaddingCSSProps(otherProps),
       ...createStylingCSSProps(otherProps),
       boxSizing: 'border-box',

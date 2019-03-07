@@ -9,45 +9,46 @@ across the application.
 ### Margin
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `m`               | `number` \[0-4\]    | unset        | set the CSS properties `margin-top`, `margin-right`, `margin-bottom` and `margin-left` to  `theme.spacing.space[0-5]` |
-| `mx`              | `number` \[0-4\]    | unset        | set the CSS properties `margin-right` and `margin-left` to  `theme.spacing.space[0-5]` |
-| `my`              | `number` \[0-4\]    | unset        | set the CSS properties `margin-top` and `margin-bottom` to  `theme.spacing.space[0-5]` |
-| `mt`              | `number` \[0-4\]    | unset        | set the CSS property `margin-top` to  `theme.spacing.space[0-5]` |
-| `mr`              | `number` \[0-4\]    | unset        | set the CSS property `margin-right` to  `theme.spacing.space[0-5]` |
-| `mb`              | `number` \[0-4\]    | unset        | set the CSS property `margin-bottom` to  `theme.spacing.space[0-5]` |
-| `ml`              | `number` \[0-4\]    | unset        | set the CSS property `margin-right` to  `theme.spacing.space[0-5]` |
+| `m`               | `number` \[0-4\]    | unset        | Set the CSS properties `margin-top`, `margin-right`, `margin-bottom` and `margin-left` to  `theme.spacing.space[0-5]` |
+| `mx`              | `number` \[0-4\]    | unset        | Set the CSS properties `margin-right` and `margin-left` to  `theme.spacing.space[0-5]` |
+| `my`              | `number` \[0-4\]    | unset        | Set the CSS properties `margin-top` and `margin-bottom` to  `theme.spacing.space[0-5]` |
+| `mt`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-top` to  `theme.spacing.space[0-5]` |
+| `mr`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-right` to  `theme.spacing.space[0-5]` |
+| `mb`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-bottom` to  `theme.spacing.space[0-5]` |
+| `ml`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-right` to  `theme.spacing.space[0-5]` |
 
 
 ### Padding
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `p`               | `number` \[0-4\]    | unset        | set the CSS properties `padding-top`, `padding-right`, `padding-bottom` and `padding-left` to  `theme.spacing.space[0-5]` |
-| `px`              | `number` \[0-4\]    | unset        | set the CSS properties `padding-right` and `padding-left` to  `theme.spacing.space[0-5]` |
-| `py`              | `number` \[0-4\]    | unset        | set the CSS properties `padding-top` and `padding-bottom` to  `theme.spacing.space[0-5]` |
-| `pt`              | `number` \[0-4\]    | unset        | set the CSS property `padding-top` to  `theme.spacing.space[0-5]` |
-| `pr`              | `number` \[0-4\]    | unset        | set the CSS property `padding-right` to  `theme.spacing.space[0-5]` |
-| `pb`              | `number` \[0-4\]    | unset        | set the CSS property `padding-bottom` to  `theme.spacing.space[0-5]` |
-| `pl`              | `number` \[0-4\]    | unset        | set the CSS property `padding-right` to  `theme.spacing.space[0-5]` |
+| `p`               | `number` \[0-4\]    | unset        | Set the CSS properties `padding-top`, `padding-right`, `padding-bottom` and `padding-left` to  `theme.spacing.space[0-5]` |
+| `px`              | `number` \[0-4\]    | unset        | Set the CSS properties `padding-right` and `padding-left` to  `theme.spacing.space[0-5]` |
+| `py`              | `number` \[0-4\]    | unset        | Set the CSS properties `padding-top` and `padding-bottom` to  `theme.spacing.space[0-5]` |
+| `pt`              | `number` \[0-4\]    | unset        | Set the CSS property `padding-top` to  `theme.spacing.space[0-5]` |
+| `pr`              | `number` \[0-4\]    | unset        | Set the CSS property `padding-right` to  `theme.spacing.space[0-5]` |
+| `pb`              | `number` \[0-4\]    | unset        | Set the CSS property `padding-bottom` to  `theme.spacing.space[0-5]` |
+| `pl`              | `number` \[0-4\]    | unset        | Set the CSS property `padding-right` to  `theme.spacing.space[0-5]` |
 
 ### Flex child
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `grow`            | `number`            | `0`          | set the CSS property `flex-grow` |
-| `shrink`          | `number`            | `1`          | set the CSS property `flex-shrink` |
-| `basis`           | `number` \| `string`| `auto`       | set the CSS property `flex-basis` |
-| `order`           | `number`            | `0`          | set the CSS property `order` |
-| `align`           | `AlignItems`        | `auto`       | set the CSS property `alignSelf`, allowed values: `auto\|stretch\|center\|flex-start\|flex-end\|baseline\|initial\|inherit` |
+| `grow`            | `number`            | `0`          | Set the CSS property `flex-grow` |
+| `shrink`          | `number`            | `1`          | Set the CSS property `flex-shrink` |
+| `basis`           | `number` \| `string`| `auto`       | Set the CSS property `flex-basis` |
+| `order`           | `number`            | `0`          | Set the CSS property `order` |
+| `align`           | `AlignItems`        | `auto`       | Set the CSS property `alignSelf`, allowed values: `auto\|stretch\|center\|flex-start\|flex-end\|baseline\|initial\|inherit` |
+
 
 ### Font
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `fontStyle`       | `string`            |              |             |
-| `fontSize`        | `string`            |              |             |
-| `color`           | `string`            |              |             |
-| `bold`            | `boolean`           |              |             |
-| `italic`          | `boolean`           |              |             |
-| `ellipsis`        | `boolean`           |              |             |
-| `textAlign`       | `string`            | unset (`left` if direction is ltr, and `right` if direction is rtl) | set the CSS property `text-align`|
+| `fontStyle`       | `string`            | unset        | The value is used to lookup font-related styles from `theme.fontStyles`. The allowed values are determined by the theme type.|
+| `fontSize`        | `string`            | unset        | The value is used to lookup the font-size from `theme.fontSizes` and set the CSS property `font-size`. The allowed values are determined by the theme type. |
+| `color`           | `string`            | unset        | Set the CSS property `background-color`. If the value is a key of `theme.colors`, the respective value is taken from it. Otherwise the passed value is used. |            |
+| `bold`            | `boolean`           | `false`      | Set the CSS property `font-weight` to `700`. If this is not appropriate for the chosen font, define a font style in your theme and explicitly set the `font-weight`. |
+| `italic`          | `boolean`           | `false`      | Set the CSS property `font-style` to `italic`. |
+| `ellipsis`        | `boolean`           | `false`      | Set the CSS properties `text-overflow` to `ellipsis`, `overflow` to `hidden` and `white-space` to `nowrap`. |
+| `textAlign`       | `TextAlign`         | unset (`left` if direction is ltr, and `right` if direction is rtl) | Set the CSS property `text-align`. Allowed values: `left`\|`right`\|`center`\|`justify`\|`initial`\|`inherit`|
 
 ### Styling
 | Property          | Type                | Default      | Description |
@@ -57,19 +58,19 @@ across the application.
 ### Box model
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `inline`          | `boolean`           |              |             |
-| `width`           | `number` \| `string`|              |             |
-| `height`          | `number` \| `string`|              |             |
-| `fullWidth`       | `boolean`           |              |             |
-| `fullHeight`      | `boolean`           |              |             |
+| `inline`          | `boolean`           | `false`      | If set to `true`, the CSS property `display` is set to `inline`, otherwise to `block`. |
+| `width`           | `number` \| `string`| unset        | Set the CSS property `width` to the value. If `fullWidth` is set to true, the `width` is set to `100%` though and overrides the `width` property of the `Box`. |
+| `height`          | `number` \| `string`| unset        | Set the CSS property `height` to the value. If `fullHeight` is set to true, the `height` is set to `100%` though and overrides the `height` property of the `Box`.            |
+| `fullWidth`       | `boolean`           | `false`      | Set the CSS property `width` to `100%`. |
+| `fullHeight`      | `boolean`           | `false`      | Set the CSS property `height` to `100%`. |
 
 ### Additional CSS styles
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `style`           | `FelaStyle`         | -            | A style object of type `IStyle`, a `StyleFunction or an array of one of them or both. In the case of an array the elements are applied from left to right. |
+| `style`           | `FelaStyle`         | -            | A style object of type `IStyle`, a `StyleFunction` or an array of one of them or both. In the case of an array the elements are applied from left to right. |
 
 This is an escape hatch in the case that the available properties do not support a particular CSS property.
-Note that using `style` does not create inline styles but global CSS rules.
+Note that using `style` does not create inline styles but Fela generates global CSS rules.
 
 #### IStyle
 The `IStyle` interface extends the React interface `CSS.Properties<...>`:
@@ -127,13 +128,12 @@ The following properties are the same as of `Box`:
 ### Flex container
 | Property          | Type                | Default       | Description |
 |:----------------- |:--------------------|:--------------|:------------|
-| `inline`          | `boolean`           |               |             |
-| `direction`       | `Direction`         | 'row' (unset) |             |
-| `nowrap`          | `boolean`           |               |             |
-| `center`          | `boolean`           |               |             |
-| `justifyContent`  | `JustifyContent`    |               |             |
-| `alignItems`      | `AlignItems`        |               | set the CSS property `alignItems`, allowed values: `auto\|stretch\|center\|flex-start\|flex-end\|baseline\|initial\|inherit` |
-| `stretch`         | `boolean`           |               |             |
+| `inline`          | `boolean`           | `false`       | If `true`, set the CSS property `display` to `flex-inline`, otherwise to `flex`. Note that this overrides the property `inline` of `Box`. |
+| `direction`       | `Direction`         | `row`         | Set the CSS property `flex-direction` to the value. Allowed values are `column\|column\|column-reverse\|row-reverse\|initial\|inherit`. |
+| `nowrap`          | `boolean`           | `false`       | Set the CSS property `flex-wrap` to the value. |
+| `center`          | `boolean`           | `false`       | Set the CSS properties `justify-content', `align-items` and `text-align` to `center`.|
+| `justifyContent`  | `JustifyContent`    | `flex-start`  | Set the CSS property `justify-content`, allowed values: `flex-end'\|'center'\|'space-between'\|'space-around'\|'space-evenly'`. |
+| `alignItems`      | `AlignItems`        | `stretch`     | Set the CSS property `alignItems`, allowed values: `auto\|center\|flex-start\|flex-end\|baseline\|initial\|inherit` |
 
 ## Theme
 see [Box](#theme)
