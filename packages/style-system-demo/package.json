@@ -35,7 +35,7 @@
     "fela-plugin-named-keys": "^10.2.1",
     "fela-preset-web": "^10.2.1",
     "history": "^4.7.2",
-    "react": "^16.8.2",
+    "react": "^16.8.4",
     "react-app-polyfill": "^0.2.1",
     "react-dom": "^16.8.2",
     "react-fela": "^10.2.1",

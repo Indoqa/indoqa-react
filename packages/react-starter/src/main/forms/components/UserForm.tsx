@@ -2,7 +2,7 @@ import {Box} from '@indoqa/style-system'
 import {Form, Formik, FormikProps} from 'formik'
 import i18next from 'i18next'
 import * as React from 'react'
-import {WithNamespaces, withNamespaces} from 'react-i18next'
+import {WithTranslation, withTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
 import Button from '../../commons/components/atoms/Button'
@@ -22,7 +22,7 @@ const validationSchema = (t: i18next.TFunction) =>
     })),
   })
 
-export interface Props extends WithNamespaces {
+export interface Props extends WithTranslation {
   user: User,
   cancelUrl: string,
   saveUser: (user: User, setErrors: any) => void
@@ -58,4 +58,4 @@ class UserForm extends React.Component<Props> {
   }
 }
 
-export default withNamespaces('forms')(UserForm)
+export default withTranslation('forms')(UserForm)

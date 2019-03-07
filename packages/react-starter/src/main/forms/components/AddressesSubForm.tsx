@@ -2,7 +2,7 @@ import {Box, Flex, Text} from '@indoqa/style-system'
 import {ArrayHelpers, FieldArray, FormikErrors, FormikTouched} from 'formik'
 import i18next from 'i18next'
 import * as React from 'react'
-import {WithNamespaces, withNamespaces} from 'react-i18next'
+import {WithTranslation, withTranslation} from 'react-i18next'
 import Button from '../../commons/components/atoms/Button'
 import FormRow from '../../commons/components/molecules/FormRow'
 
@@ -78,7 +78,7 @@ export interface AddressFormProps {
   touched: FormikTouched<{}>,
 }
 
-const AddressesSubForm: React.FunctionComponent<AddressFormProps & WithNamespaces> =
+const AddressesSubForm: React.FunctionComponent<AddressFormProps & WithTranslation> =
   ({addresses, errors, touched, t}) => (
     <FieldArray
       name="addresses"
@@ -91,4 +91,4 @@ const AddressesSubForm: React.FunctionComponent<AddressFormProps & WithNamespace
     />
   )
 
-export default withNamespaces('forms')(AddressesSubForm)
+export default withTranslation('forms')(AddressesSubForm)

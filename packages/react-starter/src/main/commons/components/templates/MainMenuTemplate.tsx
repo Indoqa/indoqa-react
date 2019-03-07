@@ -2,7 +2,7 @@ import {Box, PStyle, Text} from '@indoqa/style-system'
 import i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
-import {WithNamespaces, withNamespaces} from 'react-i18next'
+import {WithTranslation, withTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../../app/theme'
 import Logo from '../molecules/Logo'
@@ -75,7 +75,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({i18n}) => (
   </Box>
 )
 
-interface Props extends WithNamespaces {
+interface Props extends WithTranslation {
   children?: React.ReactNode,
   header?: string,
   title?: string,
@@ -105,4 +105,4 @@ const MainMenuTemplate: React.FC<Props> = ({title, header, i18n, children}) => {
   )
 }
 
-export default withNamespaces()(MainMenuTemplate)
+export default withTranslation()(MainMenuTemplate)

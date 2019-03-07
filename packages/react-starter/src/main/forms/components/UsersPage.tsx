@@ -1,6 +1,6 @@
 import {Box} from '@indoqa/style-system'
 import * as React from 'react'
-import {WithNamespaces, withNamespaces} from 'react-i18next'
+import {WithTranslation, withTranslation} from 'react-i18next'
 import {Link, RouteComponentProps} from 'react-router-dom'
 import LinkButton from '../../commons/components/atoms/LinkButton'
 
@@ -11,7 +11,7 @@ export interface Props extends RouteComponentProps {
   users: { [key: string]: User },
 }
 
-class UsersPage extends React.Component<Props & WithNamespaces> {
+class UsersPage extends React.Component<Props & WithTranslation> {
 
   public render() {
     const {users, match, t} = this.props
@@ -28,4 +28,4 @@ class UsersPage extends React.Component<Props & WithNamespaces> {
   }
 }
 
-export default withNamespaces('forms')(UsersPage)
+export default withTranslation('forms')(UsersPage)

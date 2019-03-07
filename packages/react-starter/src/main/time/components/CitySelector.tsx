@@ -1,6 +1,6 @@
 import {Box} from '@indoqa/style-system'
 import * as React from 'react'
-import {WithNamespaces, withNamespaces} from 'react-i18next'
+import {WithTranslation, withTranslation} from 'react-i18next'
 
 import Button from '../../commons/components/atoms/Button'
 
@@ -12,7 +12,7 @@ export interface Props {
   clear: () => void,
 }
 
-const CitySelector: React.FunctionComponent<Props & WithNamespaces> =
+const CitySelector: React.FunctionComponent<Props & WithTranslation> =
   ({t, loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => (
     <Box mb={2}>
       <Button onClick={loadVienna}>{t('Vienna')}</Button>
@@ -23,4 +23,4 @@ const CitySelector: React.FunctionComponent<Props & WithNamespaces> =
     </Box>
   )
 
-export default withNamespaces('translations')(CitySelector)
+export default withTranslation('translations')(CitySelector)

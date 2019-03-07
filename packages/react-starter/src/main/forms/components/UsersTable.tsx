@@ -2,7 +2,7 @@ import {Box} from '@indoqa/style-system'
 import i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {WithNamespaces, withNamespaces} from 'react-i18next'
+import {WithTranslation, withTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../app/theme'
 
@@ -37,7 +37,7 @@ export interface Props {
   baseurl: string,
 }
 
-class UsersTable extends React.Component<Props & WithNamespaces> {
+class UsersTable extends React.Component<Props & WithTranslation> {
 
   public render() {
     const {users, baseurl, t} = this.props
@@ -53,4 +53,4 @@ class UsersTable extends React.Component<Props & WithNamespaces> {
   }
 }
 
-export default withNamespaces('forms')(UsersTable)
+export default withTranslation('forms')(UsersTable)
