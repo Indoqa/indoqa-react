@@ -59,8 +59,8 @@ const createPlugins = (options, isDevelopment) => {
   buildPlugins.push(ignoreMomentJsLocaleResourcesPlugin)
   devPlugins.push(ignoreMomentJsLocaleResourcesPlugin)
 
-  // const inlineChunkHtmlPlugin = new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/])
-  // buildPlugins.push(inlineChunkHtmlPlugin)
+  const inlineChunkHtmlPlugin = new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/])
+  buildPlugins.push(inlineChunkHtmlPlugin)
 
   const manifestPlugin = new ManifestPlugin({
     fileName: 'asset-manifest.json',
