@@ -1,6 +1,6 @@
 import {Box} from '@indoqa/style-system'
 import * as React from 'react'
-import {WithTranslation, withTranslation} from 'react-i18next'
+import {useTranslation} from 'react-i18next'
 
 import Button from '../../commons/components/atoms/Button'
 
@@ -12,8 +12,9 @@ export interface Props {
   clear: () => void,
 }
 
-const CitySelector: React.FC<Props & WithTranslation> =
-  ({t, loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => (
+const CitySelector: React.FC<Props> = ({loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => {
+  const {t} = useTranslation()
+  return (
     <Box mb={2}>
       <Button onClick={loadVienna}>{t('Vienna')}</Button>
       <Button onClick={loadNewYork}>{t('New York')}</Button>
@@ -22,5 +23,6 @@ const CitySelector: React.FC<Props & WithTranslation> =
       <Button onClick={clear}>{t('Clear')}</Button>
     </Box>
   )
+}
 
-export default withTranslation('translations')(CitySelector)
+export default CitySelector

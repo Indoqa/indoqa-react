@@ -2,7 +2,7 @@ import {Box} from '@indoqa/style-system'
 import {Form, Formik, FormikProps} from 'formik'
 import i18next from 'i18next'
 import * as React from 'react'
-import {WithTranslation, withTranslation} from 'react-i18next'
+import {useTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import * as Yup from 'yup'
 import Button from '../../commons/components/atoms/Button'
@@ -22,40 +22,36 @@ const validationSchema = (t: i18next.TFunction) =>
     })),
   })
 
-export interface Props extends WithTranslation {
+export interface Props {
   user: User,
   cancelUrl: string,
   saveUser: (user: User, setErrors: any) => void
 }
 
-class UserForm extends React.Component<Props> {
-
-  public render() {
-    const {user, cancelUrl, saveUser, t} = this.props
-    return (
-      <Formik
-        key={user.id + user.lastModified.toString()}
-        onSubmit={(values, {setErrors}) => saveUser(values, setErrors)}
-        initialValues={user}
-        validationSchema={validationSchema(t)}
-        render={({values, errors, touched, submitForm}: FormikProps<User>) => {
-          return (
-            <Form>
-              <FormRow name="name" label={t('name')} errors={errors} touched={touched}/>
-              <FormRow name="email" label={t('email')} errors={errors} touched={touched}/>
-              <AddressesSubForm addresses={values.addresses} errors={errors} touched={touched}/>
-              <Box mt={2}>
-                <LinkButton>
-                  <Link to={cancelUrl}>{t('cancel')}</Link>
-                </LinkButton>
-                <Button onClick={() => submitForm()}>{t('save')}</Button>
-              </Box>
-            </Form>
-          )
-        }}
-      />
-    )
-  }
+const UserForm: React.FC<Props> = ({user, cancelUrl, saveUser}) => {
+  const {t} = useTranslation('forms')
+  return (
+    <Formik
+      key={user.id + user.lastModified.toString()}
+      onSubmit={(values, {setErrors}) => saveUser(values, setErrors)}
+      initialValues={user}
+      validationSchema={validationSchema(t)}
+      render={({values, errors, touched, submitForm}: FormikProps<User>) => {
+        return (
+          <Form>
+            <FormRow name="name" label={t('name')} errors={errors} touched={touched}/>
+            <FormRow name="email" label={t('email')} errors={errors} touched={touched}/>
+            <AddressesSubForm addresses={values.addresses} errors={errors} touched={touched}/>
+            <Box mt={2}>
+              <LinkButton>
+                <Link to={cancelUrl}>{t('cancel')}</Link>
+              </LinkButton>
+              <Button onClick={() => submitForm()}>{t('save')}</Button>
+            </Box>
+          </Form>
+        )
+      }}
+    />
+  )
 }
-
-export default withTranslation('forms')(UserForm)
+export default UserForm

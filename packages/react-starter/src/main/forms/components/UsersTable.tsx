@@ -2,7 +2,7 @@ import {Box} from '@indoqa/style-system'
 import i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {WithTranslation, withTranslation} from 'react-i18next'
+import {useTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../app/theme'
 
@@ -37,20 +37,16 @@ export interface Props {
   baseurl: string,
 }
 
-class UsersTable extends React.Component<Props & WithTranslation> {
-
-  public render() {
-    const {users, baseurl, t} = this.props
-    return (
-      <Box>
-        <table>
-          <tbody>
-          {Object.keys(users).map((key) => renderUserRow(users[key], baseurl, t))}
-          </tbody>
-        </table>
-      </Box>
-    )
-  }
+const UsersTable: React.FC<Props> = ({users, baseurl}) => {
+  const {t} = useTranslation('forms')
+  return (
+    <Box>
+      <table>
+        <tbody>
+        {Object.keys(users).map((key) => renderUserRow(users[key], baseurl, t))}
+        </tbody>
+      </table>
+    </Box>
+  )
 }
-
-export default withTranslation('forms')(UsersTable)
+export default UsersTable

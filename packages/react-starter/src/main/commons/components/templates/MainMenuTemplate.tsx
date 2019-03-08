@@ -2,7 +2,7 @@ import {Box, PStyle, Text} from '@indoqa/style-system'
 import i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
-import {WithTranslation, withTranslation} from 'react-i18next'
+import {useTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
 import {Theme} from '../../../app/theme'
 import Logo from '../molecules/Logo'
@@ -75,7 +75,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({i18n}) => (
   </Box>
 )
 
-interface Props extends WithTranslation {
+interface Props {
   children?: React.ReactNode,
   header?: string,
   title?: string,
@@ -85,7 +85,8 @@ interface NavBarProps {
   toggleMenu: () => void
 }
 
-const MainMenuTemplate: React.FC<Props> = ({title, header, i18n, children}) => {
+const MainMenuTemplate: React.FC<Props> = ({title, header, children}) => {
+  const {i18n} = useTranslation()
   const documentTitle = title === undefined ? BASE_TITLE : `${BASE_TITLE} | ${title}`
   const NavBar: React.FC<NavBarProps> = ({toggleMenu}) => (
     <>
@@ -105,4 +106,4 @@ const MainMenuTemplate: React.FC<Props> = ({title, header, i18n, children}) => {
   )
 }
 
-export default withTranslation()(MainMenuTemplate)
+export default MainMenuTemplate
