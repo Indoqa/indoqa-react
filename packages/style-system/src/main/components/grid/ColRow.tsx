@@ -18,14 +18,14 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
 }
 
 interface RowStyle extends IStyle {
-  ':first-child': IStyle,
+  '&:first-child': IStyle,
 }
 
 const calcWidthValue = (size: number, spacing?: Spacing): string => {
   const spacingWithUnit = addUnitIfNeeded(spacing)
   const availableSpace = `(100% - ${spacingWithUnit} * ${(GRID_SIZE as any) - 1})`
   const coveredSpacing = `${spacingWithUnit} * ${size - 1}`
-  return `calc(${availableSpace} / ${GRID_SIZE} * ${size} + ${coveredSpacing})`
+  return `calc(${availableSpace} / ${GRID_SIZE} * ${size} + ${coveredSpacing} - 0.01px)`
 }
 
 const getEnhancedColStyles = (
@@ -129,7 +129,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
       flexWrap: 'wrap',
       width: '100%',
       marginTop: spacing,
-      ':first-child': {
+      '&:first-child': {
         marginTop: 0,
       },
     })
