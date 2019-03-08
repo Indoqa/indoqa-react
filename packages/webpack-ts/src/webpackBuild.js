@@ -51,6 +51,12 @@ const build = (projectOptions) => {
   process.env.NODE_ENV = 'production'
   console.log(`${name} v${version} is creating an optimized production build...`)
 
+  const publicFolder = path.join(process.cwd(), 'public')
+  if (!fs.existsSync(publicFolder)) {
+    console.error('There is no public folder: ' + publicFolder)
+    process.exit(1)
+  }
+
   const options = createOptions(projectOptions)
   const config = createConfig(options)
 

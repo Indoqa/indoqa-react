@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const createPlugins = (options, isDevelopment) => {
   const definePlugin = new webpack.DefinePlugin({
@@ -18,8 +19,15 @@ const createPlugins = (options, isDevelopment) => {
   const createIndexHTMLPlugin = new HtmlWebpackPlugin({
     title: options.appName,
     inject: true,
-    template: path.join(__dirname, 'index.html'),
+    template: path.join(process.cwd(), 'public/index.html'),
   })
+
+  const copyPlugin = new CopyPlugin([
+    {
+      from: path.join(process.cwd(), 'public'),
+      to: path.join(process.cwd(), 'build')
+    },
+  ])
 
   const compilePlugins = []
   if (options.createSourceMap) {
@@ -57,6 +65,7 @@ const createPlugins = (options, isDevelopment) => {
     const devPlugins = [
       definePlugin,
       extractCssPlugin,
+      copyPlugin,
       createIndexHTMLPlugin,
       new webpack.HotModuleReplacementPlugin(),
       ignoreMomentJsLocaleResourcesPlugin,
@@ -74,18 +83,12 @@ const createPlugins = (options, isDevelopment) => {
     return devPlugins
   }
 
-  if (options.createIndexHtml) {
-    return [
-      definePlugin,
-      extractCssPlugin,
-      createIndexHTMLPlugin,
-      ...compilePlugins,
-    ]
-  }
-
   return [
     definePlugin,
     extractCssPlugin,
+    copyPlugin,
+    createIndexHTMLPlugin,
+    ignoreMomentJsLocaleResourcesPlugin,
     ...compilePlugins,
   ]
 }

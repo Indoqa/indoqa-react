@@ -9,7 +9,6 @@ const DEFAULT_OPTIONS = {
 
   devPort: 3000,
   createSourceMap: true,
-  createIndexHtml: true,
   autoprefixerBrowser: [
     '>0.2%',
     'not dead',

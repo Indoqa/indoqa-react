@@ -50,7 +50,6 @@ const createOptimizations = (options) => ({
     ],
     splitChunks: {
       chunks: 'all',
-      name: false,
     },
     runtimeChunk: true,
   },
