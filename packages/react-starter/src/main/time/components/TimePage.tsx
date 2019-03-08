@@ -4,18 +4,14 @@ import MainMenuTemplate from '../../commons/components/templates/MainMenuTemplat
 import CitySelector from './CitySelector.redux'
 import Result from './Result.redux'
 
-export default class TimePage extends React.Component<{}> {
+const TimePage: React.FC = () => (
+  <MainMenuTemplate title="Time1">
+    <div/>
+    <Box>
+      <CitySelector/>
+      <Result/>
+    </Box>
+  </MainMenuTemplate>
+)
 
-  public render() {
-
-    return (
-      <MainMenuTemplate title="Time">
-        <div/>
-        <Box>
-          <CitySelector/>
-          <Result/>
-        </Box>
-      </MainMenuTemplate>
-    )
-  }
-}
+export default TimePage

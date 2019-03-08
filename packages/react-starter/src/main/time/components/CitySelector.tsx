@@ -12,7 +12,7 @@ export interface Props {
   clear: () => void,
 }
 
-const CitySelector: React.FunctionComponent<Props & WithTranslation> =
+const CitySelector: React.FC<Props & WithTranslation> =
   ({t, loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => (
     <Box mb={2}>
       <Button onClick={loadVienna}>{t('Vienna')}</Button>
