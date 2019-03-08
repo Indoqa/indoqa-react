@@ -1,0 +1,22 @@
+{
+  "name": "@indoqa/react-app-polyfill",
+  "version": "1.0.0-alpha.6",
+  "description": "Polyfills for various browsers including commonly used language features",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Indoqa/indoqa-react.git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "arrayIncludesPolyfill.js",
+    "ie11.js",
+    "nodeListForEachPolyfill.js",
+    "stringStartsWithPolyfill.js"
+  ],
+  "dependencies": {
+    "react-app-polyfill": "0.2.2"
+  }
+}
