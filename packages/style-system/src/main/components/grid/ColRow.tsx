@@ -1,11 +1,12 @@
-/* tslint:disable */
+/* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
-import {BaseTheme, PStyle, Size} from '../..'
+import {BaseTheme} from '../../theming/baseTheme'
+import {PStyle} from '../../theming/PStyle'
 import sortBreakpoints, {NamedBreakPoint} from '../../theming/sortBreakpoints'
 import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
-import {GRID_SIZE} from './Col'
+import {GRID_SIZE, Size} from './Col'
 import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
 import {addUnitIfNeeded} from './utils'
@@ -34,12 +35,12 @@ const getEnhancedColStyles = (
   size: number,
   willBreakAfter: boolean,
   needsMarginTop: boolean,
-  spacing?: Spacing
+  spacing?: Spacing,
 ) => {
   const style = {
     width: calcWidthValue(size, spacing),
     marginTop: needsMarginTop ? spacing : 0,
-    marginRight: willBreakAfter ? '0px' : spacing
+    marginRight: willBreakAfter ? '0px' : spacing,
   }
   return breakpointName === null ? style : {[breakpointName]: style}
 }
@@ -80,8 +81,8 @@ const validateSizes = (sizes: number, breakpointCount: number, child: any) => {
  * Iterate over all children (<Col>) and their sizes and create styles for each col/size combination.
  */
 const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, spacing?: Spacing) => {
-  let currentRowSize = initializeArray(breakpoints.length)
-  let rowsCount = initializeArray(breakpoints.length)
+  const currentRowSize = initializeArray(breakpoints.length)
+  const rowsCount = initializeArray(breakpoints.length)
 
   // see https://mxstbr.blog/2017/02/react-children-deepdive/#looping-over-children
   return React.Children.map(children, (child) => {
@@ -111,7 +112,14 @@ const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, 
       // console.log('willOverflow', willOverflow)
       // console.log('currentRowSize[i]', currentRowSize[i])
       // console.log('-----------------------------------------')
-      const enhancedColStyle = getEnhancedColStyles(currentChild, currentBreakpoint, sizes[i], completelyFillsRow, needsMarginTop, spacing)
+      const enhancedColStyle = getEnhancedColStyles(
+        currentChild,
+        currentBreakpoint,
+        sizes[i],
+        completelyFillsRow,
+        needsMarginTop,
+        spacing,
+      )
       Object.assign(enhancedColStyles, enhancedColStyle)
     }
     return React.cloneElement((currentChild), {style: mergeStyles(enhancedColStyles, style)})
@@ -121,6 +129,7 @@ const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, 
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
 
   public render() {
+    // tslint:disable-next-line:no-shadowed-variable
     const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): RowStyle => ({
       ...createPaddingCSSProps(otherProps),
       ...createStylingCSSProps(otherProps),
