@@ -12,9 +12,8 @@ const createOutput = (options, isDevelopment) => {
 
   return {
     path: path.join(process.cwd(), options.outputPath),
-    filename: '[name]-[hash].js',
-    chunkFilename: '[name]-[chunkhash:8].chunk.js',
-    publicPath: options.outputPublicPath,
+    filename: 'static/js/[name]-[hash].js',
+    chunkFilename: 'static/js/[name]-[chunkhash:8].chunk.js',
     devtoolModuleFilenameTemplate: info =>
       path
         .relative(options.outputPath, info.absoluteResourcePath)

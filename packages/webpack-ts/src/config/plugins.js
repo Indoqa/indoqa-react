@@ -18,7 +18,6 @@ const createPlugins = (options, isDevelopment) => {
   const createIndexHTMLPlugin = new HtmlWebpackPlugin({
     title: options.appName,
     inject: true,
-    filename: isDevelopment ? 'index.html' : '../index.html',
     template: path.join(__dirname, 'index.html'),
   })
 
@@ -38,13 +37,12 @@ const createPlugins = (options, isDevelopment) => {
   compilePlugins.push(ignoreMomentJsLocaleResourcesPlugin)
 
   const extractCssPlugin = new MiniCssExtractPlugin({
-    filename: isDevelopment ? '[name].css' : `${options.appName}-[hash:8].css`,
-    chunkFilename: isDevelopment ? '[id].css' : `${options.appName}-[id]-[hash:8].css`,
+    filename: isDevelopment ? '[name].css' : `static/css/${options.appName}-[hash:8].css`,
+    chunkFilename: isDevelopment ? '[id].css' : `static/css/${options.appName}-[id]-[hash:8].css`,
   })
 
   const manifestPlugin = new ManifestPlugin({
-    fileName: '../asset-manifest.json',
-    publicPath: options.outputPublicPath,
+    fileName: 'asset-manifest.json',
   })
   compilePlugins.push(manifestPlugin)
 

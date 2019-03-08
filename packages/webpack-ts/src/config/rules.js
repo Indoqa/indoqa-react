@@ -125,7 +125,7 @@ const createFallbackRule = () => {
     loader: require.resolve('file-loader'),
     exclude: [/\.js$/, /\.html$/, /\.json$/],
     options: {
-      name: 'res/[name].[hash:8].[ext]',
+      name: 'static/media/[name].[hash:8].[ext]',
     },
   }
 }

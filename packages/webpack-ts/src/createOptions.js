@@ -3,13 +3,11 @@ const path = require('path')
 const DEFAULT_OPTIONS = {
   appName: 'app',
 
-  outputPath: './build/static',
-  outputPublicPath: '/static',
+  outputPath: './build',
   srcPath: './src',
   entry: './src/main/index.tsx',
 
   devPort: 3000,
-  uglify: true,
   createSourceMap: true,
   createIndexHtml: true,
   autoprefixerBrowser: [
