@@ -1,4 +1,4 @@
-import {BaseCssProps, createFelaConfig, renderRebootCss} from '@indoqa/style-system'
+import {BaseCssProps, colRowCssPolyfill, createFelaConfig, renderRebootCss} from '@indoqa/style-system'
 import {createRenderer} from 'fela'
 import * as React from 'react'
 import {RendererProvider, ThemeProvider} from 'react-fela'
@@ -38,6 +38,7 @@ class App extends React.Component {
 
   public componentDidMount() {
     renderRebootCss(renderer, baseCssProps)
+    colRowCssPolyfill(renderer)
   }
 
   public render() {

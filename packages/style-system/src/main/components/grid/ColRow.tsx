@@ -1,5 +1,5 @@
 /* tslint:disable:max-classes-per-file */
-import {IStyle} from 'fela'
+import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
@@ -145,7 +145,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
     const {style, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
     const renderCols = ({className, theme}: RenderProps<T>) => (
-      <div className={className}>
+      <div className={`${className} ucclrmkp`}>
         {rewriteCols(sortBreakpoints(theme.breakpoints), this.props.children, this.props.spacing)}
       </div>
     )
@@ -155,6 +155,15 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
       </FelaComponent>
     )
   }
+}
+
+// ColRow: IE11 polyfill to work around styling :first-child styling issues (probably a Fela bug)
+export const colRowCssPolyfill = (renderer: IRenderer) => {
+  renderer.renderStatic(`
+    .ucclrmkp:first-child {
+      margin-top: 0;
+    }
+  `)
 }
 
 export class ColRow<T extends BaseTheme> extends React.Component<Props<T>> {
