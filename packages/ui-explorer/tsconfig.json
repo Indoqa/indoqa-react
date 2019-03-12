@@ -7,6 +7,6 @@
     "outDir": "compiled"
   },
   "include": [
-    "src/main"
+    "src"
   ]
 }

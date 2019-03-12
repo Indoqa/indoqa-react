@@ -4,8 +4,7 @@ const DEFAULT_OPTIONS = {
   appName: 'app',
 
   outputPath: './build',
-  srcPath: './src',
-  entry: './src/main/index.tsx',
+  entry: './src/index.tsx',
 
   devPort: 3000,
   createSourceMap: true,
@@ -23,7 +22,6 @@ const DEFAULT_OPTIONS = {
 const createOptions = (userOptions) => {
   userOptions.tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
   userOptions.tslintPath = path.join(process.cwd(), 'tslint.json')
-  userOptions.srcPath = path.join(process.cwd(), 'src')
   return Object.assign({}, DEFAULT_OPTIONS, userOptions)
 }
 

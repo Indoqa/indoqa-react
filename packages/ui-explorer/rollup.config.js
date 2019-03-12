@@ -5,7 +5,7 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 
 import pkg from './package.json'
 
-const input = 'compiled/ui-explorer/src/main/index.js'
+const input = 'compiled/ui-explorer/src/index.js'
 const external = Object.keys(pkg.peerDependencies)
 
 const buildCjs = () => ({
