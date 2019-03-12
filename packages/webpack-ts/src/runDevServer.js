@@ -16,16 +16,25 @@ const createConfig = require('./createConfig.js')
 const createOptions = require('./createOptions.js')
 
 const createServerConfig = proxy => {
+  const proxySetup = path.join(process.cwd(), 'src/setupProxy.js')
   return {
     compress: true,
     clientLogLevel: 'none',
-    historyApiFallback: true,
+    historyApiFallback: {
+      // Paths with dots should still use the history fallback.
+      // See https://github.com/facebook/create-react-app/issues/387.
+      disableDotRule: true,
+    },
     hot: true,
     publicPath: '/',
     quiet: true,
     overlay: false,
     proxy,
     before(app) {
+      if (fs.existsSync(proxySetup)) {
+        // This registers user provided middleware for proxy reasons
+        require(proxySetup)(app)
+      }
       app.use(errorOverlayMiddleware())
       app.use(noopServiceWorkerMiddleware())
     },

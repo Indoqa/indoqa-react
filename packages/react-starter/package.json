@@ -60,22 +60,5 @@
     "shortid": "^2.2.14",
     "typesafe-actions": "^3.2.1",
     "yup": "^0.26.10"
-  },
-  "proxy": {
-    "/geonames": {
-      "target": "http://api.geonames.org",
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      },
-      "pathRewrite": {
-        "/geonames": ""
-      }
-    },
-    "/words": {
-      "target": "http://api.wordnik.com",
-      "pathRewrite": {
-        "/words": ""
-      }
-    }
   }
 }

@@ -7,6 +7,8 @@ const createOutput = (options, isDevelopment) => {
       filename: '[name].js',
       chunkFilename: '[name]-[chunkhash].js',
       publicPath: '/',
+      devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath)
+        .replace(/\\/g, '/'),
     }
   }
 
@@ -15,10 +17,10 @@ const createOutput = (options, isDevelopment) => {
     filename: 'static/js/[name]-[hash].js',
     chunkFilename: 'static/js/[name]-[chunkhash:8].chunk.js',
     publicPath: '/',
-    devtoolModuleFilenameTemplate: info =>
+    devtoolModuleFilenameTemplate: (info) =>
       path
-        .relative(options.outputPath, info.absoluteResourcePath)
-        .replace(/\\/g, '/'),
+        .relative(path.join(process.cwd(), 'src'), info.absoluteResourcePath)
+        .replace(/\\/g, '/')
   }
 }
 
