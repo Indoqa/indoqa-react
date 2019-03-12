@@ -34,25 +34,21 @@ const baseCssProps: BaseCssProps = {
   },
 }
 
-class App extends React.Component {
-
-  public componentDidMount() {
+const App: React.FC = () => {
+  React.useLayoutEffect(() => {
     renderRebootCss(renderer, baseCssProps)
-  }
-
-  public render() {
-    return (
-      <RendererProvider renderer={renderer}>
-        <Router history={history}>
-          <ThemeProvider theme={theme}>
-            <Switch>
-              <Route path="/" component={StyleSystemUIExplorer}/>
-            </Switch>
-          </ThemeProvider>
-        </Router>
-      </RendererProvider>
-    )
-  }
+  })
+  return (
+    <RendererProvider renderer={renderer}>
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <Route path="/" component={StyleSystemUIExplorer}/>
+          </Switch>
+        </ThemeProvider>
+      </Router>
+    </RendererProvider>
+  )
 }
 
 export default App
