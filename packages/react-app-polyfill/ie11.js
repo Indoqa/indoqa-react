@@ -1,4 +1,7 @@
 require('react-app-polyfill/ie11')
+require('./arrayFind')
+require('./arrayFindIndex')
 require('./arrayIncludesPolyfill')
+require('./domAppendPolyfill')
 require('./nodeListForEachPolyfill')
 require('./stringStartsWithPolyfill')

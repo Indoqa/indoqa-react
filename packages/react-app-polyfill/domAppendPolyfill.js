@@ -1,10 +1,9 @@
-/* tslint:disable */
+/* eslint-disable */
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
-// @ts-ignore
 (function (arr) {
   arr.forEach(function (item) {
     if (item.hasOwnProperty('append')) {
-      return;
+      return
     }
     Object.defineProperty(item, 'append', {
       configurable: true,
@@ -12,15 +11,15 @@
       writable: true,
       value: function append() {
         var argArr = Array.prototype.slice.call(arguments),
-          docFrag = document.createDocumentFragment();
+          docFrag = document.createDocumentFragment()
 
         argArr.forEach(function (argItem) {
-          var isNode = argItem instanceof Node;
-          docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
-        });
+          var isNode = argItem instanceof Node
+          docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)))
+        })
 
-        this.appendChild(docFrag);
+        this.appendChild(docFrag)
       }
-    });
-  });
-})([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+    })
+  })
+})([Element.prototype, Document.prototype, DocumentFragment.prototype])

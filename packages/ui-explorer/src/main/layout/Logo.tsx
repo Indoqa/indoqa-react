@@ -11,7 +11,7 @@ interface Props extends WithUIETheme {
 }
 
 interface MenuLinkStyle extends IStyle {
-  '> a': IStyle,
+  '& > a': IStyle,
   'tablet': IStyle,
 }
 
@@ -29,7 +29,7 @@ const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
   const style: MenuLinkStyle = {
     listStyle: 'none',
     paddingLeft: uieTheme.spacing.space4,
-    '> a': {
+    '& > a': {
       textDecoration: 'none',
     },
     tablet: {

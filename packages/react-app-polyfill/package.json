@@ -11,6 +11,8 @@
     "node": ">=6"
   },
   "files": [
+    "arrayFind.js",
+    "arrayFindIndex.js",
     "arrayIncludesPolyfill.js",
     "ie11.js",
     "nodeListForEachPolyfill.js",

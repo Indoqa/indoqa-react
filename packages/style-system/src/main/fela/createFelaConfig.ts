@@ -19,10 +19,11 @@ export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | Bas
       createNamedKeys(breakpoints),
     ],
     enhancers: [],
+    devMode: false,
   }
   if (process.env.NODE_ENV !== 'production') {
     config.enhancers = [monolithic({prettySelectors: true})]
-    config.debug = true
+    config.devMode = true
   }
   return config
 }
