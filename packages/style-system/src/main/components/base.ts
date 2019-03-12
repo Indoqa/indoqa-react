@@ -1,5 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
+import {ReactNode} from 'react'
 import {FelaStyle, StyleFunction} from 'react-fela'
 import {BaseTheme} from '..'
 
@@ -8,6 +9,9 @@ type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' 
 type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 type Spacing = 0 | 1 | 2 | 3 | 4
 type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
+export type HtmlSpanAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'>
 
 export interface BoxProps<T extends BaseTheme> extends MarginProps,
   PaddingProps,
@@ -94,9 +98,10 @@ export interface WithStyle<T extends BaseTheme> {
   style?: FelaStyle<T>,
 }
 
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
-export type HtmlSpanAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'>
+export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
+  children?: ReactNode,
+  htmlAttrs?: H,
+}
 
 const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
   'Check if the Fela ThemeProvider is configured correctly.'
@@ -251,36 +256,6 @@ export const createPaddingCSSProps = ({theme, p, pt, pb, pl, pr, px, py}: Paddin
     Object.assign(styles, {paddingRight: spacing(theme, pr)})
   }
   return styles
-}
-
-const knownProps = [
-  'inline', 'width', 'height', 'fullWidth', 'fullHeight',
-  'grow', 'shrink', 'basis', 'order', 'align',
-  'direction', 'nowrap', 'center', 'justifyContent', 'alignItems',
-  'fontStyle', 'fontSize', 'color', 'bold', 'italic', 'ellipsis', 'textAlign',
-  'm', 'mt', 'mb', 'ml', 'mr', 'mx', 'my',
-  'p', 'pt', 'pb', 'pl', 'pr', 'px', 'py',
-  'bg',
-  'theme',
-]
-
-const isUnknownProps = (prop: string) => {
-  for (const eachKnownProps of knownProps) {
-    if (eachKnownProps === prop) {
-      return false
-    }
-  }
-  return true
-}
-
-export function filterProps<T>(props: any): any {
-  return Object
-    .keys(props)
-    .filter(isUnknownProps)
-    .reduce((obj, key) => {
-      obj[key] = props[key]
-      return obj
-    }, {})
 }
 
 export function mergeThemedStyles<T extends BaseTheme, P>(

@@ -12,7 +12,7 @@ const BoxSamples: React.FC = () => (
     <Code initialShow showToggle={false}>{sample1}</Code>
 
     <h3>Box with onClick event</h3>
-    <Box<Theme> my={2} p={2} bg="primary" onClick={() => alert('Box3 clicked')}>Box3</Box>
+    <Box<Theme> my={2} p={2} bg="primary" htmlAttrs={{onClick: () => alert('Box3 clicked')}}>Box3</Box>
     <Code initialShow showToggle={false}>{sample2}</Code>
 
     <h3>Nested boxes</h3>

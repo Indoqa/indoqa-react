@@ -1,7 +1,7 @@
 export const sample1 = `<Box<Theme> my={2} p={2} bg="primary">Box1</Box>
 <Box<Theme> my={2} p={2} bg="accent" fontStyle="mono" italic>Box2</Box>
 `
-export const sample2 = '<Box<Theme> my={2} p={2} bg="primary" onClick={() => alert(\'Box3 clicked\')}>Box3</Box>'
+export const sample2 = '<Box<Theme> my={2} p={2} bg="primary" htmlAttrs={{onClick: () => alert(\'Box3 clicked\')}}>Box3</Box>'
 
 export const sample3 = `<Box<Theme> my={2} px={2} bg="primary">
   <Box<Theme> bg="accent" mb={1} p={1}>innerBox1</Box>

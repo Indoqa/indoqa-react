@@ -2,8 +2,8 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 
-import {BaseTheme, HtmlDivAttributesWithoutStyle} from '..'
-import {BoxProps, filterProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
+import {BaseProps, BaseTheme, HtmlDivAttributesWithoutStyle} from '..'
+import {BoxProps, FlexContainerProps, FlexProps, mergeThemedStyles} from './base'
 import {createBoxCSSStyles} from './Box'
 
 export const createFlexContainerCSSStyle = (
@@ -40,13 +40,13 @@ function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
   }
 }
 
-export function Flex<T extends BaseTheme>(props: FlexProps<T> & HtmlDivAttributesWithoutStyle & WithStyle<T>) {
-  const {children, style, ...rest} = props
+export function Flex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  const {children, style, htmlAttrs, ...rest} = props
   const styles = mergeThemedStyles<T, BoxProps<T>>(themedFlexStyles, style)
   return (
     <FelaComponent<T, FlexProps<T>> style={styles} {...rest}>
       {({className}) => (
-        <div className={className} {...filterProps(rest)}>
+        <div className={className} {...htmlAttrs}>
           {children}
         </div>
       )}

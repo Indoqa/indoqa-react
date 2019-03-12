@@ -64,6 +64,11 @@ across the application.
 | `fullWidth`       | `boolean`           | `false`      | Set the CSS property `width` to `100%`. |
 | `fullHeight`      | `boolean`           | `false`      | Set the CSS property `height` to `100%`. |
 
+### HTML Attributes
+| Property          | Type                | Default      | Description |
+|:----------------- |:--------------------|:-------------|:------------|
+| `htmlAttrs`       | `HTMLAttributes`    | -            | HTML Attributes which will be added to the HTML element. |
+
 ### Additional CSS styles
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
@@ -123,6 +128,7 @@ The following properties are the same as of `Box`:
 * [Font](#font)
 * [Style](#style)
 * [Box model](#box-model)
+* [HTML Attributes](#html-attributes)
 * [Additional CSS styles](#additional-css-styles)
 
 ### Flex container
@@ -150,6 +156,7 @@ The following properties are the same as of `Box`:
 * [Flex child](#flex-child)
 * [Font](#font)
 * [Style](#style)
+* [HTML Attributes](#html-attributes)
 * [Additional CSS styles](#additional-css-styles)
 
 ## Theme
