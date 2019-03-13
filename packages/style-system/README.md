@@ -114,7 +114,7 @@ const baseCssProps: BaseCssProps = ...
 const App: React.FC = () => {
   React.useLayoutEffect(() => {
     renderRebootCss(renderer, baseCssProps)
-  })
+  }, [])
   return (
     <RendererProvider renderer={renderer}>
       <Router history={history}>
