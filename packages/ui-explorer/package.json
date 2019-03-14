@@ -36,9 +36,9 @@
   "dependencies": {
     "@indoqa/style-system": "^1.0.0-alpha.6",
     "deepmerge": "^2.2.1",
-    "fela": "^10.2.1",
+    "fela": "^10.2.2",
     "react": "^16.8.2",
-    "react-fela": "^10.2.1",
+    "react-fela": "^10.2.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "tslib": "^1.9.3"

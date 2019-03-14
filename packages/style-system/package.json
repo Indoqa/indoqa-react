@@ -29,21 +29,21 @@
     "style-system"
   ],
   "peerDependencies": {
-    "fela": ">=10.2.1",
-    "fela-monolithic": ">=10.2.1",
-    "fela-plugin-named-keys": ">=10.2.1",
-    "fela-preset-web": ">=10.2.1",
+    "fela": ">=10.2.2",
+    "fela-monolithic": ">=10.2.2",
+    "fela-plugin-named-keys": ">=10.2.2",
+    "fela-preset-web": ">=10.2.2",
     "react": ">=16.7",
-    "react-fela": ">=10.2.1"
+    "react-fela": ">=10.2.2"
   },
   "dependencies": {
-    "fela": "^10.2.1",
-    "fela-monolithic": "^10.2.1",
-    "fela-plugin-named-keys": "^10.2.1",
-    "fela-preset-web": "^10.2.1",
+    "fela": "^10.2.2",
+    "fela-monolithic": "^10.2.2",
+    "fela-plugin-named-keys": "^10.2.2",
+    "fela-preset-web": "^10.2.2",
     "lodash": "^4.17.11",
     "react": "^16.8.4",
-    "react-fela": "^10.2.1",
+    "react-fela": "^10.2.2",
     "tslib": "^1.9.3"
   }
 }
