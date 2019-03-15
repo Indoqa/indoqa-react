@@ -1,2 +1,3 @@
-# v1.0.0 | TBA
+# v1.0.0 | 2019-03-15
+* initial release
 
