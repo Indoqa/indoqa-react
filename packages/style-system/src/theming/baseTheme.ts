@@ -29,14 +29,6 @@ export interface BaseSpacing {
 export interface BaseZIndexes {
   default: number,
   absolute: number,
-  drawer: number,
-  select: number,
-  popover: number,
-  tooltip: number,
-  header: number,
-  backdrop: number,
-  sidebar: number,
-  modal: number,
 }
 
 export interface Breakpoint {
@@ -87,13 +79,11 @@ export const baseTheme: BaseTheme = {
       fontFamily: systemFonts,
       lineHeight: 1.3,
       fontWeight: 400,
-      color: '#000000',
     },
     alt: {
       fontFamily: systemFonts,
       lineHeight: 1.3,
       fontWeight: 700,
-      color: '#000000',
     },
     mono: {
       fontFamily: monoSystemFonts,
@@ -110,18 +100,9 @@ export const baseTheme: BaseTheme = {
     space3: '2rem',
     space4: '4rem',
   },
-  // see https://github.com/sumup/circuit-ui/blob/master/src/themes/circuit.js
   zIndexes: {
     default: 0,
     absolute: 1,
-    drawer: 10,
-    select: 20,
-    popover: 30,
-    tooltip: 31,
-    header: 600,
-    backdrop: 700,
-    sidebar: 800,
-    modal: 1000,
   },
   breakpoints,
   layout: {},

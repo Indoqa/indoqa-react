@@ -32,6 +32,9 @@ const baseCssProps: BaseCssProps = {
     active: theme.colors.primaryDark,
     visited: theme.colors.primaryDark,
   },
+  colors: {
+    text: theme.colors.text,
+  },
 }
 
 const App: React.FC = () => {

@@ -24,6 +24,9 @@ export interface BaseCssProps {
     base: IStyle,
     alt: IStyle,
   },
+  colors: {
+    text: string,
+  }
 }
 
 export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
@@ -345,6 +348,7 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   // set the base fonts for body and headlines
   renderer.renderStatic({
     ...props.fontStyles.base,
+    color: props.colors.text,
   }, 'body')
   renderer.renderStatic({
     ...props.fontStyles.alt,
