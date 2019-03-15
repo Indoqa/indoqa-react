@@ -6,6 +6,7 @@
   "main": "dist/indoqa-react-app.cjs.js",
   "module": "dist/indoqa-react-app.es.js",
   "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -41,9 +42,9 @@
     "rxjs": ">=6"
   },
   "dependencies": {
-    "fela": "^10.2.1",
-    "react": "^16.8.2",
-    "react-fela": "^10.2.1",
+    "fela": "^10.2.2",
+    "react": "^16.8.4",
+    "react-fela": "^10.2.2",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
     "redux": "^4.0.1",

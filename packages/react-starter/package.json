@@ -7,10 +7,9 @@
     "src"
   ],
   "scripts": {
-    "analyze": "source-map-explorer ./target/assets/vendors-*",
-    "build": "indoqa-webpack ./indoqa-webpack-options.js",
-    "clean": "rimraf ./target",
-    "compile": "yarn clean && tsc --outdir ./target/js",
+    "analyze": "source-map-explorer ./build/static/js/*.js{,.map}",
+    "build": "indoqa-webpack-ts ./indoqa-webpack-options.js",
+    "clean": "rimraf ./build",
     "lint": "tslint --project .",
     "package": "yarn clean && yarn build",
     "postinstall": "yarn run package",
@@ -34,22 +33,21 @@
   "dependencies": {
     "@indoqa/react-app": "^1.0.0-alpha.6",
     "@indoqa/style-system": "^1.0.0-alpha.6",
-    "fela": "^10.2.1",
-    "fela-monolithic": "^10.2.1",
-    "fela-plugin-named-keys": "^10.2.1",
-    "fela-preset-web": "^10.2.1",
+    "fela": "^10.2.2",
+    "fela-monolithic": "^10.2.2",
+    "fela-plugin-named-keys": "^10.2.2",
+    "fela-preset-web": "^10.2.2",
     "formik": "^1.5.1",
     "history": "^4.7.2",
-    "i18next": "^15.0.4",
+    "i18next": "^15.0.6",
     "i18next-browser-languagedetector": "^3.0.1",
-    "immer": "^2.0.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.8.2",
-    "react-app-polyfill": "^0.2.1",
+    "immer": "^2.1.1",
+    "react": "^16.8.4",
+    "react-app-polyfill": "^0.2.2",
     "react-document-title": "^2.0.3",
-    "react-dom": "^16.8.2",
-    "react-fela": "^10.2.1",
-    "react-i18next": "8.4.0",
+    "react-dom": "^16.8.4",
+    "react-fela": "^10.2.2",
+    "react-i18next": "10.3.0",
     "react-loadable": "^5.5.0",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
@@ -58,26 +56,9 @@
     "redux-logger": "^3.0.6",
     "redux-observable": "^1.0.0",
     "reselect": "^4.0.0",
-    "rxjs": "^6.3.3",
+    "rxjs": "^6.4.0",
     "shortid": "^2.2.14",
-    "typesafe-actions": "^2.0.4",
+    "typesafe-actions": "^3.2.1",
     "yup": "^0.26.10"
-  },
-  "proxy": {
-    "/geonames": {
-      "target": "http://api.geonames.org",
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      },
-      "pathRewrite": {
-        "/geonames": ""
-      }
-    },
-    "/words": {
-      "target": "http://api.wordnik.com",
-      "pathRewrite": {
-        "/words": ""
-      }
-    }
   }
 }

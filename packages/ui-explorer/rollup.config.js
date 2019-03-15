@@ -1,10 +1,11 @@
 import cleanup from 'rollup-plugin-cleanup'
+import commonJS from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 
 import pkg from './package.json'
 
-const input = 'compiled/index.js'
+const input = 'compiled/ui-explorer/src/index.js'
 const external = Object.keys(pkg.peerDependencies)
 
 const buildCjs = () => ({
@@ -16,6 +17,7 @@ const buildCjs = () => ({
     sourceMap: true,
   },
   plugins: [
+    commonJS(),
     resolve(),
     sourceMaps(),
     cleanup({}),
@@ -31,6 +33,7 @@ const buildEs = () => ({
     sourceMap: true,
   },
   plugins: [
+    commonJS(),
     resolve(),
     sourceMaps(),
     cleanup({}),

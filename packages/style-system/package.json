@@ -7,6 +7,7 @@
   "main": "dist/indoqa-style-system.cjs.js",
   "module": "dist/indoqa-style-system.es.js",
   "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -28,15 +29,21 @@
     "style-system"
   ],
   "peerDependencies": {
-    "fela": ">=10",
-    "react": ">=16",
-    "react-fela": ">=10"
+    "fela": ">=10.2.2",
+    "fela-monolithic": ">=10.2.2",
+    "fela-plugin-named-keys": ">=10.2.2",
+    "fela-preset-web": ">=10.2.2",
+    "react": ">=16.7",
+    "react-fela": ">=10.2.2"
   },
   "dependencies": {
-    "deepmerge": "^2.2.1",
-    "fela": "^10.2.1",
-    "react": "^16.8.2",
-    "react-fela": "^10.2.1",
+    "fela": "^10.2.2",
+    "fela-monolithic": "^10.2.2",
+    "fela-plugin-named-keys": "^10.2.2",
+    "fela-preset-web": "^10.2.2",
+    "lodash": "^4.17.11",
+    "react": "^16.8.4",
+    "react-fela": "^10.2.2",
     "tslib": "^1.9.3"
   }
 }
