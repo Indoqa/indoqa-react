@@ -14,6 +14,7 @@
     "arrayFind.js",
     "arrayFindIndex.js",
     "arrayIncludesPolyfill.js",
+    "domAppendPolyfill.js",
     "ie11.js",
     "nodeListForEachPolyfill.js",
     "stringStartsWithPolyfill.js"
