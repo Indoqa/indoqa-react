@@ -31,7 +31,6 @@
   "peerDependencies": {
     "fela": ">=10",
     "history": ">=4.7",
-    "indoqa-react-fela": ">=0.7",
     "react": ">=16.8.2",
     "react-fela": ">=10",
     "react-redux": ">=5",
