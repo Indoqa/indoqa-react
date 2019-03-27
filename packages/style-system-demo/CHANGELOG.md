@@ -1,4 +1,4 @@
-# v1.0.1 | 2019-03-27
+# v1.1.0 | 2019-03-27
 * upgrade react-router@5.0.0
 * minor library upgrades
 * use named import createBrowserHistory to remove deprecation warning
