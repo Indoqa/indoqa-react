@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 
 const DEFAULT_OPTIONS = {
   appName: 'app',
@@ -19,10 +20,14 @@ const DEFAULT_OPTIONS = {
   tsAwesomeTypescriptLoader: false,
 }
 
-const createOptions = (userOptions) => {
-  userOptions.tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
-  userOptions.tslintPath = path.join(process.cwd(), 'tslint.json')
-  return Object.assign({}, DEFAULT_OPTIONS, userOptions)
+const createOptions = (projectOptions) => {
+  projectOptions.tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
+  projectOptions.tslintPath = path.join(process.cwd(), 'tslint.json')
+  projectOptions.isTypescript = fs.existsSync(projectOptions.tsconfigPath)
+  if (!projectOptions.isTypescript) {
+    projectOptions.entry = './src/index.js'
+  }
+  return Object.assign({}, DEFAULT_OPTIONS, projectOptions)
 }
 
 module.exports = createOptions

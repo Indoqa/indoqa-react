@@ -56,7 +56,7 @@ const createOptimizations = (options) => ({
 })
 
 const addOptimizations = (config, options, isDevelopment) => {
-  if (isDevelopment) {
+  if (isDevelopment || process.platform === 'win32') {
     return config
   }
   return Object.assign({}, config, createOptimizations(options))

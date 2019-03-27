@@ -67,13 +67,15 @@ const createPlugins = (options, isDevelopment) => {
   })
   buildPlugins.push(manifestPlugin)
 
-  const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
-    async: false,
-    tsconfig: options.tsconfigPath,
-    tslint: options.tslintPath,
-  })
-  buildPlugins.push(forkTsCheckerPlugin)
-  devPlugins.push(forkTsCheckerPlugin)
+  if (options.isTypescript) {
+    const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
+      async: false,
+      tsconfig: options.tsconfigPath,
+      tslint: options.tslintPath,
+    })
+    buildPlugins.push(forkTsCheckerPlugin)
+    devPlugins.push(forkTsCheckerPlugin)
+  }
 
   const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin()
   devPlugins.push(hotModuleReplacementPlugin)
