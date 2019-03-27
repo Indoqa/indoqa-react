@@ -269,7 +269,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
             </Panel>
             <Panel>
               <ContentPanel>
-                <Route exact path={mountPath} render={() => (
+                <Route exact path={`${mountPath}/`} render={() => (
                   <InnerContentPanel name={this.getDescription()} uieTheme={uieTheme}>
                     {this.renderOverviewPanel()}
                   </InnerContentPanel>

@@ -30,8 +30,7 @@
   ],
   "peerDependencies": {
     "fela": ">=10",
-    "history": ">=4.7",
-    "react": ">=16.8.2",
+    "react": ">=16.8.5",
     "react-fela": ">=10",
     "react-redux": ">=5",
     "react-router": ">=4",
@@ -42,13 +41,13 @@
   },
   "dependencies": {
     "fela": "^10.2.2",
-    "react": "^16.8.4",
+    "react": "^16.8.5",
     "react-fela": "^10.2.2",
     "react-redux": "^6.0.1",
-    "react-router": "^4.3.1",
+    "react-router": "^5.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-observable": "^1.0.0",
+    "redux-observable": "^1.1.0",
     "rxjs": "^6.4.0",
     "tslib": "^1.9.3"
   }

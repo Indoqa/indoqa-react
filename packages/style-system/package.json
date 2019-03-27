@@ -33,7 +33,7 @@
     "fela-monolithic": ">=10.2.2",
     "fela-plugin-named-keys": ">=10.2.2",
     "fela-preset-web": ">=10.2.2",
-    "react": ">=16.7",
+    "react": ">=16.8.5",
     "react-fela": ">=10.2.2"
   },
   "dependencies": {
@@ -42,7 +42,7 @@
     "fela-plugin-named-keys": "^10.2.2",
     "fela-preset-web": "^10.2.2",
     "lodash": "^4.17.11",
-    "react": "^16.8.4",
+    "react": "^16.8.5",
     "react-fela": "^10.2.2",
     "tslib": "^1.9.3"
   }
