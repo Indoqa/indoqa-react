@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/react-app-polyfill",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Polyfills for various browsers including commonly used language features",
   "license": "Apache-2.0",
   "repository": {
