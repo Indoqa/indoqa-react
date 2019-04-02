@@ -1,5 +1,6 @@
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const isWsl = require('is-wsl')
 
 const createOptimizations = (options) => ({
   optimization: {
@@ -41,7 +42,7 @@ const createOptimizations = (options) => ({
         },
         // Use multi-process parallel running to improve the build speed
         // Default number of concurrent runs: os.cpus().length - 1
-        parallel: true,
+        parallel: !isWsl,
         // Enable file caching
         cache: true,
         sourceMap: options.createSourceMap,
@@ -56,7 +57,7 @@ const createOptimizations = (options) => ({
 })
 
 const addOptimizations = (config, options, isDevelopment) => {
-  if (isDevelopment || process.platform === 'win32') {
+  if (isDevelopment) {
     return config
   }
   return Object.assign({}, config, createOptimizations(options))

@@ -1,3 +1,6 @@
+# v1.1.1 | 2019-04-02
+* no changes
+
 # v1.1.0 | 2019-03-27
 * add missing polyfill to the project files
 

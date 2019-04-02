@@ -1,3 +1,6 @@
+# v1.1.1 | 2019-04-02
+* no changes
+
 # v1.1.0 | 2019-03-27
 * upgrade react-router@5.0.0
 * minor library upgrades
