@@ -67,10 +67,13 @@ const themedElementWithStyleProps = `interface StyleProps {
   color: string,
 }
 
-const rule: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
+const themedElementWithStyleText: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
   color,
-  backgroundColor: theme.colors.accent,
   fontSize: theme.fontSizes.small,
+})
+
+const themedElementWithStyleBackground: StyleFunction<Theme> = ({theme}): IStyle => ({
+  backgroundColor: theme.colors.accent,
   paddingTop: 2,
   paddingRight: 4,
   paddingLeft: 4,
@@ -81,7 +84,7 @@ const rule: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
 const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherProps}) => {
   const {css} = useFela<Theme>(otherProps)
   return (
-    <span className={css(rule)}>
+    <span className={css(themedElementWithStyleText, themedElementWithStyleBackground)}>
       {children}
     </span>
   )

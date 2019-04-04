@@ -15,7 +15,7 @@ import {
 
 /*
     export interface FelaHookProps<Theme> {
-      css: (style: IStyle | StyleFunction) => string,
+      css: (...style: IStyle | StyleFunction) => string,
       theme: Theme,
       renderer: IRenderer,
     }
@@ -91,10 +91,13 @@ interface StyleProps {
   color: string,
 }
 
-const themedElementWithStyle: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
+const themedElementWithStyleText: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
   color,
-  backgroundColor: theme.colors.accent,
   fontSize: theme.fontSizes.small,
+})
+
+const themedElementWithStyleBackground: StyleFunction<Theme> = ({theme}): IStyle => ({
+  backgroundColor: theme.colors.accent,
   paddingTop: 2,
   paddingRight: 4,
   paddingLeft: 4,
@@ -102,11 +105,10 @@ const themedElementWithStyle: StyleFunction<Theme, StyleProps> = ({color, theme}
   borderRadius: 5,
 })
 
-
 const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherProps}) => {
   const {css} = useFela<Theme>(otherProps)
   return (
-    <span className={css(themedElementWithStyle)}>
+    <span className={css(themedElementWithStyleText, themedElementWithStyleBackground)}>
       {children}
     </span>
   )
@@ -141,7 +143,7 @@ const FelaHookSamples: React.FC = () => (
     <ThemedElementWithChildrenAndProps onClick={() => alert('clicked')}>Click me</ThemedElementWithChildrenAndProps>
     <Code initialShow showToggle={false}>{themedElementWithChildrenAndPropsCode}</Code>
 
-    <h3>Themed element and passed props</h3>
+    <h3>Themed element, passed props and multiple styles</h3>
     <ThemedElementWithStyleProps color="white">some text</ThemedElementWithStyleProps>
     <Code initialShow showToggle={false}>{themedElementWithStyleProps}</Code>
 
