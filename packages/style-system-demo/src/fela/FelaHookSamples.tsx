@@ -13,16 +13,6 @@ import {
   themedElementWithStyleProps,
 } from './FelaHookSamplesCode'
 
-/*
-    export interface FelaHookProps<Theme> {
-      css: (...style: IStyle | StyleFunction) => string,
-      theme: Theme,
-      renderer: IRenderer,
-    }
-
-    export declare function useFela<Theme = {}>(props?: Object): FelaHookProps<Theme>
- */
-
 const StyledDiv: React.FC = () => {
   const {css} = useFela()
   const style: PStyle = {
