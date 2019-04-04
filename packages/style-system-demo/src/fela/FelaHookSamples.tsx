@@ -1,7 +1,7 @@
 import {PStyle} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {useFela} from 'react-fela'
+import {StyleFunction, useFela} from 'react-fela'
 import {Theme} from '../app/theme'
 import Code from '../code/Code'
 import {
@@ -10,7 +10,18 @@ import {
   styledWithStaticRendererCode,
   themedElementWithChildrenAndPropsCode,
   themedElementWithChildrenCode,
+  themedElementWithStyleProps,
 } from './FelaHookSamplesCode'
+
+/*
+    export interface FelaHookProps<Theme> {
+      css: (style: IStyle | StyleFunction) => string,
+      theme: Theme,
+      renderer: IRenderer,
+    }
+
+    export declare function useFela<Theme = {}>(props?: Object): FelaHookProps<Theme>
+ */
 
 const StyledDiv: React.FC = () => {
   const {css} = useFela()
@@ -76,6 +87,31 @@ const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children})
   )
 }
 
+interface StyleProps {
+  color: string,
+}
+
+const themedElementWithStyle: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
+  color,
+  backgroundColor: theme.colors.accent,
+  fontSize: theme.fontSizes.small,
+  paddingTop: 2,
+  paddingRight: 4,
+  paddingLeft: 4,
+  paddingBottom: 2,
+  borderRadius: 5,
+})
+
+
+const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherProps}) => {
+  const {css} = useFela<Theme>(otherProps)
+  return (
+    <span className={css(themedElementWithStyle)}>
+      {children}
+    </span>
+  )
+}
+
 const RendererUsage: React.FC = () => {
   const {renderer} = useFela()
   const style: PStyle = {
@@ -86,7 +122,6 @@ const RendererUsage: React.FC = () => {
   renderer.renderStatic(style, '.some-css-class')
   return <div className="some-css-class"/>
 }
-
 
 const FelaHookSamples: React.FC = () => (
   <>
@@ -105,6 +140,10 @@ const FelaHookSamples: React.FC = () => (
     <h3>Themed element with children and passed parameters</h3>
     <ThemedElementWithChildrenAndProps onClick={() => alert('clicked')}>Click me</ThemedElementWithChildrenAndProps>
     <Code initialShow showToggle={false}>{themedElementWithChildrenAndPropsCode}</Code>
+
+    <h3>Themed element and passed props</h3>
+    <ThemedElementWithStyleProps color="white">some text</ThemedElementWithStyleProps>
+    <Code initialShow showToggle={false}>{themedElementWithStyleProps}</Code>
 
     <h3>Use the Fela renderer</h3>
     <RendererUsage>Styled with static CSS</RendererUsage>

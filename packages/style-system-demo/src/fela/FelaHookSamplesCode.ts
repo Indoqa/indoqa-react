@@ -63,6 +63,32 @@ const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children})
   )
 }
 `
+const themedElementWithStyleProps = `interface StyleProps {
+  color: string,
+}
+
+const rule: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
+  color,
+  backgroundColor: theme.colors.accent,
+  fontSize: theme.fontSizes.small,
+  paddingTop: 2,
+  paddingRight: 4,
+  paddingLeft: 4,
+  paddingBottom: 2,
+  borderRadius: 5,
+})
+
+const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherProps}) => {
+  const {css} = useFela<Theme>(otherProps)
+  return (
+    <span className={css(rule)}>
+      {children}
+    </span>
+  )
+}
+
+<ThemedElementWithStyleProps color="white">some text</ThemedElementWithStyleProps>
+`
 
 const styledWithStaticRendererCode = `const RendererUsage: React.FC = () => {
   const {renderer} = useFela()
@@ -81,5 +107,6 @@ export {
   styledElementWithChildrenCode,
   themedElementWithChildrenCode,
   themedElementWithChildrenAndPropsCode,
+  themedElementWithStyleProps,
   styledWithStaticRendererCode,
 }
