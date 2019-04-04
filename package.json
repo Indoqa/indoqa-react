@@ -38,7 +38,7 @@
     "rollup-plugin-uglify": "^6.0.0",
     "source-map-explorer": "1.8.0",
     "tslint": "^5.13.1",
-    "typescript": "3.3.4000"
+    "typescript": "3.4.1"
   },
   "workspaces": [
     "packages/*"
