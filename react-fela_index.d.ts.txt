@@ -40,13 +40,10 @@
     export class FelaComponent<T, P = {}> extends React.Component<FelaComponentProps<T, P> & P> {
     }
 
-    export type CssFunctionStyle<T, P, S> = S | StyleFunction<T, P>
-    export type CssFunction<T, P, S extends IStyle> = (...style: CssFunctionStyle<T, P, S>) => string
+    export type CssFelaStyle<T, P> = IStyle | StyleFunction<T, P>
 
-    // NOT WORKING WITH strictFunctionTypes=true
-    // The properties passed to css have to be either of Type IStyle or StyleFunction.
-    // However, this alternative type is not evaluated correctly because the
-    // Typescript compiler translates it to any.
+    export type CssFunction<T, P> = (...style: CssFelaStyle<T, P>[]) => string
+
     export interface FelaHookProps<T, P> {
       css: CssFunction<T, P>,
       theme: T,

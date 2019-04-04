@@ -14,7 +14,7 @@
       "es6",
       "es7",
       "es2017",
-      "DOM"
+      "dom"
     ],
     "module": "esnext",
     "moduleResolution": "node",
