@@ -9,6 +9,7 @@ import TextSamples from './base-components/TextSamples'
 import FelaComponentSamples from './fela/FelaComponentSamples'
 import FelaHookSamples from './fela/FelaHookSamples'
 import NestedGrid from './grid/NestedGrid'
+import NestedGridFlexibleHeight from './grid/NestedGridFlexibleHeight'
 import NestedResponsiveGrid from './grid/NestedResponsiveGrid'
 import SimpleGrid from './grid/SimpleGrid'
 import StyleSystemDemoOverview from './StyleSystemDemoOverview'
@@ -79,6 +80,10 @@ const getGridGroup = (): Group => ({
     {
       name: 'Nested grid',
       component: <NestedGrid/>,
+    },
+    {
+      name: 'Nested grid - Flexible height',
+      component: <NestedGridFlexibleHeight/>,
     },
     {
       name: 'Nested responsive grid',

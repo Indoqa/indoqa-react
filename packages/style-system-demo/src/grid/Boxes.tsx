@@ -51,4 +51,10 @@ const BlueFlexBox: React.FC<Props> = ({width = '100%', height = '75px', children
   )
 }
 
-export {OrangeBox, YellowBox, BlueBox, RedBox, BlueFlexBox}
+const UnsetHeightBox: React.FC<Props> = ({width = '100%', height = '100%', children}) => {
+  return (
+    <Box p={1} style={bgBoxStyle('yellow', width, height)}>{children}</Box>
+  )
+}
+
+export {OrangeBox, YellowBox, BlueBox, RedBox, BlueFlexBox, UnsetHeightBox}
