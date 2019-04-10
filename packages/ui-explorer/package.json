@@ -36,7 +36,7 @@
   "dependencies": {
     "@indoqa/style-system": "^1.1.1",
     "fela": "^10.2.4",
-    "react": "^16.8.5",
+    "react": "^16.8.6",
     "react-fela": "^10.2.4",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",

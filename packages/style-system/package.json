@@ -42,7 +42,7 @@
     "fela-plugin-named-keys": "^10.2.4",
     "fela-preset-web": "^10.2.4",
     "lodash": "^4.17.11",
-    "react": "^16.8.5",
+    "react": "^16.8.6",
     "react-fela": "^10.2.4",
     "tslib": "^1.9.3"
   }
