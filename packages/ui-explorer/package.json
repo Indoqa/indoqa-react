@@ -27,17 +27,17 @@
   ],
   "peerDependencies": {
     "@indoqa/style-system": ">=1.0.0",
-    "fela": ">=10.2.2",
+    "fela": ">=10.2.4",
     "react": ">=16",
-    "react-fela": ">=10.2.2",
+    "react-fela": ">=10.2.4",
     "react-router": ">=5",
     "react-router-dom": ">=5"
   },
   "dependencies": {
     "@indoqa/style-system": "^1.1.1",
-    "fela": "^10.2.2",
+    "fela": "^10.2.4",
     "react": "^16.8.5",
-    "react-fela": "^10.2.2",
+    "react-fela": "^10.2.4",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "tslib": "^1.9.3"
