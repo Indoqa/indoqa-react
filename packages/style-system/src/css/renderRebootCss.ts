@@ -349,6 +349,7 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   renderer.renderStatic({
     ...props.fontStyles.base,
     color: props.colors.text,
+    fontSize: props.fontSizes.text,
   }, 'body')
   renderer.renderStatic({
     ...props.fontStyles.alt,
