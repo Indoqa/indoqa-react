@@ -39,13 +39,13 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({maxWidth, center, ...otherProps}): IStyle => ({
+    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({theme, maxWidth, center, ...otherProps}): IStyle => ({
       margin: center ? 'auto' : 0,
       ...createBoxModelCSSProps(otherProps),
-      ...createMarginCSSProps(otherProps),
-      ...createPaddingCSSProps(otherProps),
+      ...createMarginCSSProps(otherProps, theme),
+      ...createPaddingCSSProps(otherProps, theme),
       ...createFlexChildCSSProps(otherProps),
-      ...createStylingCSSProps(otherProps),
+      ...createStylingCSSProps(otherProps, theme),
       boxSizing: 'border-box',
       maxWidth,
     })

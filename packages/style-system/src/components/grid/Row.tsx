@@ -27,9 +27,9 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
   public render() {
     const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = (
       // tslint:disable-next-line:no-shadowed-variable
-      {style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
-      ...createPaddingCSSProps(otherProps),
-      ...createStylingCSSProps(otherProps),
+      {theme, style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
+      ...createPaddingCSSProps(otherProps, theme),
+      ...createStylingCSSProps(otherProps, theme),
       boxSizing: 'border-box',
       display: 'flex',
       // wrap all flex items -> since a panel has a mobile width of 100%, each

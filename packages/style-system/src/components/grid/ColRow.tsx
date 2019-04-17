@@ -130,9 +130,9 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): RowStyle => ({
-      ...createPaddingCSSProps(otherProps),
-      ...createStylingCSSProps(otherProps),
+    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, theme, spacing, ...otherProps}): RowStyle => ({
+      ...createPaddingCSSProps(otherProps, theme),
+      ...createStylingCSSProps(otherProps, theme),
       boxSizing: 'border-box',
       display: 'flex',
       flexWrap: 'wrap',

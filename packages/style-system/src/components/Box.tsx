@@ -2,33 +2,38 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 
-import {BaseProps, BaseTheme} from '..'
+import {BaseTheme} from '../theming/baseTheme'
 import {
+  BaseProps,
   BoxProps,
   createBoxModelCSSProps,
   createFlexChildCSSProps,
   createFontCSSProps,
   createMarginCSSProps,
   createPaddingCSSProps,
+  createResponsiveStyles,
   createStylingCSSProps,
+  FlatBoxProps,
   HtmlDivAttributesWithoutStyle,
   mergeThemedStyles,
+  WithBaseTheme,
 } from './base'
 
-export function createBoxCSSStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
+
+export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
   return {
     ...createBoxModelCSSProps(props),
-    ...createMarginCSSProps(props),
-    ...createPaddingCSSProps(props),
+    ...createMarginCSSProps(props, theme),
+    ...createPaddingCSSProps(props, theme),
     ...createFlexChildCSSProps(props),
-    ...createStylingCSSProps(props),
-    ...createFontCSSProps(props),
+    ...createStylingCSSProps(props, theme),
+    ...createFontCSSProps(props, theme),
   }
 }
 
 function themedBoxStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
   return {
-    ...createBoxCSSStyles(props),
+    ...createResponsiveStyles(props, createBoxCSSStyle),
   }
 }
 

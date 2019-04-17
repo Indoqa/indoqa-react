@@ -2,7 +2,9 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {ReactNode} from 'react'
 import {FelaStyle, StyleFunction} from 'react-fela'
-import {BaseTheme} from '..'
+
+import {BaseTheme, NamedBreakPoint} from '..'
+import sortBreakpoints from '../theming/sortBreakpoints'
 
 type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
 type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
@@ -13,7 +15,11 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
 export type HtmlSpanAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'>
 
-export interface BoxProps<T extends BaseTheme> extends MarginProps,
+export type ResponsiveProps<T> = {
+  [P in keyof T]: T[P] | Array<T[P]>
+}
+
+export interface FlatBoxProps<T extends BaseTheme> extends MarginProps,
   PaddingProps,
   FlexChildProps,
   FontProps<T>,
@@ -21,7 +27,15 @@ export interface BoxProps<T extends BaseTheme> extends MarginProps,
   BoxModelProps {
 }
 
-export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, FlexContainerProps {
+export interface BoxProps<T extends BaseTheme> extends ResponsiveProps<MarginProps>,
+  ResponsiveProps<PaddingProps>,
+  ResponsiveProps<FlexChildProps>,
+  ResponsiveProps<FontProps<T>>,
+  StylingProps<T>,
+  ResponsiveProps<BoxModelProps> {
+}
+
+export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, ResponsiveProps<FlexContainerProps> {
 }
 
 export interface TextProps<T extends BaseTheme> extends MarginProps,
@@ -90,7 +104,7 @@ export interface StylingProps<T extends BaseTheme> {
   bg?: string | keyof T['colors'],
 }
 
-interface WithBaseTheme {
+export interface WithBaseTheme {
   theme?: BaseTheme,
 }
 
@@ -103,8 +117,73 @@ export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
   htmlAttrs?: H,
 }
 
-const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
+export const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
   'Check if the Fela ThemeProvider is configured correctly.'
+
+const initializeArray = (length: number) => {
+  const a = []
+  for (let i = 0; i < length; i++) {
+    a.push({})
+  }
+  return a
+}
+
+const validateSizes = (length: number, breakpointCount: number, name: string, value: any) => {
+  if (length > breakpointCount + 1) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(`The property ${name} contains more values than available breakpoints.`, value)
+    }
+    return false
+  }
+  return true
+}
+
+export function getPropsByBreakpoint<T extends BaseTheme>(props: BoxProps<T>, breakpoints: NamedBreakPoint[]): Array<FlatBoxProps<T>> {
+  const result: Array<FlatBoxProps<T>> = initializeArray(breakpoints.length + 1)
+
+  Object.keys(props).forEach((key) => {
+    const value = props[key]
+    if (!Array.isArray(value)) {
+      result[0][key] = value
+    } else {
+      validateSizes(value.length, breakpoints.length, key, value)
+      for (let i = 0; i <= breakpoints.length; i++) {
+        const currentValue = value[i]
+        if (currentValue) {
+          result[i][key] = currentValue
+        }
+      }
+    }
+  })
+
+  return result
+}
+
+export function createResponsiveStyles<T extends BaseTheme>(props: BoxProps<T> & WithBaseTheme, styleFunction: any): IStyle {
+  // console.log('props', props)
+  const {theme} = props
+  if (!theme) {
+    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
+  }
+  const sortedBreakpoints = sortBreakpoints(theme.breakpoints)
+  const groupedProps = getPropsByBreakpoint(props, sortedBreakpoints)
+  // console.log('groupedProps', groupedProps)
+  const styles: IStyle = styleFunction(groupedProps[0], theme)
+  for (let i = 0; i < sortedBreakpoints.length; i++) {
+    const breakpointProps = groupedProps[i + 1] // the first array value is for mobile
+    if (Object.keys(breakpointProps).length === 0) {
+      break
+    }
+    const breakpointName = sortedBreakpoints[i].name
+    // console.log('breakpointName', breakpointName)
+    // console.log('breakpointProps', breakpointProps)
+    Object.assign(styles, {
+      [breakpointName]: styleFunction(breakpointProps, theme),
+    })
+  }
+  // console.log('styles', styles)
+  return styles
+}
 
 export const createBoxModelCSSProps = ({inline, width, height, fullWidth, fullHeight}: BoxModelProps) => ({
   display: (inline) ? 'inline' : 'block',
@@ -148,11 +227,7 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
   return ''
 }
 
-export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingProps<T> & WithBaseTheme) {
-  if (theme === undefined || theme.colors === undefined) {
-    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
-  }
-
+export function createStylingCSSProps<T extends BaseTheme>({bg}: StylingProps<T> & WithBaseTheme, theme: BaseTheme) {
   const styles: IStyle = {}
   if (bg) {
     Object.assign(styles, {backgroundColor: getColor(theme, bg as string)})
@@ -161,11 +236,7 @@ export function createStylingCSSProps<T extends BaseTheme>({theme, bg}: StylingP
 }
 
 export function createFontCSSProps<T extends BaseTheme>(
-  {theme, fontStyle, fontSize, color, bold, italic, ellipsis, textAlign}: FontProps<T> & WithBaseTheme) {
-  if (theme === undefined) {
-    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
-  }
-
+  {fontStyle, fontSize, color, bold, italic, ellipsis, textAlign}: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
   const styles: IStyle = {}
   if (bold) {
     Object.assign(styles, {fontWeight: 700})
@@ -196,10 +267,7 @@ export function createFontCSSProps<T extends BaseTheme>(
   return styles
 }
 
-export const createMarginCSSProps = ({theme, m, mt, mb, ml, mr, mx, my}: MarginProps & WithBaseTheme) => {
-  if (theme === undefined) {
-    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
-  }
+export const createMarginCSSProps = ({m, mt, mb, ml, mr, mx, my}: MarginProps & WithBaseTheme, theme: BaseTheme) => {
   const styles = {}
   if (m) {
     Object.assign(styles, {margin: spacing(theme, m)})
@@ -227,10 +295,7 @@ export const createMarginCSSProps = ({theme, m, mt, mb, ml, mr, mx, my}: MarginP
   return styles
 }
 
-export const createPaddingCSSProps = ({theme, p, pt, pb, pl, pr, px, py}: PaddingProps & WithBaseTheme) => {
-  if (theme === undefined) {
-    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
-  }
+export const createPaddingCSSProps = ({p, pt, pb, pl, pr, px, py}: PaddingProps & WithBaseTheme, theme: BaseTheme) => {
   const styles = {}
   if (p) {
     Object.assign(styles, {padding: spacing(theme, p)})

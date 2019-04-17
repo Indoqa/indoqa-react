@@ -63,10 +63,11 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}): PanelStyle => ({
-      ...createPaddingCSSProps(otherProps),
-      ...createFontCSSProps(otherProps),
-      ...createStylingCSSProps(otherProps),
+    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({theme, width, size, spacing, ...otherProps}):
+      PanelStyle => ({
+      ...createPaddingCSSProps(otherProps, theme),
+      ...createFontCSSProps(otherProps, theme),
+      ...createStylingCSSProps(otherProps, theme),
       ...createFlexContainerCSSStyle(otherProps),
       // mobile is always full width (flexGrow, flexShrink, width)
       flexGrow: 1,

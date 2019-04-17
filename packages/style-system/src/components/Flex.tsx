@@ -2,9 +2,19 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 
-import {BaseProps, BaseTheme, HtmlDivAttributesWithoutStyle} from '..'
-import {BoxProps, FlexContainerProps, FlexProps, mergeThemedStyles} from './base'
-import {createBoxCSSStyles} from './Box'
+import {BaseTheme} from '../theming/baseTheme'
+import {
+  BaseProps,
+  BoxProps,
+  createResponsiveStyles,
+  FlatBoxProps,
+  FlexContainerProps,
+  FlexProps,
+  HtmlDivAttributesWithoutStyle,
+  mergeThemedStyles,
+  WithBaseTheme,
+} from './base'
+import {createBoxCSSStyle} from './Box'
 
 export const createFlexContainerCSSStyle = (
   {
@@ -33,10 +43,16 @@ export const createFlexContainerCSSStyle = (
   return styles
 }
 
+export function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
+  return {
+    ...createBoxCSSStyle(props, theme),
+    ...createFlexContainerCSSStyle(props),
+  }
+}
+
 function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
   return {
-    ...createBoxCSSStyles(props),
-    ...createFlexContainerCSSStyle(props),
+    ...createResponsiveStyles(props, createFlexCSSStyle),
   }
 }
 
