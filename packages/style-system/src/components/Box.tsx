@@ -37,17 +37,49 @@ function themedBoxStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
   }
 }
 
-export function Box<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+function renderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>, as: string) {
   const {children, style, htmlAttrs, ...rest} = props
   const styles = mergeThemedStyles<T, BoxProps<T>>(themedBoxStyles, style)
   return (
     <FelaComponent<T, BoxProps<T>> style={styles} {...rest}>
-      {({className}) => (
-        <div className={className} {...htmlAttrs}>
-          {children}
-        </div>
-      )}
+      {({className}) => React.createElement(as, {className, ...htmlAttrs}, children)}
     </FelaComponent>
   )
+}
+
+export function Box<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'div')
+}
+
+export function HeaderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'header')
+}
+
+export function NavBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'nav')
+}
+
+export function SectionBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'section')
+}
+
+export function ArticleBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'article')
+}
+
+export function AsideBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'aside')
+}
+
+export function FooterBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'footer')
+}
+
+export function FigCaptionBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'figcaption')
+}
+
+export function FigureBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderBox(props, 'figure')
 }
 

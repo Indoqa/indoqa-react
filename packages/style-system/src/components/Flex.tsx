@@ -43,7 +43,7 @@ export const createFlexContainerCSSStyle = (
   return styles
 }
 
-export function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
+function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
   return {
     ...createBoxCSSStyle(props, theme),
     ...createFlexContainerCSSStyle(props),
@@ -56,16 +56,48 @@ function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
   }
 }
 
-export function Flex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+function renderFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>, as: string) {
   const {children, style, htmlAttrs, ...rest} = props
   const styles = mergeThemedStyles<T, BoxProps<T>>(themedFlexStyles, style)
   return (
     <FelaComponent<T, FlexProps<T>> style={styles} {...rest}>
-      {({className}) => (
-        <div className={className} {...htmlAttrs}>
-          {children}
-        </div>
-      )}
+      {({className}) => React.createElement(as, {className, ...htmlAttrs}, children)}
     </FelaComponent>
   )
+}
+
+export function Flex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'div')
+}
+
+export function HeaderFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'header')
+}
+
+export function NavFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'nav')
+}
+
+export function SectionFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'section')
+}
+
+export function ArticleFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'article')
+}
+
+export function AsideFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'aside')
+}
+
+export function FooterFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'footer')
+}
+
+export function FigCaptionFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'figcaption')
+}
+
+export function FigureFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
+  return renderFlex(props, 'figure')
 }

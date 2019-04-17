@@ -120,7 +120,7 @@ export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
 export const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
   'Check if the Fela ThemeProvider is configured correctly.'
 
-const initializeArray = (length: number) => {
+const initializeObjectArray = (length: number) => {
   const a = []
   for (let i = 0; i < length; i++) {
     a.push({})
@@ -138,8 +138,8 @@ const validateSizes = (length: number, breakpointCount: number, name: string, va
   return true
 }
 
-export function getPropsByBreakpoint<T extends BaseTheme>(props: BoxProps<T>, breakpoints: NamedBreakPoint[]): Array<FlatBoxProps<T>> {
-  const result: Array<FlatBoxProps<T>> = initializeArray(breakpoints.length + 1)
+export function getPropsByBreakpoint(props: any, breakpoints: NamedBreakPoint[]): any[] {
+  const result: any[] = initializeObjectArray(breakpoints.length + 1)
 
   Object.keys(props).forEach((key) => {
     const value = props[key]
@@ -159,7 +159,7 @@ export function getPropsByBreakpoint<T extends BaseTheme>(props: BoxProps<T>, br
   return result
 }
 
-export function createResponsiveStyles<T extends BaseTheme>(props: BoxProps<T> & WithBaseTheme, styleFunction: any): IStyle {
+export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBaseTheme, styleFunction: any): IStyle {
   // console.log('props', props)
   const {theme} = props
   if (!theme) {
