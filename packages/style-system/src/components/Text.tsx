@@ -16,7 +16,6 @@ import {
   WithBaseTheme,
 } from './base'
 
-
 function createTextCSSStyle<T extends BaseTheme>(props: TextProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
   return {
     display: 'inline-block',
@@ -27,7 +26,6 @@ function createTextCSSStyle<T extends BaseTheme>(props: TextProps<T> & WithBaseT
     ...createStylingCSSProps(props, theme),
   }
 }
-
 
 function themedTextStyle<T extends BaseTheme>(props: TextProps<T>): IStyle {
   return {

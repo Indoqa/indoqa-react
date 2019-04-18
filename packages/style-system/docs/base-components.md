@@ -4,6 +4,9 @@ properties for an HTML `div` element. It has access to the `Theme` and
 uses its values for many properties. This allows a consistent style
 across the application.
 
+Additionally there are components, which work exactly like `Box`. According to their
+name, they produce semantic HTML: `HeaderBox`, `NavBox`, `SectionBox`, `ArticleBox`, `AsideBox`, `FooterBox`, `FigCaptionBox`, `FigureBox` 
+
 ## Properties
 
 ### Margin
@@ -130,6 +133,9 @@ like `bg` or `style`.
 `Flex` is a base React component that extends `Box`. Hence all the
 box properties are available. Additionally it sets the CSS property
 `display` to `flex` and exposes all available flex container properties.
+
+Additionally there are components, which work exactly like `Flex`. According to their
+name, they produce semantic HTML: `HeaderFlex`, `NavFlex`, `SectionFlex`, `ArticleFlex`, `AsideFlex`, `FooterFlex`, `FigCaptionFlex`, `FigureFlex` 
 
 ## Properties
 
