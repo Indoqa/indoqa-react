@@ -2,7 +2,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {BaseTheme} from '../..'
+import {BaseTheme, createResponsiveStyles, FontProps, WithBaseTheme} from '../..'
 import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
 
 import {GridContext} from './GridContext'
@@ -22,14 +22,26 @@ interface RowStyle extends IStyle {
   '@media (min-width: 768px)': IStyle,
 }
 
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
+  StylingProps<T>,
+  FontProps<T>,
+  WithBaseTheme {
+}
+
+function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
+  return {
+    ...createPaddingCSSProps(props, theme),
+    ...createStylingCSSProps(props, theme),
+  }
+}
+
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
 
   public render() {
     const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = (
       // tslint:disable-next-line:no-shadowed-variable
-      {theme, style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
-      ...createPaddingCSSProps(otherProps, theme),
-      ...createStylingCSSProps(otherProps, theme),
+      {style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
+      ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
       display: 'flex',
       // wrap all flex items -> since a panel has a mobile width of 100%, each

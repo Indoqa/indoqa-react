@@ -17,6 +17,7 @@ across the application.
 | `mb`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-bottom` to  `theme.spacing.space[0-5]` |
 | `ml`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-right` to  `theme.spacing.space[0-5]` |
 
+All properties can be passed as arrays to provide values for breakpoints.
 
 ### Padding
 | Property          | Type                | Default      | Description |

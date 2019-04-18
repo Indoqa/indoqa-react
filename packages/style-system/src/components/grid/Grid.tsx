@@ -2,7 +2,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {BaseTheme, Spacing} from '../..'
+import {BaseTheme, createResponsiveStyles, ResponsiveProps, Spacing, WithBaseTheme} from '../..'
 import {
   BoxModelProps,
   createBoxModelCSSProps,
@@ -21,11 +21,11 @@ import {
 import {GridContext} from './GridContext'
 
 interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
-  PaddingProps,
-  FlexChildProps,
+  ResponsiveProps<PaddingProps>,
+  ResponsiveProps<FlexChildProps>,
   StylingProps<T>,
-  BoxModelProps,
-  MarginProps {
+  ResponsiveProps<BoxModelProps>,
+  ResponsiveProps<MarginProps> {
   children?: React.ReactNode,
   maxWidth?: number | string,
   center?: boolean,
@@ -35,17 +35,31 @@ interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
   spacing: Spacing,
 }
 
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
+  FlexChildProps,
+  StylingProps<T>,
+  BoxModelProps,
+  MarginProps,
+  WithBaseTheme {
+}
+
+function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
+  return {
+    ...createBoxModelCSSProps(props),
+    ...createMarginCSSProps(props, theme),
+    ...createPaddingCSSProps(props, theme),
+    ...createFlexChildCSSProps(props),
+    ...createStylingCSSProps(props, theme),
+  }
+}
+
 class GridContainer<T extends BaseTheme> extends React.Component<GridContainerStyleProps<T>> {
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({theme, maxWidth, center, ...otherProps}): IStyle => ({
+    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({maxWidth, center, ...otherProps}): IStyle => ({
       margin: center ? 'auto' : 0,
-      ...createBoxModelCSSProps(otherProps),
-      ...createMarginCSSProps(otherProps, theme),
-      ...createPaddingCSSProps(otherProps, theme),
-      ...createFlexChildCSSProps(otherProps),
-      ...createStylingCSSProps(otherProps, theme),
+      ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
       maxWidth,
     })

@@ -5,13 +5,23 @@ import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
 import {PStyle} from '../../theming/PStyle'
 import sortBreakpoints, {NamedBreakPoint} from '../../theming/sortBreakpoints'
-import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
+import {
+  createPaddingCSSProps,
+  createResponsiveStyles,
+  createStylingCSSProps,
+  mergeThemedStyles,
+  PaddingProps,
+  ResponsiveProps,
+  StylingProps,
+  WithBaseTheme,
+  WithStyle,
+} from '../base'
 import {GRID_SIZE, Size} from './Col'
 import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
 import {addUnitIfNeeded} from './utils'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T> {
+interface Props<T extends BaseTheme> extends WithStyle<T>, ResponsiveProps<PaddingProps>, ResponsiveProps<StylingProps<T>> {
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
@@ -20,6 +30,9 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
 
 interface RowStyle extends IStyle {
   '&:first-child': IStyle,
+}
+
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, WithBaseTheme {
 }
 
 const calcWidthValue = (size: number, spacing?: Spacing): string => {
@@ -126,13 +139,19 @@ const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, 
   })
 }
 
+function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
+  return {
+    ...createPaddingCSSProps(props, theme),
+    ...createStylingCSSProps(props, theme),
+  }
+}
+
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, theme, spacing, ...otherProps}): RowStyle => ({
-      ...createPaddingCSSProps(otherProps, theme),
-      ...createStylingCSSProps(otherProps, theme),
+    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): RowStyle => ({
+      ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
       display: 'flex',
       flexWrap: 'wrap',

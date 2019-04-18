@@ -4,7 +4,7 @@ import * as React from 'react'
 import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '../..'
+import {BaseTheme, createResponsiveStyles, ResponsiveProps, WithBaseTheme} from '../..'
 import {
   createFontCSSProps,
   createPaddingCSSProps,
@@ -16,18 +16,27 @@ import {
   StylingProps,
   WithStyle,
 } from '../base'
-import {createFlexContainerCSSStyle} from '../Flex'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 import {addUnitIfNeeded} from './utils'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T>, FontProps<T>, FlexContainerProps {
+interface Props<T extends BaseTheme> extends WithStyle<T>,
+  ResponsiveProps<PaddingProps>,
+  ResponsiveProps<StylingProps<T>>,
+  ResponsiveProps<FontProps<T>>,
+  ResponsiveProps<FlexContainerProps> {
   size?: number,
   width?: string | number,
 }
 
 interface PanelContainerProps<T extends BaseTheme> extends Props<T> {
   spacing?: number | string,
+}
+
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
+  StylingProps<T>,
+  FontProps<T>,
+  WithBaseTheme {
 }
 
 interface PanelTabletStyle extends IStyle {
@@ -59,16 +68,21 @@ const calcBasis = (
   return `calc(${addUnitIfNeeded(spacing)} * ${size - 1})`
 }
 
+function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
+  return {
+    ...createPaddingCSSProps(props, theme),
+    ...createFontCSSProps(props, theme),
+    ...createStylingCSSProps(props, theme),
+  }
+}
+
 class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainerProps<T>> {
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({theme, width, size, spacing, ...otherProps}):
+    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}):
       PanelStyle => ({
-      ...createPaddingCSSProps(otherProps, theme),
-      ...createFontCSSProps(otherProps, theme),
-      ...createStylingCSSProps(otherProps, theme),
-      ...createFlexContainerCSSStyle(otherProps),
+      ...createResponsiveStyles(otherProps, createBaseStyles),
       // mobile is always full width (flexGrow, flexShrink, width)
       flexGrow: 1,
       flexShrink: 0,
