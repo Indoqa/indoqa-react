@@ -4,16 +4,19 @@ import * as React from 'react'
 import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme, createResponsiveStyles, ResponsiveProps, WithBaseTheme} from '../..'
+import {BaseTheme} from '../../theming/baseTheme'
 import {
   createFontCSSProps,
   createPaddingCSSProps,
+  createResponsiveStyles,
   createStylingCSSProps,
   FlexContainerProps,
   FontProps,
   mergeThemedStyles,
   PaddingProps,
+  ResponsiveProps,
   StylingProps,
+  WithBaseTheme,
   WithStyle,
 } from '../base'
 import {GridContext} from './GridContext'

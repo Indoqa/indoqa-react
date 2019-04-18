@@ -1,8 +1,8 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
+import {BaseTheme} from '../../theming/baseTheme'
 import {
-  BaseTheme,
   createFontCSSProps,
   createPaddingCSSProps,
   createResponsiveStyles,
@@ -14,7 +14,7 @@ import {
   StylingProps,
   WithBaseTheme,
   WithStyle,
-} from '../..'
+} from '../base'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
