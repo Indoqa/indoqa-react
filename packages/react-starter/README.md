@@ -7,7 +7,7 @@ The main focus is to create a consistent environment for client side web applica
 The codebase was initially developed with ES6/Flowtype and at the end of 2018 migrated to Typescript because of the more mature tooling support.
 
 ## Changelog
-[Learn about the lastest improvements](./CHANGELOG.md)
+[Learn about the latest improvements](./CHANGELOG.md)
 
 ## Features
 

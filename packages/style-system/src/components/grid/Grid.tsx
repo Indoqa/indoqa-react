@@ -4,13 +4,9 @@ import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme, createResponsiveStyles, ResponsiveProps, Spacing, WithBaseTheme} from '../..'
 import {
-  BoxModelProps,
-  createBoxModelCSSProps,
-  createFlexChildCSSProps,
   createMarginCSSProps,
   createPaddingCSSProps,
   createStylingCSSProps,
-  FlexChildProps,
   MarginProps,
   mergeThemedStyles,
   PaddingProps,
@@ -22,9 +18,7 @@ import {GridContext} from './GridContext'
 
 interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<PaddingProps>,
-  ResponsiveProps<FlexChildProps>,
   StylingProps<T>,
-  ResponsiveProps<BoxModelProps>,
   ResponsiveProps<MarginProps> {
   children?: React.ReactNode,
   maxWidth?: number | string,
@@ -36,19 +30,15 @@ interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
 }
 
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
-  FlexChildProps,
   StylingProps<T>,
-  BoxModelProps,
   MarginProps,
   WithBaseTheme {
 }
 
 function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
   return {
-    ...createBoxModelCSSProps(props),
     ...createMarginCSSProps(props, theme),
     ...createPaddingCSSProps(props, theme),
-    ...createFlexChildCSSProps(props),
     ...createStylingCSSProps(props, theme),
   }
 }

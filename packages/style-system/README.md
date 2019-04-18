@@ -15,7 +15,7 @@ and several base components following the principle of [style as function of sta
 and [normalize.css](https://necolas.github.io/normalize.css/) are currently supported)
 
 ## Changelog
-[Learn about the lastest improvements](./CHANGELOG.md)
+[Learn about the latest improvements](./CHANGELOG.md)
 
 # Installation and usage
 `yarn install @indoqa/style-system`

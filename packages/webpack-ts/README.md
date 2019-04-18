@@ -17,7 +17,7 @@ The goal of @indoqa/webpack-ts is supporting following use cases:
 
 
 ## Changelog
-[Learn about the lastest improvements](./CHANGELOG.md)
+[Learn about the latest improvements](./CHANGELOG.md)
 
 ## Example
 

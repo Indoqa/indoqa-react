@@ -22,6 +22,12 @@ Grids can be nested by putting a `Grid` into a `ColRow`.
 | `maxWidth`        | `number`\|`string`  | `auto`       | Center CSS property `max-width`. |
 | `children`        | `React.Node`        | `null`       | Allowed child component types are `Row` and `ColRow`. However, typescript cannot enforce these types (yet). |
 
+The following properties are the same as of `Box`:
+* [Margin](./base-components.md/#Margin)
+* [Padding](./base-components.md/#Padding)
+* [Styling](./base-components.md/#styling)
+* [Additional CSS styles](./base-components.md/#additional-css-styles)
+
 # ColRow
 The `ColRow` is a flex container which aligns its children based on a grid size of `12` columns (like [Bootstrap](https://getbootstrap.com/docs/4.3/layout/grid/)).
 If it contains children with a sum of their sizes greater than 12, a row break is enforced.
@@ -29,7 +35,7 @@ If it contains children with a sum of their sizes greater than 12, a row break i
 ## Properties
 The following properties are the same as of `Box`:
 * [Padding](./base-components.md/#Padding)
-* [Style](./base-components.md/#style)
+* [Styling](./base-components.md/#styling)
 * [Additional CSS styles](./base-components.md/#additional-css-styles)
 
 # Col
@@ -41,7 +47,11 @@ grid width.
 |:---------|:----------------------|:--------|:------------|
 | `size`   | `number`\|`number[]`  |`12`     | The size indicates how many columns should be used. The maximum sum per row is 12. The allowed values are `1-12`.|
 
-### Responsive styling
+* [Padding](./base-components.md/#Padding)
+* [Styling](./base-components.md/#styling)
+* [Additional CSS styles](./base-components.md/#additional-css-styles)
+
+### Responsive size styling
 If the `Col` size is an array, the width is calculated based on the currently active breakpoint.
 Breakpoints are defined in the `Theme` and the array position defines the breakpoint for which it should be used. It is
 assumed that the breakpoints follow a mobile first approach which means that the default size (which is styled without a media query)

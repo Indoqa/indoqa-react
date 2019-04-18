@@ -17,7 +17,8 @@ across the application.
 | `mb`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-bottom` to  `theme.spacing.space[0-5]` |
 | `ml`              | `number` \[0-4\]    | unset        | Set the CSS property `margin-right` to  `theme.spacing.space[0-5]` |
 
-All properties can be passed as arrays to provide values for breakpoints.
+All properties can be passed as arrays to provide different values for breakpoints.
+See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.
 
 ### Padding
 | Property          | Type                | Default      | Description |
@@ -30,6 +31,9 @@ All properties can be passed as arrays to provide values for breakpoints.
 | `pb`              | `number` \[0-4\]    | unset        | Set the CSS property `padding-bottom` to  `theme.spacing.space[0-5]` |
 | `pl`              | `number` \[0-4\]    | unset        | Set the CSS property `padding-right` to  `theme.spacing.space[0-5]` |
 
+All properties can be passed as arrays to provide different values for breakpoints.
+See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.
+
 ### Flex child
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
@@ -39,6 +43,8 @@ All properties can be passed as arrays to provide values for breakpoints.
 | `order`           | `number`            | `0`          | Set the CSS property `order` |
 | `align`           | `AlignItems`        | `auto`       | Set the CSS property `alignSelf`, allowed values: `auto\|stretch\|center\|flex-start\|flex-end\|baseline\|initial\|inherit` |
 
+All properties can be passed as arrays to provide different values for breakpoints.
+See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.
 
 ### Font
 | Property          | Type                | Default      | Description |
@@ -50,6 +56,9 @@ All properties can be passed as arrays to provide values for breakpoints.
 | `italic`          | `boolean`           | `false`      | Set the CSS property `font-style` to `italic`. |
 | `ellipsis`        | `boolean`           | `false`      | Set the CSS properties `text-overflow` to `ellipsis`, `overflow` to `hidden` and `white-space` to `nowrap`. |
 | `textAlign`       | `TextAlign`         | unset (`left` if direction is ltr, and `right` if direction is rtl) | Set the CSS property `text-align`. Allowed values: `left`\|`right`\|`center`\|`justify`\|`initial`\|`inherit`|
+
+All properties can be passed as arrays to provide different values for breakpoints.
+See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.
 
 ### Styling
 | Property          | Type                | Default      | Description |
@@ -64,6 +73,9 @@ All properties can be passed as arrays to provide values for breakpoints.
 | `height`          | `number` \| `string`| unset        | Set the CSS property `height` to the value. If `fullHeight` is set to true, the `height` is set to `100%` though and overrides the `height` property of the `Box`.            |
 | `fullWidth`       | `boolean`           | `false`      | Set the CSS property `width` to `100%`. |
 | `fullHeight`      | `boolean`           | `false`      | Set the CSS property `height` to `100%`. |
+
+All properties can be passed as arrays to provide different values for breakpoints.
+See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.
 
 ### HTML Attributes
 | Property          | Type                | Default      | Description |
@@ -127,7 +139,7 @@ The following properties are the same as of `Box`:
 * [Padding](#Padding)
 * [Flex child](#flex-child)
 * [Font](#font)
-* [Style](#style)
+* [Styling](#styling)
 * [Box model](#box-model)
 * [HTML Attributes](#html-attributes)
 * [Additional CSS styles](#additional-css-styles)
@@ -156,7 +168,7 @@ The following properties are the same as of `Box`:
 * [Padding](#Padding)
 * [Flex child](#flex-child)
 * [Font](#font)
-* [Style](#style)
+* [Styling](#styling)
 * [HTML Attributes](#html-attributes)
 * [Additional CSS styles](#additional-css-styles)
 

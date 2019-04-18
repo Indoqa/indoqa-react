@@ -5,7 +5,7 @@ A component that provides a ready-to-use setup of [Redux](http://redux.js.org/),
 Working on different react applications, we ended up writing the same initialization code again and again. To avoid this duplicity, we extracted this component that covers middleware configuration, routing, Fela and dev tool setup. Only app specific routes, reducers, epics and a Fela configuration need to be passed as props.
 
 ## Changelog
-[Learn about the lastest improvements](./CHANGELOG.md)
+[Learn about the latest improvements](./CHANGELOG.md)
 
 ## Features
 
