@@ -1,4 +1,3 @@
-export * from './components/base'
 export * from './components/extendBox'
 export * from './components/Box'
 export * from './components/Flex'

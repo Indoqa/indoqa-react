@@ -5,23 +5,11 @@ import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
 import {BaseTheme} from '../../theming/baseTheme'
-import {
-  createFontCSSProps,
-  createPaddingCSSProps,
-  createResponsiveStyles,
-  createStylingCSSProps,
-  FlexContainerProps,
-  FontProps,
-  mergeThemedStyles,
-  PaddingProps,
-  ResponsiveProps,
-  StylingProps,
-  WithBaseTheme,
-  WithStyle,
-} from '../base'
+import {createFontCSSProps, createPaddingCSSProps, createStylingCSSProps} from '../base'
+import {FlexContainerProps, FontProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
+import {addUnitIfNeeded, createResponsiveStyles, mergeThemedStyles} from '../utils'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
-import {addUnitIfNeeded} from './utils'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<PaddingProps>,

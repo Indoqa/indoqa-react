@@ -2,21 +2,11 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {BaseTheme} from '../theming/baseTheme'
-import {
-  BaseProps,
-  createFlexChildCSSProps,
-  createFontCSSProps,
-  createMarginCSSProps,
-  createPaddingCSSProps,
-  createResponsiveStyles,
-  createStylingCSSProps,
-  HtmlSpanAttributesWithoutStyle,
-  mergeThemedStyles,
-  TextProps,
-  WithBaseTheme,
-} from './base'
+import {createFlexChildCSSProps, createFontCSSProps, createMarginCSSProps, createPaddingCSSProps, createStylingCSSProps} from './base'
+import {BaseProps, HtmlSpanAttributesWithoutStyle, TextProps} from './types'
+import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-function createTextCSSStyle<T extends BaseTheme>(props: TextProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
+function createTextCSSStyle<T extends BaseTheme>(props: TextProps<T>, theme: BaseTheme): IStyle {
   return {
     display: 'inline-block',
     ...createMarginCSSProps(props, theme),

@@ -3,22 +3,9 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
-import {
-  BoxModelProps,
-  createBoxModelCSSProps,
-  createMarginCSSProps,
-  createPaddingCSSProps,
-  createResponsiveStyles,
-  createStylingCSSProps,
-  MarginProps,
-  mergeThemedStyles,
-  PaddingProps,
-  ResponsiveProps,
-  StylingProps,
-  WithBaseTheme,
-  WithStyle,
-} from '../base'
-
+import {createBoxModelCSSProps, createMarginCSSProps, createPaddingCSSProps, createStylingCSSProps} from '../base'
+import {BoxModelProps, MarginProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
+import {createResponsiveStyles, mergeThemedStyles} from '../utils'
 
 import {GridContext, Spacing} from './GridContext'
 

@@ -5,7 +5,7 @@ export interface NamedBreakPoint extends Breakpoint {
   name: string,
 }
 
-export default function sortBreakpoints<T extends BaseBreakpoints>(breakpoints: T): NamedBreakPoint[] {
+export function sortBreakpoints<T extends BaseBreakpoints>(breakpoints: T): NamedBreakPoint[] {
   const sortBreakpointsFn = (breakpointsToBeSorted: T) => Object
     .keys(breakpointsToBeSorted)
     .map((key) => Object.assign(breakpoints[key], {name: key}))

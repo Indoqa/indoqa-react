@@ -4,24 +4,17 @@ import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
 import {PStyle} from '../../theming/PStyle'
-import sortBreakpoints, {NamedBreakPoint} from '../../theming/sortBreakpoints'
-import {
-  createPaddingCSSProps,
-  createResponsiveStyles,
-  createStylingCSSProps,
-  mergeThemedStyles,
-  PaddingProps,
-  ResponsiveProps,
-  StylingProps,
-  WithBaseTheme,
-  WithStyle,
-} from '../base'
+import {NamedBreakPoint, sortBreakpoints} from '../../theming/sortBreakpoints'
+import {createPaddingCSSProps, createStylingCSSProps} from '../base'
+import {PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
+import {addUnitIfNeeded, createResponsiveStyles, mergeThemedStyles} from '../utils'
 import {GRID_SIZE, Size} from './Col'
 import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
-import {addUnitIfNeeded} from './utils'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>, ResponsiveProps<PaddingProps>, ResponsiveProps<StylingProps<T>> {
+interface Props<T extends BaseTheme> extends WithStyle<T>,
+  ResponsiveProps<PaddingProps>,
+  ResponsiveProps<StylingProps<T>> {
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {

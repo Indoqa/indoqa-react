@@ -3,18 +3,9 @@ import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 
 import {BaseTheme} from '../theming/baseTheme'
-import {
-  BaseProps,
-  BoxProps,
-  createResponsiveStyles,
-  FlatBoxProps,
-  FlexContainerProps,
-  FlexProps,
-  HtmlDivAttributesWithoutStyle,
-  mergeThemedStyles,
-  WithBaseTheme,
-} from './base'
 import {createBoxCSSStyle} from './Box'
+import {BaseProps, BoxProps, FlatBoxProps, FlexContainerProps, FlexProps, HtmlDivAttributesWithoutStyle} from './types'
+import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
 export const createFlexContainerCSSStyle = (
   {
@@ -43,7 +34,7 @@ export const createFlexContainerCSSStyle = (
   return styles
 }
 
-function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
+function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme): IStyle {
   return {
     ...createBoxCSSStyle(props, theme),
     ...createFlexContainerCSSStyle(props),

@@ -1,12 +1,18 @@
-import {Box, BoxProps, Flex} from '@indoqa/style-system'
+import {Box, Flex} from '@indoqa/style-system'
 import * as React from 'react'
 import {StyleFunction} from 'react-fela'
 import {Theme} from '../app/theme'
 
+interface BoxProps {
+  boxBackground: string,
+  width: number | string,
+  height: number | string
+}
+
 interface Props {
   height?: number | string,
   width?: number | string,
-  boxProp?: BoxProps<Theme>
+  boxProp?: BoxProps
 }
 
 const bgBoxStyle = (boxBackground: string, width: number | string, height: number | string): StyleFunction<Theme> => {

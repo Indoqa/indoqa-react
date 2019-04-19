@@ -1,19 +1,12 @@
 /* tslint:disable:max-classes-per-file */
+import {PStyle} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
-import {
-  createPaddingCSSProps,
-  createResponsiveStyles,
-  createStylingCSSProps,
-  FontProps,
-  mergeThemedStyles,
-  PaddingProps,
-  StylingProps,
-  WithBaseTheme,
-  WithStyle,
-} from '../base'
+import {createPaddingCSSProps, createStylingCSSProps} from '../base'
+import {FontProps, PaddingProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
+import {createResponsiveStyles, mergeThemedStyles} from '../utils'
 
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
@@ -27,9 +20,8 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
   spacing?: number | string,
 }
 
-interface RowStyle extends IStyle {
+interface RowStyle extends PStyle {
   ':first-child': IStyle,
-  '@media (min-width: 768px)': IStyle,
 }
 
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
@@ -64,7 +56,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
       ':first-child': {
         marginTop: `-${spacing}`,
       },
-      '@media (min-width: 768px)': {
+      tablet: {
         flexWrap: 'nowrap',
         height,
       },

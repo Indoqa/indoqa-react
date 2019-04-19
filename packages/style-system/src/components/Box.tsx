@@ -4,23 +4,17 @@ import {FelaComponent} from 'react-fela'
 
 import {BaseTheme} from '../theming/baseTheme'
 import {
-  BaseProps,
-  BoxProps,
   createBoxModelCSSProps,
   createFlexChildCSSProps,
   createFontCSSProps,
   createMarginCSSProps,
   createPaddingCSSProps,
-  createResponsiveStyles,
   createStylingCSSProps,
-  FlatBoxProps,
-  HtmlDivAttributesWithoutStyle,
-  mergeThemedStyles,
-  WithBaseTheme,
 } from './base'
+import {BaseProps, BoxProps, FlatBoxProps, HtmlDivAttributesWithoutStyle} from './types'
+import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-
-export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T> & WithBaseTheme, theme: BaseTheme): IStyle {
+export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme): IStyle {
   return {
     ...createBoxModelCSSProps(props),
     ...createMarginCSSProps(props, theme),
