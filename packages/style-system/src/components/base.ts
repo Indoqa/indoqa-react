@@ -37,10 +37,10 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
     flexShrink: shrink || 1,
     flexBasis: basis || 'auto',
   }
-  if (order) {
+  if (order !== undefined) {
     Object.assign(styles, {order})
   }
-  if (align) {
+  if (align !== undefined) {
     Object.assign(styles, {alignSelf: align})
   }
   return styles
@@ -88,27 +88,27 @@ export function createFontCSSProps<T extends BaseTheme>(
 
 export const createMarginCSSProps = ({m, mt, mb, ml, mr, mx, my}: MarginProps & WithBaseTheme, theme: BaseTheme) => {
   const styles = {}
-  if (m) {
+  if (m !== undefined) {
     Object.assign(styles, {margin: spacing(theme, m)})
   }
-  if (mx) {
+  if (mx !== undefined) {
     Object.assign(styles, {marginLeft: spacing(theme, mx)})
     Object.assign(styles, {marginRight: spacing(theme, mx)})
   }
-  if (my) {
+  if (my !== undefined) {
     Object.assign(styles, {marginTop: spacing(theme, my)})
     Object.assign(styles, {marginBottom: spacing(theme, my)})
   }
-  if (mt) {
+  if (mt !== undefined) {
     Object.assign(styles, {marginTop: spacing(theme, mt)})
   }
-  if (mb) {
+  if (mb !== undefined) {
     Object.assign(styles, {marginBottom: spacing(theme, mb)})
   }
-  if (ml) {
+  if (ml !== undefined) {
     Object.assign(styles, {marginLeft: spacing(theme, ml)})
   }
-  if (mr) {
+  if (mr !== undefined) {
     Object.assign(styles, {marginRight: spacing(theme, mr)})
   }
   return styles
@@ -117,27 +117,27 @@ export const createMarginCSSProps = ({m, mt, mb, ml, mr, mx, my}: MarginProps & 
 export const createPaddingCSSProps = ({p, pt, pb, pl, pr, px, py}: PaddingProps & WithBaseTheme, theme: BaseTheme) => {
   // tslint:disable-next-line
   const styles = {}
-  if (p) {
+  if (p !== undefined) {
     Object.assign(styles, {padding: spacing(theme, p)})
   }
-  if (px) {
+  if (px !== undefined) {
     Object.assign(styles, {paddingLeft: spacing(theme, px)})
     Object.assign(styles, {paddingRight: spacing(theme, px)})
   }
-  if (py) {
+  if (py !== undefined) {
     Object.assign(styles, {paddingTop: spacing(theme, py)})
     Object.assign(styles, {paddingBottom: spacing(theme, py)})
   }
-  if (pt) {
+  if (pt !== undefined) {
     Object.assign(styles, {paddingTop: spacing(theme, pt)})
   }
-  if (pb) {
+  if (pb !== undefined) {
     Object.assign(styles, {paddingBottom: spacing(theme, pb)})
   }
-  if (pl) {
+  if (pl !== undefined) {
     Object.assign(styles, {paddingLeft: spacing(theme, pl)})
   }
-  if (pr) {
+  if (pr !== undefined) {
     Object.assign(styles, {paddingRight: spacing(theme, pr)})
   }
   return styles

@@ -44,7 +44,7 @@ export function getPropsByBreakpoint(props: any, breakpoints: NamedBreakPoint[])
       validateSizes(value.length, breakpoints.length, key, value)
       for (let i = 0; i <= breakpoints.length; i++) {
         const currentValue = value[i]
-        if (currentValue) {
+        if (currentValue !== undefined) {
           result[i][key] = currentValue
         }
       }
