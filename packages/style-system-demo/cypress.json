@@ -1,0 +1,4 @@
+{
+  "baseUrl": "http://localhost:5100",
+  "integrationFolder": "cypress/build/integration"
+}

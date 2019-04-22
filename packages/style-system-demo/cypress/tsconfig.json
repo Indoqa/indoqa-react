@@ -3,11 +3,13 @@
     "allowJs": true,
     "baseUrl": "../node_modules",
     "isolatedModules": false,
+    "outDir": "build/integration",
+    "sourceMap": false,
     "types": [
       "cypress"
     ]
   },
   "include": [
-    "**/*.*"
+    "integration/**/*.spec.ts"
   ]
 }
