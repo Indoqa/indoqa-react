@@ -1,4 +1,6 @@
 {
   "baseUrl": "http://localhost:5100",
-  "integrationFolder": "cypress/build/integration"
+  "integrationFolder": "cypress/build/integration",
+  "viewportHeight": 768,
+  "viewportWidth": 1024
 }

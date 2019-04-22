@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "baseUrl": "../node_modules",
+    "baseUrl": "../../node_modules",
     "isolatedModules": false,
+    "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "es2017",
+      "dom"
+    ],
     "outDir": "build/integration",
     "sourceMap": false,
     "types": [

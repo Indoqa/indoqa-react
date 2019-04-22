@@ -9,12 +9,15 @@
   "scripts": {
     "analyze": "source-map-explorer ./build/static/*.js{,.map}",
     "build": "indoqa-webpack-ts ./indoqa-webpack-options.js",
-    "clean": "rimraf ./build",
+    "build:tests": "tsc --project cypress/tsconfig.json",
+    "clean": "rimraf ./build ./cypress/build",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "yarn build:tests && cypress run",
+    "e2e": "start-server-and-test serve http://localhost:5100 cy:run",
     "lint": "tslint --project .",
     "package": "yarn clean && yarn build",
     "postinstall": "yarn run package",
+    "serve": "serve -s -l 5100 ./build",
     "start": "indoqa-dev-server ./indoqa-webpack-options.js"
   },
   "repository": {
