@@ -26,29 +26,19 @@ const InnerGrid2: React.FC = () => (
   </Grid>
 )
 
-const NestedResponsiveGridCol: React.FC = () => {
-  return (
-    <Box>
-      <p>This sample shows a <code>Grid</code> which contains two nested grids with responsive sizes of
-        the <code>Col</code> components. For mobile and tablet sized devices, the first column
-        takes the full widths (12 of 12), desktop screens</p>
-      <Grid spacing="0.5rem">
-        <ColRow>
-          <Col size={[12, 12, 6]}>
-            <InnerGrid1/>
-          </Col>
-          <Col size={[12, 12, 6]}>
-            <InnerGrid2/>
-          </Col>
-        </ColRow>
-        <ColRow>
-          <Col>
-            <BlueBox/>
-          </Col>
-        </ColRow>
-      </Grid>
-      <Code>{codeString}</Code>
-    </Box>
-  )
-}
+<Grid spacing="0.5rem">
+  <ColRow>
+    <Col size={[12, 12, 6]}>
+      <InnerGrid1/>
+    </Col>
+    <Col size={[12, 12, 6]}>
+      <InnerGrid2/>
+    </Col>
+  </ColRow>
+  <ColRow>
+    <Col>
+      <BlueBox/>
+    </Col>
+  </ColRow>
+</Grid>
 `

@@ -12,6 +12,9 @@ import NestedGridCol from './grid/col/NestedGridCol'
 import NestedGridColFlexibleHeight from './grid/col/NestedGridColFlexibleHeight'
 import NestedResponsiveGridCol from './grid/col/NestedResponsiveGridCol'
 import SimpleGridCol from './grid/col/SimpleGridCol'
+import ExplicitWidthGridPanel from './grid/panel/ExplicitWidthGridPanel'
+import NestedGridPanel from './grid/panel/NestedGridPanel'
+import SimpleGridPanel from './grid/panel/SimpleGridPanel'
 import StyleSystemDemoOverview from './StyleSystemDemoOverview'
 
 interface Props {
@@ -70,8 +73,26 @@ const getBaseComponentGroup = (): Group => ({
   ],
 })
 
-const getGridGroup = (): Group => ({
-  name: 'Grid with Cols',
+const getGridPanelGroup = (): Group => ({
+  name: 'Grid with Panel',
+  descriptions: [
+    {
+      name: 'Simple',
+      component: <SimpleGridPanel/>,
+    },
+    {
+      name: 'Nested',
+      component: <NestedGridPanel/>,
+    },
+    {
+      name: 'Explicit width',
+      component: <ExplicitWidthGridPanel/>,
+    },
+  ],
+})
+
+const getGridColGroup = (): Group => ({
+  name: 'Grid with Col',
   descriptions: [
     {
       name: 'Simple',
@@ -118,7 +139,7 @@ class StyleSystemUIExplorer extends React.Component<Props> {
         fontMixes={getFontMixes(theme)}
         fontSizes={getFontSizes(theme)}
         headlineFonts={getHeadlineFonts(theme)}
-        groups={[getBaseComponentGroup(), getGridGroup(), getFelaGroup()]}
+        groups={[getBaseComponentGroup(), getGridColGroup(), getGridPanelGroup(), getFelaGroup()]}
         mountPath=""
         overviewPanel={<StyleSystemDemoOverview/>}
         projectName="Indoqa Style-System"
