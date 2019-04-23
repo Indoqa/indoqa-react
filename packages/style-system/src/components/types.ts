@@ -103,6 +103,7 @@ export interface WithStyle<T extends BaseTheme> {
 export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
   children?: ReactNode,
   htmlAttrs?: H,
+  dataTest?: string,
 }
 
 type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
