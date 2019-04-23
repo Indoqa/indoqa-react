@@ -1,3 +1,10 @@
+# v1.2.0 | 2019-04-23
+* Introduce e2e testing using Cypress
+* Samples for Panel based grids
+* Add a sample for Col based grids that demonstrates equal Col heights
+* Add Fela sample with style props (useFela hook)
+* Improve all nested grid samples to be more readable
+
 # v1.1.1 | 2019-04-02
 * no changes
 
