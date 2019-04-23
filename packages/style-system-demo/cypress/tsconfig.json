@@ -10,13 +10,15 @@
       "es2017",
       "dom"
     ],
-    "outDir": "build/integration",
+    "outDir": "build",
     "sourceMap": false,
     "types": [
       "cypress"
     ]
   },
   "include": [
-    "integration/**/*.spec.ts"
+    "integration/**/*.spec.ts",
+    "support/**/*.ts",
+    "utils/*.ts"
   ]
 }
