@@ -87,7 +87,7 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
         width: '0',
         flex: `${isDefaultWidth(width) ? size : 0} 0 ${calcBasis(spacing, size, width)}`,
         ':not(:last-child)': {
-          paddingRight: spacing,
+          marginRight: spacing,
         },
       },
     })
