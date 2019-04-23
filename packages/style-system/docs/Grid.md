@@ -19,7 +19,7 @@ Grids can be nested by putting a `Grid` into a `ColRow`.
 |:----------------- |:--------------------|:-------------|:------------|
 | `spacing`         | `number` \|`string` | unset        | Set the gutter width of the grid to a valid CSS length value. If a number is passed, it is interpreted as pixels. |
 | `center`          | `boolean`           | `false`      | Center the grid within its container. |
-| `maxWidth`        | `number`\|`string`  | `auto`       | Center CSS property `max-width`. |
+| `maxWidth`        | `number`\|`string`  | `none`       | Center CSS property `max-width`. |
 | `children`        | `React.Node`        | `null`       | Allowed child component types are `Row` and `ColRow`. However, typescript cannot enforce these types (yet). |
 
 The following properties are the same as of `Box`:
@@ -27,6 +27,7 @@ The following properties are the same as of `Box`:
 * [Padding](./base-components.md/#Padding)
 * [Styling](./base-components.md/#styling)
 * [Additional CSS styles](./base-components.md/#additional-css-styles)
+* [Test data](./base-components.md/#test-data)
 
 # ColRow
 The `ColRow` is a flex container which aligns its children based on a grid size of `12` columns (like [Bootstrap](https://getbootstrap.com/docs/4.3/layout/grid/)).
@@ -37,6 +38,7 @@ The following properties are the same as of `Box`:
 * [Padding](./base-components.md/#Padding)
 * [Styling](./base-components.md/#styling)
 * [Additional CSS styles](./base-components.md/#additional-css-styles)
+* [Test data](./base-components.md/#test-data)
 
 # Col
 The `Col` component is a tile within a `ColRow`. Its size is relative to the
@@ -50,6 +52,7 @@ grid width.
 * [Padding](./base-components.md/#Padding)
 * [Styling](./base-components.md/#styling)
 * [Additional CSS styles](./base-components.md/#additional-css-styles)
+* [Test data](./base-components.md/#test-data)
 
 ### Responsive size styling
 If the `Col` size is an array, the width is calculated based on the currently active breakpoint.

@@ -15,6 +15,7 @@ import {testGridContext} from './testGridContext'
 interface Props<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<PaddingProps>,
   ResponsiveProps<StylingProps<T>> {
+  dataTest?: string,
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
@@ -154,10 +155,10 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
         marginTop: 0,
       },
     })
-    const {style, ...otherProps} = this.props
+    const {style, dataTest, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
     const renderCols = ({className, theme}: RenderProps<T>) => (
-      <div className={className}>
+      <div className={className} data-test={dataTest}>
         {rewriteCols(sortBreakpoints(theme.breakpoints), this.props.children, this.props.spacing)}
       </div>
     )

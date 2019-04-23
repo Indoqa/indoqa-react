@@ -5,7 +5,7 @@ import {BaseTheme} from '../../theming/baseTheme'
 import {createFontCSSProps, createPaddingCSSProps, createStylingCSSProps} from '../base'
 import {FontProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
 import {createResponsiveStyles, mergeThemedStyles} from '../utils'
-import {GridContext} from './GridContext'
+import {GridContext, Spacing} from './GridContext'
 import {testGridContext} from './testGridContext'
 
 type SizeValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
@@ -16,6 +16,11 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<StylingProps<T>>,
   ResponsiveProps<FontProps<T>> {
   size?: Size,
+  dataTest?: string,
+}
+
+interface ColContainerProps<T extends BaseTheme> extends Props<T> {
+  spacing?: Spacing,
 }
 
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
@@ -47,14 +52,18 @@ export class Col<T extends BaseTheme> extends React.Component<Props<T>> {
   }
 
   public render() {
-    const {children, style, ...otherProps} = this.props
+    const {children, style, dataTest, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, Props<T>>(themedBoxStyles, style)
     return (
       <GridContext.Consumer>
         {({spacing}) => {
           const child = (
-            <FelaComponent style={styles} spacing={spacing} {...otherProps}>
-              {children}
+            <FelaComponent<T, ColContainerProps<T>> style={styles} spacing={spacing} {...otherProps}>
+              {({className}) => (
+                <div className={className} data-test={dataTest}>
+                  {children}
+                </div>
+              )}
             </FelaComponent>
           )
           return testGridContext(spacing, child)

@@ -93,6 +93,11 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 This is an escape hatch in the case that the available properties do not support a particular CSS property.
 Note that using `style` does not create inline styles but Fela generates global CSS rules.
 
+### Test data
+| Property          | Type                | Default      | Description |
+|:----------------- |:--------------------|:-------------|:------------|
+| `dataTest`        | `string`            | -            | Adds the attribute `data-test` to the HTML element. Use this to produce stable identifiers e2e test tools.|
+
 #### IStyle
 The `IStyle` interface extends the React interface `CSS.Properties<...>`:
 
@@ -149,6 +154,7 @@ The following properties are the same as of `Box`:
 * [Box model](#box-model)
 * [HTML Attributes](#html-attributes)
 * [Additional CSS styles](#additional-css-styles)
+* [Test data](#test-data)
 
 ### Flex container
 | Property          | Type                | Default       | Description |
@@ -177,6 +183,7 @@ The following properties are the same as of `Box`:
 * [Styling](#styling)
 * [HTML Attributes](#html-attributes)
 * [Additional CSS styles](#additional-css-styles)
+* [Test data](#test-data)
 
 ## Theme
 see [Box](#theme)
