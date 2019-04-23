@@ -18,9 +18,6 @@ pipeline {
   
   agent any
 
-  parameters {
-  }
-
   environment {
     MAVEN_BUILD_PROPERTIES=''
     DEPLOY_BRANCH='master'
