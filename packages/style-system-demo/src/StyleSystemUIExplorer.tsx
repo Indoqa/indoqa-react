@@ -11,6 +11,7 @@ import FelaHookSamples from './fela/FelaHookSamples'
 import NestedGridCol from './grid/col/NestedGridCol'
 import NestedGridColFlexibleHeight from './grid/col/NestedGridColFlexibleHeight'
 import NestedResponsiveGridCol from './grid/col/NestedResponsiveGridCol'
+import ResponsiveGridCol from './grid/col/ResponsiveGridCol'
 import SimpleGridCol from './grid/col/SimpleGridCol'
 import ExplicitWidthGridPanel from './grid/panel/ExplicitWidthGridPanel'
 import NestedGridPanel from './grid/panel/NestedGridPanel'
@@ -101,6 +102,10 @@ const getGridColGroup = (): Group => ({
     {
       name: 'Nested',
       component: <NestedGridCol/>,
+    },
+    {
+      name: 'Responsive',
+      component: <ResponsiveGridCol/>,
     },
     {
       name: 'Nested - flexible height',

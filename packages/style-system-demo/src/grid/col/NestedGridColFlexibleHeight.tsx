@@ -19,7 +19,7 @@ const NestedGridColFlexibleHeight: React.FC = () => {
                 <Col size={6}>
                   <Grid spacing="0.5rem">
                     <ColRow>
-                      <Col size={4}>
+                      <Col size={4} dataTest="col1">
                         <UnsetHeightBox>
                           line<br/>
                           line<br/>
@@ -30,14 +30,14 @@ const NestedGridColFlexibleHeight: React.FC = () => {
                           line<br/>
                         </UnsetHeightBox>
                       </Col>
-                      <Col size={4}>
+                      <Col size={4} dataTest="col2">
                         <UnsetHeightBox>
                           line<br/>
                           line<br/>
                           line<br/>
                         </UnsetHeightBox>
                       </Col>
-                      <Col size={4}>
+                      <Col size={4} dataTest="col3">
                         <UnsetHeightBox/>
                       </Col>
                     </ColRow>

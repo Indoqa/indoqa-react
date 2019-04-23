@@ -6,7 +6,7 @@ import codeString from './NestedGridPanelCode'
 
 const ExplicitWidthGridPanel: React.FC = () => (
   <Box>
-    <p>The first <code>Panel</code> has an explicit width of 300px. The width of the other <code>Panel</code> is distributed evenly
+    <p>The first <code>Panel</code> has an explicit width of 300px. The width of the other <code>Panel</code>s is distributed evenly
       according to their size (default is 1).
     </p>
     <Grid spacing="0.5rem">
