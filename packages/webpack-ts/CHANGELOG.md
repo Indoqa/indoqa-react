@@ -1,3 +1,6 @@
+# v1.2.0 | 2019-04-23
+* no changes
+
 # v1.1.1 | 2019-04-02
 * fix bug with TerserPlugin by deactivating parallel builds for Windows Subsystem builds (see https://github.com/webpack-contrib/terser-webpack-plugin/issues/21)
 
