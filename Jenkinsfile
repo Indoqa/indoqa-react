@@ -41,6 +41,14 @@ pipeline {
         sh 'yarn install'
       }
     }
+    stage('e2e') {
+      options {
+        timeout(time: 5, unit: 'MINUTES') 
+      }    
+      steps {
+        sh 'yarn run e2e'
+      }
+    }
   }
 
   post {
