@@ -29,7 +29,7 @@ The following properties are the same as of `Box`:
 * [Additional CSS styles](./base-components.md/#additional-css-styles)
 * [Test data](./base-components.md/#test-data)
 
-# ColRow
+# ColRowj
 The `ColRow` is a flex container which aligns its children based on a grid size of `12` columns (like [Bootstrap](https://getbootstrap.com/docs/4.3/layout/grid/)).
 If it contains children with a sum of their sizes greater than 12, a row break is enforced.
 

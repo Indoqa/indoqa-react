@@ -1,10 +1,5 @@
-import {Box, Col, ColRow, Grid} from '@indoqa/style-system'
-import * as React from 'react'
-import Code from '../code/Code'
-import {BlueBox, OrangeBox, YellowBox} from './Boxes'
-import codeString from './NestedResponsiveGridCode'
-
-const InnerGrid1: React.FC = () => (
+/* tslint:disable */
+export default `const InnerGrid1: React.FC = () => (
   <Grid spacing="0.5rem">
     <ColRow>
       <Col size={[6, 3]}><OrangeBox/></Col>
@@ -31,7 +26,7 @@ const InnerGrid2: React.FC = () => (
   </Grid>
 )
 
-const NestedResponsiveGrid: React.FC = () => {
+const NestedResponsiveGridCol: React.FC = () => {
   return (
     <Box>
       <p>This sample shows a <code>Grid</code> which contains two nested grids with responsive sizes of
@@ -56,5 +51,4 @@ const NestedResponsiveGrid: React.FC = () => {
     </Box>
   )
 }
-
-export default NestedResponsiveGrid
+`

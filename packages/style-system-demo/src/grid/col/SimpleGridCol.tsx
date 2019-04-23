@@ -1,10 +1,10 @@
 import {Box, Col, ColRow, Grid} from '@indoqa/style-system'
 import * as React from 'react'
-import Code from '../code/Code'
-import {BlueBox, OrangeBox} from './Boxes'
-import codeString from './SimpleGridCode'
+import Code from '../../code/Code'
+import {BlueBox, OrangeBox} from '../Boxes'
+import codeString from './SimpleGridColCode'
 
-const SimpleGrid: React.FC = () => (
+const SimpleGridCol: React.FC = () => (
   <Box>
     <p>This sample shows a <code>Grid</code> with two rows. The rows render their <code>Col</code>
       components into two rows because the <code>Col</code> sizes are larger than 12 in each case.<br/>
@@ -29,4 +29,4 @@ const SimpleGrid: React.FC = () => (
   </Box>
 )
 
-export default SimpleGrid
+export default SimpleGridCol

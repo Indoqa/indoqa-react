@@ -1,10 +1,10 @@
 import {Box, Col, ColRow, Grid} from '@indoqa/style-system'
 import * as React from 'react'
-import Code from '../code/Code'
-import {BlueBox, RedBox, UnsetHeightBox} from './Boxes'
-import codeString from './NestedGridFlexibleHeightCode'
+import Code from '../../code/Code'
+import {BlueBox, RedBox, UnsetHeightBox} from '../Boxes'
+import codeString from './NestedGridColFlexibleHeightCode'
 
-const NestedGridFlexibleHeight: React.FC = () => {
+const NestedGridColFlexibleHeight: React.FC = () => {
   const gridSpacing = '0.5rem'
   return (
     <Box>
@@ -57,4 +57,4 @@ const NestedGridFlexibleHeight: React.FC = () => {
   )
 }
 
-export default NestedGridFlexibleHeight
+export default NestedGridColFlexibleHeight

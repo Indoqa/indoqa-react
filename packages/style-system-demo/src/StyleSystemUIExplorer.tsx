@@ -8,10 +8,10 @@ import FlexSamples from './base-components/FlexSamples'
 import TextSamples from './base-components/TextSamples'
 import FelaComponentSamples from './fela/FelaComponentSamples'
 import FelaHookSamples from './fela/FelaHookSamples'
-import NestedGrid from './grid/NestedGrid'
-import NestedGridFlexibleHeight from './grid/NestedGridFlexibleHeight'
-import NestedResponsiveGrid from './grid/NestedResponsiveGrid'
-import SimpleGrid from './grid/SimpleGrid'
+import NestedGridCol from './grid/col/NestedGridCol'
+import NestedGridColFlexibleHeight from './grid/col/NestedGridColFlexibleHeight'
+import NestedResponsiveGridCol from './grid/col/NestedResponsiveGridCol'
+import SimpleGridCol from './grid/col/SimpleGridCol'
 import StyleSystemDemoOverview from './StyleSystemDemoOverview'
 
 interface Props {
@@ -71,23 +71,23 @@ const getBaseComponentGroup = (): Group => ({
 })
 
 const getGridGroup = (): Group => ({
-  name: 'Grid',
+  name: 'Grid with Cols',
   descriptions: [
     {
-      name: 'Simple grid',
-      component: <SimpleGrid/>,
+      name: 'Simple',
+      component: <SimpleGridCol/>,
     },
     {
-      name: 'Nested grid',
-      component: <NestedGrid/>,
+      name: 'Nested',
+      component: <NestedGridCol/>,
     },
     {
-      name: 'Nested grid - Flexible height',
-      component: <NestedGridFlexibleHeight/>,
+      name: 'Nested - flexible height',
+      component: <NestedGridColFlexibleHeight/>,
     },
     {
-      name: 'Nested responsive grid',
-      component: <NestedResponsiveGrid/>,
+      name: 'Nested - responsive',
+      component: <NestedResponsiveGridCol/>,
     },
   ],
 })

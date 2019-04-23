@@ -1,10 +1,10 @@
 import {Box, Col, ColRow, Grid} from '@indoqa/style-system'
 import * as React from 'react'
-import Code from '../code/Code'
-import {BlueBox, OrangeBox, RedBox, YellowBox} from './Boxes'
-import codeString from './NestedGridCode'
+import Code from '../../code/Code'
+import {BlueBox, OrangeBox, RedBox, YellowBox} from '../Boxes'
+import codeString from './NestedGridColCode'
 
-const NestedGrid: React.FC = () => {
+const NestedGridCol: React.FC = () => {
   const gridSpacing = '0.5rem'
   return (
     <Box>
@@ -42,4 +42,4 @@ const NestedGrid: React.FC = () => {
   )
 }
 
-export default NestedGrid
+export default NestedGridCol
