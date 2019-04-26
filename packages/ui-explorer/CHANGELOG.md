@@ -1,3 +1,7 @@
+# v1.2.1 | 2019-04-26
+* fix path to typings in package.json
+* semantic color names in uieTheme
+
 # v1.2.0 | 2019-04-23
 * no changes
 

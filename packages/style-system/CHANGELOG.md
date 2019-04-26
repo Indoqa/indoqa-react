@@ -1,3 +1,6 @@
+# v1.2.1 | 2019-04-26
+* no changes
+
 # v1.2.0 | 2019-04-23
 * Responsive props by supporting array values for Box, Flex and Text
 * Semantic HTML alternatives for Box (AsideBox, MainBox, etc.)
