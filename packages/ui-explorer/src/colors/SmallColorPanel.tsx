@@ -19,10 +19,12 @@ const ColorPanel = ({color, uieTheme}: Props) => {
     marginRight: uieTheme.spacing.space1,
     marginBottom: uieTheme.spacing.space1,
     borderRadius: '3px',
-    border: uieTheme.layout.colorPanelBorder,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: uieTheme.colors.borderPanel,
   }
   return (
-    <FelaComponent style={style} />
+    <FelaComponent style={style}/>
   )
 }
 

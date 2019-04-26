@@ -42,7 +42,9 @@ const ColorPanel = ({color, name, uieTheme}: Props) => {
     marginRight: uieTheme.spacing.space2,
     marginBottom: uieTheme.spacing.space2,
     borderRadius: '3px',
-    border: uieTheme.layout.colorPanelBorder,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: uieTheme.colors.borderPanel,
   }
   return (
     <FelaComponent style={style}>

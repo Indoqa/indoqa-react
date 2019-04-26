@@ -1,18 +1,32 @@
 import {UIETheme} from './UIETheme'
 
-const fontFamilies = {
+export const uieFontFamilies = {
   base: 'Lato, sans-serif',
   heading: 'Oswald, sans-serif',
 }
 
-export const lightTheme: UIETheme = {
+export const uieColors = {
+  white_1: '#FFFFFF',
+  white_2: '#F1F3F5',
+  white_3: '#E9ECEF',
+  white_4: '#dedede',
+  grey_1: '#868E96',
+  grey_2: '#495057',
+}
+
+export const uieLightTheme: UIETheme = {
   colors: {
-    primaryDark: '#868E96',
-    primary: '#E9ECEF',
-    primaryLight: '#F1F3F5',
-    background: '#FFFFFF',
-    text: '#495057',
-    textInverted: '#FFFFFF',
+    bgMainHeading: uieColors.grey_1,
+    bgMenu: uieColors.white_2,
+    bgPanelHeader: uieColors.white_2,
+    bgContent: uieColors.white_1,
+    bgContentHeader: uieColors.white_3,
+    text: uieColors.grey_2,
+    textMainHeading: uieColors.white_1,
+    textPanelHeading: uieColors.grey_1,
+    textMenuHeading: uieColors.grey_1,
+    textMenuItem: uieColors.grey_2,
+    borderPanel: uieColors.white_4,
   },
   fontFamilyCSSImports: 'https://fonts.googleapis.com/css?family=Lato|Oswald:700',
   fontSizes: {
@@ -24,12 +38,12 @@ export const lightTheme: UIETheme = {
   },
   fontStyles: {
     base: {
-      fontFamily: fontFamilies.base,
+      fontFamily: uieFontFamilies.base,
       fontSize: '0.9rem',
       lineHeight: 1.2,
     },
     headline: {
-      fontFamily: fontFamilies.heading,
+      fontFamily: uieFontFamilies.heading,
       fontWeight: 700,
       lineHeight: 1.2,
     },
@@ -43,6 +57,5 @@ export const lightTheme: UIETheme = {
   },
   layout: {
     topMenuHeight: '5rem',
-    colorPanelBorder: 'solid 1px #dedede',
   },
 }

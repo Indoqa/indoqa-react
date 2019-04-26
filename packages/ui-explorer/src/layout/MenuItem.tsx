@@ -23,7 +23,7 @@ const MenuItem: React.FC<MenuLinkProps> = ({uieTheme, to, children}) => {
     '> a': {
       textDecoration: 'none',
       ...uieTheme.fontStyles.base,
-      color: uieTheme.colors.text,
+      color: uieTheme.colors.textMenuItem,
       fontSize: uieTheme.fontSizes.text,
     },
     '> a:visited': {

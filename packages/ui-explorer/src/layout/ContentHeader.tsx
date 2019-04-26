@@ -8,7 +8,7 @@ const ContentHeader: React.FC<WithUIETheme> = ({children, uieTheme}) => {
     boxSizing: 'border-box',
     height: uieTheme.layout.topMenuHeight,
     paddingLeft: uieTheme.spacing.space4,
-    backgroundColor: uieTheme.colors.primaryLight,
+    backgroundColor: uieTheme.colors.bgContentHeader,
   }
   return (
     <Flex fullWidth style={style} alignItems="center">
