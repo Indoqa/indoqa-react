@@ -267,7 +267,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
                 </InnerStyleGuideMenu>
               </StyleGuideMenu>
             </Panel>
-            <Panel>
+            <Panel style={{minHeight: '100vh'}}>
               <ContentPanel>
                 <Route exact path={`${mountPath}/`} render={() => (
                   <InnerContentPanel name={this.getDescription()} uieTheme={uieTheme}>
