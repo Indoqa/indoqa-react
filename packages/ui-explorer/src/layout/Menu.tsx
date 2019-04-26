@@ -10,7 +10,7 @@ interface StyleGuideMenuCSSProps extends IStyle {
 const Menu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: StyleGuideMenuCSSProps = {
     boxSizing: 'border-box',
-    backgroundColor: uieTheme.colors.primary,
+    backgroundColor: uieTheme.colors.bgMenu,
     tablet: {
       overflowY: 'auto',
       borderBottom: 'none',

@@ -1,3 +1,6 @@
+# v1.2.1 | 2019-04-26
+* adapt to changes in ui-explorer (semantic colors)
+
 # v1.2.0 | 2019-04-23
 * Introduce e2e testing using Cypress
 * Samples for Panel based grids

@@ -19,7 +19,7 @@ import {Color, Font, FontMix, FontSize, FontSizes, Group} from './types'
 import TypographyPanel from './typography/TypographyPanel'
 import {UIETheme} from './uietheme/UIETheme'
 import StyleGuideThemeContext from './uietheme/UIEThemeContext'
-import {lightTheme} from './uietheme/uieThemes'
+import {uieLightTheme} from './uietheme/uieThemes'
 import {WithUIETheme} from './uietheme/withUIETheme'
 import importCss from './utils/importCss'
 import {cleanUrlPathPart} from './utils/urlUtils'
@@ -92,7 +92,7 @@ const MenuIconWrapper: React.FC<MenuIconProps> = ({show, toggleMenu, uieTheme}) 
   }
   const renderMenuIcon = ({className}: RenderProps<BaseTheme>) => (
     <div className={className} onClick={() => toggleMenu()}>
-      <MenuIcon color={uieTheme.colors.primaryDark} size="35"/>
+      <MenuIcon color={uieTheme.colors.bgMainHeading} size="35"/>
     </div>
   )
   return (
@@ -176,7 +176,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
     super(props)
     const {uieTheme} = props
     this.state = {
-      uieTheme: uieTheme || lightTheme,
+      uieTheme: uieTheme || uieLightTheme,
       showMenu: false,
     }
   }

@@ -2,12 +2,17 @@ import {IStyle} from 'fela'
 
 export interface UIETheme {
   colors: {
-    primary: string,
-    primaryDark: string,
-    primaryLight: string,
-    background: string,
+    bgMenu: string,
+    bgMainHeading: string,
+    bgPanelHeader: string,
+    bgContent: string,
+    bgContentHeader: string,
     text: string,
-    textInverted: string,
+    textMainHeading: string,
+    textPanelHeading: string,
+    textMenuHeading: string,
+    textMenuItem: string,
+    borderPanel: string,
   }
   fontFamilyCSSImports: string,
   fontStyles: {
@@ -30,6 +35,5 @@ export interface UIETheme {
   },
   layout: {
     topMenuHeight: string,
-    colorPanelBorder: string,
   }
 }

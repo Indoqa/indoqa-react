@@ -9,11 +9,11 @@ interface Props extends WithUIETheme {
 
 const Header: React.FunctionComponent<WithUIETheme> = ({uieTheme, children}) => {
   const style: IStyle = {
-    backgroundColor: uieTheme.colors.primaryLight,
+    backgroundColor: uieTheme.colors.bgPanelHeader,
     textTransform: 'uppercase',
     ...uieTheme.fontStyles.headline,
     fontSize: uieTheme.fontSizes.small,
-    color: uieTheme.colors.primaryDark,
+    color: uieTheme.colors.textPanelHeading,
     padding: uieTheme.spacing.space2,
     borderRadius: '1px',
     marginBottom: uieTheme.spacing.space2,
@@ -27,7 +27,7 @@ const Header: React.FunctionComponent<WithUIETheme> = ({uieTheme, children}) => 
 
 const Container: React.FC<WithUIETheme> = ({uieTheme, children}) => {
   const style: IStyle = {
-    backgroundColor: uieTheme.colors.background,
+    backgroundColor: uieTheme.colors.bgContent,
     borderRadius: '3px',
     marginBottom: '2rem',
     width: '100%',

@@ -13,7 +13,9 @@
     "lint": "tslint --project .",
     "package": "yarn clean && yarn build",
     "postinstall": "yarn run package",
-    "start": "indoqa-dev-server ./indoqa-webpack-options.js"
+    "start": "indoqa-dev-server ./indoqa-webpack-options.js",
+    "test": "jest",
+    "test:watch": "jest --watch --runInBand"
   },
   "repository": {
     "type": "git",

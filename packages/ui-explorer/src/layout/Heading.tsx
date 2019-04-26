@@ -15,8 +15,8 @@ const getConcreteStyle = (level: HeadingType, sgTheme: UIETheme) => {
     case 'h1': {
       return {
         fontSize: sgTheme.fontSizes.veryBig,
-        backgroundColor: sgTheme.colors.primaryDark,
-        color: sgTheme.colors.textInverted,
+        backgroundColor: sgTheme.colors.bgMainHeading,
+        color: sgTheme.colors.textMainHeading,
         lineHeight: 1,
         paddingLeft: sgTheme.spacing.space2,
         paddingRight: sgTheme.spacing.space2,
@@ -44,7 +44,7 @@ const Heading: React.FC<Props> = ({children, uieTheme, as}) => {
     margin: 0,
     paddingBottom: uieTheme.spacing.space1,
     marginBottom: uieTheme.spacing.space0,
-    color: uieTheme.colors.primaryDark,
+    color: uieTheme.colors.textMenuHeading,
   }
 
   return (

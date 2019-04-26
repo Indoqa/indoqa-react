@@ -6,7 +6,7 @@ import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 const ContentPanel: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const style: IStyle = {
     boxSizing: 'border-box',
-    backgroundColor: uieTheme.colors.background,
+    backgroundColor: uieTheme.colors.bgContent,
     overflow: 'auto',
   }
   return (

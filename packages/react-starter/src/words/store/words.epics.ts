@@ -1,5 +1,5 @@
 import {Epic, ofType} from 'redux-observable'
-import {of} from 'rxjs/internal/observable/of'
+import {of} from 'rxjs'
 import {catchError, debounceTime, delay, map, switchMap, takeUntil} from 'rxjs/operators'
 
 import {RootAction, RootState, Services} from '../../app/types'
@@ -7,7 +7,8 @@ import {FetchWords, fetchWordsError, fetchWordsSuccess} from './words.actions'
 import {wordsService$} from './words.service'
 import {WordsAction, WordsActionKeys} from './words.types'
 
-interface TimeEpic extends Epic<RootAction, WordsAction, RootState, Services> {}
+interface TimeEpic extends Epic<RootAction, WordsAction, RootState, Services> {
+}
 
 const fetchWordsEpic$: TimeEpic = (action$, state, {ajax, scheduler}) =>
   action$.pipe(

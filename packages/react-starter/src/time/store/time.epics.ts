@@ -1,14 +1,14 @@
-import {forkJoin} from 'rxjs/internal/observable/forkJoin'
-import {of} from 'rxjs/internal/observable/of'
-import {switchMap, map, catchError, retry, mergeMap, timeout} from 'rxjs/operators'
 import {Epic, ofType} from 'redux-observable'
+import {forkJoin, of} from 'rxjs'
+import {catchError, map, mergeMap, retry, switchMap, timeout} from 'rxjs/operators'
 
 import {RootAction, RootState, Services} from '../../app/types'
-import {FetchTime, fetchTimeError, fetchTimeSuccess, FetchTimes} from './time.actions'
+import {FetchTime, fetchTimeError, FetchTimes, fetchTimeSuccess} from './time.actions'
 import {geonamesService$} from './time.service'
 import {TimeAction, TimeActionKeys} from './time.types'
 
-interface TimeEpic extends Epic<RootAction, TimeAction, RootState, Services> {}
+interface TimeEpic extends Epic<RootAction, TimeAction, RootState, Services> {
+}
 
 /*
  * Learn more about piping observables:
@@ -20,10 +20,10 @@ const fetchTimeEpic$: TimeEpic = (action$, state, {ajax}) =>
     switchMap((action) => {
       const {lon, lat} = action.coordinates
       return geonamesService$(ajax, lon, lat).pipe(
-          retry(3),
-          timeout(5000),
-          map((result) => fetchTimeSuccess([result])),
-          catchError((error) => of(fetchTimeError(error.message))),
+        retry(3),
+        timeout(5000),
+        map((result) => fetchTimeSuccess([result])),
+        catchError((error) => of(fetchTimeError(error.message))),
       )
     }),
   )

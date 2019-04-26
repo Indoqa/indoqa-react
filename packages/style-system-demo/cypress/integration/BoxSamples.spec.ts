@@ -5,7 +5,7 @@ describe('Box samples', () => {
     clickEl('/base-components/box')
   })
 
-  it('Box with margin, padding and background color', () => {
+  it('Box with margin, padding and bgContent color', () => {
     assertInnerText('box1', 'Box1')
     assertStyle('box1', 'background-color', 'rgb(63, 81, 181)')
     assertMargin('box1', 16, 0, 16, 0)

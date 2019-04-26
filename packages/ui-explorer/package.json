@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "main": "dist/indoqa-ui-explorer.cjs.js",
   "module": "dist/indoqa-ui-explorer.es.js",
-  "typings": "dist/ui-explorer/src/main/index.d.ts",
+  "typings": "dist/ui-explorer/src/index.d.ts",
   "files": [
     "dist"
   ],
