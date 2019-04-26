@@ -20,16 +20,11 @@ const renderColor = (color: Color, small: boolean | undefined) => {
   )
 }
 
-const ColorsPanel: React.FunctionComponent<Props> = ({colors, small}) => {
-
-  return (
-    <React.Fragment>
-      <Flex>
-        {colors.map(((color) => renderColor(color, small)))}
-      </Flex>
-    </React.Fragment>
-  )
-}
+const ColorsPanel: React.FunctionComponent<Props> = ({colors, small}) => (
+  <Flex>
+    {colors.map(((color) => renderColor(color, small)))}
+  </Flex>
+)
 
 ColorsPanel.defaultProps = {
   small: false,
