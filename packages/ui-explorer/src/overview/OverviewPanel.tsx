@@ -2,15 +2,30 @@ import {Box, Flex} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import ColorsPanel from '../colors/ColorsPanel'
-import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import {Color, FontMix, FontSize, FontSizes} from '../types'
 import FontMixContent from '../typography/FontMixContent'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
   colors: Color[],
   fontMixes: FontMix[],
   fontSizes: FontSizes,
   textFontSize: FontSize,
+}
+
+const uniqueColors = (colors: Color[]): Color[] => {
+  const colorsMap: Map<string, Color> = new Map()
+  colors.forEach((color) => {
+    const {hexCode} = color
+    if (hexCode) {
+      colorsMap.set(hexCode, color)
+    }
+  })
+  const result: Color[] = []
+  colorsMap.forEach((color) => {
+    result.push(color)
+  })
+  return result
 }
 
 const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, colors, uieTheme}) => {
@@ -23,7 +38,7 @@ const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, col
     <Flex fullWidth direction="column">
       <Box>
         <Box>
-          <ColorsPanel colors={colors} small/>
+          <ColorsPanel colors={uniqueColors(colors)} small/>
         </Box>
         <Box style={panelStyle}>
           <FontMixContent
