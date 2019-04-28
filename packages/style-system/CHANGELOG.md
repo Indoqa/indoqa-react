@@ -6,7 +6,7 @@
 * Semantic HTML alternatives for Box (AsideBox, MainBox, etc.)
 * Semantic HTML alternatives for Flex (AsideFlex, MainFlex, etc.)
 * Remove unnecessary exports from module exports
-* Support a property 'dataTest' in Box, Flex, Text, Grid, Row, Panel, ColRow, Col. 
+* Support a property 'testId' in Box, Flex, Text, Grid, Row, Panel, ColRow, Col. 
   This prop creates a 'data-test' attribute which is useful in e2e testing. 
 * Upgrade to Fela 10.2.4
 * Set base font size in renderRebootCSS to theme.fontSizes.text

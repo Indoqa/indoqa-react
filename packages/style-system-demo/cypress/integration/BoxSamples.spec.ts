@@ -34,6 +34,6 @@ describe('Flex samples', () => {
   })
 
   it('Flex 1', () => {
-    cy.get('[data-test="/base-components/flex"]').click()
+    cy.get('[data-testid="/base-components/flex"]').click()
   })
 })

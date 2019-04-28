@@ -14,7 +14,7 @@ import {testGridContext} from './testGridContext'
 interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T> {
   height?: number | string,
   minHeight?: number | string,
-  dataTest?: string,
+  testId?: string,
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
@@ -62,12 +62,12 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
         height,
       },
     })
-    const {children, style, dataTest, ...otherProps} = this.props
+    const {children, style, testId, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
     return (
       <FelaComponent<T> style={styles} {...otherProps}>
         {({className}) => (
-          <div className={className} data-test={dataTest}>
+          <div className={className} data-testid={testId}>
             {children}
           </div>
         )}

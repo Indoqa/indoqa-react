@@ -18,7 +18,7 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<FlexContainerProps> {
   size?: number,
   width?: string | number,
-  dataTest?: string,
+  testId?: string,
 }
 
 interface PanelContainerProps<T extends BaseTheme> extends Props<T> {
@@ -91,12 +91,12 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
         },
       },
     })
-    const {style, children, dataTest, ...otherProps} = this.props
+    const {style, children, testId, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, PanelContainerProps<T>>(panelStyle, style)
     return (
       <FelaComponent<T> style={styles} {...otherProps}>
         {({className}) => (
-          <div className={className} data-test={dataTest}>
+          <div className={className} data-testid={testId}>
             {children}
           </div>
         )}

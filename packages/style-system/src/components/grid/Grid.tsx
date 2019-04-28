@@ -17,7 +17,7 @@ interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
   children?: React.ReactNode,
   maxWidth?: number | string,
   center?: boolean,
-  dataTest?: string,
+  testId?: string,
 }
 
 interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
@@ -50,7 +50,7 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
       boxSizing: 'border-box',
       maxWidth,
     })
-    const {children, style, center, dataTest, ...otherProps} = this.props
+    const {children, style, center, testId, ...otherProps} = this.props
     if (process.env.NODE_ENV !== 'production') {
       if (center && (otherProps.mx || otherProps.ml || otherProps.mr)) {
         console.warn('The Grid property center is set to true and one of the properties mx, ml or mr is set. ' +
@@ -59,9 +59,9 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
     }
     const styles = mergeThemedStyles<T, GridContainerStyleProps<T>>(gridStyle, style)
     return (
-      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} {...otherProps} data-test={dataTest}>
+      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} {...otherProps} data-testid={testId}>
         {({className}) => (
-          <div className={className} data-test={dataTest}>
+          <div className={className} data-testid={testId}>
             {children}
           </div>
         )}

@@ -48,11 +48,11 @@ function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
 }
 
 function renderFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>, as: string) {
-  const {children, style, htmlAttrs, dataTest, ...rest} = props
+  const {children, style, htmlAttrs, testId, ...rest} = props
   const styles = mergeThemedStyles<T, BoxProps<T>>(themedFlexStyles, style)
   return (
     <FelaComponent<T, FlexProps<T>> style={styles} {...rest}>
-      {({className}) => React.createElement(as, {className, ...htmlAttrs, 'data-test': dataTest}, children)}
+      {({className}) => React.createElement(as, {className, ...htmlAttrs, 'data-testid': testId}, children)}
     </FelaComponent>
   )
 }

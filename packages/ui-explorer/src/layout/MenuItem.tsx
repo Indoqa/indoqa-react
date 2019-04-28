@@ -36,7 +36,7 @@ const MenuItem: React.FC<MenuLinkProps> = ({uieTheme, to, children}) => {
   }
   return (
     <FelaComponent style={style} as="li">
-      <NavLink to={to} data-test={to}>{children}</NavLink>
+      <NavLink to={to} data-testid={to}>{children}</NavLink>
     </FelaComponent>
   )
 }

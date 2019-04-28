@@ -96,7 +96,7 @@ Note that using `style` does not create inline styles but Fela generates global 
 ### Test data
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `dataTest`        | `string`            | -            | Adds the attribute `data-test` to the HTML element. Use this to produce stable identifiers e2e test tools.|
+| `testId`          | `string`            | -            | Adds the attribute `data-test` to the HTML element. Use this to produce stable identifiers e2e test tools.|
 
 #### IStyle
 The `IStyle` interface extends the React interface `CSS.Properties<...>`:

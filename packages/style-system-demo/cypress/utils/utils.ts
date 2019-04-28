@@ -1,5 +1,5 @@
 export const getEl = (el: string) => {
-  return cy.get(`[data-test="${el}"]`)
+  return cy.get(`[data-testid="${el}"]`)
 }
 
 export const clickEl = (navPath: string) => {
