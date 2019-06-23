@@ -1,3 +1,9 @@
+# v1.3.0 | TBA
+* support passing a React.RefObject to Text, Box, Flex, Grid, Row, Panel, ColRow, Col
+* passing a testId creates an HTML attribute `data-testid` (previously `data-test`)
+* `createFelaConfig` adds the monolithic enhancer only in development mode 
+(previously in all modes except production which does not allow writing tests for production code)
+
 # v1.2.1 | 2019-04-26
 * no changes
 
