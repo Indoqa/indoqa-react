@@ -1,3 +1,6 @@
+# v1.3.0 | 2019-06-23
+* upgrade to react-app-polyfill@1.0.1
+
 # v1.2.1 | 2019-04-26
 * no changes
 

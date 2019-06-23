@@ -1,3 +1,6 @@
+# v1.3.0 | 2019-06-23
+* minor library upgrades
+
 # v1.2.1 | 2019-04-26
 * adapt to changes in ui-explorer (semantic colors)
 
