@@ -19,6 +19,7 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
   size?: number,
   width?: string | number,
   testId?: string,
+  innerRef?: React.RefObject<HTMLDivElement>,
 }
 
 interface PanelContainerProps<T extends BaseTheme> extends Props<T> {
@@ -91,12 +92,12 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
         },
       },
     })
-    const {style, children, testId, ...otherProps} = this.props
+    const {style, children, innerRef, testId, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, PanelContainerProps<T>>(panelStyle, style)
     return (
       <FelaComponent<T> style={styles} {...otherProps}>
         {({className}) => (
-          <div className={className} data-testid={testId}>
+          <div className={className} ref={innerRef} data-testid={testId}>
             {children}
           </div>
         )}

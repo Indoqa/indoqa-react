@@ -24,12 +24,12 @@ function themedTextStyle<T extends BaseTheme>(props: TextProps<T>): IStyle {
 }
 
 export function Text<T extends BaseTheme>(props: TextProps<T> & BaseProps<T, HtmlSpanAttributesWithoutStyle>) {
-  const {children, style, htmlAttrs, testId, ...rest} = props
+  const {children, style, htmlAttrs, testId, innerRef, ...rest} = props
   const styles = mergeThemedStyles<T, TextProps<T>>(themedTextStyle, style)
   return (
     <FelaComponent<T, TextProps<T>> style={styles} {...rest}>
       {({className}) => (
-        <span className={className} {...htmlAttrs} data-testid={testId}>
+        <span className={className} {...htmlAttrs} data-testid={testId} ref={innerRef}>
           {children}
         </span>
       )}

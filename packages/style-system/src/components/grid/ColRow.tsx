@@ -16,6 +16,7 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<PaddingProps>,
   ResponsiveProps<StylingProps<T>> {
   testId?: string,
+  innerRef?: React.RefObject<HTMLDivElement>,
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
@@ -155,10 +156,10 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
         marginTop: 0,
       },
     })
-    const {style, testId, ...otherProps} = this.props
+    const {style, testId, innerRef, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
     const renderCols = ({className, theme}: RenderProps<T>) => (
-      <div className={className} data-testid={testId}>
+      <div className={className} ref={innerRef} data-testid={testId}>
         {rewriteCols(sortBreakpoints(theme.breakpoints), this.props.children, this.props.spacing)}
       </div>
     )

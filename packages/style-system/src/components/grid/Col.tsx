@@ -17,6 +17,7 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<FontProps<T>> {
   size?: Size,
   testId?: string,
+  innerRef?: React.RefObject<HTMLDivElement>,
 }
 
 interface ColContainerProps<T extends BaseTheme> extends Props<T> {
@@ -52,7 +53,7 @@ export class Col<T extends BaseTheme> extends React.Component<Props<T>> {
   }
 
   public render() {
-    const {children, style, testId, ...otherProps} = this.props
+    const {children, style, testId, innerRef, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, Props<T>>(themedBoxStyles, style)
     return (
       <GridContext.Consumer>
@@ -60,7 +61,7 @@ export class Col<T extends BaseTheme> extends React.Component<Props<T>> {
           const child = (
             <FelaComponent<T, ColContainerProps<T>> style={styles} spacing={spacing} {...otherProps}>
               {({className}) => (
-                <div className={className} data-testid={testId}>
+                <div className={className} data-testid={testId} ref={innerRef}>
                   {children}
                 </div>
               )}

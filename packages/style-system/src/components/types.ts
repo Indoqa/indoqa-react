@@ -21,6 +21,7 @@ export interface BoxProps<T extends BaseTheme> extends ResponsiveProps<MarginPro
   ResponsiveProps<FontProps<T>>,
   StylingProps<T>,
   ResponsiveProps<BoxModelProps> {
+  innerRef?: React.RefObject<HTMLDivElement>,
 }
 
 export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, ResponsiveProps<FlexContainerProps> {
@@ -31,6 +32,7 @@ export interface TextProps<T extends BaseTheme> extends MarginProps,
   FlexChildProps,
   FontProps<T>,
   StylingProps<T> {
+  innerRef?: React.RefObject<HTMLSpanElement>,
 }
 
 export interface BoxModelProps {
