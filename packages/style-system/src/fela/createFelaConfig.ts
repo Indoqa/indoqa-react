@@ -21,7 +21,7 @@ export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | Bas
     enhancers: [],
     devMode: false,
   }
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV === 'development') {
     config.enhancers = [monolithic({prettySelectors: true})]
     config.devMode = true
   }

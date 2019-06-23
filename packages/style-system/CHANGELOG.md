@@ -1,3 +1,6 @@
+# v1.3.1 | 2019-06-23
+* fix bug in createFelaConfig
+
 # v1.3.0 | 2019-06-23
 * support passing a React.RefObject to Text, Box, Flex, Grid, Row, Panel, ColRow, Col
 * passing a testId creates an HTML attribute `data-testid` (previously `data-test`)
