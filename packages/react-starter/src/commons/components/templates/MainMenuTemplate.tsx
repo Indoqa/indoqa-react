@@ -38,7 +38,7 @@ const Language: React.FC<LanguageProps> = ({i18n, lang, langLabel}) => {
     return <Text>{langLabel}</Text>
   }
   return (
-    <a href="#" onClick={() => i18n.changeLanguage(lang)}>{langLabel}</a>
+    <a href="#" rel="noopener noreferrer" onClick={() => i18n.changeLanguage(lang)}>{langLabel}</a>
   )
 }
 

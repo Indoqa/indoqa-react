@@ -53,7 +53,7 @@ export default class Uploader extends React.Component<{}, State> {
         <p>Size: {this.state.size}</p>
         <p>Mime-type: {this.state.type}</p>
         <Box pt={1} pb={1}>
-          <img src={this.state.data_uri!} width="200"/>
+          <img src={this.state.data_uri!} width="200" alt="Uploaded image"/>
         </Box>
         <button onClick={() => this.reset()}>Reset</button>
         <br/>
@@ -71,7 +71,7 @@ export default class Uploader extends React.Component<{}, State> {
     this.setState({type: file.type})
 
     const reader = new FileReader()
-    reader.onload = (upload: ProgressEvent & {target: {result: string}}) => {
+    reader.onload = (upload: ProgressEvent & { target: { result: string } }) => {
       this.setState({data_uri: upload.target.result})
     }
     reader.readAsDataURL(file)
