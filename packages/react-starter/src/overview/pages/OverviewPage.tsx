@@ -15,8 +15,8 @@ const OverviewPage: React.FC = () => (
     </p>
     <ul>
       <li>
-        Use of <a href="https://github.com/Indoqa/indoqa-react/tree/master/packages/react-starter" target="new">
-        @indoqa/react-starter</a> to create the React root app (component).
+        Use of <a href="https://github.com/Indoqa/indoqa-react/tree/master/packages/react-app" target="new">
+        @indoqa/react-app</a> to create the React root component.
       </li>
       <li>
         Creation of the typed root reducer and the root epic with injected external services for testability.

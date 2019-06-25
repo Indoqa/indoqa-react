@@ -1,4 +1,5 @@
 import {Box, PStyle, Text} from '@indoqa/style-system'
+import {IStyle} from 'fela'
 import i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
@@ -37,8 +38,17 @@ const Language: React.FC<LanguageProps> = ({i18n, lang, langLabel}) => {
   if (i18n.language.substring(0, lang.length) === lang) {
     return <Text>{langLabel}</Text>
   }
+  const style: IStyle = {
+    cursor: 'pointer',
+    textDecoration: 'underline',
+  }
   return (
-    <a href="#" rel="noopener noreferrer" onClick={() => i18n.changeLanguage(lang)}>{langLabel}</a>
+    <Text
+      style={style}
+      htmlAttrs={{onClick: () => i18n.changeLanguage(lang)}}
+    >
+      {langLabel}
+    </Text>
   )
 }
 

@@ -53,7 +53,7 @@ export default class Uploader extends React.Component<{}, State> {
         <p>Size: {this.state.size}</p>
         <p>Mime-type: {this.state.type}</p>
         <Box pt={1} pb={1}>
-          <img src={this.state.data_uri!} width="200" alt="Uploaded image"/>
+          <img src={this.state.data_uri!} width="200" alt="Uploaded file"/>
         </Box>
         <button onClick={() => this.reset()}>Reset</button>
         <br/>
