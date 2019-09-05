@@ -1,3 +1,6 @@
+# v1.4.0 | TBA
+* Fix a bug with the shrink property of Flex, Box and Text. The bug made it impossible to set the value to 0.
+
 # v1.3.1 | 2019-06-23
 * no changes
 

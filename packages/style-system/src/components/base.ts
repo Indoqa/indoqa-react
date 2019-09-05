@@ -34,7 +34,7 @@ export const createBoxModelCSSProps = ({inline, width, height, fullWidth, fullHe
 export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: FlexChildProps): IStyle => {
   const styles = {
     flexGrow: grow || 0,
-    flexShrink: shrink || 1,
+    flexShrink: shrink === 0 ? 0 : shrink ? shrink : 1,
     flexBasis: basis || 'auto',
   }
   if (order !== undefined) {
