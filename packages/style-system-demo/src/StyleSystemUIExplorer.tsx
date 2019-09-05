@@ -148,7 +148,7 @@ class StyleSystemUIExplorer extends React.Component<Props> {
         mountPath=""
         overviewPanel={<StyleSystemDemoOverview/>}
         projectName="Indoqa Style-System"
-        showBaseStyles={true}
+        showFundamentals={true}
         textFonts={getTextFonts(theme)}
         textFontSize={theme.fontSizes.text}
       />

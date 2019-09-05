@@ -155,7 +155,7 @@ interface Props extends RouteComponentProps {
   mountPath: string,
   overviewPanel?: React.ReactNode,
   projectName: string,
-  showBaseStyles?: boolean,
+  showFundamentals?: boolean,
   textFonts: Font[],
   textFontSize: FontSize,
   uieTheme?: UIETheme,
@@ -169,7 +169,7 @@ interface State extends WithUIETheme {
 class UIExplorerImpl extends React.Component<Props, State> {
 
   public static defaultProps = {
-    showBaseStyles: true,
+    showFundamentals: true,
   }
 
   constructor(props: Props) {
@@ -241,7 +241,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
       logo,
       mountPath,
       projectName,
-      showBaseStyles,
+      showFundamentals,
       textFonts,
       textFontSize,
     } = this.props
@@ -257,8 +257,8 @@ class UIExplorerImpl extends React.Component<Props, State> {
                   <MenuIconWrapper toggleMenu={this.toggleMenu.bind(this)} show={showMenu} uieTheme={uieTheme}/>
                 </MenuHeader>
                 <InnerStyleGuideMenu show={showMenu} uieTheme={uieTheme}>
-                  {showBaseStyles &&
-                  <MenuGroup name="Base Styles">
+                  {showFundamentals &&
+                  <MenuGroup name="Fundamentals">
                     <MenuItem to={`${mountPath}/colors`}>Colors</MenuItem>
                     <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
                   </MenuGroup>
