@@ -35,7 +35,7 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
   const styles = {
     flexGrow: grow || 0,
     flexShrink: shrink === 0 ? 0 : shrink ? shrink : 1,
-    flexBasis: basis || 'auto',
+    flexBasis: basis === 0 ? 0 : basis ? basis : 'auto',
   }
   if (order !== undefined) {
     Object.assign(styles, {order})
