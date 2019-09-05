@@ -55,12 +55,12 @@ function renderFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, Html
       {({className}) => React.createElement(as, {
         className,
         'data-testid': testId,
-        ...htmlAttrs,
         onClick,
         onMouseDown,
         onMouseOut,
         onMouseOver,
         onScroll,
+        ...htmlAttrs,
         ref: innerRef,
       }, children)}
     </FelaComponent>

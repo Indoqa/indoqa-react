@@ -39,12 +39,12 @@ function renderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDi
       {({className}) => React.createElement(as, {
         className,
         'data-testid': testId,
-        ...htmlAttrs,
         onClick,
         onMouseDown,
         onMouseOut,
         onMouseOver,
         onScroll,
+        ...htmlAttrs,
         ref: innerRef,
       }, children)}
     </FelaComponent>

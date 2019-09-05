@@ -31,12 +31,12 @@ export function Text<T extends BaseTheme>(props: TextProps<T> & BaseProps<T, Htm
       {({className}) => React.createElement('span', {
         className,
         'data-testid': testId,
-        ...htmlAttrs,
         onClick,
         onMouseDown,
         onMouseOut,
         onMouseOver,
         onScroll,
+        ...htmlAttrs,
         ref: innerRef,
       }, children)}
     </FelaComponent>
