@@ -46,22 +46,32 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
   return styles
 }
 
-export function createStylingCSSProps<T extends BaseTheme>({bg}: StylingProps<T> & WithBaseTheme, theme: BaseTheme) {
+export function createStylingCSSProps<T extends BaseTheme>(
+  {bg, cursorPointer, overflowHidden}: StylingProps<T> & WithBaseTheme, theme: BaseTheme) {
   const styles: IStyle = {}
   if (bg) {
     Object.assign(styles, {backgroundColor: getColor(theme, bg as string)})
+  }
+  if (cursorPointer) {
+    Object.assign(styles, {cursor: 'pointer'})
+  }
+  if (overflowHidden) {
+    Object.assign(styles, {overflow: 'hidden'})
   }
   return styles
 }
 
 export function createFontCSSProps<T extends BaseTheme>(
-  {fontStyle, fontSize, color, bold, italic, ellipsis, textAlign}: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
+  {fontStyle, fontSize, color, bold, italic, underline, ellipsis, textAlign}: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
   const styles: IStyle = {}
   if (bold) {
     Object.assign(styles, {fontWeight: 700})
   }
   if (italic) {
     Object.assign(styles, {fontStyle: 'italic'})
+  }
+  if (underline) {
+    Object.assign(styles, {textDecoration: 'underline'})
   }
   if (fontStyle) {
     Object.assign(styles, getFontStyle(theme, fontStyle as string))

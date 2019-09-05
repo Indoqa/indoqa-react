@@ -1,6 +1,6 @@
 import {BaseTheme} from '@indoqa/style-system'
 import * as React from 'react'
-import {ReactNode} from 'react'
+import {MouseEventHandler, ReactNode, UIEventHandler} from 'react'
 import {FelaStyle} from 'react-fela'
 
 export type ResponsiveProps<T> = {
@@ -68,6 +68,7 @@ export interface FontProps<T extends BaseTheme> {
   italic?: boolean,
   ellipsis?: boolean,
   textAlign?: TextAlign,
+  underline?: boolean,
 }
 
 export interface MarginProps {
@@ -92,6 +93,8 @@ export declare interface PaddingProps {
 
 export interface StylingProps<T extends BaseTheme> {
   bg?: string | keyof T['colors'],
+  cursorPointer?: boolean,
+  overflowHidden?: boolean,
 }
 
 export interface WithBaseTheme {
@@ -104,6 +107,11 @@ export interface WithStyle<T extends BaseTheme> {
 
 export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
   children?: ReactNode,
+  onClick?: MouseEventHandler<H>,
+  onMouseDown?: MouseEventHandler<T>,
+  onMouseOver?: MouseEventHandler<T>,
+  onMouseOut?: MouseEventHandler<T>,
+  onScroll?: UIEventHandler<T>
   htmlAttrs?: H,
   testId?: string,
 }
