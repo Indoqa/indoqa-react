@@ -1,8 +1,8 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import Heading from '../layout/Heading'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
+import MenuHeading from './MenuHeading'
 
 interface Props extends WithUIETheme {
   name?: string,
@@ -28,7 +28,7 @@ const MenuGroup: React.FC<Props> = ({uieTheme, name, children}) => {
   }
   return (
     <FelaComponent style={style}>
-      {name && <Heading as="h3">{name}</Heading>}
+      {name && <MenuHeading>{name}</MenuHeading>}
       <List>
         {children}
       </List>

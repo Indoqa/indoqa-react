@@ -7,6 +7,7 @@ export interface UIETheme {
     bgPanelHeader: string,
     bgContent: string,
     bgContentHeader: string,
+    bgContentHeading: string,
     text: string,
     textMainHeading: string,
     textPanelHeading: string,

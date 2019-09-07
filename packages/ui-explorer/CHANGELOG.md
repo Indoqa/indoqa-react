@@ -1,3 +1,6 @@
+# v1.4.0 | TBA
+* introduce styling property 'bgContentHeading'
+
 # v1.3.1 | 2019-06-23
 * no changes
 

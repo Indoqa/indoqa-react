@@ -3,8 +3,8 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {Link} from 'react-router-dom'
-import Heading from '../layout/Heading'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
+import MainHeading from './MainHeading'
 
 interface Props extends WithUIETheme {
   to: string,
@@ -39,9 +39,9 @@ const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
   return (
     <FelaComponent style={style}>
       <Link to={to}>
-        <Heading as="h1">
+        <MainHeading>
           {children}
-        </Heading>
+        </MainHeading>
       </Link>
     </FelaComponent>
   )

@@ -6,8 +6,8 @@ import {Route, RouteComponentProps, withRouter} from 'react-router'
 
 import ColorsPanel from './colors/ColorsPanel'
 import ContentHeader from './layout/ContentHeader'
+import ContentHeading from './layout/ContentHeading'
 import ContentPanel from './layout/ContentPanel'
-import Heading from './layout/Heading'
 import Logo from './layout/Logo'
 import StyleGuideMenu from './layout/Menu'
 import MenuGroup from './layout/MenuGroup'
@@ -38,7 +38,7 @@ const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, ch
   return (
     <React.Fragment>
       <ContentHeader>
-        {name && <Heading as="h1">{name}</Heading>}
+        {name && <ContentHeading>{name}</ContentHeading>}
       </ContentHeader>
       <Box style={style}>
         {children}

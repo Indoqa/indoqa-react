@@ -21,6 +21,7 @@ export const uieLightTheme: UIETheme = {
     bgPanelHeader: uieColors.white_2,
     bgContent: uieColors.white_1,
     bgContentHeader: uieColors.white_3,
+    bgContentHeading: uieColors.grey_1,
     text: uieColors.grey_2,
     textMainHeading: uieColors.white_1,
     textPanelHeading: uieColors.grey_1,
