@@ -83,7 +83,7 @@ interface MenuIconStyle extends IStyle {
   tablet: IStyle,
 }
 
-const MenuIconWrapper: React.FC<MenuIconProps> = ({show, toggleMenu, uieTheme}) => {
+const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
   const style: MenuIconStyle = {
     cursor: 'pointer',
     tablet: {

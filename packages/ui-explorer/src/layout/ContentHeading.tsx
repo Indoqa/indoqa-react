@@ -9,7 +9,7 @@ const ContentHeading: React.FC<WithUIETheme> = ({children, uieTheme}) => {
     backgroundColor: uieTheme.colors.bgContentHeading,
     color: uieTheme.colors.textMainHeading,
     lineHeight: 1,
-    paddingLeft: uieTheme.spacing.space2,
+    paddingLeft: uieTheme.colors.bgContentHeading === 'transparent' ? 0 : uieTheme.spacing.space2,
     paddingRight: uieTheme.spacing.space2,
     paddingBottom: uieTheme.spacing.space2,
     paddingTop: uieTheme.spacing.space2,
