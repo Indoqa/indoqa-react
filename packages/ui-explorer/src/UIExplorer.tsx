@@ -92,7 +92,7 @@ const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
   }
   const renderMenuIcon = ({className}: RenderProps<BaseTheme>) => (
     <div className={className} onClick={() => toggleMenu()}>
-      <MenuIcon color={uieTheme.colors.bgMainHeading} size="35"/>
+      <MenuIcon color={uieTheme.colors.menuIcon} size="35"/>
     </div>
   )
   return (

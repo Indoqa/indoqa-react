@@ -32,6 +32,7 @@ export const uieLightTheme: UIETheme = {
     textMenuHeading: uieColors.grey_1,
     textMenuItem: uieColors.grey_2,
     borderPanel: uieColors.white_4,
+    menuIcon: uieColors.grey_1,
   },
   fontFamilyCSSImports: 'https://fonts.googleapis.com/css?family=Lato|Oswald:700',
   fontSizes: {

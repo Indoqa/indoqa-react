@@ -18,6 +18,7 @@ export interface UIETheme {
     textMenuHeading: string,
     textMenuItem: string,
     borderPanel: string,
+    menuIcon: string,
   }
   fontFamilyCSSImports: string,
   fontStyles: {

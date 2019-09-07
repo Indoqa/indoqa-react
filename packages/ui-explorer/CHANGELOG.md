@@ -1,6 +1,7 @@
 # v1.4.0 | TBA
-* introduce styling property 'bgContentHeading'
-* add styling properties to style the scrollbars
+* add UI theme property 'bgContentHeading'
+* add UI theme properties to style the scrollbars
+* add UI theme property to style the menu icon
 
 # v1.3.1 | 2019-06-23
 * no changes
