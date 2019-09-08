@@ -18,6 +18,6 @@ export const scrollbarStyles = (theme: UIETheme) => ({
     width: 8,
   },
   // Firefox
-  'scrollbar-color': `${theme.colors.bgScrollbarTrack} ${theme.colors.bgScrollbarThumb}`,
+  'scrollbar-color': `${theme.colors.bgScrollbarThumb} ${theme.colors.bgScrollbarTrack}`,
   'scrollbar-width': 'thin',
 })
