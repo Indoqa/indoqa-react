@@ -37,13 +37,13 @@
     "react-fela": ">=10.5.0"
   },
   "dependencies": {
-    "fela": "^10.5.0",
-    "fela-monolithic": "^10.5.0",
-    "fela-plugin-named-keys": "^10.5.0",
-    "fela-preset-web": "^10.5.0",
-    "lodash": "^4.17.11",
-    "react": "^16.8.6",
-    "react-fela": "^10.5.0",
-    "tslib": "^1.9.3"
+    "fela": "^10.6.1",
+    "fela-monolithic": "^10.6.1",
+    "fela-plugin-named-keys": "^10.6.1",
+    "fela-preset-web": "^10.6.1",
+    "lodash": "^4.17.15",
+    "react": "^16.9.0",
+    "react-fela": "^10.6.1",
+    "tslib": "^1.10.0"
   }
 }

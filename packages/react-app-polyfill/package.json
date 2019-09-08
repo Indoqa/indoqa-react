@@ -20,6 +20,6 @@
     "stringStartsWithPolyfill.js"
   ],
   "dependencies": {
-    "react-app-polyfill": "1.0.1"
+    "react-app-polyfill": "1.0.2"
   }
 }
