@@ -58,6 +58,7 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 | `bold`            | `boolean`           | `false`      | Set the CSS property `font-weight` to `700`. If this is not appropriate for the chosen font, define a font style in your theme and explicitly set the `font-weight`. |
 | `italic`          | `boolean`           | `false`      | Set the CSS property `font-style` to `italic`. |
 | `ellipsis`        | `boolean`           | `false`      | Set the CSS properties `text-overflow` to `ellipsis`, `overflow` to `hidden` and `white-space` to `nowrap`. |
+| `underline        | `boolean`           | `false`      | Set the CSS properties `text-decoration` to `underline`. |
 | `textAlign`       | `TextAlign`         | unset (`left` if direction is ltr, and `right` if direction is rtl) | Set the CSS property `text-align`. Allowed values: `left`\|`right`\|`center`\|`justify`\|`initial`\|`inherit`|
 
 All properties can be passed as arrays to provide different values for breakpoints.
@@ -67,6 +68,8 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
 | `bg`              | `string`            | unset        | Set the CSS property `background-color`. If the value is a key of `theme.colors`, the respective value is taken from it. Otherwise the passed value is used. |
+| `overflowHidden`  | `boolean`           | false        | Set the CSS property `overflow` to `hidden`. |
+| `cursorPointer`   | `boolean`           | false        | Set the CSS property `cursor` to `pointer`. |
 
 ### Box model
 | Property          | Type                | Default      | Description |
@@ -84,6 +87,11 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
 | `htmlAttrs`       | `HTMLAttributes`    | -            | HTML Attributes which will be added to the HTML element. |
+| `onClick  `       | `MouseEventHandler` | -            | Register the `onClick` event. |
+| `onMouseDown  `   | `MouseEventHandler` | -            | Register the `onMouseDown` event. |
+| `onMouseOver  `   | `MouseEventHandler` | -            | Register the `onMouseOver` event. |
+| `onMouseOut  `    | `MouseEventHandler` | -            | Register the `onMouseOut` event. |
+| `onScroll  `      | `UIEventHandler`    | -            | Register the `onScroll` event. |
 
 ### Additional CSS styles
 | Property          | Type                | Default      | Description |
