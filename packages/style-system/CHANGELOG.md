@@ -1,3 +1,10 @@
+# v1.3.2 | TBA
+* Fix a bug with the flex-shrink property of Flex, Box and Text. The bug made it impossible to set the value to 0.
+* Fix a bug with the flex-basis property of Flex, Box and Text. The bug made it impossible to set the value to 0.
+* Add often used event props onClick, onMouseDown, onMouseOut, onMouseOver, onScroll to Flex, Box and Text.
+* Add often used CSS style properties: cursor => pointer, overflow => hidden, text-decoration => underline
+* minor library upgrades
+
 # v1.3.1 | 2019-06-23
 * fix bug in createFelaConfig
 
