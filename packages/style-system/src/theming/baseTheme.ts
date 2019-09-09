@@ -58,7 +58,7 @@ export const typeScale = (level: number) => typeScaleBase + (typeScaleFactor * l
 
 export const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, ' +
   'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;'
+export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
 
 export const breakpoints: BaseBreakpoints = {
   tablet: {minWidth: '768px', sort: 1},
