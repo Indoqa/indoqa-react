@@ -58,7 +58,7 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 | `bold`            | `boolean`           | `false`      | Set the CSS property `font-weight` to `700`. If this is not appropriate for the chosen font, define a font style in your theme and explicitly set the `font-weight`. |
 | `italic`          | `boolean`           | `false`      | Set the CSS property `font-style` to `italic`. |
 | `ellipsis`        | `boolean`           | `false`      | Set the CSS properties `text-overflow` to `ellipsis`, `overflow` to `hidden` and `white-space` to `nowrap`. |
-| `underline        | `boolean`           | `false`      | Set the CSS properties `text-decoration` to `underline`. |
+| `underline`       | `boolean`           | `false`      | Set the CSS properties `text-decoration` to `underline`. |
 | `textAlign`       | `TextAlign`         | unset (`left` if direction is ltr, and `right` if direction is rtl) | Set the CSS property `text-align`. Allowed values: `left`\|`right`\|`center`\|`justify`\|`initial`\|`inherit`|
 
 All properties can be passed as arrays to provide different values for breakpoints.
@@ -86,7 +86,11 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 ### HTML Attributes
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
-| `htmlAttrs`       | `HTMLAttributes`    | -            | HTML Attributes which will be added to the HTML element. |
+| `htmlAttrs`       | `HTMLAttributes`    | -            | HTML Attributes which will be added to the HTML element. These attributes may override the other attributes. |
+
+### Events
+| Property          | Type                | Default      | Description |
+|:----------------- |:--------------------|:-------------|:------------|
 | `onClick  `       | `MouseEventHandler` | -            | Register the `onClick` event. |
 | `onMouseDown  `   | `MouseEventHandler` | -            | Register the `onMouseDown` event. |
 | `onMouseOver  `   | `MouseEventHandler` | -            | Register the `onMouseOver` event. |
@@ -166,6 +170,7 @@ The following properties are the same as of `Box`:
 * [Styling](#styling)
 * [Box model](#box-model)
 * [HTML Attributes](#html-attributes)
+* [Events](#events)
 * [Additional CSS styles](#additional-css-styles)
 * [Reference](#reference)
 * [Test data](#test-data)
@@ -196,6 +201,7 @@ The following properties are the same as of `Box`:
 * [Font](#font)
 * [Styling](#styling)
 * [HTML Attributes](#html-attributes)
+* [Events](#events)
 * [Additional CSS styles](#additional-css-styles)
 * [Reference](#reference)
 * [Test data](#test-data)
