@@ -89,8 +89,8 @@ const validateSizes = (sizes: number, breakpointCount: number, child: any) => {
  * Iterate over all children (<Col>) and their sizes and create styles for each col/size combination.
  */
 const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, spacing?: Spacing) => {
-  const currentRowSize = initializeArray(breakpoints.length)
-  const rowsCount = initializeArray(breakpoints.length)
+  const currentRowSize = initializeArray(breakpoints.length + 1)
+  const rowsCount = initializeArray(breakpoints.length + 1)
 
   // see https://mxstbr.blog/2017/02/react-children-deepdive/#looping-over-children
   return React.Children.map(children, (child) => {

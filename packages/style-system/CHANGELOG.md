@@ -3,6 +3,7 @@
 * Fix a bug with the flex-basis property of Flex, Box and Text. The bug made it impossible to set the value to 0.
 * Add often used event props onClick, onMouseDown, onMouseOut, onMouseOver, onScroll to Flex, Box and Text.
 * Add often used CSS style properties: cursor => pointer, overflow => hidden, text-decoration => underline
+* Fix bug in ColRow: if a size array was provided, the last size was not calculated correctly
 * minor library upgrades
 
 # v1.3.1 | 2019-06-23
