@@ -47,7 +47,7 @@ export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: Fle
 }
 
 export function createStylingCSSProps<T extends BaseTheme>(
-  {bg, cursorPointer, overflowHidden}: StylingProps<T> & WithBaseTheme, theme: BaseTheme) {
+  {bg, cursorPointer, overflowHidden, elevation}: StylingProps<T> & WithBaseTheme, theme: BaseTheme) {
   const styles: IStyle = {}
   if (bg) {
     Object.assign(styles, {backgroundColor: getColor(theme, bg as string)})
@@ -57,6 +57,9 @@ export function createStylingCSSProps<T extends BaseTheme>(
   }
   if (overflowHidden) {
     Object.assign(styles, {overflow: 'hidden'})
+  }
+  if (elevation) {
+    Object.assign(styles, {boxShadow: lookupElevation(theme, elevation)})
   }
   return styles
 }
@@ -169,5 +172,60 @@ const spacing = (theme: BaseTheme, propValue: Spacing) => {
       return theme.spacing.space4
     default:
       return theme.spacing.space0
+  }
+}
+
+const lookupElevation = (theme: BaseTheme, elevationValue: number) => {
+  if (theme === undefined) {
+    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
+  }
+  switch (elevationValue) {
+    case 1: {
+      return theme.shadows.elevation1
+    }
+    case 2: {
+      return theme.shadows.elevation2
+    }
+    case 3: {
+      return theme.shadows.elevation3
+    }
+    case 4: {
+      return theme.shadows.elevation4
+    }
+    case 5: {
+      return theme.shadows.elevation5
+    }
+    case 6: {
+      return theme.shadows.elevation6
+    }
+    case 7: {
+      return theme.shadows.elevation7
+    }
+    case 8: {
+      return theme.shadows.elevation8
+    }
+    case 9: {
+      return theme.shadows.elevation9
+    }
+    case 10: {
+      return theme.shadows.elevation10
+    }
+    case 11: {
+      return theme.shadows.elevation11
+    }
+    case 12: {
+      return theme.shadows.elevation12
+    }
+    case 13: {
+      return theme.shadows.elevation13
+    }
+    case 14: {
+      return theme.shadows.elevation14
+    }
+    case 15: {
+      return theme.shadows.elevation15
+    }
+    default:
+      return theme.shadows.elevation0
   }
 }

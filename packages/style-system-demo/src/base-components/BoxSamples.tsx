@@ -1,4 +1,4 @@
-import {Box} from '@indoqa/style-system'
+import {Box, Text} from '@indoqa/style-system'
 import * as React from 'react'
 import {Theme} from '../app/theme'
 import Code from '../code/Code'
@@ -33,6 +33,11 @@ const BoxSamples: React.FC = () => {
         <Box<Theme> bg="green" p={1} testId="box10">innerBox2</Box>
       </Box>
       <Code initialShow showToggle={false}>{sample5}</Code>
+
+      <h3>Shadows</h3>
+      <Box testId="box11" elevation={5} p={3} style={{borderRadius: 4}}>
+        <Text>A box with a shadow</Text>
+      </Box>
     </>
   )
 }
