@@ -2,7 +2,7 @@ import {Box, Text} from '@indoqa/style-system'
 import * as React from 'react'
 import {Theme} from '../app/theme'
 import Code from '../code/Code'
-import {sample1, sample2, sample3, sample4, sample5} from './BoxSamplesCode'
+import {sample1, sample2, sample3, sample4, sample5, sample6} from './BoxSamplesCode'
 
 const BoxSamples: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const BoxSamples: React.FC = () => {
       <Code initialShow showToggle={false}>{sample1}</Code>
 
       <h3>Box with onClick event</h3>
-      <Box<Theme> my={2} p={2} bg="primary" htmlAttrs={{onClick: () => alert('Box3 clicked')}} testId="box3">Box3</Box>
+      <Box<Theme> my={2} p={2} bg="primary" onClick={() => alert('Box3 clicked')} testId="box3">Box3</Box>
       <Code initialShow showToggle={false}>{sample2}</Code>
 
       <h3>Nested boxes</h3>
@@ -35,9 +35,10 @@ const BoxSamples: React.FC = () => {
       <Code initialShow showToggle={false}>{sample5}</Code>
 
       <h3>Shadows and radius</h3>
-      <Box testId="box11" shadow="elevation5" r={5} p={3}>
+      <Box testId="box11" shadow="elevation5" r={5} p={3} mb={3}>
         <Text>A rounded box with a shadow</Text>
       </Box>
+      <Code initialShow showToggle={false}>{sample6}</Code>
     </>
   )
 }
