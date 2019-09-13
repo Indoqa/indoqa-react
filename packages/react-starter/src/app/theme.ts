@@ -64,6 +64,7 @@ const theme: Theme = {
     menuWidth: 300,
   },
   spacing: baseTheme.spacing,
+  shadows: baseTheme.shadows,
   zIndexes: baseTheme.zIndexes,
 }
 
