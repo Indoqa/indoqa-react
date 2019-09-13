@@ -1,4 +1,5 @@
 # v1.3.2 | TBA
+* Add properties for shadows (`shadow`) and radius (`r`, `rt`, `rb`, `rl`, `rr`, `rtl`, `rtr`, `rbl`, `rbr`) to `Flex` and `Box`.
 * Fix a bug with the flex-shrink property of Flex, Box and Text. The bug made it impossible to set the value to 0.
 * Fix a bug with the flex-basis property of Flex, Box and Text. The bug made it impossible to set the value to 0.
 * Add often used event props onClick, onMouseDown, onMouseOut, onMouseOver, onScroll to Flex, Box and Text.

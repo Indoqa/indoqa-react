@@ -34,9 +34,9 @@ const BoxSamples: React.FC = () => {
       </Box>
       <Code initialShow showToggle={false}>{sample5}</Code>
 
-      <h3>Shadows</h3>
-      <Box testId="box11" elevation={5} p={3} style={{borderRadius: 4}}>
-        <Text>A box with a shadow</Text>
+      <h3>Shadows and radius</h3>
+      <Box testId="box11" shadow="elevation5" r={5} p={3}>
+        <Text>A rounded box with a shadow</Text>
       </Box>
     </>
   )

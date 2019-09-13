@@ -49,16 +49,6 @@ export interface BaseShadows {
   elevation3: string,
   elevation4: string,
   elevation5: string,
-  elevation6: string,
-  elevation7: string,
-  elevation8: string,
-  elevation9: string,
-  elevation10: string,
-  elevation11: string,
-  elevation12: string,
-  elevation13: string,
-  elevation14: string,
-  elevation15: string,
 }
 
 export interface BaseTheme {
@@ -161,71 +151,21 @@ export const baseTheme: BaseTheme = {
       createElevationShadow3(2, 1, -1),
     ),
     elevation2: createBoxShadow(
-      createElevationShadow1(1, 5, 0),
-      createElevationShadow2(2, 2, 0),
-      createElevationShadow3(3, 1, -2),
-    ),
-    elevation3: createBoxShadow(
-      createElevationShadow1(1, 8, 0),
-      createElevationShadow2(3, 4, 0),
-      createElevationShadow3(3, 3, -2),
-    ),
-    elevation4: createBoxShadow(
       createElevationShadow1(2, 4, -1),
       createElevationShadow2(4, 5, 0),
       createElevationShadow3(1, 10, 0),
     ),
-    elevation5: createBoxShadow(
-      createElevationShadow1(3, 5, -1),
-      createElevationShadow2(5, 8, 0),
-      createElevationShadow3(1, 14, 0),
-    ),
-    elevation6: createBoxShadow(
-      createElevationShadow1(3, 5, -1),
-      createElevationShadow2(6, 10, 0),
-      createElevationShadow3(1, 18, 0),
-    ),
-    elevation7: createBoxShadow(
+    elevation3: createBoxShadow(
       createElevationShadow1(4, 5, -2),
       createElevationShadow2(7, 10, 1),
       createElevationShadow3(2, 16, 1),
     ),
-    elevation8: createBoxShadow(
-      createElevationShadow1(5, 5, -3),
-      createElevationShadow2(8, 10, 1),
-      createElevationShadow3(3, 14, 2),
-    ),
-    elevation9: createBoxShadow(
-      createElevationShadow1(5, 6, -3),
-      createElevationShadow2(9, 12, 1),
-      createElevationShadow3(3, 16, 2),
-    ),
-    elevation10: createBoxShadow(
+    elevation4: createBoxShadow(
       createElevationShadow1(6, 6, -3),
       createElevationShadow2(10, 14, 1),
       createElevationShadow3(4, 18, 3),
     ),
-    elevation11: createBoxShadow(
-      createElevationShadow1(6, 7, -4),
-      createElevationShadow2(11, 15, 1),
-      createElevationShadow3(4, 20, 3),
-    ),
-    elevation12: createBoxShadow(
-      createElevationShadow1(7, 8, -4),
-      createElevationShadow2(12, 17, 2),
-      createElevationShadow3(5, 22, 4),
-    ),
-    elevation13: createBoxShadow(
-      createElevationShadow1(7, 8, -4),
-      createElevationShadow2(13, 19, 2),
-      createElevationShadow3(5, 24, 4),
-    ),
-    elevation14: createBoxShadow(
-      createElevationShadow1(7, 9, -4),
-      createElevationShadow2(14, 21, 2),
-      createElevationShadow3(5, 26, 4),
-    ),
-    elevation15: createBoxShadow(
+    elevation5: createBoxShadow(
       createElevationShadow1(8, 9, -5),
       createElevationShadow2(15, 22, 2),
       createElevationShadow3(6, 28, 5),

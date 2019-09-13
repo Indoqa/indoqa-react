@@ -70,6 +70,16 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 | `bg`              | `string`            | unset        | Set the CSS property `background-color`. If the value is a key of `theme.colors`, the respective value is taken from it. Otherwise the passed value is used. |
 | `overflowHidden`  | `boolean`           | false        | Set the CSS property `overflow` to `hidden`. |
 | `cursorPointer`   | `boolean`           | false        | Set the CSS property `cursor` to `pointer`. |
+| `shadow`          | `boolean`           | unset        | The value is used to lookup shadow from `theme.shadows`. The allowed values are determined by the theme type. |
+| `r`               | `number` \| `string`| unset        | Set the CSS property `border-radius`|
+| `rt`              | `number` \| `string`| unset        | Set the CSS properties `border-top-left-radius` and `border-top-right-radius`|
+| `rb`              | `number` \| `string`| unset        | Set the CSS properties `border-bottom-left-radius` and `border-bottom-right-radius`|
+| `rl`              | `number` \| `string`| unset        | Set the CSS properties `border-top-left-radius` and `border-bottom-left-radius`|
+| `rr`              | `number` \| `string`| unset        | Set the CSS properties `border-top-right-radius` and `border-bottom-right-radius`|
+| `rtl`             | `number` \| `string`| unset        | Set the CSS property `border-top-left-radius`.|
+| `rtr`             | `number` \| `string`| unset        | Set the CSS property `border-top-right-radius`.|
+| `rbl`             | `number` \| `string`| unset        | Set the CSS property `border-bottom-left-radius`.|
+| `rbr`             | `number` \| `string`| unset        | Set the CSS property `border-bottom-right-radius`.|
 
 ### Box model
 | Property          | Type                | Default      | Description |

@@ -95,7 +95,16 @@ export interface StylingProps<T extends BaseTheme> {
   bg?: string | keyof T['colors'],
   cursorPointer?: boolean,
   overflowHidden?: boolean,
-  elevation?: Elevation
+  shadow?: keyof T['shadows']
+  r?: number | string,
+  rt?: number | string,
+  rb?: number | string,
+  rl?: number | string,
+  rr?: number | string,
+  rtl?: number | string,
+  rtr?: number | string,
+  rbl?: number | string,
+  rbr?: number | string,
 }
 
 export interface WithBaseTheme {
@@ -121,7 +130,6 @@ type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inhe
 type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
 type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 type Spacing = 0 | 1 | 2 | 3 | 4
-type Elevation = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15
 type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
