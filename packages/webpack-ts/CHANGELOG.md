@@ -1,5 +1,6 @@
 # v1.3.2 | TBA
-* no changes
+* autoprefixer reads browserlist from package.json
+* update libs
 
 # v1.3.1 | 2019-06-23
 * no changes

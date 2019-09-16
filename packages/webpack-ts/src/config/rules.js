@@ -90,7 +90,7 @@ const createTypescriptRule = (options) => {
   }
 }
 
-const createPostCssLoader = (options) => {
+const createPostCssLoader = (options, isDevelopment) => {
   return {
     loader: require.resolve('postcss-loader'),
     options: {
@@ -99,12 +99,14 @@ const createPostCssLoader = (options) => {
       ident: 'postcss',
       plugins: () => [
         // require('postcss-flexbugs-fixes'),
-        autoprefixer({
-          browsers: options.autoprefixerBrowser,
-          flexbox: 'no-2009',
+        require('postcss-preset-env')({
+          autoprefixer: {
+            flexbox: 'no-2009',
+          },
+          stage: 3,
         }),
       ],
-      sourceMap: options.createSourceMap,
+      sourceMap: !isDevelopment && options.createSourceMap,
     },
   }
 }
@@ -115,7 +117,7 @@ const createCssRule = (options, isDevelopment) => {
     use: [
       isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
       'css-loader',
-      createPostCssLoader(options),
+      createPostCssLoader(options, isDevelopment),
     ],
   }
 }
