@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/ui-explorer",
-  "version": "1.3.2-rc.0",
+  "version": "1.3.2-rc.2",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "description": "A React component to showcase isolated React components and an Indoqa Style-System based theme",
   "license": "Apache-2.0",
@@ -34,7 +34,7 @@
     "react-router-dom": ">=5"
   },
   "dependencies": {
-    "@indoqa/style-system": "^1.3.2-rc.0",
+    "@indoqa/style-system": "^1.3.2-rc.2",
     "fela": "^10.6.1",
     "react": "^16.9.0",
     "react-fela": "^10.6.1",
