@@ -6,7 +6,6 @@ import Result from '../components/Result.redux'
 
 const TimePage: React.FC = () => (
   <MainMenuTemplate title="Time">
-    <div/>
     <Box>
       <CitySelector/>
       <Result/>
