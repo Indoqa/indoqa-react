@@ -2,3 +2,17 @@
     color: deeppink;
     font-weight: bold;
 }
+
+.sourcecode svg {
+    float: right;
+    width: 250px;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 900px) {
+    .sourcecode svg {
+        width: 500px;
+    }
+}
+

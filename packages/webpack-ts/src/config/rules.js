@@ -90,6 +90,13 @@ const createTypescriptRule = (options) => {
   }
 }
 
+const createSvgRule = () => {
+  return {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  }
+}
+
 const createPostCssLoader = (options, isDevelopment) => {
   return {
     loader: require.resolve('postcss-loader'),
@@ -122,10 +129,33 @@ const createCssRule = (options, isDevelopment) => {
   }
 }
 
+const createJsOutsideOfSrcRule = (options) => {
+  return {
+    test: /\.(js)$/,
+    exclude: /@babel(?:\/|\\{1,2})runtime/,
+    loader: require.resolve('babel-loader'),
+    options: {
+      babelrc: false,
+      configFile: false,
+      compact: false,
+      presets: [
+        [
+          require.resolve('babel-preset-react-app/dependencies'),
+          {helpers: true},
+        ],
+      ],
+      cacheDirectory: true,
+      cacheCompression: false,
+      sourceMaps: options.createSourceMap,
+      inputSourceMap: options.createSourceMap,
+    },
+  }
+}
+
 const createFallbackRule = () => {
   return {
     loader: require.resolve('file-loader'),
-    exclude: [/\.js$/, /\.html$/, /\.json$/],
+    exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
     options: {
       name: 'static/media/[name].[hash:8].[ext]',
     },
@@ -138,7 +168,9 @@ const createRules = (options, isDevelopment) => {
       oneOf: [
         createInlineableResourcesRule(options),
         createJavascriptRule(isDevelopment),
+        createJsOutsideOfSrcRule(options),
         createTypescriptRule(options),
+        createSvgRule(),
         createCssRule(options, isDevelopment),
         createFallbackRule(),
         // ** STOP ** Are you adding a new loader?

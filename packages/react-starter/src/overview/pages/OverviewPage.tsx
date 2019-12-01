@@ -4,10 +4,14 @@ import {Link} from 'react-router-dom'
 import MainMenuTemplate from '../../commons/components/templates/MainMenuTemplate'
 
 import './OverviewPage.css'
+import SourceCodeImage from './undraw_source_code_xx2e.svg'
 
 const OverviewPage: React.FC = () => (
   <MainMenuTemplate title="Overview">
     <h1>Indoqa React Starter</h1>
+    <div className="sourcecode">
+      <SourceCodeImage/>
+    </div>
     <p>
       Welcome to the <span className="indoqa">Indoqa React Starter</span>. This project demonstrates how
       we at <a href="https://www.indoqa.com" target="new">Indoqa</a> setup a Typescript-based React-Redux. After
