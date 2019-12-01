@@ -61,7 +61,9 @@ export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBas
   }
   const sortedBreakpoints = sortBreakpoints(theme.breakpoints)
   const groupedProps = getPropsByBreakpoint(props, sortedBreakpoints)
+  // add the mobile styles (no breakpoint name used)
   const styles: IStyle = styleFunction(groupedProps[0], theme)
+  // add the styles for the breakpoints
   for (let i = 0; i < sortedBreakpoints.length; i++) {
     const breakpointProps = groupedProps[i + 1] // the first array value is for mobile
     if (Object.keys(breakpointProps).length === 0) {

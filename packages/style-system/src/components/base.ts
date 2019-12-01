@@ -199,7 +199,6 @@ const spacing = (theme: BaseTheme, propValue: Spacing) => {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
-
   switch (propValue) {
     case 1:
       return theme.spacing.space1
