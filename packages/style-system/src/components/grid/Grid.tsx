@@ -1,4 +1,3 @@
-/* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'

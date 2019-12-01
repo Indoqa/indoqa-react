@@ -1,5 +1,6 @@
-# v1.3.2 | TBA
+# v1.4.0 | TBA
 * autoprefixer reads browserlist from package.json
+* use eslint for linting (instead of tslint), see https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
 * update libs
 
 # v1.3.1 | 2019-06-23

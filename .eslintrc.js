@@ -41,6 +41,17 @@ module.exports = {
       // If adding a typescript-eslint version of an existing ESLint rule,
       // make sure to disable the ESLint rule here.
       rules: {
+        // opinionated rules by Indoqa
+        'semi': ['error', 'never'],
+        'comma-dangle': ['warn', {
+          'arrays': 'always-multiline',
+          'objects': 'always-multiline',
+          'imports': 'always-multiline',
+          'exports': 'always-multiline',
+          'functions': 'always-multiline'
+        }],
+        // end of Indoqa rules
+
         // TypeScript's `noFallthroughCasesInSwitch` option is more robust (#6906)
         'default-case': 'off',
         // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/291)

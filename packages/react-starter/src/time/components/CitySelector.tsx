@@ -13,19 +13,16 @@ export interface Props {
 }
 
 const CitySelector: React.FC<Props> = ({loadVienna, loadNewYork, loadViennaAndNewYork, loadInvalidLocation, clear}) => {
-  if (true) {
-    const {t} = useTranslation()
-    return (
-      <Box mb={2}>
-        <Button onClick={loadVienna}>{t('Vienna')}</Button>
-        <Button onClick={loadNewYork}>{t('New York')}</Button>
-        <Button onClick={loadViennaAndNewYork}>{t('Vienna')} {t('and')} {t('New York')}</Button>
-        <Button onClick={loadInvalidLocation}>{t('Invalid Location')}</Button>
-        <Button onClick={clear}>{t('Clear')}</Button>
-      </Box>
-    )
-  }
-  return null
+  const {t} = useTranslation()
+  return (
+    <Box mb={2}>
+      <Button onClick={loadVienna}>{t('Vienna')}</Button>
+      <Button onClick={loadNewYork}>{t('New York')}</Button>
+      <Button onClick={loadViennaAndNewYork}>{t('Vienna')} {t('and')} {t('New York')}</Button>
+      <Button onClick={loadInvalidLocation}>{t('Invalid Location')}</Button>
+      <Button onClick={clear}>{t('Clear')}</Button>
+    </Box>
+  )
 }
 
 export default CitySelector

@@ -22,7 +22,6 @@ const DEFAULT_OPTIONS = {
 
 const createOptions = (projectOptions) => {
   projectOptions.tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
-  projectOptions.tslintPath = path.join(process.cwd(), 'tslint.json')
   projectOptions.isTypescript = fs.existsSync(projectOptions.tsconfigPath)
   if (!projectOptions.isTypescript) {
     projectOptions.entry = './src/index.js'

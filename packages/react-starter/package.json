@@ -11,7 +11,7 @@
     "build": "indoqa-webpack-ts ./indoqa-webpack-options.js",
     "clean": "rimraf ./build",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
-    "package": "yarn clean && yarn build",
+    "package": "yarn clean && yarn lint && yarn build",
     "postinstall": "yarn run package",
     "start": "indoqa-dev-server ./indoqa-webpack-options.js",
     "test": "jest",

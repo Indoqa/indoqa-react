@@ -167,7 +167,6 @@ export const createMarginCSSProps = ({m, mt, mb, ml, mr, mx, my}: MarginProps & 
 }
 
 export const createPaddingCSSProps = ({p, pt, pb, pl, pr, px, py}: PaddingProps & WithBaseTheme, theme: BaseTheme) => {
-  // tslint:disable-next-line
   const styles = {}
   if (p !== undefined) {
     Object.assign(styles, {padding: spacing(theme, p)})

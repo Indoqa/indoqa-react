@@ -71,7 +71,7 @@ const createPlugins = (options, isDevelopment) => {
     const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
       async: false,
       tsconfig: options.tsconfigPath,
-      tslint: options.tslintPath,
+      eslint: true,
     })
     buildPlugins.push(forkTsCheckerPlugin)
     devPlugins.push(forkTsCheckerPlugin)

@@ -14,8 +14,8 @@
     "cy:open": "cypress open",
     "cy:run": "yarn build:tests && cypress run",
     "e2e": "start-server-and-test serve http://localhost:5100 cy:run",
-    "lint": "tslint --project .",
-    "package": "yarn clean && yarn build",
+    "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
+    "package": "yarn clean && yarn lint && yarn build",
     "postinstall": "yarn run package",
     "serve": "serve -s -l 5100 ./build",
     "start": "indoqa-dev-server ./indoqa-webpack-options.js"
