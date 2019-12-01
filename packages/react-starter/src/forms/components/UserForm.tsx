@@ -1,6 +1,6 @@
 import {Box} from '@indoqa/style-system'
 import {Form, Formik, FormikProps} from 'formik'
-import i18next from 'i18next'
+import {TFunction} from 'i18next'
 import * as React from 'react'
 import {useTranslation} from 'react-i18next'
 import {Link} from 'react-router-dom'
@@ -12,7 +12,7 @@ import {User} from '../store/forms.types'
 
 import AddressesSubForm from './AddressesSubForm'
 
-const validationSchema = (t: i18next.TFunction) =>
+const validationSchema = (t: TFunction) =>
   Yup.object().shape({
     name: Yup.string().required(),
     email: Yup.string().required(t('errorMissingEmail')),

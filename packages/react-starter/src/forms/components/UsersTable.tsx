@@ -1,5 +1,5 @@
 import {Box} from '@indoqa/style-system'
-import i18next from 'i18next'
+import {TFunction} from 'i18next'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {useTranslation} from 'react-i18next'
@@ -20,7 +20,7 @@ const TableData: React.FC = ({children}) => {
   )
 }
 
-const renderUserRow = (user: User, baseurl: string, t: i18next.TFunction) => (
+const renderUserRow = (user: User, baseurl: string, t: TFunction) => (
   <tr key={user.id}>
     <TableData>{user.name}</TableData>
     <TableData>{user.email}</TableData>

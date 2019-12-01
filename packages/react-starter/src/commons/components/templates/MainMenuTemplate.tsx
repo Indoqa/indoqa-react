@@ -1,6 +1,6 @@
 import {Box, PStyle, Text} from '@indoqa/style-system'
 import {IStyle} from 'fela'
-import i18next from 'i18next'
+import * as i18next from 'i18next'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {useTranslation} from 'react-i18next'

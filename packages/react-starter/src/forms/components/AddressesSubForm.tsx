@@ -1,6 +1,6 @@
 import {Box, Flex, Text} from '@indoqa/style-system'
 import {ArrayHelpers, FieldArray, FormikErrors, FormikTouched} from 'formik'
-import i18next from 'i18next'
+import {TFunction} from 'i18next'
 import * as React from 'react'
 import {useTranslation} from 'react-i18next'
 import Button from '../../commons/components/atoms/Button'
@@ -14,7 +14,7 @@ const renderAddressHeader = (
   arrayHelpers: ArrayHelpers,
   count: number,
   index: number,
-  t: i18next.TFunction,
+  t: TFunction,
 ) => (
   <Box grow={1}>
     <Text mr={1}>{t('address')} {index + 1}</Text>
@@ -35,7 +35,7 @@ const renderAddressForm = (
   touched: FormikTouched<{}>,
   address: Address,
   index: number,
-  t: i18next.TFunction,
+  t: TFunction,
 ) => (
   <Flex key={index} mt={2}>
     {renderAddressHeader(arrayHelpers, addresses.length, index, t)}
@@ -52,7 +52,7 @@ const renderForms = (
   addresses: Address[],
   errors: FormikErrors<{}>,
   touched: FormikTouched<{}>,
-  t: i18next.TFunction,
+  t: TFunction,
 ) => (
   <Optional test={addresses && addresses.length > 0}>
     {
@@ -63,7 +63,7 @@ const renderForms = (
   </Optional>
 )
 
-const renderHeader = (arrayHelpers: ArrayHelpers, t: i18next.TFunction) => (
+const renderHeader = (arrayHelpers: ArrayHelpers, t: TFunction) => (
   <Box>
     <Box>
       <Text mr={1}>{t('addresses')}</Text>
