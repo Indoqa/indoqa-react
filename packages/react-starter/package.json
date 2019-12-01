@@ -10,7 +10,7 @@
     "analyze": "source-map-explorer ./build/static/js/*.js{,.map}",
     "build": "indoqa-webpack-ts ./indoqa-webpack-options.js",
     "clean": "rimraf ./build",
-    "lint": "tslint --project .",
+    "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
     "package": "yarn clean && yarn build",
     "postinstall": "yarn run package",
     "start": "indoqa-dev-server ./indoqa-webpack-options.js",
