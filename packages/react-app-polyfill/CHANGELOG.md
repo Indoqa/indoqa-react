@@ -1,4 +1,5 @@
-# v1.3.2 | TBA
+# v1.4.0 | TBA
+* add string.repeat polyfill
 * minor library upgrades
 
 # v1.3.1 | 2019-06-23
