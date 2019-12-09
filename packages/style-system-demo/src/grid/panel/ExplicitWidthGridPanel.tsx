@@ -2,7 +2,7 @@ import {Box, Grid, Panel, Row} from '@indoqa/style-system'
 import * as React from 'react'
 import Code from '../../code/Code'
 import {BlueBox, OrangeBox} from '../Boxes'
-import codeString from './NestedGridPanelCode'
+import codeString from './ExplicitWidthGridPanelCode'
 
 const ExplicitWidthGridPanel: React.FC = () => (
   <Box>
