@@ -25,13 +25,35 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
   return ''
 }
 
-export const createBoxModelCSSProps = ({inline, width, height, fullWidth, fullHeight}: BoxModelProps) => ({
-  display: (inline) ? 'inline' : 'block',
-  width: (fullWidth) ? '100%' : width || 'auto',
-  height: (fullHeight) ? '100%' : height || 'auto',
-})
+export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps, theme: T, outsideMediaQuery: boolean) => {
+  const {inline, width, height, fullWidth, fullHeight} = props
+  const styles = {}
 
-export const createFlexChildCSSProps = ({grow, shrink, basis, order, align}: FlexChildProps): IStyle => {
+  if (inline) {
+    Object.assign(styles, {display: 'inline'})
+  }
+
+  if (fullWidth) {
+    Object.assign(styles, {width: '100%'})
+  } else if (width) {
+    Object.assign(styles, {width})
+  } else if (outsideMediaQuery) {
+    Object.assign(styles, {width: 'auto'})
+  }
+
+  if (fullHeight) {
+    Object.assign(styles, {height: '100%'})
+  } else if (height) {
+    Object.assign(styles, {height})
+  } else if (outsideMediaQuery) {
+    Object.assign(styles, {height: 'auto'})
+  }
+
+  return styles
+}
+
+export const createFlexChildCSSProps = <T extends BaseTheme>(props: FlexChildProps, theme: BaseTheme, outsideMediaQuery: boolean): IStyle => {
+  const {grow, shrink, basis, order, align} = props
   const styles = {
     flexGrow: grow || 0,
     flexShrink: shrink === 0 ? 0 : shrink ? shrink : 1,
@@ -53,9 +75,8 @@ function getShadow<T extends BaseTheme>(theme: T, shadow: string): string {
   return 'none'
 }
 
-export function createStylingCSSProps<T extends BaseTheme>(
-  {bg, cursorPointer, overflowHidden, shadow, r, rt, rb, rl, rr, rtl, rtr, rbl, rbr}: StylingProps<T> & WithBaseTheme,
-  theme: BaseTheme) {
+export function createStylingCSSProps<T extends BaseTheme>(props: StylingProps<T> & WithBaseTheme, theme: BaseTheme) {
+  const {bg, cursorPointer, overflowHidden, shadow, r, rt, rb, rl, rr, rtl, rtr, rbl, rbr} = props
   const styles: IStyle = {}
   if (bg) {
     Object.assign(styles, {backgroundColor: getColor(theme, bg as string)})
@@ -103,8 +124,8 @@ export function createStylingCSSProps<T extends BaseTheme>(
   return styles
 }
 
-export function createFontCSSProps<T extends BaseTheme>(
-  {fontStyle, fontSize, color, bold, italic, underline, ellipsis, textAlign}: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
+export function createFontCSSProps<T extends BaseTheme>(props: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
+  const {fontStyle, fontSize, color, bold, italic, underline, ellipsis, textAlign} = props
   const styles: IStyle = {}
   if (bold) {
     Object.assign(styles, {fontWeight: 700})
@@ -138,7 +159,8 @@ export function createFontCSSProps<T extends BaseTheme>(
   return styles
 }
 
-export const createMarginCSSProps = ({m, mt, mb, ml, mr, mx, my}: MarginProps & WithBaseTheme, theme: BaseTheme) => {
+export const createMarginCSSProps = (props: MarginProps & WithBaseTheme, theme: BaseTheme) => {
+  const {m, mt, mb, ml, mr, mx, my} = props
   const styles = {}
   if (m !== undefined) {
     Object.assign(styles, {margin: spacing(theme, m)})
@@ -166,7 +188,8 @@ export const createMarginCSSProps = ({m, mt, mb, ml, mr, mx, my}: MarginProps & 
   return styles
 }
 
-export const createPaddingCSSProps = ({p, pt, pb, pl, pr, px, py}: PaddingProps & WithBaseTheme, theme: BaseTheme) => {
+export const createPaddingCSSProps = (props: PaddingProps & WithBaseTheme, theme: BaseTheme) => {
+  const {p, pt, pb, pl, pr, px, py} = props
   const styles = {}
   if (p !== undefined) {
     Object.assign(styles, {padding: spacing(theme, p)})

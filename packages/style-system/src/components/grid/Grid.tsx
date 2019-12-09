@@ -31,9 +31,9 @@ interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
   WithBaseTheme {
 }
 
-function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
+function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
   return {
-    ...createBoxModelCSSProps(props),
+    ...createBoxModelCSSProps(props, theme, outsideMediaQuery),
     ...createMarginCSSProps(props, theme),
     ...createPaddingCSSProps(props, theme),
     ...createStylingCSSProps(props, theme),

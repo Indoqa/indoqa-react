@@ -28,6 +28,10 @@ export const assertPadding = (el: string, top: number, right: number, bottom: nu
   getEl(el).should('have.css', 'padding-left', `${left}px`)
 }
 
+export const assertHeight = (el: string, height: number) => {
+  getEl(el).should('have.css', 'height', `${height}px`)
+}
+
 export const assertAlert = (el: string, expectedMessage: string) => {
   const stub: any = cy.stub()
   cy.on('window:alert', stub)

@@ -14,12 +14,12 @@ import {
 import {BaseProps, BoxProps, FlatBoxProps, HtmlDivAttributesWithoutStyle} from './types'
 import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme): IStyle {
+export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
   return {
-    ...createBoxModelCSSProps(props),
+    ...createBoxModelCSSProps(props, theme, outsideMediaQuery),
     ...createMarginCSSProps(props, theme),
     ...createPaddingCSSProps(props, theme),
-    ...createFlexChildCSSProps(props),
+    ...createFlexChildCSSProps(props, theme, outsideMediaQuery),
     ...createStylingCSSProps(props, theme),
     ...createFontCSSProps(props, theme),
   }

@@ -7,15 +7,8 @@ import {createBoxCSSStyle} from './Box'
 import {BaseProps, BoxProps, FlatBoxProps, FlexContainerProps, FlexProps, HtmlDivAttributesWithoutStyle} from './types'
 import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-export const createFlexContainerCSSStyle = (
-  {
-    inline,
-    direction,
-    nowrap,
-    center,
-    justifyContent,
-    alignItems,
-  }: FlexContainerProps): IStyle => {
+export const createFlexContainerCSSStyle = (props: FlexContainerProps): IStyle => {
+  const {inline, direction, nowrap, center, justifyContent, alignItems} = props
   const styles: IStyle = ({
     display: (inline) ? 'inline-flex' : 'flex',
     flexDirection: direction || 'row',
@@ -34,9 +27,9 @@ export const createFlexContainerCSSStyle = (
   return styles
 }
 
-function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme): IStyle {
+function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
   return {
-    ...createBoxCSSStyle(props, theme),
+    ...createBoxCSSStyle(props, theme, outsideMediaQuery),
     ...createFlexContainerCSSStyle(props),
   }
 }

@@ -29,8 +29,8 @@ const BoxSamples: React.FC = () => {
 
       <h3>Responsive styling</h3>
       <Box<Theme> p={[2, 0]} bg="primary" testId="box8">
-        <Box<Theme> bg="accent" mr={[1, 2, 3]} mb={2} height={[50, 60]} testId="box9">innerBox1</Box>
-        <Box<Theme> bg="green" mr={[1, 2, 3]} testId="box10">innerBox2</Box>
+        <Box<Theme> bg="accent" mr={[1, 2, 3]} ml={2} mb={2} height={[50, 60]} testId="box9">innerBox1</Box>
+        <Box<Theme> bg="green" mr={[1, 2, 3]} ml={2} testId="box10">innerBox2</Box>
       </Box>
       <Code initialShow showToggle={false}>{sample5}</Code>
 

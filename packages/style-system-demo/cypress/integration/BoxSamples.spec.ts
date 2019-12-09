@@ -1,4 +1,4 @@
-import {assertAlert, assertInnerText, assertMargin, assertPadding, assertStyle, clickEl} from '../utils/utils'
+import {assertAlert, assertHeight, assertInnerText, assertMargin, assertPadding, assertStyle, clickEl} from '../utils/utils'
 
 describe('Box samples', () => {
   before(() => {
@@ -22,9 +22,11 @@ describe('Box samples', () => {
   it('Responsive styling', () => {
     assertMargin('box8', 0, 0, 0, 0)
     assertPadding('box8', 0, 0, 0, 0)
+    assertHeight('box9', 60)
     cy.viewport('iphone-6+')
     assertMargin('box8', 0, 0, 0, 0)
     assertPadding('box8', 16, 16, 16, 16)
+    assertHeight('box9', 50)
   })
 })
 

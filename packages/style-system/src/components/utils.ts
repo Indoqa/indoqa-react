@@ -54,15 +54,20 @@ export function getPropsByBreakpoint(props: any, breakpoints: NamedBreakPoint[])
   return result
 }
 
-export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBaseTheme, styleFunction: any): IStyle {
+export type ResponsiveStyleFunction<T extends BaseTheme> = (props: any, theme: T, outsideMediaQuery: boolean) => IStyle
+
+export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBaseTheme, styleFunction: ResponsiveStyleFunction<T>): IStyle {
   const {theme} = props
   if (!theme) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
+
   const sortedBreakpoints = sortBreakpoints(theme.breakpoints)
   const groupedProps = getPropsByBreakpoint(props, sortedBreakpoints)
+
   // add the mobile styles (no breakpoint name used)
-  const styles: IStyle = styleFunction(groupedProps[0], theme)
+  const styles: IStyle = styleFunction(groupedProps[0], theme, true)
+
   // add the styles for the breakpoints
   for (let i = 0; i < sortedBreakpoints.length; i++) {
     const breakpointProps = groupedProps[i + 1] // the first array value is for mobile
@@ -71,7 +76,7 @@ export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBas
     }
     const breakpointName = sortedBreakpoints[i].name
     Object.assign(styles, {
-      [breakpointName]: styleFunction(breakpointProps, theme),
+      [breakpointName]: styleFunction(breakpointProps, theme, false),
     })
   }
   return styles

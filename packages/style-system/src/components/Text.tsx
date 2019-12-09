@@ -6,12 +6,12 @@ import {createFlexChildCSSProps, createFontCSSProps, createMarginCSSProps, creat
 import {BaseProps, HtmlSpanAttributesWithoutStyle, TextProps} from './types'
 import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-function createTextCSSStyle<T extends BaseTheme>(props: TextProps<T>, theme: BaseTheme): IStyle {
+function createTextCSSStyle<T extends BaseTheme>(props: TextProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
   return {
     display: 'inline-block',
     ...createMarginCSSProps(props, theme),
     ...createPaddingCSSProps(props, theme),
-    ...createFlexChildCSSProps(props),
+    ...createFlexChildCSSProps(props, theme, outsideMediaQuery),
     ...createFontCSSProps(props, theme),
     ...createStylingCSSProps(props, theme),
   }
