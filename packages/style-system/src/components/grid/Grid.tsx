@@ -33,7 +33,7 @@ interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
 
 function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
   return {
-    ...createBoxModelCSSProps(props, theme, outsideMediaQuery),
+    ...createBoxModelCSSProps(props),
     ...createMarginCSSProps(props, theme),
     ...createPaddingCSSProps(props, theme),
     ...createStylingCSSProps(props, theme),

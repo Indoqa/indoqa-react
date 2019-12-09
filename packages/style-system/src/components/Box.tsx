@@ -16,7 +16,7 @@ import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
 export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
   return {
-    ...createBoxModelCSSProps(props, theme, outsideMediaQuery),
+    ...createBoxModelCSSProps(props),
     ...createMarginCSSProps(props, theme),
     ...createPaddingCSSProps(props, theme),
     ...createFlexChildCSSProps(props, theme, outsideMediaQuery),

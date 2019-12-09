@@ -25,7 +25,7 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
   return ''
 }
 
-export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps, theme: T, outsideMediaQuery: boolean) => {
+export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps) => {
   const {inline, width, height, fullWidth, fullHeight} = props
   const styles = {}
 
@@ -37,16 +37,12 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
     Object.assign(styles, {width: '100%'})
   } else if (width) {
     Object.assign(styles, {width})
-  } else if (outsideMediaQuery) {
-    Object.assign(styles, {width: 'auto'})
   }
 
   if (fullHeight) {
     Object.assign(styles, {height: '100%'})
   } else if (height) {
     Object.assign(styles, {height})
-  } else if (outsideMediaQuery) {
-    Object.assign(styles, {height: 'auto'})
   }
 
   return styles
@@ -54,14 +50,30 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
 
 export const createFlexChildCSSProps = <T extends BaseTheme>(props: FlexChildProps, theme: BaseTheme, outsideMediaQuery: boolean): IStyle => {
   const {grow, shrink, basis, order, align} = props
-  const styles = {
-    flexGrow: grow || 0,
-    flexShrink: shrink === 0 ? 0 : shrink ? shrink : 1,
-    flexBasis: basis === 0 ? 0 : basis ? basis : 'auto',
+
+  const styles: IStyle = {}
+  if (grow !== undefined) {
+    Object.assign(styles, {flexGrow: grow})
+  } else if (outsideMediaQuery) {
+    Object.assign(styles, {flexGrow: 0})
   }
+
+  if (shrink !== undefined) {
+    Object.assign(styles, {flexShrink: shrink})
+  } else if (outsideMediaQuery) {
+    Object.assign(styles, {flexShrink: 1})
+  }
+
+  if (basis !== undefined) {
+    Object.assign(styles, {flexBasis: basis})
+  } else if (outsideMediaQuery) {
+    Object.assign(styles, {flexBasis: 'auto'})
+  }
+
   if (order !== undefined) {
     Object.assign(styles, {order})
   }
+
   if (align !== undefined) {
     Object.assign(styles, {alignSelf: align})
   }
