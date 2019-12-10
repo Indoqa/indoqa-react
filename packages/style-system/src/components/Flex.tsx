@@ -10,21 +10,29 @@ import {createResponsiveStyles, mergeThemedStyles} from './utils'
 export const createFlexContainerCSSStyle = <T extends BaseTheme>(props: FlexContainerProps, theme: T, outsideMediaQuery: boolean): IStyle => {
   const {inline, direction, nowrap, center, justifyContent, alignItems} = props
   const styles: IStyle = {}
+
   if (inline) {
     Object.assign(styles, {display: 'inline-flex'})
+  } else {
+    Object.assign(styles, {display: 'flex'})
   }
+
   if (direction) {
     Object.assign(styles, {flexDirection: direction})
   }
+
   if (nowrap) {
     Object.assign(styles, {flexWrap: 'nowrap'})
   }
+
   if (justifyContent) {
     Object.assign(styles, {justifyContent})
   }
+
   if (alignItems) {
     Object.assign(styles, {alignItems})
   }
+
   if (center) {
     const centerStyles: IStyle = {
       justifyContent: justifyContent || 'center',
@@ -33,6 +41,7 @@ export const createFlexContainerCSSStyle = <T extends BaseTheme>(props: FlexCont
     }
     Object.assign(styles, centerStyles)
   }
+
   return styles
 }
 
