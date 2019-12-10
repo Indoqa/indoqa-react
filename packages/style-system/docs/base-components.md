@@ -60,6 +60,9 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 | `ellipsis`        | `boolean`           | `false`      | Set the CSS properties `text-overflow` to `ellipsis`, `overflow` to `hidden` and `white-space` to `nowrap`. |
 | `underline`       | `boolean`           | `false`      | Set the CSS properties `text-decoration` to `underline`. |
 | `textAlign`       | `TextAlign`         | unset (`left` if direction is ltr, and `right` if direction is rtl) | Set the CSS property `text-align`. Allowed values: `left`\|`right`\|`center`\|`justify`\|`initial`\|`inherit`|
+| `uppercase`       | `TextAlign`         | unset        | Set the CSS property `text-transform` to uppercase.|
+| `wordBreakAll`    | `TextAlign`         | unset        | Set the CSS property `word-break` to `break-all`.|
+| `wordWrapAll`     | `TextAlign`         | unset        | Set the CSS property `word-wrap` to `break-word`.|
 
 All properties can be passed as arrays to provide different values for breakpoints.
 See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.
@@ -84,11 +87,17 @@ See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for det
 ### Box model
 | Property          | Type                | Default      | Description |
 |:----------------- |:--------------------|:-------------|:------------|
+| `display`         | `Display`           | unset        | Override the components default display value. |
 | `inline`          | `boolean`           | `false`      | If set to `true`, the CSS property `display` is set to `inline`, otherwise to `block`. |
 | `width`           | `number` \| `string`| unset        | Set the CSS property `width` to the value. If `fullWidth` is set to true, the `width` is set to `100%` though and overrides the `width` property of the `Box`. |
 | `height`          | `number` \| `string`| unset        | Set the CSS property `height` to the value. If `fullHeight` is set to true, the `height` is set to `100%` though and overrides the `height` property of the `Box`.            |
 | `fullWidth`       | `boolean`           | `false`      | Set the CSS property `width` to `100%`. |
 | `fullHeight`      | `boolean`           | `false`      | Set the CSS property `height` to `100%`. |
+| `minWidth`        | `number` \| `string`| unset        | Set the CSS property `min-width` to the value.|
+| `minHeight`       | `number` \| `string`| unset        | Set the CSS property `min-height` to the value.|
+| `maxWidth`        | `number` \| `string`| unset        | Set the CSS property `max-width` to the value.|
+| `maxHeight`       | `number` \| `string`| unset        | Set the CSS property `max-height` to the value.|
+
 
 All properties can be passed as arrays to provide different values for breakpoints.
 See [Responsive styling](./pstyle-and-breakpoints.md#responsive-styling) for details.

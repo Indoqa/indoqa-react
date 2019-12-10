@@ -190,7 +190,7 @@ export function createFontCSSProps<T extends BaseTheme>(props: FontProps<T> & Wi
     Object.assign(styles, {wordBreak: 'break-all'})
   }
   if (wordWrapAll) {
-    Object.assign(styles, {wordWrap: 'break-all'})
+    Object.assign(styles, {wordWrap: 'break-word'})
   }
   return styles
 }
