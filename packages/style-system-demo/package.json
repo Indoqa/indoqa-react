@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/style-system-demo",
-  "version": "1.4.0-rc.4",
+  "version": "1.4.0-rc.5",
   "description": "A demo for the Indoqa Style-System theming support and base components.",
   "license": "Apache-2.0",
   "files": [
@@ -33,9 +33,9 @@
     "demo"
   ],
   "dependencies": {
-    "@indoqa/react-app-polyfill": "^1.4.0-rc.4",
-    "@indoqa/style-system": "^1.4.0-rc.4",
-    "@indoqa/ui-explorer": "^1.4.0-rc.4",
+    "@indoqa/react-app-polyfill": "^1.4.0-rc.5",
+    "@indoqa/style-system": "^1.4.0-rc.5",
+    "@indoqa/ui-explorer": "^1.4.0-rc.5",
     "fela": "^11.0.2",
     "fela-monolithic": "^11.0.2",
     "fela-plugin-named-keys": "^11.0.2",
