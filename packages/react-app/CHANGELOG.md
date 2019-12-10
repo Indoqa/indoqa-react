@@ -1,4 +1,4 @@
-# v1.3.2 | TBA
+# v1.4.0 | TBA
 * minor library upgrades
 
 # v1.3.1 | 2019-06-23

@@ -1,4 +1,4 @@
-# v1.3.2 | TBA
+# v1.4.0 | TBA
 * add UI theme property 'bgContentHeading'
 * add UI theme properties to style the scrollbars
 * add UI theme property to style the menu icon
