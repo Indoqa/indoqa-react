@@ -26,11 +26,14 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
 }
 
 export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps) => {
-  const {inline, width, height, fullWidth, fullHeight} = props
+  const {display, inline, width, height, fullWidth, fullHeight, maxHeight, maxWidth, minHeight, minWidth} = props
   const styles = {}
 
   if (inline) {
     Object.assign(styles, {display: 'inline'})
+  }
+  if (display) {
+    Object.assign(styles, {display})
   }
 
   if (fullWidth) {
@@ -38,11 +41,23 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
   } else if (width) {
     Object.assign(styles, {width})
   }
+  if (maxWidth) {
+    Object.assign(styles, {maxWidth})
+  }
+  if (minWidth) {
+    Object.assign(styles, {minWidth})
+  }
 
   if (fullHeight) {
     Object.assign(styles, {height: '100%'})
   } else if (height) {
     Object.assign(styles, {height})
+  }
+  if (maxHeight) {
+    Object.assign(styles, {maxHeight})
+  }
+  if (minHeight) {
+    Object.assign(styles, {minHeight})
   }
 
   return styles
@@ -137,7 +152,7 @@ export function createStylingCSSProps<T extends BaseTheme>(props: StylingProps<T
 }
 
 export function createFontCSSProps<T extends BaseTheme>(props: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
-  const {fontStyle, fontSize, color, bold, italic, underline, ellipsis, textAlign} = props
+  const {fontStyle, fontSize, color, bold, italic, underline, ellipsis, textAlign, uppercase, wordBreakAll, wordWrapAll} = props
   const styles: IStyle = {}
   if (bold) {
     Object.assign(styles, {fontWeight: 700})
@@ -167,6 +182,15 @@ export function createFontCSSProps<T extends BaseTheme>(props: FontProps<T> & Wi
   }
   if (textAlign) {
     Object.assign(styles, {textAlign})
+  }
+  if (uppercase) {
+    Object.assign(styles, {textTransform: 'uppercase'})
+  }
+  if (wordBreakAll) {
+    Object.assign(styles, {wordBreak: 'break-all'})
+  }
+  if (wordWrapAll) {
+    Object.assign(styles, {wordWrap: 'break-all'})
   }
   return styles
 }

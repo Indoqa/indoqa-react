@@ -36,9 +36,14 @@ export interface TextProps<T extends BaseTheme> extends MarginProps,
 }
 
 export interface BoxModelProps {
+  display?: Display,
   inline?: boolean,
   width?: number | string,
   height?: number | string,
+  maxWidth?: number | string,
+  maxHeight?: number | string,
+  minWidth?: number | string,
+  minHeight?: number | string,
   fullWidth?: boolean,
   fullHeight?: boolean,
 }
@@ -69,6 +74,9 @@ export interface FontProps<T extends BaseTheme> {
   ellipsis?: boolean,
   textAlign?: TextAlign,
   underline?: boolean,
+  uppercase?: boolean,
+  wordBreakAll?: boolean,
+  wordWrapAll?: boolean,
 }
 
 export interface MarginProps {
@@ -126,11 +134,14 @@ export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
   testId?: string,
 }
 
-type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
-type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
-type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-type Spacing = 0 | 1 | 2 | 3 | 4
-type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
+export type Display = 'inline' | 'block' | 'contents' | 'flex' | 'grid' | 'inline-block' | 'inline-flex' | 'inline-grid'
+  | 'inline-table' | 'list-item' | 'run-in' | 'table' | 'table-caption' | 'table-column-group' | 'table-header-group'
+  | 'table-footer-group' | 'table-row-group' | 'table-cell' | 'table-column' | 'table-row' | 'none' | 'initial' | 'inherit'
+export type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
+export type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
+export type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+export type Spacing = 0 | 1 | 2 | 3 | 4
+export type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
 export type HtmlSpanAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'>
