@@ -17,7 +17,7 @@
     "domAppendPolyfill.js",
     "ie11.js",
     "nodeListForEachPolyfill.js",
-    "stringsRepeatPolyfill.js",
+    "stringRepeatPolyfill.js",
     "stringStartsWithPolyfill.js"
   ],
   "dependencies": {
