@@ -2,7 +2,7 @@ import {Box, Text} from '@indoqa/style-system'
 import * as React from 'react'
 import {Theme} from '../app/theme'
 import Code from '../code/Code'
-import {sample1, sample2, sample3, sample4, sample5, sample6} from './BoxSamplesCode'
+import {sample1, sample2, sample3, sample4, sample5, sample6, sample7} from './BoxSamplesCode'
 
 const BoxSamples: React.FC = () => {
   return (
@@ -39,6 +39,15 @@ const BoxSamples: React.FC = () => {
         <Text>A rounded box with a shadow</Text>
       </Box>
       <Code initialShow showToggle={false}>{sample6}</Code>
+
+      <h3>Display</h3>
+      <Box testId="box12" bg="accent" display={['none', 'block']} p={2}>
+        Box only visible on tablets or larger screens.
+      </Box>
+      <Box testId="box12" bg="green" display={['block', 'none']} p={2}>
+        Box only visible on mobile screens.
+      </Box>
+      <Code initialShow showToggle={false}>{sample7}</Code>
     </>
   )
 }

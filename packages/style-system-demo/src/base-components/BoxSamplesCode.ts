@@ -18,3 +18,10 @@ export const sample5 = `<Box<Theme> p={[2, 0]} bg="primary" testId="box8">
 export const sample6 = `<Box testId="box11" shadow="elevation5" r={5} p={3} mb={3}>
   <Text>A rounded box with a shadow</Text>
 </Box>`
+
+export const sample7 = `<Box testId="box12" bg="accent" display={['none', 'block']} p={2}>
+  Box only visible on tablets or larger screens.
+</Box>
+<Box testId="box12" bg="green" display={['block', 'none']} p={2}>
+  Box only visible on mobile screens.
+</Box>`
