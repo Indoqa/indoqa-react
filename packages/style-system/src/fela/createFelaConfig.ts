@@ -1,6 +1,7 @@
 import monolithic from 'fela-monolithic'
 import namedKeys from 'fela-plugin-named-keys'
 import webPreset from 'fela-preset-web'
+import sortMediaQueryMobileFirst from 'fela-sort-media-query-mobile-first'
 import {BaseBreakpoints, baseTheme} from '../theming/baseTheme'
 import {toMediaQueryMap} from '../theming/mediaQueryHelper'
 
@@ -18,11 +19,11 @@ export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | Bas
       ...webPreset,
       createNamedKeys(breakpoints),
     ],
-    enhancers: [],
+    enhancers: [sortMediaQueryMobileFirst()],
     devMode: false,
   }
   if (process.env.NODE_ENV === 'development') {
-    config.enhancers = [monolithic({prettySelectors: true})]
+    config.enhancers = [monolithic({prettySelectors: true}), sortMediaQueryMobileFirst()]
     config.devMode = true
   }
   return config

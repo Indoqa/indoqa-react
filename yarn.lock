@@ -1255,7 +1255,7 @@
     merge-deep "^3.0.2"
     svgo "^1.2.2"
 
-"@svgr/webpack@^4.3.3":
+"@svgr/webpack@4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-4.3.3.tgz#13cc2423bf3dff2d494f16b17eb7eacb86895017"
   integrity sha512-bjnWolZ6KVsHhgyCoYRFmbd26p8XVbulCzSG53BDQqAr+JOAderYK7CuYrB3bDjHJuF6LJ7Wrr42+goLRV9qIg==
@@ -4989,6 +4989,13 @@ fela-preset-web@^11.0.2:
     fela-plugin-fallback-value "^11.0.2"
     fela-plugin-prefixer "^11.0.2"
     fela-plugin-unit "^11.0.2"
+
+fela-sort-media-query-mobile-first@^11.0.2:
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/fela-sort-media-query-mobile-first/-/fela-sort-media-query-mobile-first-11.0.2.tgz#ea64d26954da604fda7721ed5c03f837408f1566"
+  integrity sha512-xIn53BSR2fmduDq700ggRnl3XREQj+HuG8Teyr+Y6DM8HBIaWLgrW9UlbfUKBvYeRrg6mDHvmPeicqus29Sh2A==
+  dependencies:
+    sort-css-media-queries "^1.4.3"
 
 fela-tools@^11.0.2:
   version "11.0.2"
