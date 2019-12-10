@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/react-app",
-  "version": "1.4.0-rc.3",
+  "version": "1.4.0-rc.4",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "license": "Apache-2.0",
   "main": "dist/indoqa-react-app.cjs.js",
