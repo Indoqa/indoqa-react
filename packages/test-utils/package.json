@@ -1,0 +1,53 @@
+{
+  "name": "@indoqa/test-utils",
+  "version": "1.4.0-rc.5",
+  "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "description": "Test utilities for React, Fela and redux-observable.",
+  "license": "Apache-2.0",
+  "main": "dist/indoqa-test-utils.cjs.js",
+  "module": "dist/indoqa-test-utils.es.js",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./compiled ./dist",
+    "compile": "yarn clean && tsc -p tsconfig.json",
+    "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
+    "package": "yarn lint && yarn compile && rollup -c",
+    "prepublishOnly": "yarn package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react.git"
+  },
+  "keywords": [
+    "react",
+    "redux-observable",
+    "fela",
+    "testing"
+  ],
+  "peerDependencies": {
+    "@testing-library/react": "*",
+    "css": "*",
+    "fela": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-fela": "*",
+    "redux-observable": "*",
+    "react-testing-library": "*",
+    "typemoq": "*"
+  },
+  "dependencies": {
+    "@testing-library/react": "^9.4.0",
+    "css": "^2.2.4",
+    "fela": "^11.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-fela": "^11.0.2",
+    "redux-observable": "^1.2.0",
+    "react-testing-library": "^8.0.1",
+    "typemoq": "^2.1.0"
+  }
+}
