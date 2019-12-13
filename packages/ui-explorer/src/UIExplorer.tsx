@@ -305,5 +305,5 @@ class UIExplorerImpl extends React.Component<Props, State> {
   }
 }
 
-const UIExplorer = withRouter(withRenderer(UIExplorerImpl))
+const UIExplorer: any = withRouter(withRenderer(UIExplorerImpl))
 export {UIExplorer}

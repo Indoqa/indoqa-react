@@ -29,6 +29,7 @@
     "testing"
   ],
   "peerDependencies": {
+    "@indoqa/style-system": "*",
     "@testing-library/react": "*",
     "css": "*",
     "fela": "*",
@@ -40,6 +41,7 @@
     "typemoq": "*"
   },
   "dependencies": {
+    "@indoqa/style-system": "^1.4.0-rc.5",
     "@testing-library/react": "^9.4.0",
     "css": "^2.2.4",
     "fela": "^11.0.2",

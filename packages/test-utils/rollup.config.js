@@ -5,8 +5,6 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 
 import pkg from './package.json'
 
-process.env.NODE_ENV = 'development'
-
 const input = 'compiled/test-utils/src/index.js'
 const external = Object.keys(pkg.peerDependencies)
 
