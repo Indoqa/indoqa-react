@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/test-utils",
-  "version": "1.4.0-rc.7",
+  "version": "1.4.0-rc.8",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "description": "Test utilities for React, Fela and redux-observable.",
   "license": "Apache-2.0",
@@ -44,7 +44,7 @@
     "typemoq": "*"
   },
   "dependencies": {
-    "@indoqa/style-system": "^1.4.0-rc.7",
+    "@indoqa/style-system": "^1.4.0-rc.8",
     "@testing-library/react": "^9.4.0",
     "css": "^2.2.4",
     "fela": "^11.0.2",
