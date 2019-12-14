@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0-rc.5",
+  "version": "1.4.0-rc.6",
   "useWorkspaces": true,
   "npmClient": "yarn",
   "publishConfig": {
