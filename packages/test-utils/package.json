@@ -22,6 +22,9 @@
     "type": "git",
     "url": "git+https://github.com/Indoqa/indoqa-react.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
     "redux-observable",
