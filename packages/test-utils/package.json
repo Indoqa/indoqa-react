@@ -6,10 +6,10 @@
   "license": "Apache-2.0",
   "main": "dist/indoqa-test-utils.cjs.js",
   "module": "dist/indoqa-test-utils.es.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/test-utils/src/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist"
+    "dist/test-utils"
   ],
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
