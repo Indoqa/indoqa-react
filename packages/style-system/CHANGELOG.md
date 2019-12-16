@@ -9,6 +9,7 @@ are not set for styles put into media queries.
 * Fix a bug with the flex-shrink property of Flex, Box and Text. The bug made it impossible to set the value to 0.
 * Fix a bug with the flex-basis property of Flex, Box and Text. The bug made it impossible to set the value to 0.
 * Fix bug in ColRow: if a size array was provided, the last size was not calculated correctly
+* createFelaConfig: add properties `selectorPrefix`, `filterClassName` and `disableDevMode`
 * minor library upgrades
 
 # v1.3.1 | 2019-06-23

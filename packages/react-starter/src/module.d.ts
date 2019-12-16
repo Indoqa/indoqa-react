@@ -1,4 +1,4 @@
 declare module 'fela-sort-media-query-mobile-first' {
-  import {TPlugin} from 'fela'
-  export default function (): TPlugin
+  import {TEnhancer} from 'fela'
+  export default function (): TEnhancer
 }

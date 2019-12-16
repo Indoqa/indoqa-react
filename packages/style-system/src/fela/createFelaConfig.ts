@@ -1,3 +1,4 @@
+import {IConfig} from 'fela'
 import monolithic from 'fela-monolithic'
 import namedKeys from 'fela-plugin-named-keys'
 import webPreset from 'fela-preset-web'
@@ -13,8 +14,13 @@ function createNamedKeys<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpo
   )
 }
 
-export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpoints = baseTheme.breakpoints) {
-  const config: any = {
+export function createFelaConfig<B extends BaseBreakpoints>(
+  breakpoints: B | BaseBreakpoints = baseTheme.breakpoints,
+  filterClassName?: IConfig['filterClassName'],
+  selectorPrefix?: string,
+  disableDevMode?: boolean,
+) {
+  const config: IConfig = {
     plugins: [
       ...webPreset,
       createNamedKeys(breakpoints),
@@ -22,7 +28,15 @@ export function createFelaConfig<B extends BaseBreakpoints>(breakpoints: B | Bas
     enhancers: [sortMediaQueryMobileFirst()],
     devMode: false,
   }
-  if (process.env.NODE_ENV === 'development') {
+
+  if (selectorPrefix) {
+    config.selectorPrefix = selectorPrefix
+  }
+  if (filterClassName) {
+    config.filterClassName = filterClassName
+  }
+
+  if (process.env.NODE_ENV === 'development' && !disableDevMode) {
     config.enhancers = [monolithic({prettySelectors: true}), sortMediaQueryMobileFirst()]
     config.devMode = true
   }
