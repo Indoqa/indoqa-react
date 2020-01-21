@@ -208,7 +208,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
     }
   }
 
-  public UNSAFE_componentDidMount() {
+  public componentDidMount() {
     const {uieTheme} = this.state
     const {fontFamilyCSSImports} = uieTheme
     importCss('style-guide-fonts', fontFamilyCSSImports)
