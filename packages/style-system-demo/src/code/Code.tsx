@@ -15,6 +15,7 @@ const Code: React.FC<Props> = ({initialShow, showToggle = true, showLineNumbers 
     <Box mt={1}>
       {showToggle &&
       <Box mb={1}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a href="#" onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'} code</a>
       </Box>
       }
