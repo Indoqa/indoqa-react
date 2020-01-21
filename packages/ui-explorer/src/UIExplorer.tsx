@@ -189,7 +189,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
     return `UI-Explorer ${projectName}`
   }
 
-  public componentWillMount() {
+  public UNSAFE_componentWillMount() {
     if (this.props.renderer) {
       this.props.renderer.renderStatic({
         backgroundColor: '#F0F2F5',
@@ -200,7 +200,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
     }
   }
 
-  public componentWillUpdate(nextProps: Readonly<Props>) {
+  public UNSAFE_componentWillUpdate(nextProps: Readonly<Props>) {
     const currentLocation = this.props.location
     const nextLocation = nextProps.location
     if (currentLocation !== nextLocation) {
@@ -208,7 +208,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
     }
   }
 
-  public componentDidMount() {
+  public UNSAFE_componentDidMount() {
     const {uieTheme} = this.state
     const {fontFamilyCSSImports} = uieTheme
     importCss('style-guide-fonts', fontFamilyCSSImports)
