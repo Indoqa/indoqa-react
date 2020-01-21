@@ -23,6 +23,8 @@ export const createFlexContainerCSSStyle = <T extends BaseTheme>(props: FlexCont
 
   if (nowrap) {
     Object.assign(styles, {flexWrap: 'nowrap'})
+  } else {
+    Object.assign(styles, {flexWrap: 'wrap'})
   }
 
   if (justifyContent) {
