@@ -29,6 +29,7 @@ const createServerConfig = proxy => {
     publicPath: '/',
     quiet: true,
     overlay: false,
+    transportMode: 'ws',
     proxy,
     before(app) {
       if (fs.existsSync(proxySetup)) {
