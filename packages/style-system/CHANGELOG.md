@@ -1,4 +1,4 @@
-# v1.4.0 | TBA
+# v1.4.0 | 2020-01-26
 * Add properties `display`, `maxWidth`, `minWidth`, `maxHeight`, `minHeight` to `Flex`and `Box`.
 * Add properties  properties `uppercase`, `wordBreakAll`, `wordWrapAll` to `Flex`, `Box' and `Text`.
 * Add properties for shadows (`shadow`) and radius (`r`, `rt`, `rb`, `rl`, `rr`, `rtl`, `rtr`, `rbl`, `rbr`) to `Flex` and `Box`.

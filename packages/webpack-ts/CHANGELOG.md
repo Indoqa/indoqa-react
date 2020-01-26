@@ -1,4 +1,4 @@
-# v1.4.0 | TBA
+# v1.4.0 | 2020-01-26
 * support loading SVG files using @svgr
 * autoprefixer reads browserlist from package.json
 * use eslint for linting (instead of tslint), see https://github.com/TypeStrong/fork-ts-checker-webpack-plugin

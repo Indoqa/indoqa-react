@@ -1,4 +1,4 @@
-# v1.4.0 | TBA
+# v1.4.0 | 2020-01-26
 * add more samples and Cypress tests
 * minor library upgrades
 
