@@ -7,7 +7,7 @@ const MenuHeading: React.FC<WithUIETheme> = ({children, uieTheme}) => {
   const baseStyle: IStyle = {
     textTransform: 'uppercase',
     margin: 0,
-    paddingBottom: uieTheme.spacing.space1,
+    paddingBottom: '0.4rem',
     marginBottom: uieTheme.spacing.space0,
     color: uieTheme.colors.textMenuHeading,
     fontSize: uieTheme.fontSizes.small,

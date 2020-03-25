@@ -1,3 +1,6 @@
+# v1.5.0 | TBA
+* improve menu styling by increasing the padding bottom of menu items and headers
+
 # v1.4.0 | 2020-01-26
 * add UI theme property 'bgContentHeading'
 * add UI theme properties to style the scrollbars
