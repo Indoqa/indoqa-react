@@ -36,17 +36,17 @@
     "@indoqa/react-app-polyfill": "^1.4.0",
     "@indoqa/style-system": "^1.4.0",
     "@indoqa/ui-explorer": "^1.4.0",
-    "fela": "^11.0.2",
-    "fela-monolithic": "^11.0.2",
-    "fela-plugin-named-keys": "^11.0.2",
-    "fela-preset-web": "^11.0.2",
+    "fela": "^11.3.3",
+    "fela-monolithic": "^11.3.3",
+    "fela-plugin-named-keys": "^11.3.3",
+    "fela-preset-web": "^11.3.3",
     "history": "^4.10.1",
-    "react": "^16.12.0",
-    "react-app-polyfill": "^1.0.5",
-    "react-dom": "^16.12.0",
-    "react-fela": "^11.0.2",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-syntax-highlighter": "^12.2.1"
+    "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
+    "react-dom": "^16.13.1",
+    "react-fela": "^11.3.3",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-syntax-highlighter": "^13.5.3"
   }
 }
