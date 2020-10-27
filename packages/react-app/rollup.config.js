@@ -13,7 +13,7 @@ const buildCjs = () => ({
   output: {
     file: pkg.main,
     format: 'cjs',
-    sourceMap: true,
+    sourcemap: true,
   },
   plugins: [
     resolve(),
@@ -28,7 +28,7 @@ const buildEs = () => ({
   output: {
     file: pkg.module,
     format: 'es',
-    sourceMap: true,
+    sourcemap: true,
   },
   plugins: [
     resolve(),

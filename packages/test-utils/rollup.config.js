@@ -14,7 +14,7 @@ const buildCjs = () => ({
   output: {
     file: pkg.main,
     format: 'cjs',
-    sourceMap: true,
+    sourcemap: true,
   },
   plugins: [
     commonJS(),
@@ -30,7 +30,7 @@ const buildEs = () => ({
   output: {
     file: pkg.module,
     format: 'es',
-    sourceMap: true,
+    sourcemap: true,
   },
   plugins: [
     commonJS(),
