@@ -18,12 +18,19 @@ export interface BaseColors {
   readonly text: string,
 }
 
+export type SpaceValue = number | string
+
 export interface BaseSpacing {
-  readonly space0: number | string,
-  readonly space1: number | string,
-  readonly space2: number | string,
-  readonly space3: number | string,
-  readonly space4: number | string,
+  readonly space0: SpaceValue
+  readonly space1: SpaceValue
+  readonly space2: SpaceValue
+  readonly space3: SpaceValue
+  readonly space4: SpaceValue
+  readonly space5: SpaceValue
+  readonly space6: SpaceValue
+  readonly space7: SpaceValue
+  readonly space8: SpaceValue
+  readonly space9: SpaceValue
 }
 
 export interface BaseZIndexes {
@@ -133,10 +140,15 @@ export const baseTheme: BaseTheme = {
   },
   spacing: {
     space0: 0,
-    space1: '0.5rem',
-    space2: '1rem',
-    space3: '2rem',
-    space4: '4rem',
+    space1: '0.25rem',
+    space2: '0.5rem',
+    space3: '0.75rem',
+    space4: '1rem',
+    space5: '1.5rem',
+    space6: '2rem',
+    space7: '2.5rem',
+    space8: '3rem',
+    space9: '4rem',
   },
   zIndexes: {
     default: 0,

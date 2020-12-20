@@ -1,7 +1,7 @@
 import {IStyle} from 'fela'
 
-import {BaseTheme, Spacing} from '..'
-import {BoxModelProps, FlexChildProps, FontProps, MarginProps, PaddingProps, StylingProps, WithBaseTheme} from './types'
+import {BaseTheme} from '..'
+import {BoxModelProps, FlexChildProps, FontProps, MarginProps, PaddingProps, Spacing, StylingProps, WithBaseTheme} from './types'
 import {THEME_NOT_AVAILABLE_ERR_MSG} from './utils'
 
 function getColor<T extends BaseTheme>(theme: T, color: string): string {
@@ -266,6 +266,16 @@ const spacing = (theme: BaseTheme, propValue: Spacing) => {
       return theme.spacing.space3
     case 4:
       return theme.spacing.space4
+    case 5:
+      return theme.spacing.space5
+    case 6:
+      return theme.spacing.space6
+    case 7:
+      return theme.spacing.space7
+    case 8:
+      return theme.spacing.space8
+    case 9:
+      return theme.spacing.space9
     default:
       return theme.spacing.space0
   }

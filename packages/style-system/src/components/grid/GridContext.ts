@@ -1,6 +1,5 @@
 import * as React from 'react'
-
-export type Spacing = number | string
+import {Spacing} from '../types'
 
 type Context = {
   spacing: Spacing,
