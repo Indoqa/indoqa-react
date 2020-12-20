@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/webpack-ts",
-  "version": "1.4.1-alpha.0",
+  "version": "1.4.1-alpha.1",
   "description": "Simplified, opinionated usage of Webpack as build tool and dev-server for typescript projects",
   "main": "src/index.js",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
