@@ -2,10 +2,10 @@ import {Grid, Panel, Row} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
+import {FontSizes} from '../types'
 import {UIETheme} from '../uietheme/UIETheme'
 import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
-import {FontSizes} from '../types'
-import FontStylePanel from './FontStylePanel'
+import {FontStylePanel} from './FontStylePanel'
 import {characters} from './TextSpecimen'
 
 interface HeadlineProps extends WithUIETheme {

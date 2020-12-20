@@ -51,7 +51,7 @@ const Content: React.FC<WithUIETheme> = ({uieTheme, children}) => {
   )
 }
 
-const FontStylePanel: React.FC<Props> = ({uieTheme, name, children}) => {
+const FontStylePanelInternal: React.FC<Props> = ({uieTheme, name, children}) => {
   return (
     <Container uieTheme={uieTheme}>
       <Header uieTheme={uieTheme}>{name}</Header>
@@ -60,4 +60,4 @@ const FontStylePanel: React.FC<Props> = ({uieTheme, name, children}) => {
   )
 }
 
-export default withUIETheme(FontStylePanel)
+export const FontStylePanel = withUIETheme(FontStylePanelInternal)

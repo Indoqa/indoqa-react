@@ -4,7 +4,7 @@ import * as React from 'react'
 import {FelaComponent, RenderProps} from 'react-fela'
 import {Route, RouteComponentProps, withRouter} from 'react-router'
 
-import ColorsPanel from './colors/ColorsPanel'
+import {ColorsPanel} from './colors/ColorsPanel'
 import ContentHeader from './layout/ContentHeader'
 import ContentHeading from './layout/ContentHeading'
 import ContentPanel from './layout/ContentPanel'
@@ -14,11 +14,11 @@ import MenuGroup from './layout/MenuGroup'
 import MenuHeader from './layout/MenuHeader'
 import MenuIcon from './layout/MenuIcon'
 import MenuItem from './layout/MenuItem'
-import OverviewPanel from './overview/OverviewPanel'
+import {OverviewPanel} from './overview/OverviewPanel'
 import {Color, Font, FontMix, FontSize, FontSizes, Group} from './types'
-import TypographyPanel from './typography/TypographyPanel'
+import {TypographyPanel} from './typography/TypographyPanel'
 import {UIETheme} from './uietheme/UIETheme'
-import StyleGuideThemeContext from './uietheme/UIEThemeContext'
+import {UIEThemeContext} from './uietheme/UIEThemeContext'
 import {uieLightTheme} from './uietheme/uieThemes'
 import {WithUIETheme} from './uietheme/withUIETheme'
 import importCss from './utils/importCss'
@@ -247,7 +247,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
     } = this.props
     const {uieTheme, showMenu} = this.state
     return (
-      <StyleGuideThemeContext.Provider value={uieTheme}>
+      <UIEThemeContext.Provider value={uieTheme}>
         <Grid spacing={0}>
           <Row height="100vh">
             <Panel width="17.5rem">
@@ -295,7 +295,7 @@ class UIExplorerImpl extends React.Component<Props, State> {
             </Panel>
           </Row>
         </Grid>
-      </StyleGuideThemeContext.Provider>
+      </UIEThemeContext.Provider>
     )
   }
 

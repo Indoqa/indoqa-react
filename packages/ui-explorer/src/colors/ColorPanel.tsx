@@ -27,7 +27,7 @@ const calcTextColor = (color?: string) => {
   return (red * 0.299 + green * 0.587 + blue * 0.114) > 180 ? '#000' : '#fff'
 }
 
-const ColorPanel = ({color, name, uieTheme}: Props) => {
+const ColorPanelInternal = ({color, name, uieTheme}: Props) => {
   const textColor = calcTextColor(color)
   const style: IStyle = {
     boxSizing: 'border-box',
@@ -71,4 +71,4 @@ const ColorPanel = ({color, name, uieTheme}: Props) => {
   )
 }
 
-export default withUIETheme(ColorPanel)
+export const ColorPanel = withUIETheme(ColorPanelInternal)

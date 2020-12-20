@@ -1,4 +1,4 @@
-# v1.5.0 | TBA
+# v1.4.1 | TBA
 * improve menu styling by increasing the padding bottom of menu items and headers
 
 # v1.4.0 | 2020-01-26

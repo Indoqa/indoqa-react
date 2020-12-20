@@ -1,10 +1,10 @@
 import {Flex} from '@indoqa/style-system'
 import * as React from 'react'
-import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import {Font, FontMix, FontSize, FontSizes} from '../types'
-import FontMixPanel from './FontMixPanel'
+import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
+import {FontMixPanel} from './FontMixPanel'
 import HeadlineFontStylePanel from './HeadlineFontPanel'
-import TextFontStylePanel from './TextFontPanel'
+import {TextFontPanel} from './TextFontPanel'
 
 interface Props extends WithUIETheme {
   textFonts: Font[],
@@ -16,7 +16,7 @@ interface Props extends WithUIETheme {
 
 const renderTextFont = (font: Font) => {
   return (
-    <TextFontStylePanel
+    <TextFontPanel
       key={font.name}
       name={font.name}
       fontStyles={font.fontStyle}
@@ -46,7 +46,7 @@ const renderFontMixes = (fontMix: FontMix, fontSizes: FontSizes, textFontSize: F
   )
 }
 
-const TypographyPanel: React.FC<Props> = ({textFonts, headlineFonts, fontMixes, fontSizes, textFontSize}) => {
+const TypographyPanelInternal: React.FC<Props> = ({textFonts, headlineFonts, fontMixes, fontSizes, textFontSize}) => {
   return (
     <React.Fragment>
       <Flex>
@@ -62,4 +62,4 @@ const TypographyPanel: React.FC<Props> = ({textFonts, headlineFonts, fontMixes, 
   )
 }
 
-export default withUIETheme(TypographyPanel)
+export const TypographyPanel = withUIETheme(TypographyPanelInternal)

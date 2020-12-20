@@ -1,9 +1,9 @@
 import {Box, Flex} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
-import ColorsPanel from '../colors/ColorsPanel'
+import {ColorsPanel} from '../colors/ColorsPanel'
 import {Color, FontMix, FontSize, FontSizes} from '../types'
-import FontMixContent from '../typography/FontMixContent'
+import {FontMixContent} from '../typography/FontMixContent'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
@@ -28,7 +28,7 @@ const uniqueColors = (colors: Color[]): Color[] => {
   return result
 }
 
-const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, colors, uieTheme}) => {
+const OverviewPanelInternal: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, colors, uieTheme}) => {
   const panelStyle: IStyle = {
     marginTop: uieTheme.spacing.space4,
   }
@@ -53,4 +53,4 @@ const OverviewPanel: React.FC<Props> = ({fontMixes, fontSizes, textFontSize, col
   )
 }
 
-export default withUIETheme(OverviewPanel)
+export const OverviewPanel = withUIETheme(OverviewPanelInternal)

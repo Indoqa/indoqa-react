@@ -2,7 +2,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {FontSize, FontSizes} from '../types'
-import TextSample from './TextSample'
+import {TextSample} from './TextSample'
 import {headerText, longText, shortText} from './TextSpecimen'
 
 interface Props {
@@ -19,7 +19,7 @@ const Container: React.FC = ({children}) => {
   return <FelaComponent style={style}>{children}</FelaComponent>
 }
 
-const FontMixContent: React.FC<Props> = ({textFont, headlineFont, fontSizes, textFontSize}) => {
+export const FontMixContent: React.FC<Props> = ({textFont, headlineFont, fontSizes, textFontSize}) => {
   const extendedHeadline1Font: IStyle = {
     ...headlineFont,
     fontSize: fontSizes.length > 0 ? fontSizes[0] : '30px',
@@ -78,5 +78,3 @@ const FontMixContent: React.FC<Props> = ({textFont, headlineFont, fontSizes, tex
     </Container>
   )
 }
-
-export default FontMixContent

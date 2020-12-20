@@ -1,8 +1,8 @@
 import {Flex} from '@indoqa/style-system'
 import * as React from 'react'
 import {Color} from '../types'
-import ColorPanel from './ColorPanel'
-import SmallColorPanel from './SmallColorPanel'
+import {ColorPanel} from './ColorPanel'
+import {SmallColorPanel} from './SmallColorPanel'
 
 interface Props {
   colors: Color[]
@@ -20,7 +20,7 @@ const renderColor = (color: Color, small: boolean | undefined) => {
   )
 }
 
-const ColorsPanel: React.FunctionComponent<Props> = ({colors, small}) => (
+export const ColorsPanel: React.FunctionComponent<Props> = ({colors, small}) => (
   <Flex>
     {colors.map(((color) => renderColor(color, small)))}
   </Flex>
@@ -29,5 +29,3 @@ const ColorsPanel: React.FunctionComponent<Props> = ({colors, small}) => (
 ColorsPanel.defaultProps = {
   small: false,
 }
-
-export default ColorsPanel

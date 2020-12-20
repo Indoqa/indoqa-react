@@ -1,9 +1,9 @@
 import {Grid, Panel, Row} from '@indoqa/style-system'
 import * as React from 'react'
-import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 import {FontMix, FontSize, FontSizes} from '../types'
-import FontMixContent from './FontMixContent'
-import FontStylePanel from './FontStylePanel'
+import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
+import {FontMixContent} from './FontMixContent'
+import {FontStylePanel} from './FontStylePanel'
 
 interface Props extends WithUIETheme {
   fontSizes: FontSizes,
@@ -11,7 +11,7 @@ interface Props extends WithUIETheme {
   textFontSize: FontSize,
 }
 
-const FontMixPanel: React.FC<Props> = ({fontSizes, textFontSize, fontMix}) => {
+const FontMixPanelInternal: React.FC<Props> = ({fontSizes, textFontSize, fontMix}) => {
   const {name, textFont, headlineFont} = fontMix
   return (
     <Grid spacing="1rem" fullWidth>
@@ -31,4 +31,4 @@ const FontMixPanel: React.FC<Props> = ({fontSizes, textFontSize, fontMix}) => {
   )
 }
 
-export default withUIETheme(FontMixPanel)
+export const FontMixPanel = withUIETheme(FontMixPanelInternal)

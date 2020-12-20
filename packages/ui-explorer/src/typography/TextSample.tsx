@@ -7,7 +7,7 @@ interface Props {
   as?: keyof React.ReactHTML,
 }
 
-const TextSample: React.FunctionComponent<Props> = ({fontStyles, children, as}) => {
+export const TextSample: React.FunctionComponent<Props> = ({fontStyles, children, as}) => {
   const style: IStyle = {
     paddingBottom: 0,
   }
@@ -17,5 +17,3 @@ const TextSample: React.FunctionComponent<Props> = ({fontStyles, children, as}) 
     </FelaComponent>
   )
 }
-
-export default TextSample

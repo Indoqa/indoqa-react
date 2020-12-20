@@ -28,4 +28,4 @@ const ColorPanel = ({color, uieTheme}: Props) => {
   )
 }
 
-export default withUIETheme(ColorPanel)
+export const SmallColorPanel = withUIETheme(ColorPanel)
