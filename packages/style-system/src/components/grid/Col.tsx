@@ -5,7 +5,7 @@ import {BaseTheme} from '../../theming/baseTheme'
 import {createFontCSSProps, createPaddingCSSProps, createStylingCSSProps} from '../base'
 import {FontProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
 import {createResponsiveStyles, mergeThemedStyles} from '../utils'
-import {GridContext, Spacing} from './GridContext'
+import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
 type SizeValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
@@ -21,7 +21,7 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
 }
 
 interface ColContainerProps<T extends BaseTheme> extends Props<T> {
-  spacing?: Spacing,
+  spacing?: string | number,
 }
 
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,

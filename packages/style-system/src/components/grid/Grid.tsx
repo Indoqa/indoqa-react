@@ -6,7 +6,7 @@ import {createBoxModelCSSProps, createMarginCSSProps, createPaddingCSSProps, cre
 import {BoxModelProps, MarginProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
 import {createResponsiveStyles, mergeThemedStyles} from '../utils'
 
-import {GridContext, Spacing} from './GridContext'
+import {GridContext} from './GridContext'
 
 interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
   ResponsiveProps<PaddingProps>,
@@ -21,7 +21,7 @@ interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
 }
 
 interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
-  spacing: Spacing,
+  spacing: string | number,
 }
 
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,

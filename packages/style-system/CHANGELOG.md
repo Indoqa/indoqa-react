@@ -1,9 +1,10 @@
 # v1.4.1 | TBD
 * Add Spacing enum values for 5, 6, 7, 8 and 9
+* Export Typescript types
 
 # v1.4.0 | 2020-01-26
 * Add properties `display`, `maxWidth`, `minWidth`, `maxHeight`, `minHeight` to `Flex`and `Box`.
-* Add properties  properties `uppercase`, `wordBreakAll`, `wordWrapAll` to `Flex`, `Box' and `Text`.
+* Add properties properties `uppercase`, `wordBreakAll`, `wordWrapAll` to `Flex`, `Box' and `Text`.
 * Add properties for shadows (`shadow`) and radius (`r`, `rt`, `rb`, `rl`, `rr`, `rtl`, `rtr`, `rbl`, `rbr`) to `Flex` and `Box`.
 * Add often used event props onClick, onMouseDown, onMouseOut, onMouseOver, onScroll to Flex, Box and Text.
 * Add often used CSS style properties: cursor => pointer, overflow => hidden, text-decoration => underline

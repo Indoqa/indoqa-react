@@ -9,7 +9,7 @@ import {createPaddingCSSProps, createStylingCSSProps} from '../base'
 import {PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
 import {addUnitIfNeeded, createResponsiveStyles, mergeThemedStyles} from '../utils'
 import {GRID_SIZE, Size} from './Col'
-import {GridContext, Spacing} from './GridContext'
+import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>,
@@ -20,7 +20,7 @@ interface Props<T extends BaseTheme> extends WithStyle<T>,
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
-  spacing?: Spacing,
+  spacing?: string | number,
 }
 
 interface RowStyle extends IStyle {
@@ -30,7 +30,7 @@ interface RowStyle extends IStyle {
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, WithBaseTheme {
 }
 
-const calcWidthValue = (size: number, spacing?: Spacing): string => {
+const calcWidthValue = (size: number, spacing?: string | number): string => {
   const spacingWithUnit = addUnitIfNeeded(spacing)
   const availableSpace = `(100% - ${spacingWithUnit} * ${(GRID_SIZE as any) - 1})`
   const coveredSpacing = `${spacingWithUnit} * ${size - 1}`
@@ -43,7 +43,7 @@ const getEnhancedColStyles = (
   size: number,
   willBreakAfter: boolean,
   needsMarginTop: boolean,
-  spacing?: Spacing,
+  spacing?: string | number,
 ) => {
   const style = {
     width: calcWidthValue(size, spacing),
@@ -88,7 +88,7 @@ const validateSizes = (sizes: number, breakpointCount: number, child: any) => {
 /*
  * Iterate over all children (<Col>) and their sizes and create styles for each col/size combination.
  */
-const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, spacing?: Spacing) => {
+const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, spacing?: string | number) => {
   const currentRowSize = initializeArray(breakpoints.length + 1)
   const rowsCount = initializeArray(breakpoints.length + 1)
 

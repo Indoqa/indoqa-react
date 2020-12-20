@@ -1,8 +1,6 @@
 import * as React from 'react'
 
-import {Spacing} from './GridContext'
-
-export const testGridContext = (spacing: Spacing, child: React.ReactNode) => {
+export const testGridContext = (spacing: string | number, child: React.ReactNode) => {
   if (spacing === null || spacing === undefined) {
     if (process.env.NODE_ENV !== 'production') {
       return (

@@ -18,19 +18,17 @@ export interface BaseColors {
   readonly text: string,
 }
 
-export type SpaceValue = number | string
-
 export interface BaseSpacing {
-  readonly space0: SpaceValue
-  readonly space1: SpaceValue
-  readonly space2: SpaceValue
-  readonly space3: SpaceValue
-  readonly space4: SpaceValue
-  readonly space5: SpaceValue
-  readonly space6: SpaceValue
-  readonly space7: SpaceValue
-  readonly space8: SpaceValue
-  readonly space9: SpaceValue
+  readonly space0: number | string
+  readonly space1: number | string
+  readonly space2: number | string
+  readonly space3: number | string
+  readonly space4: number | string
+  readonly space5: number | string
+  readonly space6: number | string
+  readonly space7: number | string
+  readonly space8: number | string
+  readonly space9: number | string
 }
 
 export interface BaseZIndexes {
