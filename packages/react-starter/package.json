@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/react-starter",
-  "version": "1.4.1-alpha.1",
+  "version": "1.4.1-alpha.2",
   "description": "Typescript based React + Redux + Redux-Observable + Formik starter",
   "license": "Apache-2.0",
   "files": [
@@ -33,8 +33,8 @@
     "starter"
   ],
   "dependencies": {
-    "@indoqa/react-app": "^1.4.1-alpha.1",
-    "@indoqa/style-system": "^1.4.1-alpha.1",
+    "@indoqa/react-app": "^1.4.1-alpha.2",
+    "@indoqa/style-system": "^1.4.1-alpha.2",
     "fela": "^11.5.2",
     "fela-monolithic": "^11.5.2",
     "fela-plugin-named-keys": "^11.5.2",
