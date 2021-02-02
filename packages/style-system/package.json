@@ -34,7 +34,7 @@
     "fela-monolithic": ">=11",
     "fela-plugin-named-keys": ">=11",
     "fela-preset-web": ">=11",
-    "react": ">=16.8.5",
+    "react": ">=17.0.1",
     "react-fela": ">=11"
   },
   "dependencies": {
@@ -42,10 +42,10 @@
     "fela-monolithic": "^11.5.1",
     "fela-plugin-named-keys": "^11.5.1",
     "fela-preset-web": "^11.5.1",
-    "fela-sort-media-query-mobile-first": "^11.5.1",
+    "fela-sort-media-query-mobile-first": "^11.5.2",
     "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-fela": "^11.5.1",
-    "tslib": "^2.0.3"
+    "tslib": "^2.1.0"
   }
 }
