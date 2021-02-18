@@ -9,7 +9,7 @@ export function sortBreakpoints<T extends BaseBreakpoints>(breakpoints: T): Name
   const sortBreakpointsFn = (breakpointsToBeSorted: T) => Object
     .keys(breakpointsToBeSorted)
     .map((key) => Object.assign(breakpoints[key], {name: key}))
-    .sort((b1, b2) => b1.sort - b2.sort)
+    .sort((b1: NamedBreakPoint, b2: NamedBreakPoint) => b1.sort - b2.sort)
   if (process.env.NODE_ENV === 'production') {
     return memoize(() => sortBreakpointsFn(breakpoints))()
   }

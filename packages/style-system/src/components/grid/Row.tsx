@@ -1,5 +1,4 @@
 /* tslint:disable:max-classes-per-file */
-import {PStyle} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
@@ -22,10 +21,6 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
   spacing?: number | string,
 }
 
-interface RowStyle extends PStyle {
-  ':first-child': IStyle,
-}
-
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
   StylingProps<T>,
   FontProps<T>,
@@ -44,7 +39,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
   public render() {
     const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = (
       // tslint:disable-next-line:no-shadowed-variable
-      {style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
+      {style, minHeight, spacing, height, ...otherProps}): IStyle => ({
       ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
       display: 'flex',

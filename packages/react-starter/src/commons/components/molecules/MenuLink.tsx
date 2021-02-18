@@ -1,14 +1,13 @@
-import {PStyle} from '@indoqa/style-system'
+import {Box} from '@indoqa/style-system'
+import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent, StyleFunction} from 'react-fela'
+import {useFela} from 'react-fela'
+
 import {Theme} from '../../../app/theme'
 
-interface StyleProps extends PStyle {
-  '> .active': PStyle,
-}
-
 const MenuLink: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): StyleProps => ({
+  const {theme} = useFela<Theme>()
+  const style: IStyle = {
     textTransform: 'uppercase',
     cursor: 'pointer',
     borderBottom: '1px solid #f5f5f5',
@@ -20,11 +19,11 @@ const MenuLink: React.FC = ({children}) => {
       cursor: 'auto',
       textDecoration: 'none',
     },
-  })
+  }
   return (
-    <FelaComponent style={style}>
+    <Box style={style}>
       {children}
-    </FelaComponent>
+    </Box>
   )
 }
 

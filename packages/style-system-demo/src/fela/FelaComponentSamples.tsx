@@ -1,4 +1,3 @@
-import {PStyle} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
@@ -31,7 +30,7 @@ const StyledElementWithChildren: React.FC = ({children}) => {
 }
 
 const ThemedElementWithChildren: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): PStyle => ({
+  const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     backgroundColor: theme.colors.primary,
     color: 'white',
     fontSize: theme.fontSizes.small,
@@ -53,7 +52,7 @@ interface Props {
 }
 
 const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
-  const style: StyleFunction<Theme> = ({theme}): PStyle => ({
+  const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     backgroundColor: theme.colors.primary,
     color: 'white',
     fontSize: theme.fontSizes.small,

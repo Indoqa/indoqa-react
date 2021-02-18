@@ -1,14 +1,10 @@
-import {PStyle} from '@indoqa/style-system'
+import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {Theme} from '../../../app/theme'
 
-interface StyleProps extends PStyle {
-  '& > a': PStyle,
-}
-
 const LinkButton: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): StyleProps => ({
+  const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     marginRight: theme.spacing.space1,
     cursor: 'pointer',
     '& > a': {

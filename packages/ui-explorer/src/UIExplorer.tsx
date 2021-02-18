@@ -1,4 +1,4 @@
-import {BaseTheme, Box, Grid, Panel, Row, withRenderer} from '@indoqa/style-system'
+import {BaseTheme, Box, Grid, Panel, PStyle, Row, withRenderer} from '@indoqa/style-system'
 import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps} from 'react-fela'
@@ -36,14 +36,14 @@ const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, ch
     paddingLeft: uieTheme.spacing.space4,
   }
   return (
-    <React.Fragment>
+    <>
       <ContentHeader>
         {name && <ContentHeading>{name}</ContentHeading>}
       </ContentHeader>
       <Box style={style}>
         {children}
       </Box>
-    </React.Fragment>
+    </>
   )
 }
 
@@ -52,12 +52,8 @@ interface InnerStyleGuideMenuProps {
   uieTheme: UIETheme,
 }
 
-interface InnerStyleGuideMenuStyle extends IStyle {
-  tablet: IStyle,
-}
-
 const InnerStyleGuideMenu: React.FC<InnerStyleGuideMenuProps> = ({show, uieTheme, children}) => {
-  const style: InnerStyleGuideMenuStyle = {
+  const style: PStyle = {
     paddingBottom: uieTheme.spacing.space2,
     display: show ? 'block' : 'none',
     tablet: {
@@ -73,18 +69,14 @@ const InnerStyleGuideMenu: React.FC<InnerStyleGuideMenuProps> = ({show, uieTheme
   )
 }
 
-interface MenuIconProps extends IStyle {
+interface MenuIconProps {
   show: boolean,
   uieTheme: UIETheme,
   toggleMenu: () => void,
 }
 
-interface MenuIconStyle extends IStyle {
-  tablet: IStyle,
-}
-
 const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
-  const style: MenuIconStyle = {
+  const style: PStyle = {
     cursor: 'pointer',
     tablet: {
       display: 'none',

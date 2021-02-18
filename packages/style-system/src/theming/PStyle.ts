@@ -1,8 +1,10 @@
 import {IStyle} from 'fela'
 
-export interface PStyle extends IStyle {
+interface BreakPointStyles {
   tablet?: IStyle,
   desktop?: IStyle,
   largeDesktop?: IStyle,
   print?: IStyle,
 }
+
+export type PStyle = IStyle | BreakPointStyles

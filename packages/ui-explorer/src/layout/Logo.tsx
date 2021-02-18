@@ -1,5 +1,4 @@
-import {Flex} from '@indoqa/style-system'
-import {IStyle} from 'fela'
+import {Flex, PStyle} from '@indoqa/style-system'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {Link} from 'react-router-dom'
@@ -8,11 +7,6 @@ import MainHeading from './MainHeading'
 
 interface Props extends WithUIETheme {
   to: string,
-}
-
-interface MenuLinkStyle extends IStyle {
-  '& > a': IStyle,
-  'tablet': IStyle,
 }
 
 const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
@@ -26,7 +20,7 @@ const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
     )
   }
 
-  const style: MenuLinkStyle = {
+  const style: PStyle = {
     listStyle: 'none',
     paddingLeft: uieTheme.spacing.space4,
     '& > a': {

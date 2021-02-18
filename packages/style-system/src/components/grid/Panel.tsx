@@ -1,7 +1,6 @@
 /* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
 import {BaseTheme} from '../../theming/baseTheme'
@@ -30,14 +29,6 @@ interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
   StylingProps<T>,
   FontProps<T>,
   WithBaseTheme {
-}
-
-interface PanelTabletStyle extends IStyle {
-  ':not(:last-child)': CSSProperties,
-}
-
-interface PanelStyle extends IStyle {
-  '@media (min-width: 768px)': PanelTabletStyle,
 }
 
 const DEFAULT_WIDTH = '0%'
@@ -74,7 +65,7 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
     const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}):
-      PanelStyle => ({
+      IStyle => ({
       ...createResponsiveStyles(otherProps, createBaseStyles),
       // mobile is always full width (flexGrow, flexShrink, width)
       flexGrow: 1,

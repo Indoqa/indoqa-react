@@ -23,10 +23,6 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
   spacing?: string | number,
 }
 
-interface RowStyle extends IStyle {
-  '&:first-child': IStyle,
-}
-
 interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, WithBaseTheme {
 }
 
@@ -145,7 +141,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): RowStyle => ({
+    const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): IStyle => ({
       ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
       display: 'flex',

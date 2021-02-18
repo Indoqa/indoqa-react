@@ -1,10 +1,11 @@
-import {PStyle} from '@indoqa/style-system'
+import {Box, PStyle} from '@indoqa/style-system'
 import * as React from 'react'
-import {FelaComponent, StyleFunction} from 'react-fela'
+import {useFela} from 'react-fela'
 import {Theme} from '../../../app/theme'
 
 const Content: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): PStyle => ({
+  const {theme} = useFela<Theme>()
+  const style: PStyle = {
     padding: theme.spacing.space2,
     width: '100%',
     desktop: {
@@ -16,11 +17,11 @@ const Content: React.FC = ({children}) => {
     print: {
       marginLeft: 0,
     },
-  })
+  }
   return (
-    <FelaComponent style={style}>
+    <Box style={style}>
       {children}
-    </FelaComponent>
+    </Box>
   )
 }
 

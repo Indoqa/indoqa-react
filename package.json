@@ -13,7 +13,10 @@
     "prepare": "lerna run prepare",
     "test": "lerna run test"
   },
-  "devDependencies": {
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
     "@manypkg/cli": "0.17.0",
     "@types/chai": "4.2.14",
     "@types/css": "0.0.31",
@@ -52,7 +55,6 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "jest": "26.6.3",
     "react-hot-loader": "4.13.0",
-    "react-testing-library": "8.0.1",
     "redux-devtools-extension": "2.13.8",
     "rimraf": "3.0.2",
     "rollup": "2.35.1",
@@ -69,8 +71,5 @@
     "ts-loader": "8.0.12",
     "typescript": "4.1.3",
     "wait-on": "5.2.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }

@@ -1,7 +1,8 @@
+import {Text, Box} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import {Field, FieldProps, FormikErrors, FormikTouched, getIn} from 'formik'
 import * as React from 'react'
-import {FelaComponent, StyleFunction} from 'react-fela'
+import {useFela} from 'react-fela'
 import {Theme} from '../../../app/theme'
 
 export interface Props {
@@ -18,21 +19,22 @@ const Row: React.FC = ({children}) => {
     marginBottom: 3,
   }
   return (
-    <FelaComponent style={style}>
+    <Box style={style}>
       {children}
-    </FelaComponent>
+    </Box>
   )
 }
 
 const Label: React.FC = ({children}) => {
+  const {css} = useFela()
   const style: IStyle = {
     display: 'inline-block',
     width: '100',
   }
   return (
-    <FelaComponent style={style} as="label">
+    <label className={css(style)}>
       {children}
-    </FelaComponent>
+    </label>
   )
 }
 
@@ -42,12 +44,9 @@ interface InputFieldProps {
   hasError: boolean,
 }
 
-interface InputFieldStyleProps extends IStyle {
-  ':focus': IStyle,
-}
-
 const InputField: React.FC<InputFieldProps> = ({children, fieldProps, autoComplete, hasError}) => {
-  const style: InputFieldStyleProps = {
+  const {css} = useFela()
+  const style: IStyle = {
     borderStyle: 'solid',
     borderWidth: 1,
     padding: 4,
@@ -62,25 +61,19 @@ const InputField: React.FC<InputFieldProps> = ({children, fieldProps, autoComple
       borderColor: 'rgba(81, 203, 238, 1)',
     },
   }
-  const renderInputField = () => {
-    return <input autoComplete={autoComplete} {...fieldProps.field} />
-  }
-  return (
-    <FelaComponent style={style}>
-      {renderInputField}
-    </FelaComponent>
-  )
+  return <input autoComplete={autoComplete} {...fieldProps.field} className={css(style)} />
 }
 
 const ErrorMessage: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}) => ({
+  const {theme} = useFela<Theme>()
+  const style: IStyle = {
     paddingLeft: theme.spacing.space1,
     color: 'red',
-  })
+  }
   return (
-    <FelaComponent style={style} as="span">
+    <Text style={style}>
       {children}
-    </FelaComponent>
+    </Text>
   )
 }
 
