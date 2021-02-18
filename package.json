@@ -6,11 +6,15 @@
     "compile": "lerna run compile",
     "e2e": "yarn package && lerna run e2e --stream",
     "package": "lerna run package --stream",
+    "pkg:run": "manypkg run",
+    "pkg:check": "manypkg check",
+    "pkg:fix": "manypkg fix",
     "postinstall": "yarn package",
     "prepare": "lerna run prepare",
     "test": "lerna run test"
   },
   "devDependencies": {
+    "@manypkg/cli": "0.17.0",
     "@types/chai": "4.2.14",
     "@types/css": "0.0.31",
     "@types/enzyme": "3.10.8",
