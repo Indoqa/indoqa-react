@@ -8,7 +8,7 @@ describe('Box samples', () => {
   it('Box with margin, padding and bgContent color', () => {
     assertInnerText('box1', 'Box1')
     assertStyle('box1', 'background-color', 'rgb(63, 81, 181)')
-    assertMargin('box1', 8, 0, 8, 0)
+    assertMargin('box1', 9, 0, 8, 0)
     assertPadding('box1', 8, 8, 8, 8)
 
     assertInnerText('box2', 'Box2')
