@@ -1,6 +1,6 @@
 const styledDivCode = `const StyledDiv: React.FC = () => {
   const {css} = useFela()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: 'orange',
     width: 50,
     height: 50,
@@ -23,7 +23,7 @@ const styledElementWithChildrenCode = `const StyledElementWithChildren: React.FC
 `
 const themedElementWithChildrenCode = `const ThemedElementWithChildren: React.FC = ({children}) => {
   const {css, theme} = useFela<Theme>()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: theme.colors.accent,
     color: 'white',
     fontSize: theme.fontSizes.small,
@@ -46,7 +46,7 @@ const themedElementWithChildrenAndPropsCode = `interface Props {
 
 const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
   const {css, theme} = useFela<Theme>()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: theme.colors.accent,
     color: 'white',
     fontSize: theme.fontSizes.small,
@@ -93,9 +93,9 @@ const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherPr
 <ThemedElementWithStyleProps color="white">some text</ThemedElementWithStyleProps>
 `
 
-const styledWithStaticRendererCode = `const RendererUsage: React.FC = () => {
+const styledWithStaticRendererCode = `const RendererUsage = () => {
   const {renderer} = useFela()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: 'green',
     width: 50,
     height: 50,

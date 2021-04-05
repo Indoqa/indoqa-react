@@ -38,6 +38,7 @@
     "react-fela": ">=11"
   },
   "devDependencies": {
+    "@types/node": "14.14.14",
     "fela": "^11.6.0",
     "fela-monolithic": "^11.6.0",
     "fela-plugin-named-keys": "^11.6.0",

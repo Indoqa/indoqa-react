@@ -2,7 +2,7 @@ import css from 'css'
 
 export type BreakpointNames = { [key: string]: string }
 
-export const cssObjectToPStyle = (cssObject: any, classNames: string | null, result: any, breakpointNames: BreakpointNames): void => {
+export const cssObjectToIStyle = (cssObject: any, classNames: string | null, result: any, breakpointNames: BreakpointNames): void => {
   if (!classNames) {
     return
   }
@@ -17,7 +17,7 @@ export const cssObjectToPStyle = (cssObject: any, classNames: string | null, res
     }
     if (key.startsWith('@')) {
       const mediaQueryRules = {}
-      cssObjectToPStyle(value, classNames, mediaQueryRules, breakpointNames)
+      cssObjectToIStyle(value, classNames, mediaQueryRules, breakpointNames)
       const breakpointName = breakpointNames[key] || key
       Object.assign(result, {[breakpointName]: mediaQueryRules})
     }

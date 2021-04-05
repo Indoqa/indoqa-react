@@ -1,4 +1,3 @@
-import {PStyle} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {StyleFunction, useFela} from 'react-fela'
@@ -15,7 +14,7 @@ import {
 
 const StyledDiv: React.FC = () => {
   const {css} = useFela()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: 'orange',
     width: 50,
     height: 50,
@@ -37,7 +36,7 @@ const StyledElementWithChildren: React.FC = ({children}) => {
 
 const ThemedElementWithChildren: React.FC = ({children}) => {
   const {css, theme} = useFela<Theme>()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: theme.colors.accent,
     color: 'white',
     fontSize: theme.fontSizes.small,
@@ -60,7 +59,7 @@ interface Props {
 
 const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
   const {css, theme} = useFela<Theme>()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: theme.colors.accent,
     color: 'white',
     fontSize: theme.fontSizes.small,
@@ -106,7 +105,7 @@ const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherPr
 
 const RendererUsage: React.FC = () => {
   const {renderer} = useFela()
-  const style: PStyle = {
+  const style: IStyle = {
     backgroundColor: 'green',
     width: 50,
     height: 50,

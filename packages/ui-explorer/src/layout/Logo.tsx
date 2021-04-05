@@ -1,4 +1,5 @@
-import {Flex, PStyle} from '@indoqa/style-system'
+import {Flex} from '@indoqa/style-system'
+import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {Link} from 'react-router-dom'
@@ -20,7 +21,7 @@ const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
     )
   }
 
-  const style: PStyle = {
+  const style: IStyle = {
     listStyle: 'none',
     paddingLeft: uieTheme.spacing.space4,
     '& > a': {

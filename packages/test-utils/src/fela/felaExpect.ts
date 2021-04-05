@@ -1,8 +1,9 @@
 import {BaseTheme, toMinMediaQuery} from '@indoqa/style-system'
-import {IRenderer, IStyle} from 'fela'
+import {IRenderer} from 'fela'
 import {renderToString} from 'fela-tools'
+import {CSSProperties} from 'react'
 
-import {BreakpointNames, cssObjectToPStyle, cssToObject} from './cssToObject'
+import {BreakpointNames, cssObjectToIStyle, cssToObject} from './cssToObject'
 import {renderer} from './renderFelaComponent'
 
 function getCssPropertyValue<T extends BaseTheme>(
@@ -29,7 +30,7 @@ function getCssPropertyValue<T extends BaseTheme>(
 export function expectCssPropertyValue<T extends BaseTheme>(
   el: HTMLElement | null,
   theme: T,
-  property: keyof IStyle,
+  property: keyof CSSProperties,
   expectedPropertyValue: string | number,
   breakpointName?: keyof T['breakpoints'],
   debug?: boolean,
@@ -41,7 +42,7 @@ export function expectCssPropertyValue<T extends BaseTheme>(
 export function expectMissingCssProperty<T extends BaseTheme>(
   el: HTMLElement | null,
   theme: T,
-  property: keyof IStyle,
+  property: keyof CSSProperties,
   breakpointName?: keyof T['breakpoints'],
   debug?: boolean,
 ) {
@@ -68,6 +69,6 @@ export const getHtmlElementStyles = <T extends BaseTheme>(renderer: IRenderer, e
   const classNames = el.getAttribute('class')
   const cssObject = cssToObject(cssString, {camelCase: true})
   const styles = {}
-  cssObjectToPStyle(cssObject, classNames, styles, translateBreakpoints(theme))
+  cssObjectToIStyle(cssObject, classNames, styles, translateBreakpoints(theme))
   return styles
 }

@@ -1,4 +1,4 @@
-import {Box, PStyle, Text} from '@indoqa/style-system'
+import {Box, Text} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as i18next from 'i18next'
 import * as React from 'react'
@@ -61,7 +61,7 @@ interface MenuIconProps {
 }
 
 const MenuIcon: React.FC<MenuIconProps> = ({onClick, children}) => {
-  const style: StyleFunction<Theme, PStyle> = ({theme}) => {
+  const style: StyleFunction<Theme, IStyle> = ({theme}) => {
     return {
       marginRight: theme.spacing.space2,
       ...MOBILE_ONLY,

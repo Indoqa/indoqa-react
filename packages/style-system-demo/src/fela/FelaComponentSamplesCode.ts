@@ -19,7 +19,7 @@ const styledElementWithChildrenCode = `const StyledParagraph: React.FC = ({child
 }
 `
 const themedElementWithChildrenCode = `const ThemedElementWithChildren: React.FC = ({children}) => {
-  const style: StyleFunction<Theme> = ({theme}): PStyle => ({
+  const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     backgroundColor: theme.colors.primary,
     color: 'white',
     fontSize: theme.fontSizes.small,
@@ -37,7 +37,7 @@ const themedElementWithChildrenCode = `const ThemedElementWithChildren: React.FC
 }
 `
 const themedElementWithChildrenAndPropsCode = `const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
-  const style: StyleFunction<Theme> = ({theme}): PStyle => ({
+  const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     backgroundColor: theme.colors.primary,
     color: 'white',
     fontSize: theme.fontSizes.small,

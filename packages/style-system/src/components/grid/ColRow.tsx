@@ -1,9 +1,7 @@
-/* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
-import {PStyle} from '../../theming/PStyle'
 import {NamedBreakPoint, sortBreakpoints} from '../../theming/sortBreakpoints'
 import {createPaddingCSSProps, createStylingCSSProps} from '../base'
 import {PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
@@ -64,7 +62,7 @@ const initializeArray = (length: number) => {
   return a
 }
 
-const mergeStyles = (style1: PStyle, style2: PStyle) => {
+const mergeStyles = (style1: IStyle, style2: IStyle): any => {
   if (style2 === null) {
     return style1
   }
@@ -137,7 +135,7 @@ function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: 
   }
 }
 
-class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
+class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>, unknown> {
 
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
@@ -167,7 +165,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
   }
 }
 
-export class ColRow<T extends BaseTheme> extends React.Component<Props<T>> {
+export class ColRow<T extends BaseTheme> extends React.Component<Props<T>, unknown> {
 
   public render() {
     return (
