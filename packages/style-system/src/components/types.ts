@@ -46,6 +46,7 @@ export interface BoxModelProps {
   minHeight?: number | string,
   fullWidth?: boolean,
   fullHeight?: boolean,
+  lineClamp?: boolean | number
 }
 
 export interface FlexChildProps {
