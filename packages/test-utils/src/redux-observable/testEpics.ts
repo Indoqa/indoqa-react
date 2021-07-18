@@ -20,7 +20,8 @@ export const createTestScheduler = () => {
 }
 
 export function createTestAction$FromMarbles<A extends Action>(testScheduler: TestScheduler, marbles: string, values?: any) {
-  return new ActionsObservable<A>(testScheduler.createHotObservable(marbles, values))
+  const testObservable = testScheduler.createHotObservable(marbles, values) as Rx.Observable<A>
+  return new ActionsObservable<A>(testObservable)
 }
 
 export type CreateEpic<A extends Action> = (action: ActionsObservable<A>, scheduler: Rx.SchedulerLike) => Rx.Observable<any>

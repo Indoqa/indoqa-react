@@ -26,7 +26,7 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
 }
 
 export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps) => {
-  const {display, inline, width, height, fullWidth, fullHeight, maxHeight, maxWidth, minHeight, minWidth, lineClamp} = props
+  const {display, inline, width, height, fullWidth, fullHeight, maxHeight, maxWidth, minHeight, minWidth, lineClamp, position} = props
   const styles = {}
 
   if (inline) {
@@ -67,6 +67,10 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
       '-webkit-line-clamp': typeof lineClamp === 'boolean' ? 1 : lineClamp,
       overflow: 'hidden',
     })
+  }
+
+  if (position) {
+    Object.assign(styles, {position})
   }
 
   return styles

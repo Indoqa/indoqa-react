@@ -36,17 +36,22 @@ export interface TextProps<T extends BaseTheme> extends MarginProps,
 }
 
 export interface BoxModelProps {
-  display?: Display,
-  inline?: boolean,
-  width?: number | string,
-  height?: number | string,
-  maxWidth?: number | string,
-  maxHeight?: number | string,
-  minWidth?: number | string,
-  minHeight?: number | string,
-  fullWidth?: boolean,
-  fullHeight?: boolean,
+  display?: Display
+  inline?: boolean
+  width?: number | string
+  height?: number | string
+  maxWidth?: number | string
+  maxHeight?: number | string
+  minWidth?: number | string
+  minHeight?: number | string
+  fullWidth?: boolean
+  fullHeight?: boolean
   lineClamp?: boolean | number
+  position?: Position
+  top?: number | string
+  right?: number | string
+  bottom?: number | string
+  left?: number | string
 }
 
 export interface FlexChildProps {
@@ -138,6 +143,7 @@ export interface BaseProps<T extends BaseTheme, H> extends WithStyle<T> {
 export type Display = 'inline' | 'block' | 'contents' | 'flex' | 'grid' | 'inline-block' | 'inline-flex' | 'inline-grid'
   | 'inline-table' | 'list-item' | 'run-in' | 'table' | 'table-caption' | 'table-column-group' | 'table-header-group'
   | 'table-footer-group' | 'table-row-group' | 'table-cell' | 'table-column' | 'table-row' | 'none' | 'initial' | 'inherit'
+export type Position = 'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | 'initial' | 'inherit'
 export type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
 export type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
 export type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
