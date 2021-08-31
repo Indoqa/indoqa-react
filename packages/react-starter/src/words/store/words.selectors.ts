@@ -1,8 +1,0 @@
-import {createSelector} from 'reselect'
-import {selectWordsState} from '../../app/selectors'
-import {WordsState} from './words.types'
-
-export const selectPrefix = createSelector(selectWordsState, (state: WordsState) => state.prefix)
-export const selectResults = createSelector(selectWordsState, (state: WordsState) => state.results)
-export const selectError = createSelector(selectWordsState, (state: WordsState) => state.error)
-export const selectLoadingFlag = createSelector(selectWordsState, (state: WordsState) => state.isLoading)
