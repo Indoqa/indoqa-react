@@ -5,9 +5,8 @@
     "isolatedModules": true,
     "outDir": "lib",
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "module": "esnext"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
