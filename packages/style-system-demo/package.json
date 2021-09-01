@@ -15,10 +15,10 @@
     "cy:run": "yarn build:tests && cypress run",
     "e2e": "start-server-and-test serve http://localhost:5100 cy:run",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
-    "package": "yarn clean && yarn lint && yarn build",
+    "package": "react-scripts build",
     "postinstall": "yarn run package",
     "serve": "serve -s -l 5100 ./build",
-    "start": "indoqa-dev-server ./indoqa-webpack-options.js"
+    "start": "react-scripts start"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,6 @@
     "demo"
   ],
   "dependencies": {
-    "@indoqa/react-app-polyfill": "^1.4.1-alpha.3",
     "@indoqa/style-system": "^1.4.1-alpha.3",
     "@indoqa/ui-explorer": "^1.4.1-alpha.3",
     "fela": "^11.6.0",
@@ -42,12 +41,23 @@
     "fela-preset-web": "^11.6.0",
     "history": "^4.10.1",
     "react": "^17.0.1",
-    "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.1",
     "react-fela": "^11.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-syntax-highlighter": "^15.4.3",
     "tslib": "^2.1.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

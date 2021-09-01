@@ -1,4 +1,4 @@
-import {BaseTheme} from '@indoqa/style-system'
+import {BaseTheme} from '../theming/baseTheme'
 import * as React from 'react'
 import {MouseEventHandler, ReactNode, UIEventHandler} from 'react'
 import {FelaStyle} from 'react-fela'

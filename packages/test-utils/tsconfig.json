@@ -2,11 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "dist",
     "isolatedModules": false,
-    "outDir": "compiled"
+    "outDir": "lib"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

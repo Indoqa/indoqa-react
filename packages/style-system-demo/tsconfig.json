@@ -1,7 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "compiled"
+    "declaration": true,
+    "isolatedModules": true,
+    "outDir": "lib",
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
   "include": [
     "src"

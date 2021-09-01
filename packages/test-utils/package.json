@@ -4,18 +4,17 @@
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "description": "Test utilities for React, Fela and redux-observable.",
   "license": "Apache-2.0",
-  "main": "dist/indoqa-test-utils.cjs.js",
-  "module": "dist/indoqa-test-utils.es.js",
-  "typings": "dist/test-utils/src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist/test-utils"
+    "lib"
   ],
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
-    "compile": "yarn clean && tsc -p tsconfig.json",
+    "compile": "tsc -p tsconfig.json",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
-    "package": "yarn lint && yarn compile && rollup -c",
+    "package": "yarn lint && yarn compile",
     "prepublishOnly": "yarn package"
   },
   "repository": {

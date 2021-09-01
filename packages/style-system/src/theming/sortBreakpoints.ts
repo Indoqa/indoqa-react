@@ -1,4 +1,4 @@
-import {BaseBreakpoints, Breakpoint} from '@indoqa/style-system'
+import {BaseBreakpoints, Breakpoint} from '../theming/baseTheme'
 import memoize from 'lodash/memoize'
 
 export interface NamedBreakPoint extends Breakpoint {

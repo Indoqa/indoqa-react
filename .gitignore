@@ -3,7 +3,7 @@
 *.iml
 node_modules/
 dist
-compiled
+lib
 target
 build
 .cache-loader

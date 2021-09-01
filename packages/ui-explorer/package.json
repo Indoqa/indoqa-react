@@ -4,18 +4,17 @@
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "description": "A React component to showcase isolated React components and an Indoqa Style-System based theme",
   "license": "Apache-2.0",
-  "main": "dist/indoqa-ui-explorer.cjs.js",
-  "module": "dist/indoqa-ui-explorer.es.js",
-  "typings": "dist/ui-explorer/src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
-    "compile": "yarn clean && tsc -p tsconfig.json",
+    "compile": "tsc -p tsconfig.json",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
-    "package": "yarn lint && yarn compile && rollup -c",
+    "package": "yarn lint && yarn compile",
     "prepublishOnly": "yarn package"
   },
   "repository": {
