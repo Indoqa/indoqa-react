@@ -12,7 +12,7 @@ const Menu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
     tablet: {
       overflowY: 'auto',
       borderBottom: 'none',
-    }
+    },
   }
   return (
     <Box fullWidth fullHeight style={style}>

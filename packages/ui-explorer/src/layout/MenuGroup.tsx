@@ -5,7 +5,7 @@ import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import MenuHeading from './MenuHeading'
 
 interface Props extends WithUIETheme {
-  name?: string,
+  name?: string
 }
 
 const List: React.FC = ({children}) => {
@@ -29,9 +29,7 @@ const MenuGroup: React.FC<Props> = ({uieTheme, name, children}) => {
   return (
     <FelaComponent style={style}>
       {name && <MenuHeading>{name}</MenuHeading>}
-      <List>
-        {children}
-      </List>
+      <List>{children}</List>
     </FelaComponent>
   )
 }

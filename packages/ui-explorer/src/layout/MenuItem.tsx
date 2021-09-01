@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface MenuLinkProps extends WithUIETheme {
-  to: string,
+  to: string
 }
 
 const MenuItem: React.FC<MenuLinkProps> = ({uieTheme, to, children}) => {
@@ -30,7 +30,9 @@ const MenuItem: React.FC<MenuLinkProps> = ({uieTheme, to, children}) => {
   }
   return (
     <FelaComponent style={style} as="li">
-      <NavLink to={to} data-testid={to}>{children}</NavLink>
+      <NavLink to={to} data-testid={to}>
+        {children}
+      </NavLink>
     </FelaComponent>
   )
 }

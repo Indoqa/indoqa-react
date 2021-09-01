@@ -7,7 +7,11 @@ import {createBoxCSSStyle} from './Box'
 import {BaseProps, BoxProps, FlatBoxProps, FlexContainerProps, FlexProps, HtmlDivAttributesWithoutStyle} from './types'
 import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-export const createFlexContainerCSSStyle = <T extends BaseTheme>(props: FlexContainerProps, theme: T, outsideMediaQuery: boolean): IStyle => {
+export const createFlexContainerCSSStyle = <T extends BaseTheme>(
+  props: FlexContainerProps,
+  theme: T,
+  outsideMediaQuery: boolean
+): IStyle => {
   const {inline, direction, nowrap, center, justifyContent, alignItems} = props
   const styles: IStyle = {}
 
@@ -47,7 +51,11 @@ export const createFlexContainerCSSStyle = <T extends BaseTheme>(props: FlexCont
   return styles
 }
 
-function createFlexCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
+function createFlexCSSStyle<T extends BaseTheme>(
+  props: FlatBoxProps<T>,
+  theme: BaseTheme,
+  outsideMediaQuery: boolean
+): IStyle {
   return {
     ...createBoxCSSStyle(props, theme, outsideMediaQuery),
     ...createFlexContainerCSSStyle(props, theme, outsideMediaQuery),
@@ -60,22 +68,43 @@ function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
   }
 }
 
-function renderFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>, as: string) {
-  const {children, style, onClick, onMouseDown, onMouseOut, onMouseOver, onScroll, htmlAttrs, innerRef, testId, ...rest} = props
+function renderFlex<T extends BaseTheme>(
+  props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>,
+  as: string
+) {
+  const {
+    children,
+    style,
+    onClick,
+    onMouseDown,
+    onMouseOut,
+    onMouseOver,
+    onScroll,
+    htmlAttrs,
+    innerRef,
+    testId,
+    ...rest
+  } = props
   const styles = mergeThemedStyles<T, BoxProps<T>>(themedFlexStyles, style)
   return (
     <FelaComponent<T, FlexProps<T>> style={styles} {...rest}>
-      {({className}) => React.createElement(as, {
-        className,
-        'data-testid': testId,
-        onClick,
-        onMouseDown,
-        onMouseOut,
-        onMouseOver,
-        onScroll,
-        ...htmlAttrs,
-        ref: innerRef,
-      }, children)}
+      {({className}) =>
+        React.createElement(
+          as,
+          {
+            className,
+            'data-testid': testId,
+            onClick,
+            onMouseDown,
+            onMouseOut,
+            onMouseOver,
+            onScroll,
+            ...htmlAttrs,
+            ref: innerRef,
+          },
+          children
+        )
+      }
     </FelaComponent>
   )
 }

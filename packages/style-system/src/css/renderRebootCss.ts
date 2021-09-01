@@ -5,45 +5,54 @@ type CssValue = string | number | undefined
 
 export interface BaseCssProps {
   spacing: {
-    space1: CssValue,
-    space2: CssValue,
+    space1: CssValue
+    space2: CssValue
   }
   links: {
-    base: CssValue,
-    hover: CssValue,
-    visited: CssValue,
-    active: CssValue,
-  },
+    base: CssValue
+    hover: CssValue
+    visited: CssValue
+    active: CssValue
+  }
   fontSizes: {
-    text: CssValue,
-    h1: CssValue,
-    h2: CssValue,
-    h3: CssValue,
-  },
+    text: CssValue
+    h1: CssValue
+    h2: CssValue
+    h3: CssValue
+  }
   fontStyles: {
-    base: IStyle,
-    alt: IStyle,
-  },
+    base: IStyle
+    alt: IStyle
+  }
   colors: {
-    text: string,
+    text: string
   }
 }
 
 export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   // boxSizing
-  renderer.renderStatic({
-    boxSizing: 'border-box',
-  }, ':root')
-  renderer.renderStatic({
-    boxSizing: 'inherit',
-  }, '*, :before, ::after')
+  renderer.renderStatic(
+    {
+      boxSizing: 'border-box',
+    },
+    ':root'
+  )
+  renderer.renderStatic(
+    {
+      boxSizing: 'inherit',
+    },
+    '*, :before, ::after'
+  )
 
   // use the full height of the browser
-  renderer.renderStatic({
-    height: '100%',
-    margin: 0,
-    textAlign: 'left',
-  }, 'html, body, #app')
+  renderer.renderStatic(
+    {
+      height: '100%',
+      margin: 0,
+      textAlign: 'left',
+    },
+    'html, body, #app'
+  )
 
   // Bootstrap 4.1.3 Reboot (except boxSizing and links with textDecoration 'underline')
   const rebootCss = `
@@ -346,34 +355,58 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   renderer.renderStatic(rebootCss)
 
   // set the base fonts for body and headlines
-  renderer.renderStatic({
-    ...props.fontStyles.base,
-    color: props.colors.text,
-    fontSize: props.fontSizes.text,
-  }, 'body')
-  renderer.renderStatic({
-    ...props.fontStyles.alt,
-  }, 'h1, h2, h3, h4, h5, h6')
-  renderer.renderStatic({
-    marginTop: props.spacing.space2,
-  }, '* + h1, * + h2, * + h3, * + h4, * + h5, * + h6')
-  renderer.renderStatic({
-    fontSize: props.fontSizes.h1,
-  }, 'h1')
-  renderer.renderStatic({
-    fontSize: props.fontSizes.h2,
-  }, 'h2')
-  renderer.renderStatic({
-    fontSize: props.fontSizes.h3,
-  }, 'h3')
+  renderer.renderStatic(
+    {
+      ...props.fontStyles.base,
+      color: props.colors.text,
+      fontSize: props.fontSizes.text,
+    },
+    'body'
+  )
+  renderer.renderStatic(
+    {
+      ...props.fontStyles.alt,
+    },
+    'h1, h2, h3, h4, h5, h6'
+  )
+  renderer.renderStatic(
+    {
+      marginTop: props.spacing.space2,
+    },
+    '* + h1, * + h2, * + h3, * + h4, * + h5, * + h6'
+  )
+  renderer.renderStatic(
+    {
+      fontSize: props.fontSizes.h1,
+    },
+    'h1'
+  )
+  renderer.renderStatic(
+    {
+      fontSize: props.fontSizes.h2,
+    },
+    'h2'
+  )
+  renderer.renderStatic(
+    {
+      fontSize: props.fontSizes.h3,
+    },
+    'h3'
+  )
 
   // render lists
-  renderer.renderStatic({
-    listStylePosition: 'outside',
-  }, 'ul, ol')
-  renderer.renderStatic({
-    listStyleType: 'circle',
-  }, 'ul ul, ol ul')
+  renderer.renderStatic(
+    {
+      listStylePosition: 'outside',
+    },
+    'ul, ol'
+  )
+  renderer.renderStatic(
+    {
+      listStyleType: 'circle',
+    },
+    'ul ul, ol ul'
+  )
 
   // printing
   renderer.renderStatic(`

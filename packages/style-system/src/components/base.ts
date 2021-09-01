@@ -1,7 +1,16 @@
 import {IStyle} from 'fela'
 
 import {BaseTheme} from '..'
-import {BoxModelProps, FlexChildProps, FontProps, MarginProps, PaddingProps, Spacing, StylingProps, WithBaseTheme} from './types'
+import {
+  BoxModelProps,
+  FlexChildProps,
+  FontProps,
+  MarginProps,
+  PaddingProps,
+  Spacing,
+  StylingProps,
+  WithBaseTheme,
+} from './types'
 import {THEME_NOT_AVAILABLE_ERR_MSG} from './utils'
 
 function getColor<T extends BaseTheme>(theme: T, color: string): string {
@@ -26,7 +35,20 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
 }
 
 export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps) => {
-  const {display, inline, width, height, fullWidth, fullHeight, maxHeight, maxWidth, minHeight, minWidth, lineClamp, position} = props
+  const {
+    display,
+    inline,
+    width,
+    height,
+    fullWidth,
+    fullHeight,
+    maxHeight,
+    maxWidth,
+    minHeight,
+    minWidth,
+    lineClamp,
+    position,
+  } = props
   const styles = {}
 
   if (inline) {
@@ -76,7 +98,11 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
   return styles
 }
 
-export const createFlexChildCSSProps = <T extends BaseTheme>(props: FlexChildProps, theme: BaseTheme, outsideMediaQuery: boolean): IStyle => {
+export const createFlexChildCSSProps = <T extends BaseTheme>(
+  props: FlexChildProps,
+  theme: BaseTheme,
+  outsideMediaQuery: boolean
+): IStyle => {
   const {grow, shrink, basis, order, align} = props
 
   const styles: IStyle = {}
@@ -165,7 +191,19 @@ export function createStylingCSSProps<T extends BaseTheme>(props: StylingProps<T
 }
 
 export function createFontCSSProps<T extends BaseTheme>(props: FontProps<T> & WithBaseTheme, theme: BaseTheme) {
-  const {fontStyle, fontSize, color, bold, italic, underline, ellipsis, textAlign, uppercase, wordBreakAll, wordWrapAll} = props
+  const {
+    fontStyle,
+    fontSize,
+    color,
+    bold,
+    italic,
+    underline,
+    ellipsis,
+    textAlign,
+    uppercase,
+    wordBreakAll,
+    wordWrapAll,
+  } = props
   const styles: IStyle = {}
   if (bold) {
     Object.assign(styles, {fontWeight: 700})

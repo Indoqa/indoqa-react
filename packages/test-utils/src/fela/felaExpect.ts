@@ -11,7 +11,7 @@ function getCssPropertyValue<T extends BaseTheme>(
   theme: T,
   property: string,
   breakpointName?: keyof T['breakpoints'],
-  debug?: boolean,
+  debug?: boolean
 ) {
   expect(el).not.toBeNull()
   if (el == null) {
@@ -33,7 +33,7 @@ export function expectCssPropertyValue<T extends BaseTheme>(
   property: keyof CSSProperties,
   expectedPropertyValue: string | number,
   breakpointName?: keyof T['breakpoints'],
-  debug?: boolean,
+  debug?: boolean
 ) {
   const actualPropertyValue = getCssPropertyValue(el, theme, property, breakpointName, debug)
   expect(actualPropertyValue).toBe(expectedPropertyValue)
@@ -44,7 +44,7 @@ export function expectMissingCssProperty<T extends BaseTheme>(
   theme: T,
   property: keyof CSSProperties,
   breakpointName?: keyof T['breakpoints'],
-  debug?: boolean,
+  debug?: boolean
 ) {
   const actualPropertyValue = getCssPropertyValue(el, theme, property, breakpointName, debug)
   expect(actualPropertyValue).toBe(undefined)
@@ -61,7 +61,11 @@ const translateBreakpoints = <T extends BaseTheme>(theme: T): BreakpointNames =>
   return result
 }
 
-export const getHtmlElementStyles = <T extends BaseTheme>(renderer: IRenderer, el: HTMLElement | null, theme: T): any => {
+export const getHtmlElementStyles = <T extends BaseTheme>(
+  renderer: IRenderer,
+  el: HTMLElement | null,
+  theme: T
+): any => {
   if (!el) {
     throw fail('The passed element must not be null')
   }

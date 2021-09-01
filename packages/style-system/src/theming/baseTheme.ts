@@ -1,21 +1,21 @@
 import {IStyle} from 'fela'
 
 export interface BaseFontSizes {
-  readonly verySmall: number | string,
-  readonly small: number | string,
-  readonly text: number | string,
-  readonly big: number | string,
-  readonly veryBig: number | string,
+  readonly verySmall: number | string
+  readonly small: number | string
+  readonly text: number | string
+  readonly big: number | string
+  readonly veryBig: number | string
 }
 
 export interface BaseFontStyles {
-  readonly base: IStyle,
-  readonly alt: IStyle,
-  readonly mono: IStyle,
+  readonly base: IStyle
+  readonly alt: IStyle
+  readonly mono: IStyle
 }
 
 export interface BaseColors {
-  readonly text: string,
+  readonly text: string
 }
 
 export interface BaseSpacing {
@@ -32,51 +32,51 @@ export interface BaseSpacing {
 }
 
 export interface BaseZIndexes {
-  default: number,
-  absolute: number,
+  default: number
+  absolute: number
 }
 
 export interface Breakpoint {
-  minWidth: string,
-  sort: number,
+  minWidth: string
+  sort: number
 }
 
 export interface BaseBreakpoints {
-  tablet: Breakpoint,
-  desktop: Breakpoint,
-  largeDesktop: Breakpoint,
+  tablet: Breakpoint
+  desktop: Breakpoint
+  largeDesktop: Breakpoint
 }
 
 export interface BaseShadows {
-  elevation0: string,
-  elevation1: string,
-  elevation2: string,
-  elevation3: string,
-  elevation4: string,
-  elevation5: string,
+  elevation0: string
+  elevation1: string
+  elevation2: string
+  elevation3: string
+  elevation4: string
+  elevation5: string
 }
 
 export interface BaseTheme {
-  readonly fontSizes: BaseFontSizes,
-  readonly fontStyles: BaseFontStyles,
-  readonly colors: BaseColors,
-  readonly spacing: BaseSpacing,
-  readonly zIndexes: BaseZIndexes,
-  readonly breakpoints: BaseBreakpoints,
-  readonly shadows: BaseShadows,
-  readonly layout: {},
+  readonly fontSizes: BaseFontSizes
+  readonly fontStyles: BaseFontStyles
+  readonly colors: BaseColors
+  readonly spacing: BaseSpacing
+  readonly zIndexes: BaseZIndexes
+  readonly breakpoints: BaseBreakpoints
+  readonly shadows: BaseShadows
+  readonly layout: {}
 }
 
 const typeScaleFactor = 1.333
 const typeScaleBase = 14
-export const typeScale = (level: number) => typeScaleBase + (typeScaleFactor * level)
+export const typeScale = (level: number) => typeScaleBase + typeScaleFactor * level
 
 export interface Shadow {
-  offsetX: number,
-  offsetY: number,
-  blur: number,
-  spread: number,
-  color: string,
+  offsetX: number
+  offsetY: number
+  blur: number
+  spread: number
+  color: string
 }
 
 const createShadowValue = (shadow: Shadow) => {
@@ -99,7 +99,8 @@ const createElevationShadow2 = (offsetY: number, blur: number, spread: number): 
 const createElevationShadow3 = (offsetY: number, blur: number, spread: number): Shadow =>
   createShadow(0, offsetY, blur, spread, 'rgba(0,0,0,0.12)')
 
-export const systemFonts = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, ' +
+export const systemFonts =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, ' +
   'sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 export const monoSystemFonts = 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
 
@@ -158,27 +159,27 @@ export const baseTheme: BaseTheme = {
     elevation1: createBoxShadow(
       createElevationShadow1(1, 3, 0),
       createElevationShadow2(1, 1, 0),
-      createElevationShadow3(2, 1, -1),
+      createElevationShadow3(2, 1, -1)
     ),
     elevation2: createBoxShadow(
       createElevationShadow1(2, 4, -1),
       createElevationShadow2(4, 5, 0),
-      createElevationShadow3(1, 10, 0),
+      createElevationShadow3(1, 10, 0)
     ),
     elevation3: createBoxShadow(
       createElevationShadow1(4, 5, -2),
       createElevationShadow2(7, 10, 1),
-      createElevationShadow3(2, 16, 1),
+      createElevationShadow3(2, 16, 1)
     ),
     elevation4: createBoxShadow(
       createElevationShadow1(6, 6, -3),
       createElevationShadow2(10, 14, 1),
-      createElevationShadow3(4, 18, 3),
+      createElevationShadow3(4, 18, 3)
     ),
     elevation5: createBoxShadow(
       createElevationShadow1(8, 9, -5),
       createElevationShadow2(15, 22, 2),
-      createElevationShadow3(6, 28, 5),
+      createElevationShadow3(6, 28, 5)
     ),
   },
   layout: {},

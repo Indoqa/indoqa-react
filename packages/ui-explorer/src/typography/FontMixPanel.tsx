@@ -6,9 +6,9 @@ import {FontMixContent} from './FontMixContent'
 import {FontStylePanel} from './FontStylePanel'
 
 interface Props extends WithUIETheme {
-  fontSizes: FontSizes,
-  fontMix: FontMix,
-  textFontSize: FontSize,
+  fontSizes: FontSizes
+  fontMix: FontMix
+  textFontSize: FontSize
 }
 
 const FontMixPanelInternal: React.FC<Props> = ({fontSizes, textFontSize, fontMix}) => {

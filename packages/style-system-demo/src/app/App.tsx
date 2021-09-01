@@ -46,7 +46,7 @@ const App: React.FC = () => {
       <Router history={history}>
         <ThemeProvider theme={theme}>
           <Switch>
-            <Route path="/" component={StyleSystemUIExplorer}/>
+            <Route path="/" component={StyleSystemUIExplorer} />
           </Switch>
         </ThemeProvider>
       </Router>

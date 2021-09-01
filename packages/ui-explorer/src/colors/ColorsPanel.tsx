@@ -6,24 +6,18 @@ import {SmallColorPanel} from './SmallColorPanel'
 
 interface Props {
   colors: Color[]
-  small?: boolean,
+  small?: boolean
 }
 
 const renderColor = (color: Color, small: boolean | undefined) => {
   if (small) {
-    return (
-      <SmallColorPanel key={color.name} color={color.hexCode}/>
-    )
+    return <SmallColorPanel key={color.name} color={color.hexCode} />
   }
-  return (
-    <ColorPanel key={color.name} name={color.name} color={color.hexCode}/>
-  )
+  return <ColorPanel key={color.name} name={color.name} color={color.hexCode} />
 }
 
 export const ColorsPanel: React.FunctionComponent<Props> = ({colors, small}) => (
-  <Flex>
-    {colors.map(((color) => renderColor(color, small)))}
-  </Flex>
+  <Flex>{colors.map((color) => renderColor(color, small))}</Flex>
 )
 
 ColorsPanel.defaultProps = {

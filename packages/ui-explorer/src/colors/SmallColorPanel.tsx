@@ -4,7 +4,7 @@ import {FelaComponent} from 'react-fela'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
-  color?: string,
+  color?: string
 }
 
 const ColorPanel = ({color, uieTheme}: Props) => {
@@ -23,9 +23,7 @@ const ColorPanel = ({color, uieTheme}: Props) => {
     borderWidth: 1,
     borderColor: uieTheme.colors.borderPanel,
   }
-  return (
-    <FelaComponent style={style}/>
-  )
+  return <FelaComponent style={style} />
 }
 
 export const SmallColorPanel = withUIETheme(ColorPanel)

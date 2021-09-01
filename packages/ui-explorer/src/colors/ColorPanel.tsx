@@ -5,8 +5,8 @@ import {FelaComponent} from 'react-fela'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
-  color?: string,
-  name: string,
+  color?: string
+  name: string
 }
 
 const toHexString = (color: string) => {
@@ -24,7 +24,7 @@ const calcTextColor = (color?: string) => {
   const red = (bigint >> 16) & 255
   const green = (bigint >> 8) & 255
   const blue = bigint & 255
-  return (red * 0.299 + green * 0.587 + blue * 0.114) > 180 ? '#000' : '#fff'
+  return red * 0.299 + green * 0.587 + blue * 0.114 > 180 ? '#000' : '#fff'
 }
 
 const ColorPanelInternal = ({color, name, uieTheme}: Props) => {

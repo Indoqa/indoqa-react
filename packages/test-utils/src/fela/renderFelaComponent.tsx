@@ -10,9 +10,7 @@ export const renderer = createRenderer(felaConfig)
 export const renderFelaComponent = <T extends BaseTheme>(wrappedComponent: React.ReactNode, theme: T): RenderResult => {
   return render(
     <RendererProvider renderer={renderer}>
-      <ThemeProvider theme={theme}>
-        {wrappedComponent}
-      </ThemeProvider>
-    </RendererProvider>,
+      <ThemeProvider theme={theme}>{wrappedComponent}</ThemeProvider>
+    </RendererProvider>
   )
 }

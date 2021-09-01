@@ -19,7 +19,7 @@ const StyledDiv: React.FC = () => {
     width: 50,
     height: 50,
   }
-  return <div className={css(style)}/>
+  return <div className={css(style)} />
 }
 
 const StyledElementWithChildren: React.FC = ({children}) => {
@@ -27,11 +27,7 @@ const StyledElementWithChildren: React.FC = ({children}) => {
   const style: IStyle = {
     color: 'blue',
   }
-  return (
-    <p className={css(style)}>
-      {children}
-    </p>
-  )
+  return <p className={css(style)}>{children}</p>
 }
 
 const ThemedElementWithChildren: React.FC = ({children}) => {
@@ -46,15 +42,11 @@ const ThemedElementWithChildren: React.FC = ({children}) => {
     paddingBottom: 2,
     borderRadius: 5,
   }
-  return (
-    <span className={css(style)}>
-      {children}
-    </span>
-  )
+  return <span className={css(style)}>{children}</span>
 }
 
 interface Props {
-  onClick: () => void,
+  onClick: () => void
 }
 
 const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
@@ -77,7 +69,7 @@ const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children})
 }
 
 interface StyleProps {
-  color: string,
+  color: string
 }
 
 const themedElementWithStyleText: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
@@ -96,11 +88,7 @@ const themedElementWithStyleBackground: StyleFunction<Theme> = ({theme}): IStyle
 
 const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherProps}) => {
   const {css} = useFela<Theme>(otherProps)
-  return (
-    <span className={css(themedElementWithStyleText, themedElementWithStyleBackground)}>
-      {children}
-    </span>
-  )
+  return <span className={css(themedElementWithStyleText, themedElementWithStyleBackground)}>{children}</span>
 }
 
 const RendererUsage: React.FC = () => {
@@ -111,34 +99,46 @@ const RendererUsage: React.FC = () => {
     height: 50,
   }
   renderer.renderStatic(style, '.some-css-class')
-  return <div className="some-css-class"/>
+  return <div className="some-css-class" />
 }
 
 const FelaHookSamples: React.FC = () => (
   <>
     <h3>Styling divs</h3>
-    <StyledDiv/>
-    <Code initialShow showToggle={false}>{styledDivCode}</Code>
+    <StyledDiv />
+    <Code initialShow showToggle={false}>
+      {styledDivCode}
+    </Code>
 
     <h3>Styled element with children</h3>
     <StyledElementWithChildren>some text</StyledElementWithChildren>
-    <Code initialShow showToggle={false}>{styledElementWithChildrenCode}</Code>
+    <Code initialShow showToggle={false}>
+      {styledElementWithChildrenCode}
+    </Code>
 
     <h3>Themed element with children</h3>
     <ThemedElementWithChildren>paragraph</ThemedElementWithChildren>
-    <Code initialShow showToggle={false}>{themedElementWithChildrenCode}</Code>
+    <Code initialShow showToggle={false}>
+      {themedElementWithChildrenCode}
+    </Code>
 
     <h3>Themed element with children and passed parameters</h3>
     <ThemedElementWithChildrenAndProps onClick={() => alert('clicked')}>Click me</ThemedElementWithChildrenAndProps>
-    <Code initialShow showToggle={false}>{themedElementWithChildrenAndPropsCode}</Code>
+    <Code initialShow showToggle={false}>
+      {themedElementWithChildrenAndPropsCode}
+    </Code>
 
     <h3>Themed element, passed props and multiple styles</h3>
     <ThemedElementWithStyleProps color="white">some text</ThemedElementWithStyleProps>
-    <Code initialShow showToggle={false}>{themedElementWithStyleProps}</Code>
+    <Code initialShow showToggle={false}>
+      {themedElementWithStyleProps}
+    </Code>
 
     <h3>Use the Fela renderer</h3>
     <RendererUsage>Styled with static CSS</RendererUsage>
-    <Code initialShow showToggle={false}>{styledWithStaticRendererCode}</Code>
+    <Code initialShow showToggle={false}>
+      {styledWithStaticRendererCode}
+    </Code>
   </>
 )
 

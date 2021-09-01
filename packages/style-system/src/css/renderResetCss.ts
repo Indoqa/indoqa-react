@@ -54,4 +54,3 @@ export const renderResetCss = (renderer: IRenderer) => {
 `
   renderer.renderStatic(resetCss)
 }
-

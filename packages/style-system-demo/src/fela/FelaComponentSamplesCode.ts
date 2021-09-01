@@ -60,4 +60,9 @@ const themedElementWithChildrenAndPropsCode = `const ThemedElementWithChildrenAn
 }
 `
 
-export {felaComponentSamplesCode, styledElementWithChildrenCode, themedElementWithChildrenCode, themedElementWithChildrenAndPropsCode}
+export {
+  felaComponentSamplesCode,
+  styledElementWithChildrenCode,
+  themedElementWithChildrenCode,
+  themedElementWithChildrenAndPropsCode,
+}

@@ -3,8 +3,8 @@ import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 
 interface Props {
-  fontStyles: IStyle,
-  as?: keyof React.ReactHTML,
+  fontStyles: IStyle
+  as?: keyof React.ReactHTML
 }
 
 export const TextSample: React.FunctionComponent<Props> = ({fontStyles, children, as}) => {

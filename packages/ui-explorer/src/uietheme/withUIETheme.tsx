@@ -10,7 +10,7 @@ export interface WithUIETheme {
 
 // see https://github.com/Microsoft/TypeScript/issues/28748
 export function withUIETheme<P extends WithUIETheme, R = Omit<P, 'uieTheme'>>(
-  Component: React.ComponentClass<P> | React.FC<P>,
+  Component: React.ComponentClass<P> | React.FC<P>
 ): React.FC<R> {
   return function BoundComponent(props: R) {
     return (

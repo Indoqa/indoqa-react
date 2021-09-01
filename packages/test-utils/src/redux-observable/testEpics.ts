@@ -19,15 +19,27 @@ export const createTestScheduler = () => {
   })
 }
 
-export function createTestAction$FromMarbles<A extends Action>(testScheduler: TestScheduler, marbles: string, values?: any) {
+export function createTestAction$FromMarbles<A extends Action>(
+  testScheduler: TestScheduler,
+  marbles: string,
+  values?: any
+) {
   const testObservable = testScheduler.createHotObservable(marbles, values) as Rx.Observable<A>
   return new ActionsObservable<A>(testObservable)
 }
 
-export type CreateEpic<A extends Action> = (action: ActionsObservable<A>, scheduler: Rx.SchedulerLike) => Rx.Observable<any>
+export type CreateEpic<A extends Action> = (
+  action: ActionsObservable<A>,
+  scheduler: Rx.SchedulerLike
+) => Rx.Observable<any>
 
 export function testEpic(
-  createEpic: CreateEpic<any>, inputActions: any, outputActions: any, inputMarble: string, outputMarble: string) {
+  createEpic: CreateEpic<any>,
+  inputActions: any,
+  outputActions: any,
+  inputMarble: string,
+  outputMarble: string
+) {
   // Create test scheduler
   const testScheduler = createTestScheduler()
 
@@ -60,7 +72,7 @@ export function mockAjax$(result: any, error?: boolean) {
   const ajaxMock = TypeMoq.Mock.ofType<AjaxCreationMethod>()
   ajaxMock
     .setup((mock) => mock.post(TypeMoq.It.isAny(), TypeMoq.It.isAny(), TypeMoq.It.isAny()))
-    .returns(() => (error) ? Rx.throwError(result) : Rx.of(ajaxResponseMock.target))
+    .returns(() => (error ? Rx.throwError(result) : Rx.of(ajaxResponseMock.target)))
   return ajaxMock.target
 }
 

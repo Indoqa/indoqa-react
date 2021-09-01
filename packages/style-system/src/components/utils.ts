@@ -4,12 +4,13 @@ import {BaseTheme} from '../theming/baseTheme'
 import {NamedBreakPoint, sortBreakpoints} from '../theming/sortBreakpoints'
 import {WithBaseTheme} from './types'
 
-export const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
+export const THEME_NOT_AVAILABLE_ERR_MSG =
+  'There is no theme available or one of its properties is missing. ' +
   'Check if the Fela ThemeProvider is configured correctly.'
 
 export const addUnitIfNeeded = (value: any | string, propertyUnit?: string): string => {
   const valueType = typeof value
-  if ((valueType === 'number' || (valueType === 'string' && !isNaN(value)))) {
+  if (valueType === 'number' || (valueType === 'string' && !isNaN(value))) {
     return `${value}${propertyUnit || 'px'}`
   }
   return `${value}`
@@ -56,7 +57,10 @@ export function getPropsByBreakpoint(props: any, breakpoints: NamedBreakPoint[])
 
 export type ResponsiveStyleFunction<T extends BaseTheme> = (props: any, theme: T, outsideMediaQuery: boolean) => IStyle
 
-export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBaseTheme, styleFunction: ResponsiveStyleFunction<T>): IStyle {
+export function createResponsiveStyles<T extends BaseTheme>(
+  props: any & WithBaseTheme,
+  styleFunction: ResponsiveStyleFunction<T>
+): IStyle {
   const {theme} = props
   if (!theme) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
@@ -83,8 +87,9 @@ export function createResponsiveStyles<T extends BaseTheme>(props: any & WithBas
 }
 
 export function mergeThemedStyles<T extends BaseTheme, P>(
-  componentStyle: StyleFunction<T, P> | IStyle, passedStyle?: FelaStyle<T, P>): FelaStyle<T, P> {
-
+  componentStyle: StyleFunction<T, P> | IStyle,
+  passedStyle?: FelaStyle<T, P>
+): FelaStyle<T, P> {
   if (!passedStyle) {
     return componentStyle
   }

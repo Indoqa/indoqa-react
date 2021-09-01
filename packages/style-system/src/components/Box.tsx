@@ -14,7 +14,11 @@ import {
 import {BaseProps, BoxProps, FlatBoxProps, HtmlDivAttributesWithoutStyle} from './types'
 import {createResponsiveStyles, mergeThemedStyles} from './utils'
 
-export function createBoxCSSStyle<T extends BaseTheme>(props: FlatBoxProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
+export function createBoxCSSStyle<T extends BaseTheme>(
+  props: FlatBoxProps<T>,
+  theme: BaseTheme,
+  outsideMediaQuery: boolean
+): IStyle {
   return {
     ...createBoxModelCSSProps(props),
     ...createMarginCSSProps(props, theme),
@@ -32,21 +36,39 @@ function themedBoxStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
 }
 
 function renderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>, as: string) {
-  const {children, style, onClick, onMouseDown, onMouseOut, onMouseOver, onScroll, htmlAttrs, testId, innerRef, ...rest} = props
+  const {
+    children,
+    style,
+    onClick,
+    onMouseDown,
+    onMouseOut,
+    onMouseOver,
+    onScroll,
+    htmlAttrs,
+    testId,
+    innerRef,
+    ...rest
+  } = props
   const styles = mergeThemedStyles<T, BoxProps<T>>(themedBoxStyles, style)
   return (
     <FelaComponent<T, BoxProps<T>> style={styles} {...rest}>
-      {({className}) => React.createElement(as, {
-        className,
-        'data-testid': testId,
-        onClick,
-        onMouseDown,
-        onMouseOut,
-        onMouseOver,
-        onScroll,
-        ...htmlAttrs,
-        ref: innerRef,
-      }, children)}
+      {({className}) =>
+        React.createElement(
+          as,
+          {
+            className,
+            'data-testid': testId,
+            onClick,
+            onMouseDown,
+            onMouseOut,
+            onMouseOver,
+            onScroll,
+            ...htmlAttrs,
+            ref: innerRef,
+          },
+          children
+        )
+      }
     </FelaComponent>
   )
 }
@@ -86,4 +108,3 @@ export function FigCaptionBox<T extends BaseTheme>(props: BoxProps<T> & BaseProp
 export function FigureBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
   return renderBox(props, 'figure')
 }
-

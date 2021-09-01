@@ -5,7 +5,7 @@ const importCss = (id: string, url: string) => {
   }
   const styleNode = document.createElement('style')
   styleNode.id = id
-  const head = (document.head) ? document.head : document.createElement('head')
+  const head = document.head ? document.head : document.createElement('head')
   head.appendChild(styleNode)
   styleNode.append(`@import url('${url}');`)
 }

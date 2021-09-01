@@ -8,23 +8,19 @@ import {toMediaQueryMap} from '../theming/mediaQueryHelper'
 
 function createNamedKeys<B extends BaseBreakpoints>(breakpoints: B | BaseBreakpoints) {
   return namedKeys({
-      ...toMediaQueryMap(breakpoints),
-      print: '@media print',
-    },
-  )
+    ...toMediaQueryMap(breakpoints),
+    print: '@media print',
+  })
 }
 
 export function createFelaConfig<B extends BaseBreakpoints>(
   breakpoints: B | BaseBreakpoints = baseTheme.breakpoints,
   filterClassName?: IConfig['filterClassName'],
   selectorPrefix?: string,
-  disableDevMode?: boolean,
+  disableDevMode?: boolean
 ) {
   const config: IConfig = {
-    plugins: [
-      ...webPreset,
-      createNamedKeys(breakpoints),
-    ],
+    plugins: [...webPreset, createNamedKeys(breakpoints)],
     enhancers: [sortMediaQueryMobileFirst()],
     devMode: false,
   }

@@ -16,7 +16,7 @@ const StyledDiv: React.FC = () => {
     width: 50,
     height: 50,
   }
-  return <FelaComponent style={style}/>
+  return <FelaComponent style={style} />
 }
 
 const StyledElementWithChildren: React.FC = ({children}) => {
@@ -26,7 +26,8 @@ const StyledElementWithChildren: React.FC = ({children}) => {
   return (
     <FelaComponent style={style} as="p">
       {children}
-    </FelaComponent>)
+    </FelaComponent>
+  )
 }
 
 const ThemedElementWithChildren: React.FC = ({children}) => {
@@ -48,7 +49,7 @@ const ThemedElementWithChildren: React.FC = ({children}) => {
 }
 
 interface Props {
-  onClick: () => void,
+  onClick: () => void
 }
 
 const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
@@ -67,30 +68,34 @@ const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children})
       {children}
     </button>
   )
-  return (
-    <FelaComponent style={style}>
-      {renderButton}
-    </FelaComponent>
-  )
+  return <FelaComponent style={style}>{renderButton}</FelaComponent>
 }
 
 const FelaComponentSamples: React.FC = () => (
   <>
     <h3>Styling divs</h3>
-    <StyledDiv/>
-    <Code initialShow showToggle={false}>{felaComponentSamplesCode}</Code>
+    <StyledDiv />
+    <Code initialShow showToggle={false}>
+      {felaComponentSamplesCode}
+    </Code>
 
     <h3>Styled element with children</h3>
     <StyledElementWithChildren>some text</StyledElementWithChildren>
-    <Code initialShow showToggle={false}>{styledElementWithChildrenCode}</Code>
+    <Code initialShow showToggle={false}>
+      {styledElementWithChildrenCode}
+    </Code>
 
     <h3>Themed element with children</h3>
     <ThemedElementWithChildren>paragraph</ThemedElementWithChildren>
-    <Code initialShow showToggle={false}>{themedElementWithChildrenCode}</Code>
+    <Code initialShow showToggle={false}>
+      {themedElementWithChildrenCode}
+    </Code>
 
     <h3>Themed element with children and passed parameters</h3>
     <ThemedElementWithChildrenAndProps onClick={() => alert('clicked')}>Click me</ThemedElementWithChildrenAndProps>
-    <Code initialShow showToggle={false}>{themedElementWithChildrenAndPropsCode}</Code>
+    <Code initialShow showToggle={false}>
+      {themedElementWithChildrenAndPropsCode}
+    </Code>
   </>
 )
 

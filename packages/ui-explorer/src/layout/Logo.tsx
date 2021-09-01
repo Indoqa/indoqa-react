@@ -7,16 +7,14 @@ import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import MainHeading from './MainHeading'
 
 interface Props extends WithUIETheme {
-  to: string,
+  to: string
 }
 
 const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
   if (typeof children !== 'string') {
     return (
       <Flex fullWidth justifyContent="center">
-        <Link to={to}>
-          {children}
-        </Link>
+        <Link to={to}>{children}</Link>
       </Flex>
     )
   }
@@ -34,9 +32,7 @@ const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
   return (
     <FelaComponent style={style}>
       <Link to={to}>
-        <MainHeading>
-          {children}
-        </MainHeading>
+        <MainHeading>{children}</MainHeading>
       </Link>
     </FelaComponent>
   )

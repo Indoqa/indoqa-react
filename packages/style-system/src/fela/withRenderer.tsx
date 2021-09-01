@@ -7,7 +7,7 @@ type WithRenderer = {renderer?: IRenderer}
 
 // see https://github.com/Microsoft/TypeScript/issues/28748
 export function withRenderer<P extends WithRenderer, R = Omit<P, 'renderer'>>(
-  Component: React.ComponentClass<P> | React.FC<P>,
+  Component: React.ComponentClass<P> | React.FC<P>
 ): React.FC<R> {
   return function BoundComponent(props: R) {
     return (

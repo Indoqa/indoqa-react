@@ -6,10 +6,10 @@ import {TextSample} from './TextSample'
 import {headerText, longText, shortText} from './TextSpecimen'
 
 interface Props {
-  textFont: IStyle,
-  headlineFont: IStyle,
+  textFont: IStyle
+  headlineFont: IStyle
   fontSizes: FontSizes
-  textFontSize: FontSize,
+  textFontSize: FontSize
 }
 
 const Container: React.FC = ({children}) => {
@@ -42,39 +42,27 @@ export const FontMixContent: React.FC<Props> = ({textFont, headlineFont, fontSiz
       <TextSample fontStyles={extendedHeadline1Font} as="h1">
         {headerText}
       </TextSample>
-      <TextSample fontStyles={extendedTextFont}>
-        {longText}
-      </TextSample>
+      <TextSample fontStyles={extendedTextFont}>{longText}</TextSample>
       <TextSample fontStyles={extendedHeadline2Font} as="h2">
         {headerText}
       </TextSample>
-      <TextSample fontStyles={extendedTextFont}>
-        {shortText}
-      </TextSample>
+      <TextSample fontStyles={extendedTextFont}>{shortText}</TextSample>
       <TextSample fontStyles={extendedHeadline3Font} as="h3">
         {headerText}
       </TextSample>
-      <TextSample fontStyles={extendedTextFont}>
-        {longText}
-      </TextSample>
+      <TextSample fontStyles={extendedTextFont}>{longText}</TextSample>
       <TextSample fontStyles={extendedHeadline3Font} as="h3">
         {headerText}
       </TextSample>
-      <TextSample fontStyles={extendedTextFont}>
-        {shortText}
-      </TextSample>
+      <TextSample fontStyles={extendedTextFont}>{shortText}</TextSample>
       <TextSample fontStyles={extendedHeadline2Font} as="h2">
         {headerText}
       </TextSample>
-      <TextSample fontStyles={extendedTextFont}>
-        {longText}
-      </TextSample>
+      <TextSample fontStyles={extendedTextFont}>{longText}</TextSample>
       <TextSample fontStyles={extendedHeadline1Font} as="h1">
         {headerText}
       </TextSample>
-      <TextSample fontStyles={extendedTextFont}>
-        {shortText}
-      </TextSample>
+      <TextSample fontStyles={extendedTextFont}>{shortText}</TextSample>
     </Container>
   )
 }

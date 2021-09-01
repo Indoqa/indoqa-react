@@ -1,8 +1,13 @@
 import css from 'css'
 
-export type BreakpointNames = { [key: string]: string }
+export type BreakpointNames = {[key: string]: string}
 
-export const cssObjectToIStyle = (cssObject: any, classNames: string | null, result: any, breakpointNames: BreakpointNames): void => {
+export const cssObjectToIStyle = (
+  cssObject: any,
+  classNames: string | null,
+  result: any,
+  breakpointNames: BreakpointNames
+): void => {
   if (!classNames) {
     return
   }
@@ -68,13 +73,9 @@ const camel = (str: string) => {
   if (str.startsWith('-')) {
     return str
   }
-  return str
-    .replace(/(-[a-z])/g, (x) => x.toUpperCase())
-    .replace(/-/g, '')
+  return str.replace(/(-[a-z])/g, (x) => x.toUpperCase()).replace(/-/g, '')
 }
 
 const parsePx = (val: any) => {
-  return /px$/.test(val)
-    ? parseFloat(val.replace(/px$/, ''))
-    : val
+  return /px$/.test(val) ? parseFloat(val.replace(/px$/, '')) : val
 }

@@ -7,10 +7,10 @@ import {FontMixContent} from '../typography/FontMixContent'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 
 interface Props extends WithUIETheme {
-  colors: Color[],
-  fontMixes: FontMix[],
-  fontSizes: FontSizes,
-  textFontSize: FontSize,
+  colors: Color[]
+  fontMixes: FontMix[]
+  fontSizes: FontSizes
+  textFontSize: FontSize
 }
 
 const uniqueColors = (colors: Color[]): Color[] => {
@@ -38,7 +38,7 @@ const OverviewPanelInternal: React.FC<Props> = ({fontMixes, fontSizes, textFontS
     <Flex fullWidth direction="column">
       <Box>
         <Box>
-          <ColorsPanel colors={uniqueColors(colors)} small/>
+          <ColorsPanel colors={uniqueColors(colors)} small />
         </Box>
         <Box style={panelStyle}>
           <FontMixContent

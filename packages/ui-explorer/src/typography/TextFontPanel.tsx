@@ -7,8 +7,8 @@ import {TextSample} from './TextSample'
 import {characters, longText, longTextInlineStyle} from './TextSpecimen'
 
 interface Props extends WithUIETheme {
-  name: string,
-  fontStyles: IStyle,
+  name: string
+  fontStyles: IStyle
 }
 
 const TextFontPanelInternal: React.FC<Props> = ({fontStyles, name}) => {
@@ -17,12 +17,8 @@ const TextFontPanelInternal: React.FC<Props> = ({fontStyles, name}) => {
       <Row>
         <Panel>
           <FontStylePanel name={`${name} / plain`}>
-            <TextSample fontStyles={fontStyles}>
-              {characters}
-            </TextSample>
-            <TextSample fontStyles={fontStyles}>
-              {longText}
-            </TextSample>
+            <TextSample fontStyles={fontStyles}>{characters}</TextSample>
+            <TextSample fontStyles={fontStyles}>{longText}</TextSample>
           </FontStylePanel>
         </Panel>
         <Panel>

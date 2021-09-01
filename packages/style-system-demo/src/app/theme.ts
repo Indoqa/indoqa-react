@@ -1,27 +1,27 @@
 import {BaseColors, BaseFontSizes, baseTheme, BaseTheme, typeScale} from '@indoqa/style-system'
 
 interface FontSizes extends BaseFontSizes {
-  readonly extraBig: number | string,
+  readonly extraBig: number | string
 }
 
 interface Colors extends BaseColors {
-  readonly primary: string,
-  readonly primaryDark: string,
-  readonly primaryLight: string,
-  readonly accent: string,
+  readonly primary: string
+  readonly primaryDark: string
+  readonly primaryLight: string
+  readonly accent: string
   readonly textSecondary: string
-  readonly divider: string,
+  readonly divider: string
 }
 
 interface Layout {
-  readonly actionBarHeight: number,
-  readonly menuWidth: number,
+  readonly actionBarHeight: number
+  readonly menuWidth: number
 }
 
 export interface Theme extends BaseTheme {
-  readonly fontSizes: FontSizes,
-  readonly colors: Colors,
-  readonly layout: Layout,
+  readonly fontSizes: FontSizes
+  readonly colors: Colors
+  readonly layout: Layout
 }
 
 const baseColors = {

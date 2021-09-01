@@ -9,7 +9,7 @@ import {FontStylePanel} from './FontStylePanel'
 import {characters} from './TextSpecimen'
 
 interface HeadlineProps extends WithUIETheme {
-  fontStyles: IStyle,
+  fontStyles: IStyle
 }
 
 interface WithFontSize {
@@ -17,8 +17,8 @@ interface WithFontSize {
 }
 
 interface Props extends HeadlineProps {
-  name: string,
-  fontSizes: FontSizes,
+  name: string
+  fontSizes: FontSizes
 }
 
 const HeadlineSample: React.FC<HeadlineProps & WithFontSize> = ({fontStyles, fontSize, uieTheme, children}) => {
@@ -26,11 +26,7 @@ const HeadlineSample: React.FC<HeadlineProps & WithFontSize> = ({fontStyles, fon
     marginBottom: uieTheme.spacing.space2,
     fontSize,
   }
-  return (
-    <FelaComponent style={[fontStyles, style]}>
-      {children}
-    </FelaComponent>
-  )
+  return <FelaComponent style={[fontStyles, style]}>{children}</FelaComponent>
 }
 
 const renderHeadlineSizeSamples = (fontStyles: IStyle, fontSizes: FontSizes, uieTheme: UIETheme) => {
