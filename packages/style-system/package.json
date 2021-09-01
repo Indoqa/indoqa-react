@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/style-system",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "description": "A style system for React with Typescript typed theme support and several base components.",
   "license": "Apache-2.0",
