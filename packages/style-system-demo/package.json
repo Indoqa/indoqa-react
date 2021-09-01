@@ -8,7 +8,6 @@
   ],
   "scripts": {
     "analyze": "source-map-explorer ./build/static/*.js{,.map}",
-    "build": "indoqa-webpack-ts ./indoqa-webpack-options.js",
     "build:tests": "tsc --project cypress/tsconfig.json",
     "clean": "rimraf ./build ./cypress/build",
     "cy:open": "cypress open",
