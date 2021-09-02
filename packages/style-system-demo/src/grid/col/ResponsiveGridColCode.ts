@@ -1,5 +1,5 @@
 /* tslint:disable */
-export default `<Grid spacing="0.5rem">
+export const codeString = `<Grid spacing="0.5rem">
   <ColRow>
     <Col size={[6, 4, 2]} testId="col1"><OrangeBox/></Col>
     <Col size={[6, 4, 2]} testId="col2"><YellowBox/></Col>

@@ -1,5 +1,4 @@
-/* tslint:disable */
-export default `const InnerGrid1: React.FC = () => (
+export const codeString = `const InnerGrid1: React.FC = () => (
   <Grid spacing="0.5rem">
     <ColRow>
       <Col size={4}><YellowBox/></Col>

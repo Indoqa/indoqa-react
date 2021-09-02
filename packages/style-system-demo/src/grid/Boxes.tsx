@@ -61,7 +61,7 @@ const RedBox: React.FC<Props> = ({width = '100%', height = '75px', children}) =>
 
 const BlueFlexBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
   return (
-    <Flex p={1} style={bgBoxStyle('blue', width, height)} justifyContent="space-between">
+    <Flex p={2} style={bgBoxStyle('blue', width, height)} justifyContent="space-between">
       {children}
     </Flex>
   )
