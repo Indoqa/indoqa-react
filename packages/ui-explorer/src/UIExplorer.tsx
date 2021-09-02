@@ -1,8 +1,8 @@
-import {BaseTheme, Box, Grid, Panel, Row, withRenderer} from '@indoqa/style-system'
+import {BaseTheme, Box, Grid, Panel, Row} from '@indoqa/style-system'
 import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent, RenderProps} from 'react-fela'
-import {Route, RouteComponentProps, withRouter} from 'react-router'
+import {FelaComponent, RenderProps, useFela} from 'react-fela'
+import {Route, useLocation} from 'react-router'
 
 import {ColorsPanel} from './colors/ColorsPanel'
 import ContentHeader from './layout/ContentHeader'
@@ -24,8 +24,26 @@ import {WithUIETheme} from './uietheme/withUIETheme'
 import importCss from './utils/importCss'
 import {cleanUrlPathPart} from './utils/urlUtils'
 
+interface Props {
+  colors: Color[]
+  description?: string
+  fontMixes: FontMix[]
+  fontSizes: FontSizes
+  groups: Group[]
+  headlineFonts: Font[]
+  logo?: React.ReactNode
+  mountPath: string
+  overviewPanel?: React.ReactNode
+  projectName: string
+  showFundamentals?: boolean
+  textFonts: Font[]
+  textFontSize: FontSize
+  uieTheme?: UIETheme
+  renderer?: IRenderer
+}
+
 interface InnerContentPanelProps extends WithUIETheme {
-  name: string,
+  name: string
 }
 
 const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, children}) => {
@@ -37,19 +55,15 @@ const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, ch
   }
   return (
     <>
-      <ContentHeader>
-        {name && <ContentHeading>{name}</ContentHeading>}
-      </ContentHeader>
-      <Box style={style}>
-        {children}
-      </Box>
+      <ContentHeader>{name && <ContentHeading>{name}</ContentHeading>}</ContentHeader>
+      <Box style={style}>{children}</Box>
     </>
   )
 }
 
 interface InnerStyleGuideMenuProps {
   show: boolean
-  uieTheme: UIETheme,
+  uieTheme: UIETheme
 }
 
 const InnerStyleGuideMenu: React.FC<InnerStyleGuideMenuProps> = ({show, uieTheme, children}) => {
@@ -62,17 +76,13 @@ const InnerStyleGuideMenu: React.FC<InnerStyleGuideMenuProps> = ({show, uieTheme
       paddingBottom: uieTheme.spacing.space4,
     },
   }
-  return (
-    <FelaComponent style={style}>
-      {children}
-    </FelaComponent>
-  )
+  return <FelaComponent style={style}>{children}</FelaComponent>
 }
 
 interface MenuIconProps {
-  show: boolean,
-  uieTheme: UIETheme,
-  toggleMenu: () => void,
+  show: boolean
+  uieTheme: UIETheme
+  toggleMenu: () => void
 }
 
 const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
@@ -84,24 +94,25 @@ const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
   }
   const renderMenuIcon = ({className}: RenderProps<BaseTheme>) => (
     <div className={className} onClick={() => toggleMenu()}>
-      <MenuIcon color={uieTheme.colors.menuIcon} size="35"/>
+      <MenuIcon color={uieTheme.colors.menuIcon} size="35" />
     </div>
   )
-  return (
-    <FelaComponent style={style}>
-      {renderMenuIcon}
-    </FelaComponent>
-  )
+  return <FelaComponent style={style}>{renderMenuIcon}</FelaComponent>
 }
 
 const createComponentRoute = (name: string, component: React.ReactNode, mountPath: string, uieTheme: UIETheme) => {
   const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}`
   return (
-    <Route key={componentMountPath} exact path={componentMountPath} render={() => (
-      <InnerContentPanel name={name} uieTheme={uieTheme}>
-        {component}
-      </InnerContentPanel>
-    )}/>
+    <Route
+      key={componentMountPath}
+      exact
+      path={componentMountPath}
+      render={() => (
+        <InnerContentPanel name={name} uieTheme={uieTheme}>
+          {component}
+        </InnerContentPanel>
+      )}
+    />
   )
 }
 
@@ -110,7 +121,11 @@ const createMenuGroups = (groups: Group[], mountPath: string) => {
     const {name, descriptions} = componentDescription
     const menuItems = descriptions.map((description) => {
       const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}/${cleanUrlPathPart(description.name)}`
-      return <MenuItem key={componentMountPath} to={componentMountPath}>{description.name}</MenuItem>
+      return (
+        <MenuItem key={componentMountPath} to={componentMountPath}>
+          {description.name}
+        </MenuItem>
+      )
     })
     return (
       <MenuGroup name={name} key={name}>
@@ -125,154 +140,141 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
   groups.forEach((componentDescription) => {
     const {name, descriptions} = componentDescription
     descriptions.forEach((description) => {
-      routes.push(createComponentRoute(
-        description.name,
-        description.component,
-        `${mountPath}/${cleanUrlPathPart(name)}`,
-        uieTheme,
-      ))
+      routes.push(
+        createComponentRoute(
+          description.name,
+          description.component,
+          `${mountPath}/${cleanUrlPathPart(name)}`,
+          uieTheme
+        )
+      )
     })
   })
   return routes
 }
 
-interface Props extends RouteComponentProps {
-  colors: Color[],
-  description?: string,
-  fontMixes: FontMix[],
-  fontSizes: FontSizes,
-  groups: Group[],
-  headlineFonts: Font[],
-  logo?: React.ReactNode,
-  mountPath: string,
-  overviewPanel?: React.ReactNode,
-  projectName: string,
-  showFundamentals?: boolean,
-  textFonts: Font[],
-  textFontSize: FontSize,
-  uieTheme?: UIETheme,
-  renderer?: IRenderer,
-}
+//   public UNSAFE_componentWillMount() {
+//     if (this.props.renderer) {
+//       this.props.renderer.renderStatic({
+//         backgroundColor: '#F0F2F5',
+//         paddingTop: '4px',
+//         paddingRight: '2px',
+//         paddingLeft: '2px',
+//       }, 'p code')
+//     }
+//   }
+//   public UNSAFE_componentWillUpdate(nextProps: Readonly<Props>) {
+//     const currentLocation = this.props.location
+//     const nextLocation = nextProps.location
+//     if (currentLocation !== nextLocation) {
+//       this.setState({showMenu: false})
+//     }
+//   }
+//
 
-interface State extends WithUIETheme {
-  showMenu: boolean,
-}
+export const UIExplorer = ({
+  colors,
+  description,
+  fontMixes,
+  fontSizes,
+  headlineFonts,
+  groups,
+  logo,
+  mountPath,
+  overviewPanel,
+  projectName,
+  showFundamentals = true,
+  textFonts,
+  textFontSize,
+  uieTheme,
+}: Props) => {
+  const [localUieTheme] = React.useState(uieTheme || uieLightTheme)
+  const [showMenu, setShowMenu] = React.useState(false)
+  const location = useLocation()
+  const {renderer} = useFela()
 
-class UIExplorerImpl extends React.Component<Props, State> {
+  React.useLayoutEffect(() => {
+    importCss('style-guide-fonts', localUieTheme.fontFamilyCSSImports)
+    renderer.renderStatic(
+      {
+        backgroundColor: '#F0F2F5',
+        paddingTop: '4px',
+        paddingRight: '2px',
+        paddingLeft: '2px',
+      },
+      'p code'
+    )
+  }, [localUieTheme.fontFamilyCSSImports, renderer])
+  React.useLayoutEffect(() => {
+    document.title = `${projectName} | UI-Explorer`
+  }, [projectName])
+  React.useLayoutEffect(() => {
+    setShowMenu(false)
+  }, [location])
 
-  public static defaultProps = {
-    showFundamentals: true,
+  const toggleMenu = () => {
+    setShowMenu((prevState) => !prevState)
   }
-
-  constructor(props: Props) {
-    super(props)
-    const {uieTheme} = props
-    this.state = {
-      uieTheme: uieTheme || uieLightTheme,
-      showMenu: false,
-    }
-  }
-
-  public getDescription() {
-    const {projectName, description} = this.props
+  const getDescription = () => {
     if (description || description === '') {
       return description
     }
     return `UI-Explorer ${projectName}`
   }
 
-  public UNSAFE_componentWillMount() {
-    if (this.props.renderer) {
-      this.props.renderer.renderStatic({
-        backgroundColor: '#F0F2F5',
-        paddingTop: '4px',
-        paddingRight: '2px',
-        paddingLeft: '2px',
-      }, 'p code')
-    }
-  }
-
-  public UNSAFE_componentWillUpdate(nextProps: Readonly<Props>) {
-    const currentLocation = this.props.location
-    const nextLocation = nextProps.location
-    if (currentLocation !== nextLocation) {
-      this.setState({showMenu: false})
-    }
-  }
-
-  public componentDidMount() {
-    const {uieTheme} = this.state
-    const {fontFamilyCSSImports} = uieTheme
-    importCss('style-guide-fonts', fontFamilyCSSImports)
-    document.title = `${this.props.projectName} | UI-Explorer`
-  }
-
-  public renderOverviewPanel() {
-    if (this.props.overviewPanel) {
-      return this.props.overviewPanel
-    }
-
-    const {colors, fontMixes, fontSizes, textFontSize} = this.props
-    return (
-      <OverviewPanel
-        colors={colors}
-        fontMixes={fontMixes}
-        fontSizes={fontSizes}
-        textFontSize={textFontSize}
-      />
-    )
-  }
-
-  public render() {
-    const {
-      colors,
-      headlineFonts,
-      fontMixes,
-      fontSizes,
-      groups,
-      logo,
-      mountPath,
-      projectName,
-      showFundamentals,
-      textFonts,
-      textFontSize,
-    } = this.props
-    const {uieTheme, showMenu} = this.state
-    return (
-      <UIEThemeContext.Provider value={uieTheme}>
-        <Grid spacing={0}>
-          <Row height="100vh">
-            <Panel width="17.5rem">
-              <StyleGuideMenu>
-                <MenuHeader>
-                  <Logo to={mountPath}>{logo || projectName}</Logo>
-                  <MenuIconWrapper toggleMenu={this.toggleMenu.bind(this)} show={showMenu} uieTheme={uieTheme}/>
-                </MenuHeader>
-                <InnerStyleGuideMenu show={showMenu} uieTheme={uieTheme}>
-                  {showFundamentals &&
+  return (
+    <UIEThemeContext.Provider value={localUieTheme}>
+      <Grid spacing={0}>
+        <Row height="100vh">
+          <Panel width="17.5rem">
+            <StyleGuideMenu>
+              <MenuHeader>
+                <Logo to={mountPath}>{logo || projectName}</Logo>
+                <MenuIconWrapper toggleMenu={toggleMenu} show={showMenu} uieTheme={localUieTheme} />
+              </MenuHeader>
+              <InnerStyleGuideMenu show={showMenu} uieTheme={localUieTheme}>
+                {showFundamentals && (
                   <MenuGroup name="Fundamentals">
                     <MenuItem to={`${mountPath}/colors`}>Colors</MenuItem>
                     <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
                   </MenuGroup>
-                  }
-                  {createMenuGroups(groups, mountPath)}
-                </InnerStyleGuideMenu>
-              </StyleGuideMenu>
-            </Panel>
-            <Panel style={{minHeight: '100vh'}}>
-              <ContentPanel>
-                <Route exact path={`${mountPath}/`} render={() => (
-                  <InnerContentPanel name={this.getDescription()} uieTheme={uieTheme}>
-                    {this.renderOverviewPanel()}
+                )}
+                {createMenuGroups(groups, mountPath)}
+              </InnerStyleGuideMenu>
+            </StyleGuideMenu>
+          </Panel>
+          <Panel style={{minHeight: '100vh'}}>
+            <ContentPanel>
+              <Route
+                exact
+                path={`${mountPath}/`}
+                render={() => (
+                  <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
+                    {overviewPanel || (
+                      <OverviewPanel
+                        colors={colors}
+                        fontMixes={fontMixes}
+                        fontSizes={fontSizes}
+                        textFontSize={textFontSize}
+                      />
+                    )}
                   </InnerContentPanel>
-                )}/>
-                <Route exact path={`${mountPath}/colors`} render={() => (
-                  <InnerContentPanel name="Color Scheme" uieTheme={uieTheme}>
-                    <ColorsPanel colors={colors}/>
+                )}
+              />
+              <Route
+                exact
+                path={`${mountPath}/colors`}
+                render={() => (
+                  <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
+                    <ColorsPanel colors={colors} />
                   </InnerContentPanel>
-                )}/>
-                <Route exact path={`${mountPath}/typography`} render={() => (
-                  <InnerContentPanel name="Typography" uieTheme={uieTheme}>
+                )}
+              />
+              <Route
+                exact
+                path={`${mountPath}/typography`}
+                render={() => (
+                  <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
                     <TypographyPanel
                       textFonts={textFonts}
                       headlineFonts={headlineFonts}
@@ -281,21 +283,13 @@ class UIExplorerImpl extends React.Component<Props, State> {
                       textFontSize={textFontSize}
                     />
                   </InnerContentPanel>
-                )}/>
-                {createGroupsRoutes(groups, mountPath, uieTheme)}
-              </ContentPanel>
-            </Panel>
-          </Row>
-        </Grid>
-      </UIEThemeContext.Provider>
-    )
-  }
-
-  private toggleMenu() {
-    const {showMenu} = this.state
-    this.setState({showMenu: !showMenu})
-  }
+                )}
+              />
+              {createGroupsRoutes(groups, mountPath, localUieTheme)}
+            </ContentPanel>
+          </Panel>
+        </Row>
+      </Grid>
+    </UIEThemeContext.Provider>
+  )
 }
-
-const UIExplorer: any = withRouter(withRenderer(UIExplorerImpl))
-export {UIExplorer}
