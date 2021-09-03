@@ -64,7 +64,6 @@ export interface BaseTheme {
   readonly zIndexes: BaseZIndexes
   readonly breakpoints: BaseBreakpoints
   readonly shadows: BaseShadows
-  readonly layout: {}
 }
 
 const typeScaleFactor = 1.333
@@ -182,5 +181,4 @@ export const baseTheme: BaseTheme = {
       createElevationShadow3(6, 28, 5)
     ),
   },
-  layout: {},
 }

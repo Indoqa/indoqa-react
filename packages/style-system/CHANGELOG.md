@@ -3,6 +3,7 @@
 - feat(box): add lineClamp property
 - feat!: remove extendBox
 - feat!: remove withRenderer
+- feat!: remove layout from base theme
 - Add Spacing enum values for 5, 6, 7, 8 and 9
 - Export Typescript types
 
