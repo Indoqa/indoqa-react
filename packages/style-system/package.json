@@ -30,8 +30,10 @@
   ],
   "peerDependencies": {
     "fela": ">=11.6",
+    "fela-enforce-longhands": "^11.6.1",
     "fela-monolithic": ">=11.6",
     "fela-plugin-named-keys": ">=11.6",
+    "fela-plugin-validator": ">=11.6",
     "fela-preset-web": ">=11.6",
     "fela-sort-media-query-mobile-first": ">=11.6",
     "react": ">=17",
@@ -39,8 +41,10 @@
   },
   "devDependencies": {
     "fela": "^11.6.1",
+    "fela-enforce-longhands": "^11.6.1",
     "fela-monolithic": "^11.6.1",
     "fela-plugin-named-keys": "^11.6.1",
+    "fela-plugin-validator": "^11.6.1",
     "fela-preset-web": "^11.6.1",
     "fela-sort-media-query-mobile-first": "^11.6.1",
     "react": "^17.0.2",
