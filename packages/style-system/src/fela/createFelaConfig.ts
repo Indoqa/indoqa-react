@@ -1,5 +1,4 @@
 import {IConfig} from 'fela'
-import enforceLonghands from 'fela-enforce-longhands'
 import monolithic from 'fela-monolithic'
 import namedKeys from 'fela-plugin-named-keys'
 import validator from 'fela-plugin-validator'
@@ -23,13 +22,13 @@ export function createFelaConfig<B extends BaseBreakpoints>(
 ) {
   const config: IConfig = {
     plugins: [...webPreset, createNamedKeys(breakpoints)],
-    enhancers: [sortMediaQueryMobileFirst(), enforceLonghands()],
+    enhancers: [sortMediaQueryMobileFirst()],
     devMode: false,
   }
 
   if (process.env.NODE_ENV === 'development' && !disableDevMode) {
     config.plugins = [...webPreset, createNamedKeys(breakpoints), validator()]
-    config.enhancers = [monolithic({prettySelectors: true}), sortMediaQueryMobileFirst(), enforceLonghands()]
+    config.enhancers = [monolithic({prettySelectors: true}), sortMediaQueryMobileFirst()]
     config.devMode = true
   }
 

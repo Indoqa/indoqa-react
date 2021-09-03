@@ -7,7 +7,6 @@
 - feat: Add Spacing enum values for 5, 6, 7, 8 and 9
 - feat: Export Typescript types
 - feat: add validator to Fela dev setup
-- feat: add enforceLonghands enhancer to Fela setup
 
 # v1.4.0 | 2020-01-26
 
