@@ -2,16 +2,12 @@
   "name": "indoqa",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "compile": "lerna run compile",
-    "e2e": "yarn package && lerna run e2e --stream",
+    "ci:build": "yarn package && lerna run e2e --stream",
     "package": "yarn pkg:check && lerna run package --stream",
     "pkg:run": "manypkg run",
     "pkg:check": "manypkg check",
     "pkg:fix": "manypkg fix",
-    "postinstall": "yarn package",
-    "prepare": "lerna run prepare",
-    "test": "lerna run test"
+    "postinstall": "yarn package"
   },
   "workspaces": [
     "packages/*"

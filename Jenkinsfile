@@ -15,7 +15,7 @@
   limitations under the License.
 **/
 pipeline {
-  
+
   agent any
 
   environment {
@@ -35,18 +35,18 @@ pipeline {
   stages {
     stage('Build') {
       options {
-        timeout(time: 5, unit: 'MINUTES') 
-      }    
+        timeout(time: 5, unit: 'MINUTES')
+      }
       steps {
         sh 'yarn install'
       }
     }
     stage('e2e') {
       options {
-        timeout(time: 5, unit: 'MINUTES') 
-      }    
+        timeout(time: 5, unit: 'MINUTES')
+      }
       steps {
-        sh 'yarn run e2e'
+        sh 'yarn run ci:build'
       }
     }
   }
