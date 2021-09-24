@@ -15,7 +15,6 @@
     "e2e": "start-server-and-test serve http://localhost:5100 cy:run",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
     "package": "react-scripts build",
-    "postinstall": "yarn run package",
     "serve": "serve -s -l 5100 ./build",
     "start": "react-scripts start"
   },
