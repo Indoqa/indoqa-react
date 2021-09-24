@@ -32,8 +32,8 @@
     "demo"
   ],
   "dependencies": {
-    "@indoqa/style-system": "^2.0.0-alpha.4",
-    "@indoqa/ui-explorer": "^2.0.0-alpha.4",
+    "@indoqa/style-system": "2.0.0-alpha.4",
+    "@indoqa/ui-explorer": "2.0.0-alpha.4",
     "fela": "^11.6.1",
     "fela-monolithic": "^11.6.1",
     "fela-plugin-named-keys": "^11.6.1",
