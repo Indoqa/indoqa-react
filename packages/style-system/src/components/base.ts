@@ -60,7 +60,7 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
 
   if (fullWidth) {
     Object.assign(styles, {width: '100%'})
-  } else if (width) {
+  } else if (width !== undefined) {
     Object.assign(styles, {width})
   }
   if (maxWidth) {
@@ -72,7 +72,7 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
 
   if (fullHeight) {
     Object.assign(styles, {height: '100%'})
-  } else if (height) {
+  } else if (height !== undefined) {
     Object.assign(styles, {height})
   }
   if (maxHeight) {
@@ -250,27 +250,27 @@ export const createMarginCSSProps = (props: MarginProps & WithBaseTheme, theme: 
   const {m, mt, mb, ml, mr, mx, my} = props
   const styles = {}
   if (m !== undefined) {
-    Object.assign(styles, {margin: spacing(theme, m)})
+    Object.assign(styles, {margin: createSpacing(theme, m)})
   }
   if (mx !== undefined) {
-    Object.assign(styles, {marginLeft: spacing(theme, mx)})
-    Object.assign(styles, {marginRight: spacing(theme, mx)})
+    Object.assign(styles, {marginLeft: createSpacing(theme, mx)})
+    Object.assign(styles, {marginRight: createSpacing(theme, mx)})
   }
   if (my !== undefined) {
-    Object.assign(styles, {marginTop: spacing(theme, my)})
-    Object.assign(styles, {marginBottom: spacing(theme, my)})
+    Object.assign(styles, {marginTop: createSpacing(theme, my)})
+    Object.assign(styles, {marginBottom: createSpacing(theme, my)})
   }
   if (mt !== undefined) {
-    Object.assign(styles, {marginTop: spacing(theme, mt)})
+    Object.assign(styles, {marginTop: createSpacing(theme, mt)})
   }
   if (mb !== undefined) {
-    Object.assign(styles, {marginBottom: spacing(theme, mb)})
+    Object.assign(styles, {marginBottom: createSpacing(theme, mb)})
   }
   if (ml !== undefined) {
-    Object.assign(styles, {marginLeft: spacing(theme, ml)})
+    Object.assign(styles, {marginLeft: createSpacing(theme, ml)})
   }
   if (mr !== undefined) {
-    Object.assign(styles, {marginRight: spacing(theme, mr)})
+    Object.assign(styles, {marginRight: createSpacing(theme, mr)})
   }
   return styles
 }
@@ -279,32 +279,32 @@ export const createPaddingCSSProps = (props: PaddingProps & WithBaseTheme, theme
   const {p, pt, pb, pl, pr, px, py} = props
   const styles = {}
   if (p !== undefined) {
-    Object.assign(styles, {padding: spacing(theme, p)})
+    Object.assign(styles, {padding: createSpacing(theme, p)})
   }
   if (px !== undefined) {
-    Object.assign(styles, {paddingLeft: spacing(theme, px)})
-    Object.assign(styles, {paddingRight: spacing(theme, px)})
+    Object.assign(styles, {paddingLeft: createSpacing(theme, px)})
+    Object.assign(styles, {paddingRight: createSpacing(theme, px)})
   }
   if (py !== undefined) {
-    Object.assign(styles, {paddingTop: spacing(theme, py)})
-    Object.assign(styles, {paddingBottom: spacing(theme, py)})
+    Object.assign(styles, {paddingTop: createSpacing(theme, py)})
+    Object.assign(styles, {paddingBottom: createSpacing(theme, py)})
   }
   if (pt !== undefined) {
-    Object.assign(styles, {paddingTop: spacing(theme, pt)})
+    Object.assign(styles, {paddingTop: createSpacing(theme, pt)})
   }
   if (pb !== undefined) {
-    Object.assign(styles, {paddingBottom: spacing(theme, pb)})
+    Object.assign(styles, {paddingBottom: createSpacing(theme, pb)})
   }
   if (pl !== undefined) {
-    Object.assign(styles, {paddingLeft: spacing(theme, pl)})
+    Object.assign(styles, {paddingLeft: createSpacing(theme, pl)})
   }
   if (pr !== undefined) {
-    Object.assign(styles, {paddingRight: spacing(theme, pr)})
+    Object.assign(styles, {paddingRight: createSpacing(theme, pr)})
   }
   return styles
 }
 
-const spacing = (theme: BaseTheme, propValue: Spacing) => {
+export const createSpacing = (theme: BaseTheme, propValue: Spacing) => {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }

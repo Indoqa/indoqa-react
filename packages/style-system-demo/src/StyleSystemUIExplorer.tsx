@@ -5,6 +5,7 @@ import {withTheme} from 'react-fela'
 import {Theme} from './app/theme'
 import BoxSamples from './base-components/BoxSamples'
 import FlexSamples from './base-components/FlexSamples'
+import {StackSamples} from './base-components/StackSamples'
 import TextSamples from './base-components/TextSamples'
 import FelaComponentSamples from './fela/FelaComponentSamples'
 import FelaHookSamples from './fela/FelaHookSamples'
@@ -19,57 +20,52 @@ import SimpleGridPanel from './grid/panel/SimpleGridPanel'
 import StyleSystemDemoOverview from './StyleSystemDemoOverview'
 
 interface Props {
-  theme: Theme,
+  theme: Theme
 }
 
-const getColors = (theme: Theme): Color[] =>
-  [
-    {name: 'primary', hexCode: theme.colors.primary},
-    {name: 'primary-dark', hexCode: theme.colors.primaryDark},
-    {name: 'primary-light', hexCode: theme.colors.primaryLight},
-    {name: 'text', hexCode: theme.colors.text},
-    {name: 'accent', hexCode: theme.colors.accent},
-    {name: 'secondary-text', hexCode: theme.colors.textSecondary},
-    {name: 'divider', hexCode: theme.colors.divider},
-  ]
+const getColors = (theme: Theme): Color[] => [
+  {name: 'primary', hexCode: theme.colors.primary},
+  {name: 'primary-dark', hexCode: theme.colors.primaryDark},
+  {name: 'primary-light', hexCode: theme.colors.primaryLight},
+  {name: 'text', hexCode: theme.colors.text},
+  {name: 'accent', hexCode: theme.colors.accent},
+  {name: 'secondary-text', hexCode: theme.colors.textSecondary},
+  {name: 'divider', hexCode: theme.colors.divider},
+]
 
-const getTextFonts = (theme: Theme): Font[] =>
-  [
-    {name: 'base', fontStyle: theme.fontStyles.base},
-  ]
+const getTextFonts = (theme: Theme): Font[] => [{name: 'base', fontStyle: theme.fontStyles.base}]
 
-const getHeadlineFonts = (theme: Theme): Font[] =>
-  [
-    {name: 'alternative', fontStyle: theme.fontStyles.alt},
-  ]
+const getHeadlineFonts = (theme: Theme): Font[] => [{name: 'alternative', fontStyle: theme.fontStyles.alt}]
 
-const getFontSizes = (theme: Theme): FontSizes =>
-  [
-    theme.fontSizes.extraBig,
-    theme.fontSizes.big,
-    theme.fontSizes.text,
-    theme.fontSizes.small,
-  ]
+const getFontSizes = (theme: Theme): FontSizes => [
+  theme.fontSizes.extraBig,
+  theme.fontSizes.big,
+  theme.fontSizes.text,
+  theme.fontSizes.small,
+]
 
-const getFontMixes = (theme: Theme): FontMix[] =>
-  [
-    {name: 'System fonts', textFont: theme.fontStyles.base, headlineFont: theme.fontStyles.alt},
-  ]
+const getFontMixes = (theme: Theme): FontMix[] => [
+  {name: 'System fonts', textFont: theme.fontStyles.base, headlineFont: theme.fontStyles.alt},
+]
 
 const getBaseComponentGroup = (): Group => ({
   name: 'Base Components',
   descriptions: [
     {
       name: 'Box',
-      component: <BoxSamples/>,
+      component: <BoxSamples />,
     },
     {
       name: 'Flex',
-      component: <FlexSamples/>,
+      component: <FlexSamples />,
     },
     {
       name: 'Text',
-      component: <TextSamples/>,
+      component: <TextSamples />,
+    },
+    {
+      name: 'Stack',
+      component: <StackSamples />,
     },
   ],
 })
@@ -79,15 +75,15 @@ const getGridPanelGroup = (): Group => ({
   descriptions: [
     {
       name: 'Simple',
-      component: <SimpleGridPanel/>,
+      component: <SimpleGridPanel />,
     },
     {
       name: 'Nested',
-      component: <NestedGridPanel/>,
+      component: <NestedGridPanel />,
     },
     {
       name: 'Explicit width',
-      component: <ExplicitWidthGridPanel/>,
+      component: <ExplicitWidthGridPanel />,
     },
   ],
 })
@@ -97,23 +93,23 @@ const getGridColGroup = (): Group => ({
   descriptions: [
     {
       name: 'Simple',
-      component: <SimpleGridCol/>,
+      component: <SimpleGridCol />,
     },
     {
       name: 'Nested',
-      component: <NestedGridCol/>,
+      component: <NestedGridCol />,
     },
     {
       name: 'Responsive',
-      component: <ResponsiveGridCol/>,
+      component: <ResponsiveGridCol />,
     },
     {
       name: 'Nested - flexible height',
-      component: <NestedGridColFlexibleHeight/>,
+      component: <NestedGridColFlexibleHeight />,
     },
     {
       name: 'Nested - responsive',
-      component: <NestedResponsiveGridCol/>,
+      component: <NestedResponsiveGridCol />,
     },
   ],
 })
@@ -123,20 +119,18 @@ const getFelaGroup = (): Group => ({
   descriptions: [
     {
       name: 'Fela Component',
-      component: <FelaComponentSamples/>,
+      component: <FelaComponentSamples />,
     },
     {
       name: 'useFela React hook',
-      component: <FelaHookSamples/>,
+      component: <FelaHookSamples />,
     },
   ],
 })
 
 class StyleSystemUIExplorer extends React.Component<Props> {
-
   public render() {
     const {theme} = this.props
-
     return (
       <UIExplorer
         colors={getColors(theme)}
@@ -146,7 +140,7 @@ class StyleSystemUIExplorer extends React.Component<Props> {
         headlineFonts={getHeadlineFonts(theme)}
         groups={[getBaseComponentGroup(), getGridColGroup(), getGridPanelGroup(), getFelaGroup()]}
         mountPath=""
-        overviewPanel={<StyleSystemDemoOverview/>}
+        overviewPanel={<StyleSystemDemoOverview />}
         projectName="Indoqa Style-System"
         showFundamentals={true}
         textFonts={getTextFonts(theme)}
