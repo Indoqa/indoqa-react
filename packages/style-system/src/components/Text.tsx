@@ -41,10 +41,10 @@ export function Text<T extends BaseTheme>(props: TextProps<T>) {
     testId,
     innerRef,
     children,
-    ...rest
+    ...styleProps
   } = props
   const {css, theme} = useFela<BaseTheme>()
-  const styles = createResponsiveStyles(rest, createTextCSSStyle, theme)
+  const styles = createResponsiveStyles(styleProps, createTextCSSStyle, theme)
   return React.createElement(
     'span',
     {

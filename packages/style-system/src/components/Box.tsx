@@ -44,10 +44,10 @@ export function Box<T extends BaseTheme>(props: BoxProps<T> & {as?: keyof HTMLEl
     testId,
     innerRef,
     children,
-    ...rest
+    ...styleProps
   } = props
   const {css, theme} = useFela<BaseTheme>()
-  const boxStyles = createResponsiveStyles(rest, createBoxCSSStyle, theme)
+  const boxStyles = createResponsiveStyles(styleProps, createBoxCSSStyle, theme)
   return React.createElement(
     as,
     {
