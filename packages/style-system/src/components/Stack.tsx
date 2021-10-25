@@ -8,12 +8,12 @@ import {ResponsiveProps, Spacing} from './types'
 import {createResponsiveStyles} from './utils'
 
 export interface StackProps extends ResponsiveProps<FlatStackProps> {
-  divider?: JSX.Element | string
+  divider?: JSX.Element
 }
 
 interface FlatStackProps {
   stackDirection: StackDirection
-  spacing: Spacing
+  spacing?: Spacing
 }
 
 export enum StackDirection {
@@ -22,9 +22,10 @@ export enum StackDirection {
 }
 
 function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
-  const {stackDirection, spacing} = props
+  const {stackDirection, spacing = 1} = props
   return {
     flexDirection: stackDirection === StackDirection.VERTICAL ? 'column' : 'row',
+    flexWrap: 'nowrap',
     '& > *:not(:first-child)': {
       marginTop: stackDirection === StackDirection.VERTICAL ? createSpacing(theme, spacing) : 0,
       marginRight: 0,
@@ -34,13 +35,34 @@ function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
   }
 }
 
+function getValidChildren(children: React.ReactNode) {
+  return React.Children.toArray(children).filter((child) => React.isValidElement(child)) as React.ReactElement[]
+}
+
 /**
  * implement the divider
  */
-export const Stack: React.FC<StackProps> = ({children, ...otherProps}) => {
+export const Stack: React.FC<StackProps> = ({children, divider, ...otherProps}) => {
   const {theme} = useFela<BaseTheme>()
   const style = createResponsiveStyles(otherProps, createStackCssStyles, theme)
-  return <Flex style={style}>{children}</Flex>
+
+  const hasDivider = !!divider
+  const validChildren = getValidChildren(children)
+
+  const nextChildren = !hasDivider
+    ? children
+    : validChildren.map((child, index) => {
+        const key = typeof child.key !== 'undefined' ? child.key : index
+        const isLast = index + 1 === validChildren.length
+        const nextDivider = isLast ? null : React.cloneElement(divider)
+        return (
+          <React.Fragment key={key}>
+            {child}
+            {nextDivider}
+          </React.Fragment>
+        )
+      })
+  return <Flex style={style}>{nextChildren}</Flex>
 }
 
 export const VStack: React.FC<Omit<StackProps, 'stackDirection'>> = ({children, ...otherProps}) => {
