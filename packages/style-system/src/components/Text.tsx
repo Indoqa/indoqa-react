@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {useFela} from 'react-fela'
 import {BaseTheme} from '../theming/baseTheme'
 import {
   createFlexChildCSSProps,
@@ -9,11 +9,13 @@ import {
   createPaddingCSSProps,
   createStylingCSSProps,
 } from './base'
-import {BaseProps, HtmlSpanAttributesWithoutStyle, TextProps} from './types'
-import {createResponsiveStyles, mergeThemedStyles} from './utils'
+import {BaseProps, HtmlDivAttributesWithoutStyle, TextBaseProps} from './types'
+import {createResponsiveStyles} from './utils'
+
+export type TextProps<T extends BaseTheme> = TextBaseProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>
 
 function createTextCSSStyle<T extends BaseTheme>(
-  props: TextProps<T>,
+  props: TextBaseProps<T>,
   theme: BaseTheme,
   outsideMediaQuery: boolean
 ): IStyle {
@@ -27,46 +29,23 @@ function createTextCSSStyle<T extends BaseTheme>(
   }
 }
 
-function themedTextStyle<T extends BaseTheme>(props: TextProps<T>): IStyle {
-  return {
-    ...createResponsiveStyles(props, createTextCSSStyle),
-  }
-}
-
-export function Text<T extends BaseTheme>(props: TextProps<T> & BaseProps<T, HtmlSpanAttributesWithoutStyle>) {
-  const {
-    children,
-    style,
-    onClick,
-    onMouseDown,
-    onMouseOut,
-    onMouseOver,
-    onScroll,
-    htmlAttrs,
-    testId,
-    innerRef,
-    ...rest
-  } = props
-  const styles = mergeThemedStyles<T, TextProps<T>>(themedTextStyle, style)
-  return (
-    <FelaComponent<T, TextProps<T>> style={styles} {...rest}>
-      {({className}) =>
-        React.createElement(
-          'span',
-          {
-            className,
-            'data-testid': testId,
-            onClick,
-            onMouseDown,
-            onMouseOut,
-            onMouseOver,
-            onScroll,
-            ...htmlAttrs,
-            ref: innerRef,
-          },
-          children
-        )
-      }
-    </FelaComponent>
+export function Text<T extends BaseTheme>(props: TextProps<T>) {
+  const {style, onClick, onMouseDown, onMouseOut, onMouseOver, onScroll, htmlAttrs, testId, innerRef, children} = props
+  const {css, theme} = useFela<BaseTheme>()
+  const styles = createResponsiveStyles(props, createTextCSSStyle, theme)
+  return React.createElement(
+    'span',
+    {
+      className: css([styles, style as IStyle]),
+      'data-testid': testId,
+      onClick,
+      onMouseDown,
+      onMouseOut,
+      onMouseOver,
+      onScroll,
+      ...htmlAttrs,
+      ref: innerRef,
+    },
+    children
   )
 }

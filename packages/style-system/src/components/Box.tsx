@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {useFela} from 'react-fela'
 
 import {BaseTheme} from '../theming/baseTheme'
 import {
@@ -11,8 +11,10 @@ import {
   createPaddingCSSProps,
   createStylingCSSProps,
 } from './base'
-import {BaseProps, BoxProps, FlatBoxProps, HtmlDivAttributesWithoutStyle} from './types'
-import {createResponsiveStyles, mergeThemedStyles} from './utils'
+import {BaseProps, BoxBaseProps, FlatBoxProps, HtmlDivAttributesWithoutStyle} from './types'
+import {createResponsiveStyles} from './utils'
+
+export type BoxProps<T extends BaseTheme> = BoxBaseProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>
 
 export function createBoxCSSStyle<T extends BaseTheme>(
   props: FlatBoxProps<T>,
@@ -29,15 +31,9 @@ export function createBoxCSSStyle<T extends BaseTheme>(
   }
 }
 
-function themedBoxStyles<T extends BaseTheme>(props: BoxProps<T>): IStyle {
-  return {
-    ...createResponsiveStyles(props, createBoxCSSStyle),
-  }
-}
-
-function renderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>, as: string) {
+export function Box<T extends BaseTheme>(props: BoxProps<T> & {as?: keyof HTMLElementTagNameMap}) {
   const {
-    children,
+    as = 'div',
     style,
     onClick,
     onMouseDown,
@@ -47,64 +43,55 @@ function renderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDi
     htmlAttrs,
     testId,
     innerRef,
-    ...rest
+    children,
   } = props
-  const styles = mergeThemedStyles<T, BoxProps<T>>(themedBoxStyles, style)
-  return (
-    <FelaComponent<T, BoxProps<T>> style={styles} {...rest}>
-      {({className}) =>
-        React.createElement(
-          as,
-          {
-            className,
-            'data-testid': testId,
-            onClick,
-            onMouseDown,
-            onMouseOut,
-            onMouseOver,
-            onScroll,
-            ...htmlAttrs,
-            ref: innerRef,
-          },
-          children
-        )
-      }
-    </FelaComponent>
+  const {css, theme} = useFela<BaseTheme>()
+  const boxStyles = createResponsiveStyles(props, createBoxCSSStyle, theme)
+  return React.createElement(
+    as,
+    {
+      className: css([boxStyles, style as IStyle]),
+      'data-testid': testId,
+      onClick,
+      onMouseDown,
+      onMouseOut,
+      onMouseOver,
+      onScroll,
+      ...htmlAttrs,
+      ref: innerRef,
+    },
+    children
   )
 }
 
-export function Box<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'div')
+export function HeaderBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="header" {...props} />
 }
 
-export function HeaderBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'header')
+export function NavBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="nav" {...props} />
 }
 
-export function NavBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'nav')
+export function SectionBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="section" {...props} />
 }
 
-export function SectionBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'section')
+export function ArticleBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="article" {...props} />
 }
 
-export function ArticleBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'article')
+export function AsideBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="aside" {...props} />
 }
 
-export function AsideBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'aside')
+export function FooterBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="footer" {...props} />
 }
 
-export function FooterBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'footer')
+export function FigCaptionBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="figcaption" {...props} />
 }
 
-export function FigCaptionBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'figcaption')
-}
-
-export function FigureBox<T extends BaseTheme>(props: BoxProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderBox(props, 'figure')
+export function FigureBox<T extends BaseTheme>(props: BoxProps<T>) {
+  return <Box as="figure" {...props} />
 }

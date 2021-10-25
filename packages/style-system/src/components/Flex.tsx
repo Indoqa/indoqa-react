@@ -1,17 +1,15 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {useFela} from 'react-fela'
 
 import {BaseTheme} from '../theming/baseTheme'
 import {createBoxCSSStyle} from './Box'
-import {BaseProps, BoxProps, FlatBoxProps, FlexContainerProps, FlexProps, HtmlDivAttributesWithoutStyle} from './types'
-import {createResponsiveStyles, mergeThemedStyles} from './utils'
+import {BaseProps, FlatBoxProps, FlexBaseProps, FlexContainerProps, HtmlDivAttributesWithoutStyle} from './types'
+import {createResponsiveStyles} from './utils'
 
-export const createFlexContainerCSSStyle = <T extends BaseTheme>(
-  props: FlexContainerProps,
-  theme: T,
-  outsideMediaQuery: boolean
-): IStyle => {
+export type FlexProps<T extends BaseTheme> = FlexBaseProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>
+
+export const createFlexContainerCSSStyle = (props: FlexContainerProps): IStyle => {
   const {inline, direction, nowrap, center, justifyContent, alignItems} = props
   const styles: IStyle = {}
 
@@ -58,22 +56,13 @@ function createFlexCSSStyle<T extends BaseTheme>(
 ): IStyle {
   return {
     ...createBoxCSSStyle(props, theme, outsideMediaQuery),
-    ...createFlexContainerCSSStyle(props, theme, outsideMediaQuery),
+    ...createFlexContainerCSSStyle(props),
   }
 }
 
-function themedFlexStyles<T extends BaseTheme>(props: FlexProps<T>): IStyle {
-  return {
-    ...createResponsiveStyles(props, createFlexCSSStyle),
-  }
-}
-
-function renderFlex<T extends BaseTheme>(
-  props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>,
-  as: string
-) {
+export function Flex<T extends BaseTheme>(props: FlexProps<T> & {as?: keyof HTMLElementTagNameMap}) {
   const {
-    children,
+    as = 'div',
     style,
     onClick,
     onMouseDown,
@@ -81,66 +70,57 @@ function renderFlex<T extends BaseTheme>(
     onMouseOver,
     onScroll,
     htmlAttrs,
-    innerRef,
     testId,
-    ...rest
+    innerRef,
+    children,
   } = props
-  const styles = mergeThemedStyles<T, BoxProps<T>>(themedFlexStyles, style)
-  return (
-    <FelaComponent<T, FlexProps<T>> style={styles} {...rest}>
-      {({className}) =>
-        React.createElement(
-          as,
-          {
-            className,
-            'data-testid': testId,
-            onClick,
-            onMouseDown,
-            onMouseOut,
-            onMouseOver,
-            onScroll,
-            ...htmlAttrs,
-            ref: innerRef,
-          },
-          children
-        )
-      }
-    </FelaComponent>
+  const {css, theme} = useFela<BaseTheme>()
+  const boxStyles = createResponsiveStyles(props, createFlexCSSStyle, theme)
+  return React.createElement(
+    as,
+    {
+      className: css([boxStyles, style as IStyle]),
+      'data-testid': testId,
+      onClick,
+      onMouseDown,
+      onMouseOut,
+      onMouseOver,
+      onScroll,
+      ...htmlAttrs,
+      ref: innerRef,
+    },
+    children
   )
 }
 
-export function Flex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'div')
+export function HeaderFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="header" {...props} />
 }
 
-export function HeaderFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'header')
+export function NavFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="nav" {...props} />
 }
 
-export function NavFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'nav')
+export function SectionFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="section" {...props} />
 }
 
-export function SectionFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'section')
+export function ArticleFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="article" {...props} />
 }
 
-export function ArticleFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'article')
+export function AsideFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="aside" {...props} />
 }
 
-export function AsideFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'aside')
+export function FooterFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="footer" {...props} />
 }
 
-export function FooterFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'footer')
+export function FigCaptionFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="figcaption" {...props} />
 }
 
-export function FigCaptionFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'figcaption')
-}
-
-export function FigureFlex<T extends BaseTheme>(props: FlexProps<T> & BaseProps<T, HtmlDivAttributesWithoutStyle>) {
-  return renderFlex(props, 'figure')
+export function FigureFlex<T extends BaseTheme>(props: FlexProps<T>) {
+  return <Flex as="figure" {...props} />
 }

@@ -1,7 +1,7 @@
-import {BaseTheme} from '../theming/baseTheme'
 import * as React from 'react'
 import {MouseEventHandler, ReactNode, UIEventHandler} from 'react'
 import {FelaStyle} from 'react-fela'
+import {BaseTheme} from '../theming/baseTheme'
 
 export type ResponsiveProps<T> = {
   [P in keyof T]: T[P] | Array<T[P]>
@@ -15,7 +15,7 @@ export interface FlatBoxProps<T extends BaseTheme>
     StylingProps<T>,
     BoxModelProps {}
 
-export interface BoxProps<T extends BaseTheme>
+export interface BoxBaseProps<T extends BaseTheme>
   extends ResponsiveProps<MarginProps>,
     ResponsiveProps<PaddingProps>,
     ResponsiveProps<FlexChildProps>,
@@ -25,9 +25,9 @@ export interface BoxProps<T extends BaseTheme>
   innerRef?: React.RefObject<HTMLDivElement>
 }
 
-export interface FlexProps<T extends BaseTheme> extends BoxProps<T>, ResponsiveProps<FlexContainerProps> {}
+export interface FlexBaseProps<T extends BaseTheme> extends BoxBaseProps<T>, ResponsiveProps<FlexContainerProps> {}
 
-export interface TextProps<T extends BaseTheme>
+export interface TextBaseProps<T extends BaseTheme>
   extends MarginProps,
     PaddingProps,
     FlexChildProps,
@@ -171,6 +171,5 @@ export type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'in
 export type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 export type Spacing = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 export type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 export type HtmlDivAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>
 export type HtmlSpanAttributesWithoutStyle = Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'>
