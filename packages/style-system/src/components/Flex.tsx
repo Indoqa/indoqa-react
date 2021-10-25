@@ -73,9 +73,10 @@ export function Flex<T extends BaseTheme>(props: FlexProps<T> & {as?: keyof HTML
     testId,
     innerRef,
     children,
+    ...rest
   } = props
   const {css, theme} = useFela<BaseTheme>()
-  const boxStyles = createResponsiveStyles(props, createFlexCSSStyle, theme)
+  const boxStyles = createResponsiveStyles(rest, createFlexCSSStyle, theme)
   return React.createElement(
     as,
     {

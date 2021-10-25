@@ -30,9 +30,21 @@ function createTextCSSStyle<T extends BaseTheme>(
 }
 
 export function Text<T extends BaseTheme>(props: TextProps<T>) {
-  const {style, onClick, onMouseDown, onMouseOut, onMouseOver, onScroll, htmlAttrs, testId, innerRef, children} = props
+  const {
+    style,
+    onClick,
+    onMouseDown,
+    onMouseOut,
+    onMouseOver,
+    onScroll,
+    htmlAttrs,
+    testId,
+    innerRef,
+    children,
+    ...rest
+  } = props
   const {css, theme} = useFela<BaseTheme>()
-  const styles = createResponsiveStyles(props, createTextCSSStyle, theme)
+  const styles = createResponsiveStyles(rest, createTextCSSStyle, theme)
   return React.createElement(
     'span',
     {
