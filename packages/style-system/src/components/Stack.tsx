@@ -30,7 +30,8 @@ function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
     flexWrap: 'nowrap',
     alignItems,
     justifyContent,
-    height: justifyContent !== undefined ? '100%' : undefined,
+    height: justifyContent !== undefined && StackDirection.VERTICAL ? '100%' : undefined,
+    width: justifyContent !== undefined && StackDirection.HORIZONTAL ? '100%' : undefined,
     '& > *:not(:first-child)': {
       marginTop: stackDirection === StackDirection.VERTICAL ? createSpacing(theme, spacing) : 0,
       marginRight: 0,
