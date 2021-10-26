@@ -4,7 +4,7 @@ import {useFela} from 'react-fela'
 import {BaseTheme} from '../theming/baseTheme'
 import {createSpacing} from './base'
 import {Flex} from './Flex'
-import {AlignItems, ResponsiveProps, Spacing} from './types'
+import {AlignItems, JustifyContent, ResponsiveProps, Spacing} from './types'
 import {createResponsiveStyles} from './utils'
 
 export interface StackProps extends ResponsiveProps<FlatStackProps> {
@@ -14,7 +14,8 @@ export interface StackProps extends ResponsiveProps<FlatStackProps> {
 interface FlatStackProps {
   stackDirection: StackDirection
   spacing?: Spacing
-  align?: AlignItems
+  alignItems?: AlignItems
+  justifyContent?: JustifyContent
 }
 
 export enum StackDirection {
@@ -23,11 +24,13 @@ export enum StackDirection {
 }
 
 function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
-  const {stackDirection, align, spacing = 1} = props
+  const {stackDirection, alignItems, justifyContent, spacing = 1} = props
   return {
     flexDirection: stackDirection === StackDirection.VERTICAL ? 'column' : 'row',
     flexWrap: 'nowrap',
-    alignItems: align,
+    alignItems,
+    justifyContent,
+    height: justifyContent !== undefined ? '100%' : undefined,
     '& > *:not(:first-child)': {
       marginTop: stackDirection === StackDirection.VERTICAL ? createSpacing(theme, spacing) : 0,
       marginRight: 0,

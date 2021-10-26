@@ -56,7 +56,7 @@ export const sample8 = `<Stack spacing={[1, 8]} stackDirection={[StackDirection.
   </Flex>
 </Stack>`
 
-export const sample9 = `<VStack spacing={2} align="center">
+export const sample9 = `<VStack spacing={2} alignItems="center" justifyContent="center">
   <Flex center width={40} height={40} bg="yellow">
     1
   </Flex>

@@ -1,6 +1,6 @@
 import {Box, Flex, HStack, Stack, StackDirection, Text, VStack} from '@indoqa/style-system'
 import Code from '../code/Code'
-import {sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8} from './StackSamplesCode'
+import {sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8, sample9} from './StackSamplesCode'
 
 export const StackSamples = () => {
   return (
@@ -122,20 +122,18 @@ export const StackSamples = () => {
         <Code initialShow>{sample8}</Code>
       </Box>
       <Box mb={6}>
-        <h3>VStack (block elements, alignItems=center)</h3>
-        <Box bg="blue">
-          <div>
-            <VStack spacing={2} align="center">
-              <Flex center width={40} height={40} bg="yellow">
-                1
-              </Flex>
-              <Flex center width={40} height={40} bg="yellow">
-                2
-              </Flex>
-            </VStack>
-          </div>
+        <h3>VStack (block elements, alignItems=center, justifyContent=center)</h3>
+        <Box bg="blue" height={150}>
+          <VStack spacing={2} alignItems="center" justifyContent="center">
+            <Flex center width={40} height={40} bg="yellow">
+              1
+            </Flex>
+            <Flex center width={40} height={40} bg="yellow">
+              2
+            </Flex>
+          </VStack>
         </Box>
-        <Code initialShow>{sample5}</Code>
+        <Code initialShow>{sample9}</Code>
       </Box>
     </>
   )
