@@ -33,7 +33,7 @@ export const sample5 = `<VStack spacing={2}>
   </Flex>
 </VStack>`
 
-export const sample6 = `VStack spacing={2} divider={<Box style={{borderTop: '1px solid yellow'}} />}>
+export const sample6 = `<VStack spacing={2} divider={<Box style={{borderTop: '1px solid yellow'}} />}>
   <Flex center width={40} height={40} bg="yellow">
     1
   </Flex>
@@ -55,3 +55,12 @@ export const sample8 = `<Stack spacing={[1, 8]} stackDirection={[StackDirection.
     2
   </Flex>
 </Stack>`
+
+export const sample9 = `<VStack spacing={2} align="center">
+  <Flex center width={40} height={40} bg="yellow">
+    1
+  </Flex>
+  <Flex center width={40} height={40} bg="yellow">
+    2
+  </Flex>
+</VStack>`

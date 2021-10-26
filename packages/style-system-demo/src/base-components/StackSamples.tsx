@@ -121,6 +121,22 @@ export const StackSamples = () => {
         </Box>
         <Code initialShow>{sample8}</Code>
       </Box>
+      <Box mb={6}>
+        <h3>VStack (block elements, alignItems=center)</h3>
+        <Box bg="blue">
+          <div>
+            <VStack spacing={2} align="center">
+              <Flex center width={40} height={40} bg="yellow">
+                1
+              </Flex>
+              <Flex center width={40} height={40} bg="yellow">
+                2
+              </Flex>
+            </VStack>
+          </div>
+        </Box>
+        <Code initialShow>{sample5}</Code>
+      </Box>
     </>
   )
 }
