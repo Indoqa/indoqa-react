@@ -1,6 +1,6 @@
 {
   "name": "@indoqa/style-system-demo",
-  "version": "2.0.0-alpha.7",
+  "version": "2.0.0-alpha.8",
   "description": "A demo for the Indoqa Style-System theming support and base components.",
   "license": "Apache-2.0",
   "files": [
@@ -31,8 +31,8 @@
     "demo"
   ],
   "dependencies": {
-    "@indoqa/style-system": "^2.0.0-alpha.7",
-    "@indoqa/ui-explorer": "^2.0.0-alpha.7",
+    "@indoqa/style-system": "^2.0.0-alpha.8",
+    "@indoqa/ui-explorer": "^2.0.0-alpha.8",
     "fela": "^11.6.1",
     "fela-monolithic": "^11.6.1",
     "fela-plugin-named-keys": "^11.6.1",
