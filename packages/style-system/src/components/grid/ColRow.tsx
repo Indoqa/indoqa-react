@@ -5,24 +5,24 @@ import {BaseTheme} from '../../theming/baseTheme'
 import {NamedBreakPoint, sortBreakpoints} from '../../theming/sortBreakpoints'
 import {createPaddingCSSProps, createStylingCSSProps} from '../base'
 import {PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
-import {addUnitIfNeeded, createResponsiveStyles, mergeThemedStyles} from '../utils'
+import {addUnitIfNeeded, createResponsiveStyles, getValidChildren, mergeThemedStyles} from '../utils'
 import {GRID_SIZE, Size} from './Col'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>,
-  ResponsiveProps<PaddingProps>,
-  ResponsiveProps<StylingProps<T>> {
-  testId?: string,
-  innerRef?: React.RefObject<HTMLDivElement>,
+interface Props<T extends BaseTheme>
+  extends WithStyle<T>,
+    ResponsiveProps<PaddingProps>,
+    ResponsiveProps<StylingProps<T>> {
+  testId?: string
+  innerRef?: React.RefObject<HTMLDivElement>
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
-  spacing?: string | number,
+  spacing?: string | number
 }
 
-interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, WithBaseTheme {
-}
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, WithBaseTheme {}
 
 const calcWidthValue = (size: number, spacing?: string | number): string => {
   const spacingWithUnit = addUnitIfNeeded(spacing)
@@ -37,7 +37,7 @@ const getEnhancedColStyles = (
   size: number,
   willBreakAfter: boolean,
   needsMarginTop: boolean,
-  spacing?: string | number,
+  spacing?: string | number
 ) => {
   const style = {
     width: calcWidthValue(size, spacing),
@@ -87,7 +87,7 @@ const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, 
   const rowsCount = initializeArray(breakpoints.length + 1)
 
   // see https://mxstbr.blog/2017/02/react-children-deepdive/#looping-over-children
-  return React.Children.map(children, (child) => {
+  return React.Children.map(getValidChildren(children), (child) => {
     const currentChild = child as any
     const sizes = toSizeArray(currentChild.props.size)
     if (!validateSizes(sizes.length, breakpoints.length, child)) {
@@ -120,11 +120,11 @@ const rewriteCols = (breakpoints: NamedBreakPoint[], children: React.ReactNode, 
         sizes[i],
         completelyFillsRow,
         needsMarginTop,
-        spacing,
+        spacing
       )
       Object.assign(enhancedColStyles, enhancedColStyle)
     }
-    return React.cloneElement((currentChild), {style: mergeStyles(enhancedColStyles, style)})
+    return React.cloneElement(currentChild, {style: mergeStyles(enhancedColStyles, style)})
   })
 }
 
@@ -136,7 +136,6 @@ function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: 
 }
 
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>, unknown> {
-
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
     const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): IStyle => ({
@@ -166,7 +165,6 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
 }
 
 export class ColRow<T extends BaseTheme> extends React.Component<Props<T>, unknown> {
-
   public render() {
     return (
       <GridContext.Consumer>

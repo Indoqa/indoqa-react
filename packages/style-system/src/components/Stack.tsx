@@ -5,7 +5,7 @@ import {BaseTheme} from '../theming/baseTheme'
 import {createSpacing} from './base'
 import {Flex} from './Flex'
 import {AlignItems, JustifyContent, ResponsiveProps, Spacing} from './types'
-import {createResponsiveStyles} from './utils'
+import {createResponsiveStyles, getValidChildren} from './utils'
 
 export interface StackProps extends ResponsiveProps<FlatStackProps> {
   divider?: JSX.Element
@@ -39,10 +39,6 @@ function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
       marginLeft: stackDirection === StackDirection.HORIZONTAL ? createSpacing(theme, spacing) : 0,
     },
   }
-}
-
-function getValidChildren(children: React.ReactNode) {
-  return React.Children.toArray(children).filter((child) => React.isValidElement(child)) as React.ReactElement[]
 }
 
 /**

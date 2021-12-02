@@ -1,4 +1,5 @@
 import {IStyle} from 'fela'
+import * as React from 'react'
 import {FelaStyle, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../theming/baseTheme'
 import {NamedBreakPoint, sortBreakpoints} from '../theming/sortBreakpoints'
@@ -100,4 +101,8 @@ export function mergeThemedStyles<T extends BaseTheme, P>(
   }
 
   return [componentStyle, passedStyle]
+}
+
+export function getValidChildren(children: React.ReactNode) {
+  return React.Children.toArray(children).filter((child) => React.isValidElement(child)) as React.ReactElement[]
 }
