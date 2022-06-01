@@ -135,7 +135,10 @@ function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: 
   }
 }
 
-class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>, unknown> {
+class RowContainer<T extends BaseTheme> extends React.Component<
+  React.PropsWithChildren<RowContainerProps<T>>,
+  unknown
+> {
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
     const rowStyle: StyleFunction<T, RowContainerProps<T>> = ({style, spacing, ...otherProps}): IStyle => ({
@@ -164,7 +167,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
   }
 }
 
-export class ColRow<T extends BaseTheme> extends React.Component<Props<T>, unknown> {
+export class ColRow<T extends BaseTheme> extends React.Component<React.PropsWithChildren<Props<T>>, unknown> {
   public render() {
     return (
       <GridContext.Consumer>

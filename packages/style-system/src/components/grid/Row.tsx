@@ -11,21 +11,17 @@ import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps<T> {
-  height?: number | string,
-  minHeight?: number | string,
-  testId?: string,
-  innerRef?: React.RefObject<HTMLDivElement>,
+  height?: number | string
+  minHeight?: number | string
+  testId?: string
+  innerRef?: React.RefObject<HTMLDivElement>
 }
 
 interface RowContainerProps<T extends BaseTheme> extends Props<T> {
-  spacing?: number | string,
+  spacing?: number | string
 }
 
-interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
-  StylingProps<T>,
-  FontProps<T>,
-  WithBaseTheme {
-}
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, FontProps<T>, WithBaseTheme {}
 
 function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme): IStyle {
   return {
@@ -34,12 +30,12 @@ function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: 
   }
 }
 
-class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
-
+class RowContainer<T extends BaseTheme> extends React.Component<React.PropsWithChildren<RowContainerProps<T>>> {
   public render() {
     const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = (
       // tslint:disable-next-line:no-shadowed-variable
-      {style, minHeight, spacing, height, ...otherProps}): IStyle => ({
+      {style, minHeight, spacing, height, ...otherProps}
+    ): IStyle => ({
       ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
       display: 'flex',
@@ -72,8 +68,7 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
   }
 }
 
-export class Row<T extends BaseTheme> extends React.Component<Props<T>> {
-
+export class Row<T extends BaseTheme> extends React.Component<React.PropsWithChildren<Props<T>>> {
   public static defaultProps = {
     height: 'auto',
     minHeight: 'auto',
