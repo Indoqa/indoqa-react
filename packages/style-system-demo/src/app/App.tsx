@@ -45,7 +45,7 @@ const App: React.FC = () => {
       <Router>
         <ThemeProvider theme={theme}>
           <Routes>
-            <Route path="/" element={<StyleSystemUIExplorer theme={theme} />} />
+            <Route path="/*" element={<StyleSystemUIExplorer theme={theme} />} />
           </Routes>
         </ThemeProvider>
       </Router>

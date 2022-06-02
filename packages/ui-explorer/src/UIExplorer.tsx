@@ -2,7 +2,7 @@ import {BaseTheme, Box, Grid, Panel, Row} from '@indoqa/style-system'
 import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, useFela} from 'react-fela'
-import {Route, useLocation} from 'react-router'
+import {Route, Routes, useLocation} from 'react-router'
 
 import {ColorsPanel} from './colors/ColorsPanel'
 import ContentHeader from './layout/ContentHeader'
@@ -105,7 +105,7 @@ const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
 }
 
 const createComponentRoute = (name: string, component: React.ReactNode, mountPath: string, uieTheme: UIETheme) => {
-  const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}`
+  const componentMountPath = `${cleanUrlPathPart(name)}`
   return (
     <Route
       key={componentMountPath}
@@ -123,7 +123,7 @@ const createMenuGroups = (groups: Group[], mountPath: string) => {
   return groups.map((componentDescription) => {
     const {name, descriptions} = componentDescription
     const menuItems = descriptions.map((description) => {
-      const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}/${cleanUrlPathPart(description.name)}`
+      const componentMountPath = `${cleanUrlPathPart(name)}/${cleanUrlPathPart(description.name)}`
       return (
         <MenuItem key={componentMountPath} to={componentMountPath}>
           {description.name}
@@ -248,43 +248,45 @@ export const UIExplorer = ({
           </Panel>
           <Panel style={{minHeight: '100vh'}}>
             <ContentPanel>
-              <Route
-                path={`${mountPath}/`}
-                element={
-                  <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
-                    {overviewPanel || (
-                      <OverviewPanel
-                        colors={colors}
+              <Routes>
+                <Route
+                  path={'/'}
+                  element={
+                    <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
+                      {overviewPanel || (
+                        <OverviewPanel
+                          colors={colors}
+                          fontMixes={fontMixes}
+                          fontSizes={fontSizes}
+                          textFontSize={textFontSize}
+                        />
+                      )}
+                    </InnerContentPanel>
+                  }
+                />
+                <Route
+                  path={'colors'}
+                  element={
+                    <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
+                      <ColorsPanel colors={colors} />
+                    </InnerContentPanel>
+                  }
+                />
+                <Route
+                  path={`typography`}
+                  element={
+                    <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
+                      <TypographyPanel
+                        textFonts={textFonts}
+                        headlineFonts={headlineFonts}
                         fontMixes={fontMixes}
                         fontSizes={fontSizes}
                         textFontSize={textFontSize}
                       />
-                    )}
-                  </InnerContentPanel>
-                }
-              />
-              <Route
-                path={`${mountPath}/colors`}
-                element={
-                  <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
-                    <ColorsPanel colors={colors} />
-                  </InnerContentPanel>
-                }
-              />
-              <Route
-                path={`${mountPath}/typography`}
-                element={
-                  <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
-                    <TypographyPanel
-                      textFonts={textFonts}
-                      headlineFonts={headlineFonts}
-                      fontMixes={fontMixes}
-                      fontSizes={fontSizes}
-                      textFontSize={textFontSize}
-                    />
-                  </InnerContentPanel>
-                }
-              />
+                    </InnerContentPanel>
+                  }
+                />
+              </Routes>
               {createGroupsRoutes(groups, mountPath, localUieTheme)}
             </ContentPanel>
           </Panel>
