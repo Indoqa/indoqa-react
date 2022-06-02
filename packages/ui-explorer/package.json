@@ -39,7 +39,7 @@
     "fela": "^12.1.2",
     "react": "^18.1.0",
     "react-fela": "^12.1.2",
-    "react-router": "6.3.0",
-    "react-router-dom": "6.3.0"
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   }
 }

@@ -109,13 +109,12 @@ const createComponentRoute = (name: string, component: React.ReactNode, mountPat
   return (
     <Route
       key={componentMountPath}
-      exact
       path={componentMountPath}
-      render={() => (
+      element={
         <InnerContentPanel name={name} uieTheme={uieTheme}>
           {component}
         </InnerContentPanel>
-      )}
+      }
     />
   )
 }
@@ -250,9 +249,8 @@ export const UIExplorer = ({
           <Panel style={{minHeight: '100vh'}}>
             <ContentPanel>
               <Route
-                exact
                 path={`${mountPath}/`}
-                render={() => (
+                element={
                   <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
                     {overviewPanel || (
                       <OverviewPanel
@@ -263,21 +261,19 @@ export const UIExplorer = ({
                       />
                     )}
                   </InnerContentPanel>
-                )}
+                }
               />
               <Route
-                exact
                 path={`${mountPath}/colors`}
-                render={() => (
+                element={
                   <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
                     <ColorsPanel colors={colors} />
                   </InnerContentPanel>
-                )}
+                }
               />
               <Route
-                exact
                 path={`${mountPath}/typography`}
-                render={() => (
+                element={
                   <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
                     <TypographyPanel
                       textFonts={textFonts}
@@ -287,7 +283,7 @@ export const UIExplorer = ({
                       textFontSize={textFontSize}
                     />
                   </InnerContentPanel>
-                )}
+                }
               />
               {createGroupsRoutes(groups, mountPath, localUieTheme)}
             </ContentPanel>
