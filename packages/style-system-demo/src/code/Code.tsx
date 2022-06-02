@@ -1,6 +1,6 @@
 import {Box} from '@indoqa/style-system'
 import * as React from 'react'
-import SyntaxHighlighter from 'react-syntax-highlighter'
+//import SyntaxHighlighter from 'react-syntax-highlighter'
 
 interface Props {
   initialShow?: boolean
@@ -27,7 +27,8 @@ const Code: React.FC<React.PropsWithChildren<Props>> = ({
           </a>
         </Box>
       )}
-      {show && (
+      {show && children}
+      {/*show && (
         <SyntaxHighlighter
           showLineNumbers={showLineNumbers}
           language={language || 'xml'}
@@ -35,7 +36,7 @@ const Code: React.FC<React.PropsWithChildren<Props>> = ({
         >
           {children}
         </SyntaxHighlighter>
-      )}
+      )*/}
     </Box>
   )
 }
