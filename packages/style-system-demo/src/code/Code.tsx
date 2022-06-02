@@ -9,7 +9,13 @@ interface Props {
   language?: string
 }
 
-const Code: React.FC<Props> = ({initialShow, showToggle = true, showLineNumbers = true, language, children}) => {
+const Code: React.FC<React.PropsWithChildren<Props>> = ({
+  initialShow,
+  showToggle = true,
+  showLineNumbers = true,
+  language,
+  children,
+}) => {
   const [show, setShow] = React.useState(initialShow)
   return (
     <Box mt={1}>

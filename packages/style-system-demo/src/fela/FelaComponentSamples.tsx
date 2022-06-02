@@ -19,7 +19,7 @@ const StyledDiv: React.FC = () => {
   return <FelaComponent style={style} />
 }
 
-const StyledElementWithChildren: React.FC = ({children}) => {
+const StyledElementWithChildren: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const style: IStyle = {
     color: 'red',
   }
@@ -30,7 +30,7 @@ const StyledElementWithChildren: React.FC = ({children}) => {
   )
 }
 
-const ThemedElementWithChildren: React.FC = ({children}) => {
+const ThemedElementWithChildren: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     backgroundColor: theme.colors.primary,
     color: 'white',
@@ -52,7 +52,7 @@ interface Props {
   onClick: () => void
 }
 
-const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
+const ThemedElementWithChildrenAndProps: React.FC<React.PropsWithChildren<Props>> = ({onClick, children}) => {
   const style: StyleFunction<Theme> = ({theme}): IStyle => ({
     backgroundColor: theme.colors.primary,
     color: 'white',

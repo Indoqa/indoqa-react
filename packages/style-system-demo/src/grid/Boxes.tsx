@@ -27,7 +27,7 @@ const bgBoxStyle = (boxBackground: string, width: number | string, height: numbe
   }
 }
 
-const OrangeBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+const OrangeBox: React.FC<React.PropsWithChildren<Props>> = ({width = '100%', height = '75px', children}) => {
   return (
     <Box p={1} style={bgBoxStyle('orange', width, height)}>
       {children}
@@ -35,7 +35,7 @@ const OrangeBox: React.FC<Props> = ({width = '100%', height = '75px', children})
   )
 }
 
-const YellowBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+const YellowBox: React.FC<React.PropsWithChildren<Props>> = ({width = '100%', height = '75px', children}) => {
   return (
     <Box p={1} style={bgBoxStyle('yellow', width, height)}>
       {children}
@@ -43,7 +43,7 @@ const YellowBox: React.FC<Props> = ({width = '100%', height = '75px', children})
   )
 }
 
-const BlueBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+const BlueBox: React.FC<React.PropsWithChildren<Props>> = ({width = '100%', height = '75px', children}) => {
   return (
     <Box p={1} style={bgBoxStyle('blue', width, height)}>
       {children}
@@ -51,7 +51,7 @@ const BlueBox: React.FC<Props> = ({width = '100%', height = '75px', children}) =
   )
 }
 
-const RedBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+const RedBox: React.FC<React.PropsWithChildren<Props>> = ({width = '100%', height = '75px', children}) => {
   return (
     <Box p={1} style={bgBoxStyle('red', width, height)}>
       {children}
@@ -59,7 +59,7 @@ const RedBox: React.FC<Props> = ({width = '100%', height = '75px', children}) =>
   )
 }
 
-const BlueFlexBox: React.FC<Props> = ({width = '100%', height = '75px', children}) => {
+const BlueFlexBox: React.FC<React.PropsWithChildren<Props>> = ({width = '100%', height = '75px', children}) => {
   return (
     <Flex p={2} style={bgBoxStyle('blue', width, height)} justifyContent="space-between">
       {children}
@@ -67,7 +67,7 @@ const BlueFlexBox: React.FC<Props> = ({width = '100%', height = '75px', children
   )
 }
 
-const UnsetHeightBox: React.FC<Props> = ({width = '100%', height = '100%', children}) => {
+const UnsetHeightBox: React.FC<React.PropsWithChildren<Props>> = ({width = '100%', height = '100%', children}) => {
   return (
     <Box p={1} style={bgBoxStyle('yellow', width, height)}>
       {children}
