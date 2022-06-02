@@ -3,7 +3,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 
-const ContentHeader: React.FC<WithUIETheme> = ({children, uieTheme}) => {
+const ContentHeader: React.FC<React.PropsWithChildren<WithUIETheme>> = ({children, uieTheme}) => {
   const style: IStyle = {
     boxSizing: 'border-box',
     height: uieTheme.layout.topMenuHeight,

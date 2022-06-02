@@ -4,7 +4,7 @@ import * as React from 'react'
 import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 import {scrollbarStyles} from './scrollbarStyles'
 
-const ContentPanel: React.FC<WithUIETheme> = ({children, uieTheme}) => {
+const ContentPanel: React.FC<React.PropsWithChildren<WithUIETheme>> = ({children, uieTheme}) => {
   const style: IStyle = {
     boxSizing: 'border-box',
     backgroundColor: uieTheme.colors.bgContent,

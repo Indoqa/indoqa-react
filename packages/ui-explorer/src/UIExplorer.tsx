@@ -46,7 +46,7 @@ interface InnerContentPanelProps extends WithUIETheme {
   name: string
 }
 
-const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, children}) => {
+const InnerContentPanel: React.FC<React.PropsWithChildren<InnerContentPanelProps>> = ({name, uieTheme, children}) => {
   const style: IStyle = {
     paddingTop: uieTheme.spacing.space4,
     paddingRight: uieTheme.spacing.space4,
@@ -66,7 +66,11 @@ interface InnerStyleGuideMenuProps {
   uieTheme: UIETheme
 }
 
-const InnerStyleGuideMenu: React.FC<InnerStyleGuideMenuProps> = ({show, uieTheme, children}) => {
+const InnerStyleGuideMenu: React.FC<React.PropsWithChildren<InnerStyleGuideMenuProps>> = ({
+  show,
+  uieTheme,
+  children,
+}) => {
   const style: IStyle = {
     paddingBottom: uieTheme.spacing.space2,
     display: show ? 'block' : 'none',

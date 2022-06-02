@@ -8,7 +8,7 @@ interface Props extends WithUIETheme {
   name?: string
 }
 
-const List: React.FC = ({children}) => {
+const List: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const style: IStyle = {
     listStyle: 'none',
     margin: 0,
@@ -21,7 +21,7 @@ const List: React.FC = ({children}) => {
   )
 }
 
-const MenuGroup: React.FC<Props> = ({uieTheme, name, children}) => {
+const MenuGroup: React.FC<React.PropsWithChildren<Props>> = ({uieTheme, name, children}) => {
   const style: IStyle = {
     paddingLeft: uieTheme.spacing.space4,
     paddingBottom: uieTheme.spacing.space3,

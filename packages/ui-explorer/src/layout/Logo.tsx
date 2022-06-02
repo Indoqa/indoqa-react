@@ -10,7 +10,7 @@ interface Props extends WithUIETheme {
   to: string
 }
 
-const Logo: React.FC<Props> = ({uieTheme, to, children}) => {
+const Logo: React.FC<React.PropsWithChildren<Props>> = ({uieTheme, to, children}) => {
   if (typeof children !== 'string') {
     return (
       <Flex fullWidth justifyContent="center">

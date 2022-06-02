@@ -3,7 +3,7 @@ import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 
-const ContentHeading: React.FC<WithUIETheme> = ({children, uieTheme}) => {
+const ContentHeading: React.FC<React.PropsWithChildren<WithUIETheme>> = ({children, uieTheme}) => {
   const style: IStyle = {
     fontSize: uieTheme.fontSizes.veryBig,
     backgroundColor: uieTheme.colors.bgContentHeading,

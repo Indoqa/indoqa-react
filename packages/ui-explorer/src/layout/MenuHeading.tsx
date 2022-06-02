@@ -3,7 +3,7 @@ import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 
-const MenuHeading: React.FC<WithUIETheme> = ({children, uieTheme}) => {
+const MenuHeading: React.FC<React.PropsWithChildren<WithUIETheme>> = ({children, uieTheme}) => {
   const baseStyle: IStyle = {
     textTransform: 'uppercase',
     margin: 0,

@@ -21,7 +21,12 @@ interface Props extends HeadlineProps {
   fontSizes: FontSizes
 }
 
-const HeadlineSample: React.FC<HeadlineProps & WithFontSize> = ({fontStyles, fontSize, uieTheme, children}) => {
+const HeadlineSample: React.FC<React.PropsWithChildren<HeadlineProps & WithFontSize>> = ({
+  fontStyles,
+  fontSize,
+  uieTheme,
+  children,
+}) => {
   const style: IStyle = {
     marginBottom: uieTheme.spacing.space2,
     fontSize,

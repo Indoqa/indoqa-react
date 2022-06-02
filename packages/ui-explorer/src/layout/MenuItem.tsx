@@ -8,7 +8,7 @@ interface MenuLinkProps extends WithUIETheme {
   to: string
 }
 
-const MenuItem: React.FC<MenuLinkProps> = ({uieTheme, to, children}) => {
+const MenuItem: React.FC<React.PropsWithChildren<MenuLinkProps>> = ({uieTheme, to, children}) => {
   const style: IStyle = {
     paddingBottom: '0.2rem',
     marginLeft: 0,
