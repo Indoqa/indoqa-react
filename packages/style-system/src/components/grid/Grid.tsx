@@ -77,7 +77,11 @@ class GridContainer<T extends BaseTheme> extends React.Component<React.PropsWith
     const styles = mergeThemedStyles<T, GridContainerStyleProps<T>>(gridStyle, style)
     return (
       <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} data-testid={testId} {...otherProps}>
-        {({className}) => <div className={className} ref={innerRef} data-testid={testId}></div>}
+        {({className}) => (
+          <div className={className} ref={innerRef} data-testid={testId}>
+            {children}
+          </div>
+        )}
       </FelaComponent>
     )
   }
@@ -109,9 +113,11 @@ export class Grid<T extends BaseTheme> extends React.Component<React.PropsWithCh
   public render() {
     const {spacing, ...otherProps} = this.props
     return (
-      <GridContainer {...otherProps}>
-        <GridContext.Provider value={{spacing}}>{this.props.children}</GridContext.Provider>
-      </GridContainer>
+      <>
+        <GridContainer {...otherProps}>
+          <GridContext.Provider value={{spacing}}>{this.props.children}</GridContext.Provider>
+        </GridContainer>
+      </>
     )
   }
 }
