@@ -250,7 +250,7 @@ export const UIExplorer = ({
             <ContentPanel>
               <Routes>
                 <Route
-                  path={'/'}
+                  path="/"
                   element={
                     <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
                       {overviewPanel || (
@@ -265,7 +265,7 @@ export const UIExplorer = ({
                   }
                 />
                 <Route
-                  path={'colors'}
+                  path="colors"
                   element={
                     <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
                       <ColorsPanel colors={colors} />
@@ -273,7 +273,7 @@ export const UIExplorer = ({
                   }
                 />
                 <Route
-                  path={`typography`}
+                  path="typography"
                   element={
                     <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
                       <TypographyPanel
@@ -286,8 +286,8 @@ export const UIExplorer = ({
                     </InnerContentPanel>
                   }
                 />
+                {createGroupsRoutes(groups, mountPath, localUieTheme)}
               </Routes>
-              {createGroupsRoutes(groups, mountPath, localUieTheme)}
             </ContentPanel>
           </Panel>
         </Row>
