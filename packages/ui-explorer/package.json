@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
     "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
     "package": "yarn lint && yarn compile",
     "prepublishOnly": "yarn package"
