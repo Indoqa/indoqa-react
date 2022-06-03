@@ -105,7 +105,7 @@ const MenuIconWrapper: React.FC<MenuIconProps> = ({toggleMenu, uieTheme}) => {
 }
 
 const createComponentRoute = (name: string, component: React.ReactNode, mountPath: string, uieTheme: UIETheme) => {
-  const componentMountPath = `${cleanUrlPathPart(name)}`
+  const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}`
   return (
     <Route
       key={componentMountPath}
@@ -143,6 +143,8 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
   groups.forEach((componentDescription) => {
     const {name, descriptions} = componentDescription
     descriptions.forEach((description) => {
+      console.log(componentDescription)
+      console.log(description)
       routes.push(
         createComponentRoute(
           description.name,
@@ -286,7 +288,7 @@ export const UIExplorer = ({
                     </InnerContentPanel>
                   }
                 />
-                {createGroupsRoutes(groups, mountPath, localUieTheme)}
+                {createGroupsRoutes(groups, '', localUieTheme)}
               </Routes>
             </ContentPanel>
           </Panel>
