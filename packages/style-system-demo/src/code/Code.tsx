@@ -1,6 +1,6 @@
 import {Box} from '@indoqa/style-system'
+import Editor from '@monaco-editor/react'
 import * as React from 'react'
-import SyntaxHighlighter from 'react-syntax-highlighter'
 
 interface Props {
   initialShow?: boolean
@@ -9,8 +9,15 @@ interface Props {
   language?: string
 }
 
-const Code: React.FC<Props> = ({initialShow, showToggle = true, showLineNumbers = true, language, children}) => {
+const Code: React.FC<React.PropsWithChildren<Props>> = ({
+  initialShow,
+  showToggle = true,
+  showLineNumbers = true,
+  language,
+  children,
+}) => {
   const [show, setShow] = React.useState(initialShow)
+  const lineCount = (children as string).split('\n').length
   return (
     <Box mt={1}>
       {showToggle && (
@@ -22,13 +29,25 @@ const Code: React.FC<Props> = ({initialShow, showToggle = true, showLineNumbers 
         </Box>
       )}
       {show && (
-        <SyntaxHighlighter
-          showLineNumbers={showLineNumbers}
+        <Editor
+          height={`${lineCount * 2}ch`}
           language={language || 'xml'}
-          customStyle={{fontSize: '75%', backgroundColor: '#F1F3F5'}}
-        >
-          {children}
-        </SyntaxHighlighter>
+          value={children as string}
+          theme="vs"
+          options={{
+            domReadOnly: true,
+            fontSize: '12px',
+            minimap: {
+              enabled: false,
+            },
+            readOnly: true,
+            scrollbar: {
+              alwaysConsumeMouseWheel: false,
+              vertical: 'hidden',
+            },
+            scrollBeyondLastLine: false,
+          }}
+        />
       )}
     </Box>
   )

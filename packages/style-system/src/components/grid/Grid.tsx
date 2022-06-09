@@ -3,35 +3,47 @@ import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../theming/baseTheme'
 import {createBoxModelCSSProps, createMarginCSSProps, createPaddingCSSProps, createStylingCSSProps} from '../base'
-import {BoxModelProps, MarginProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
+import {
+  BoxModelProps,
+  MarginProps,
+  PaddingProps,
+  ResponsiveProps,
+  StylingProps,
+  WithBaseTheme,
+  WithStyle,
+} from '../types'
 import {createResponsiveStyles, mergeThemedStyles} from '../utils'
 
 import {GridContext} from './GridContext'
 
-interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>,
-  ResponsiveProps<PaddingProps>,
-  StylingProps<T>,
-  ResponsiveProps<BoxModelProps>,
-  ResponsiveProps<MarginProps> {
-  children?: React.ReactNode,
-  maxWidth?: number | string,
-  center?: boolean,
-  testId?: string,
-  innerRef?: React.RefObject<HTMLDivElement>,
+interface GridContainerStyleProps<T extends BaseTheme>
+  extends WithStyle<T>,
+    ResponsiveProps<PaddingProps>,
+    StylingProps<T>,
+    ResponsiveProps<BoxModelProps>,
+    ResponsiveProps<MarginProps> {
+  maxWidth?: number | string
+  center?: boolean
+  testId?: string
+  innerRef?: React.RefObject<HTMLDivElement>
 }
 
 interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
-  spacing: string | number,
+  spacing: string | number
 }
 
-interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
-  StylingProps<T>,
-  BoxModelProps,
-  MarginProps,
-  WithBaseTheme {
-}
+interface BaseStyleProps<T extends BaseTheme>
+  extends PaddingProps,
+    StylingProps<T>,
+    BoxModelProps,
+    MarginProps,
+    WithBaseTheme {}
 
-function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: BaseTheme, outsideMediaQuery: boolean): IStyle {
+function createBaseStyles<T extends BaseTheme>(
+  props: BaseStyleProps<T>,
+  theme: BaseTheme,
+  outsideMediaQuery: boolean
+): IStyle {
   return {
     ...createBoxModelCSSProps(props),
     ...createMarginCSSProps(props, theme),
@@ -40,11 +52,14 @@ function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: 
   }
 }
 
-class GridContainer<T extends BaseTheme> extends React.Component<GridContainerStyleProps<T>> {
-
+class GridContainer<T extends BaseTheme> extends React.Component<React.PropsWithChildren<GridContainerStyleProps<T>>> {
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({maxWidth, center, ...otherProps}): IStyle => ({
+    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({
+      maxWidth,
+      center,
+      ...otherProps
+    }): IStyle => ({
       margin: center ? 'auto' : 0,
       ...createResponsiveStyles(otherProps, createBaseStyles),
       boxSizing: 'border-box',
@@ -53,13 +68,15 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
     const {children, style, center, innerRef, testId, ...otherProps} = this.props
     if (process.env.NODE_ENV !== 'production') {
       if (center && (otherProps.mx || otherProps.ml || otherProps.mr)) {
-        console.warn('The Grid property center is set to true and one of the properties mx, ml or mr is set. ' +
-          'This might lead to unexpected behaviour.')
+        console.warn(
+          'The Grid property center is set to true and one of the properties mx, ml or mr is set. ' +
+            'This might lead to unexpected behaviour.'
+        )
       }
     }
     const styles = mergeThemedStyles<T, GridContainerStyleProps<T>>(gridStyle, style)
     return (
-      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} {...otherProps} data-testid={testId}>
+      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} data-testid={testId} {...otherProps}>
         {({className}) => (
           <div className={className} ref={innerRef} data-testid={testId}>
             {children}
@@ -86,8 +103,7 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
  * You should only use row components as children of the Grid, and Panel components as children of Row
  * components.
  */
-export class Grid<T extends BaseTheme> extends React.Component<Props<T>> {
-
+export class Grid<T extends BaseTheme> extends React.Component<React.PropsWithChildren<Props<T>>> {
   public static defaultProps = {
     maxWidth: 'none',
     center: false,
@@ -97,12 +113,11 @@ export class Grid<T extends BaseTheme> extends React.Component<Props<T>> {
   public render() {
     const {spacing, ...otherProps} = this.props
     return (
-      <GridContainer {...otherProps}>
-        <GridContext.Provider value={{spacing}}>
-          {this.props.children}
-        </GridContext.Provider>
-      </GridContainer>
+      <>
+        <GridContainer {...otherProps}>
+          <GridContext.Provider value={{spacing}}>{this.props.children}</GridContext.Provider>
+        </GridContainer>
+      </>
     )
   }
 }
-

@@ -1,53 +1,58 @@
 # Indoqa Style-System
+
 This project provides an extensible style system for React with Typescript typed theme support
 and several base components following the principle of [style as function of state](http://fela.js.org/docs/introduction/Principles.html):
 
-* Base components as building blocks which are integrated with theming:
-  * `<Box>` ([docs](./docs/base-components.md#Box))
-  * `<Flex>` ([docs](./docs/base-components.md#Flex))
-  * `<Text>` ([docs](./docs/base-components.md#Text))
-  * `<Grid>`, `<Row>`, `<Panel>`, `<ColRow>`, `<Col>` ([docs](./docs/Grid.md))
-* Typed components with Typescript
+- Base components as building blocks which are integrated with theming:
+  - `<Box>` ([docs](./docs/base-components.md#Box))
+  - `<Flex>` ([docs](./docs/base-components.md#Flex))
+  - `<Text>` ([docs](./docs/base-components.md#Text))
+  - `<Grid>`, `<Row>`, `<Panel>`, `<ColRow>`, `<Col>` ([docs](./docs/Grid.md))
+- Typed components with Typescript
 
   ![typesafe properties](./docs/typesafe-bg.png)
-* A typed base theme with sensible defaults (e.g. font styles based on system fonts)
-* Base CSS stylesheets ([Bootstrap Reboot 4.1](https://getbootstrap.com/docs/4.1/content/reboot/)
-and [normalize.css](https://necolas.github.io/normalize.css/) are currently supported)
+
+- A typed base theme with sensible defaults (e.g. font styles based on system fonts)
+- Base CSS stylesheets ([Bootstrap Reboot 4.1](https://getbootstrap.com/docs/4.1/content/reboot/)
+  and [normalize.css](https://necolas.github.io/normalize.css/) are currently supported)
 
 ## Changelog
+
 [Learn about the latest improvements](./CHANGELOG.md)
 
 # Installation and usage
+
 `yarn install @indoqa/style-system`
 
 ## Theming
+
 Setup the application theme based on the [BaseTheme](./src/main/theming/baseTheme.ts) provided by Indoqa Style-System:
 
 ```typescript
 import {BaseColors, BaseFontSizes, baseTheme, BaseTheme, typeScale} from '@indoqa/style-system'
 
 interface FontSizes extends BaseFontSizes {
-  readonly extraBig: number | string,
+  readonly extraBig: number | string
 }
 
 interface Colors extends BaseColors {
-  readonly primary: string,
-  readonly primaryDark: string,
-  readonly primaryLight: string,
-  readonly accent: string,
+  readonly primary: string
+  readonly primaryDark: string
+  readonly primaryLight: string
+  readonly accent: string
   readonly textSecondary: string
-  readonly divider: string,
+  readonly divider: string
 }
 
 interface Layout {
-  readonly actionBarHeight: number,
-  readonly menuWidth: number,
+  readonly actionBarHeight: number
+  readonly menuWidth: number
 }
 
 export interface Theme extends BaseTheme {
-  readonly fontSizes: FontSizes,
-  readonly colors: Colors,
-  readonly layout: Layout,
+  readonly fontSizes: FontSizes
+  readonly colors: Colors
+  readonly layout: Layout
 }
 
 const baseColors = {
@@ -96,11 +101,14 @@ const theme: Theme = {
 export default theme
 ```
 
-* The interface `Theme` extends the interface `BaseTheme`. This is important because all provided components are based on `BaseTheme`
+- The interface `Theme` extends the interface `BaseTheme`. This is important because all provided components are based on `BaseTheme`
   or extensions of it.
-* The implementation `theme` uses `baseTheme` properties or overrides them.
+- The implementation `theme` uses `baseTheme` properties or overrides them.
 
 ## Fela setup
+
+With react-router v6 syntax.
+
 ```typescript
 import {BaseCssProps, createFelaConfig, renderRebootCss} from '@indoqa/style-system'
 import {createRenderer} from 'fela'
@@ -117,11 +125,11 @@ const App: React.FC = () => {
   }, [])
   return (
     <RendererProvider renderer={renderer}>
-      <Router history={history}>
+      <Router>
         <ThemeProvider theme={theme}>
-          <Switch>
-            <Route path="/" component={StyleSystemUIExplorer}/>
-          </Switch>
+          <Routes>
+            <Route path="/*" element={<StyleSystemUIExplorer theme={theme} />} />
+          </Routes>
         </ThemeProvider>
       </Router>
     </RendererProvider>
@@ -131,10 +139,10 @@ const App: React.FC = () => {
 export default App
 ```
 
-* `renderRebootCss` provides basic CSS styles based on the theme
-* provide a `RendererProvider` (all React components can get access to the Fela renderer)
-* provide a `ThemeProvider` (all React components can get access to the application theme)
-* `createFelaConfig` configures Fela with all the plugins which are usually
+- `renderRebootCss` provides basic CSS styles based on the theme
+- provide a `RendererProvider` (all React components can get access to the Fela renderer)
+- provide a `ThemeProvider` (all React components can get access to the application theme)
+- `createFelaConfig` configures Fela with all the plugins which are usually
   required for web applications. It also registers
   [named keys](https://github.com/rofrischmann/fela/tree/master/packages/fela-plugin-named-keys)
   for breakpoints and print styles which are aligned with the [PStyle](./docs/pstyle-and-breakpoints.md) type.
@@ -142,8 +150,8 @@ export default App
 Complete samples can be found at [Indoqa Style-System demo](../style-system-demo/) and the [Indoqa React Starter](../react-starter/).
 
 # Documentation
-* [Base components](./docs/base-components.md#Box) (Box, Flex, Text)
-* [Grid](./docs/grid.md)
-* [PStyle and breakpoints](./docs/pstyle-and-breakpoints.md)
-* [Theming](./docs/theming.md)
 
+- [Base components](./docs/base-components.md#Box) (Box, Flex, Text)
+- [Grid](./docs/grid.md)
+- [PStyle and breakpoints](./docs/pstyle-and-breakpoints.md)
+- [Theming](./docs/theming.md)

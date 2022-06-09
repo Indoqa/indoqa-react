@@ -7,7 +7,7 @@ interface Props extends WithUIETheme {
   name: string
 }
 
-const Header: React.FunctionComponent<WithUIETheme> = ({uieTheme, children}) => {
+const Header: React.FunctionComponent<React.PropsWithChildren<WithUIETheme>> = ({uieTheme, children}) => {
   const style: IStyle = {
     backgroundColor: uieTheme.colors.bgPanelHeader,
     textTransform: 'uppercase',
@@ -21,7 +21,7 @@ const Header: React.FunctionComponent<WithUIETheme> = ({uieTheme, children}) => 
   return <FelaComponent style={style}>{children}</FelaComponent>
 }
 
-const Container: React.FC<WithUIETheme> = ({uieTheme, children}) => {
+const Container: React.FC<React.PropsWithChildren<WithUIETheme>> = ({uieTheme, children}) => {
   const style: IStyle = {
     backgroundColor: uieTheme.colors.bgContent,
     borderRadius: '3px',
@@ -31,7 +31,7 @@ const Container: React.FC<WithUIETheme> = ({uieTheme, children}) => {
   return <FelaComponent style={style}>{children}</FelaComponent>
 }
 
-const Content: React.FC<WithUIETheme> = ({uieTheme, children}) => {
+const Content: React.FC<React.PropsWithChildren<WithUIETheme>> = ({uieTheme, children}) => {
   const style: IStyle = {
     paddingLeft: uieTheme.spacing.space2,
     paddingTop: uieTheme.spacing.space2,
@@ -39,7 +39,7 @@ const Content: React.FC<WithUIETheme> = ({uieTheme, children}) => {
   return <FelaComponent style={style}>{children}</FelaComponent>
 }
 
-const FontStylePanelInternal: React.FC<Props> = ({uieTheme, name, children}) => {
+const FontStylePanelInternal: React.FC<React.PropsWithChildren<Props>> = ({uieTheme, name, children}) => {
   return (
     <Container uieTheme={uieTheme}>
       <Header uieTheme={uieTheme}>{name}</Header>

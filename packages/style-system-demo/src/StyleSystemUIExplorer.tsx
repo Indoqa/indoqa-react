@@ -1,7 +1,6 @@
 import {Color, Font, FontMix, FontSizes, Group, UIExplorer} from '@indoqa/ui-explorer'
 import * as React from 'react'
 import {withTheme} from 'react-fela'
-
 import {Theme} from './app/theme'
 import BoxSamples from './base-components/BoxSamples'
 import FlexSamples from './base-components/FlexSamples'
@@ -131,6 +130,7 @@ const getFelaGroup = (): Group => ({
 class StyleSystemUIExplorer extends React.Component<Props> {
   public render() {
     const {theme} = this.props
+    console.log('StyleSystemUIExplorer')
     return (
       <UIExplorer
         colors={getColors(theme)}

@@ -44,7 +44,7 @@ function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
 /**
  * implement the divider
  */
-export const Stack: React.FC<StackProps> = ({children, divider, ...otherProps}) => {
+export const Stack: React.FC<React.PropsWithChildren<StackProps>> = ({children, divider, ...otherProps}) => {
   const {theme} = useFela<BaseTheme>()
   const style = createResponsiveStyles(otherProps, createStackCssStyles, theme)
 
@@ -67,7 +67,10 @@ export const Stack: React.FC<StackProps> = ({children, divider, ...otherProps}) 
   return <Flex style={style}>{nextChildren}</Flex>
 }
 
-export const VStack: React.FC<Omit<StackProps, 'stackDirection'>> = ({children, ...otherProps}) => {
+export const VStack: React.FC<React.PropsWithChildren<Omit<StackProps, 'stackDirection'>>> = ({
+  children,
+  ...otherProps
+}) => {
   return (
     <Stack stackDirection={StackDirection.VERTICAL} {...otherProps}>
       {children}
@@ -75,7 +78,10 @@ export const VStack: React.FC<Omit<StackProps, 'stackDirection'>> = ({children, 
   )
 }
 
-export const HStack: React.FC<Omit<StackProps, 'stackDirection'>> = ({children, ...otherProps}) => {
+export const HStack: React.FC<React.PropsWithChildren<Omit<StackProps, 'stackDirection'>>> = ({
+  children,
+  ...otherProps
+}) => {
   return (
     <Stack stackDirection={StackDirection.HORIZONTAL} {...otherProps}>
       {children}

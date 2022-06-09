@@ -22,7 +22,7 @@ const StyledDiv: React.FC = () => {
   return <div className={css(style)} />
 }
 
-const StyledElementWithChildren: React.FC = ({children}) => {
+const StyledElementWithChildren: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const {css} = useFela()
   const style: IStyle = {
     color: 'blue',
@@ -30,7 +30,7 @@ const StyledElementWithChildren: React.FC = ({children}) => {
   return <p className={css(style)}>{children}</p>
 }
 
-const ThemedElementWithChildren: React.FC = ({children}) => {
+const ThemedElementWithChildren: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const {css, theme} = useFela<Theme>()
   const style: IStyle = {
     backgroundColor: theme.colors.accent,
@@ -49,7 +49,7 @@ interface Props {
   onClick: () => void
 }
 
-const ThemedElementWithChildrenAndProps: React.FC<Props> = ({onClick, children}) => {
+const ThemedElementWithChildrenAndProps: React.FC<React.PropsWithChildren<Props>> = ({onClick, children}) => {
   const {css, theme} = useFela<Theme>()
   const style: IStyle = {
     backgroundColor: theme.colors.accent,
@@ -86,12 +86,12 @@ const themedElementWithStyleBackground: StyleFunction<Theme> = ({theme}): IStyle
   borderRadius: 5,
 })
 
-const ThemedElementWithStyleProps: React.FC<StyleProps> = ({children, ...otherProps}) => {
+const ThemedElementWithStyleProps: React.FC<React.PropsWithChildren<StyleProps>> = ({children, ...otherProps}) => {
   const {css} = useFela<Theme>(otherProps)
   return <span className={css(themedElementWithStyleText, themedElementWithStyleBackground)}>{children}</span>
 }
 
-const RendererUsage: React.FC = () => {
+const RendererUsage: React.FC<React.PropsWithChildren<{}>> = () => {
   const {renderer} = useFela()
   const style: IStyle = {
     backgroundColor: 'green',

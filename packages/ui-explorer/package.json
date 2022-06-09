@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
     "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
     "package": "yarn lint && yarn compile",
     "prepublishOnly": "yarn package"
@@ -28,18 +29,18 @@
   ],
   "peerDependencies": {
     "@indoqa/style-system": "*",
-    "fela": ">=11",
-    "react": ">=17",
-    "react-fela": ">=11",
-    "react-router": ">=5",
-    "react-router-dom": ">=5"
+    "fela": ">=12.1",
+    "react": ">=18",
+    "react-fela": ">=12.1",
+    "react-router": ">=6",
+    "react-router-dom": ">=6"
   },
   "devDependencies": {
     "@indoqa/style-system": "^2.0.0-alpha.8",
-    "fela": "^11.6.1",
-    "react": "^17.0.2",
-    "react-fela": "^11.6.1",
-    "react-router": "^5.2.1",
-    "react-router-dom": "^5.2.1"
+    "fela": "^12.1.2",
+    "react": "^18.1.0",
+    "react-fela": "^12.1.2",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   }
 }

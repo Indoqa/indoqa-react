@@ -12,7 +12,7 @@ interface Props {
   textFontSize: FontSize
 }
 
-const Container: React.FC = ({children}) => {
+const Container: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const style: IStyle = {
     maxWidth: 650,
   }

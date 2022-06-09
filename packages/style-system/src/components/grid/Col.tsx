@@ -11,24 +11,21 @@ import {testGridContext} from './testGridContext'
 type SizeValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 export type Size = SizeValue | SizeValue[]
 
-interface Props<T extends BaseTheme> extends WithStyle<T>,
-  ResponsiveProps<PaddingProps>,
-  ResponsiveProps<StylingProps<T>>,
-  ResponsiveProps<FontProps<T>> {
-  size?: Size,
-  testId?: string,
-  innerRef?: React.RefObject<HTMLDivElement>,
+interface Props<T extends BaseTheme>
+  extends WithStyle<T>,
+    ResponsiveProps<PaddingProps>,
+    ResponsiveProps<StylingProps<T>>,
+    ResponsiveProps<FontProps<T>> {
+  size?: Size
+  testId?: string
+  innerRef?: React.RefObject<HTMLDivElement>
 }
 
 interface ColContainerProps<T extends BaseTheme> extends Props<T> {
-  spacing?: string | number,
+  spacing?: string | number
 }
 
-interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
-  StylingProps<T>,
-  FontProps<T>,
-  WithBaseTheme {
-}
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, FontProps<T>, WithBaseTheme {}
 
 export const GRID_SIZE: Size = 12
 
@@ -46,8 +43,7 @@ function themedBoxStyles<T extends BaseTheme>(props: Props<T>): IStyle {
   }
 }
 
-export class Col<T extends BaseTheme> extends React.Component<Props<T>> {
-
+export class Col<T extends BaseTheme> extends React.Component<React.PropsWithChildren<Props<T>>> {
   public static defaultProps = {
     size: GRID_SIZE,
   }

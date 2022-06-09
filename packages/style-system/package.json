@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
     "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",
     "package": "yarn lint && yarn compile",
     "prepublishOnly": "yarn package"
@@ -29,26 +30,26 @@
     "style-system"
   ],
   "peerDependencies": {
-    "fela": ">=11.6",
-    "fela-enforce-longhands": "^11.6.1",
-    "fela-monolithic": ">=11.6",
-    "fela-plugin-named-keys": ">=11.6",
-    "fela-plugin-validator": ">=11.6",
-    "fela-preset-web": ">=11.6",
-    "fela-sort-media-query-mobile-first": ">=11.6",
-    "react": ">=17",
-    "react-fela": ">=11.6"
+    "fela": ">=12.1",
+    "fela-enforce-longhands": "^12.1.2",
+    "fela-monolithic": ">=12.1",
+    "fela-plugin-named-keys": ">=12.1",
+    "fela-plugin-validator": ">=12.1",
+    "fela-preset-web": ">=12.1",
+    "fela-sort-media-query-mobile-first": ">=12.1",
+    "react": ">=18",
+    "react-fela": ">=12.1"
   },
   "devDependencies": {
-    "fela": "^11.6.1",
-    "fela-enforce-longhands": "^11.6.1",
-    "fela-monolithic": "^11.6.1",
-    "fela-plugin-named-keys": "^11.6.1",
-    "fela-plugin-validator": "^11.6.1",
-    "fela-preset-web": "^11.6.1",
-    "fela-sort-media-query-mobile-first": "^11.6.1",
-    "react": "^17.0.2",
-    "react-fela": "^11.6.1"
+    "fela": "^12.1.2",
+    "fela-enforce-longhands": "^12.1.2",
+    "fela-monolithic": "^12.1.2",
+    "fela-plugin-named-keys": "^12.1.2",
+    "fela-plugin-validator": "^12.1.2",
+    "fela-preset-web": "^12.1.2",
+    "fela-sort-media-query-mobile-first": "^12.1.2",
+    "react": "^18.1.0",
+    "react-fela": "^12.1.2"
   },
   "dependencies": {
     "lodash": "^4.17.21"

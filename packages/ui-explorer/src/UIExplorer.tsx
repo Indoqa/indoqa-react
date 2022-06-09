@@ -2,7 +2,7 @@ import {BaseTheme, Box, Grid, Panel, Row} from '@indoqa/style-system'
 import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, useFela} from 'react-fela'
-import {Route, useLocation} from 'react-router'
+import {Route, Routes, useLocation} from 'react-router'
 
 import {ColorsPanel} from './colors/ColorsPanel'
 import ContentHeader from './layout/ContentHeader'
@@ -46,7 +46,7 @@ interface InnerContentPanelProps extends WithUIETheme {
   name: string
 }
 
-const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, uieTheme, children}) => {
+const InnerContentPanel: React.FC<React.PropsWithChildren<InnerContentPanelProps>> = ({name, uieTheme, children}) => {
   const style: IStyle = {
     paddingTop: uieTheme.spacing.space4,
     paddingRight: uieTheme.spacing.space4,
@@ -66,7 +66,11 @@ interface InnerStyleGuideMenuProps {
   uieTheme: UIETheme
 }
 
-const InnerStyleGuideMenu: React.FC<InnerStyleGuideMenuProps> = ({show, uieTheme, children}) => {
+const InnerStyleGuideMenu: React.FC<React.PropsWithChildren<InnerStyleGuideMenuProps>> = ({
+  show,
+  uieTheme,
+  children,
+}) => {
   const style: IStyle = {
     paddingBottom: uieTheme.spacing.space2,
     display: show ? 'block' : 'none',
@@ -105,13 +109,12 @@ const createComponentRoute = (name: string, component: React.ReactNode, mountPat
   return (
     <Route
       key={componentMountPath}
-      exact
       path={componentMountPath}
-      render={() => (
+      element={
         <InnerContentPanel name={name} uieTheme={uieTheme}>
           {component}
         </InnerContentPanel>
-      )}
+      }
     />
   )
 }
@@ -120,7 +123,7 @@ const createMenuGroups = (groups: Group[], mountPath: string) => {
   return groups.map((componentDescription) => {
     const {name, descriptions} = componentDescription
     const menuItems = descriptions.map((description) => {
-      const componentMountPath = `${mountPath}/${cleanUrlPathPart(name)}/${cleanUrlPathPart(description.name)}`
+      const componentMountPath = `${cleanUrlPathPart(name)}/${cleanUrlPathPart(description.name)}`
       return (
         <MenuItem key={componentMountPath} to={componentMountPath}>
           {description.name}
@@ -140,6 +143,8 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
   groups.forEach((componentDescription) => {
     const {name, descriptions} = componentDescription
     descriptions.forEach((description) => {
+      console.log(componentDescription)
+      console.log(description)
       routes.push(
         createComponentRoute(
           description.name,
@@ -245,47 +250,46 @@ export const UIExplorer = ({
           </Panel>
           <Panel style={{minHeight: '100vh'}}>
             <ContentPanel>
-              <Route
-                exact
-                path={`${mountPath}/`}
-                render={() => (
-                  <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
-                    {overviewPanel || (
-                      <OverviewPanel
-                        colors={colors}
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <InnerContentPanel name={getDescription()} uieTheme={localUieTheme}>
+                      {overviewPanel || (
+                        <OverviewPanel
+                          colors={colors}
+                          fontMixes={fontMixes}
+                          fontSizes={fontSizes}
+                          textFontSize={textFontSize}
+                        />
+                      )}
+                    </InnerContentPanel>
+                  }
+                />
+                <Route
+                  path="colors"
+                  element={
+                    <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
+                      <ColorsPanel colors={colors} />
+                    </InnerContentPanel>
+                  }
+                />
+                <Route
+                  path="typography"
+                  element={
+                    <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
+                      <TypographyPanel
+                        textFonts={textFonts}
+                        headlineFonts={headlineFonts}
                         fontMixes={fontMixes}
                         fontSizes={fontSizes}
                         textFontSize={textFontSize}
                       />
-                    )}
-                  </InnerContentPanel>
-                )}
-              />
-              <Route
-                exact
-                path={`${mountPath}/colors`}
-                render={() => (
-                  <InnerContentPanel name="Color Scheme" uieTheme={localUieTheme}>
-                    <ColorsPanel colors={colors} />
-                  </InnerContentPanel>
-                )}
-              />
-              <Route
-                exact
-                path={`${mountPath}/typography`}
-                render={() => (
-                  <InnerContentPanel name="Typography" uieTheme={localUieTheme}>
-                    <TypographyPanel
-                      textFonts={textFonts}
-                      headlineFonts={headlineFonts}
-                      fontMixes={fontMixes}
-                      fontSizes={fontSizes}
-                      textFontSize={textFontSize}
-                    />
-                  </InnerContentPanel>
-                )}
-              />
-              {createGroupsRoutes(groups, mountPath, localUieTheme)}
+                    </InnerContentPanel>
+                  }
+                />
+                {createGroupsRoutes(groups, '', localUieTheme)}
+              </Routes>
             </ContentPanel>
           </Panel>
         </Row>

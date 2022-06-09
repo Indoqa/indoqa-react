@@ -5,31 +5,36 @@ import {FelaComponent, StyleFunction} from 'react-fela'
 
 import {BaseTheme} from '../../theming/baseTheme'
 import {createFontCSSProps, createPaddingCSSProps, createStylingCSSProps} from '../base'
-import {FlexContainerProps, FontProps, PaddingProps, ResponsiveProps, StylingProps, WithBaseTheme, WithStyle} from '../types'
+import {
+  FlexContainerProps,
+  FontProps,
+  PaddingProps,
+  ResponsiveProps,
+  StylingProps,
+  WithBaseTheme,
+  WithStyle,
+} from '../types'
 import {addUnitIfNeeded, createResponsiveStyles, mergeThemedStyles} from '../utils'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 
-interface Props<T extends BaseTheme> extends WithStyle<T>,
-  ResponsiveProps<PaddingProps>,
-  ResponsiveProps<StylingProps<T>>,
-  ResponsiveProps<FontProps<T>>,
-  ResponsiveProps<FlexContainerProps> {
-  size?: number,
-  width?: string | number,
-  testId?: string,
-  innerRef?: React.RefObject<HTMLDivElement>,
+interface Props<T extends BaseTheme>
+  extends WithStyle<T>,
+    ResponsiveProps<PaddingProps>,
+    ResponsiveProps<StylingProps<T>>,
+    ResponsiveProps<FontProps<T>>,
+    ResponsiveProps<FlexContainerProps> {
+  size?: number
+  width?: string | number
+  testId?: string
+  innerRef?: React.RefObject<HTMLDivElement>
 }
 
 interface PanelContainerProps<T extends BaseTheme> extends Props<T> {
-  spacing?: number | string,
+  spacing?: number | string
 }
 
-interface BaseStyleProps<T extends BaseTheme> extends PaddingProps,
-  StylingProps<T>,
-  FontProps<T>,
-  WithBaseTheme {
-}
+interface BaseStyleProps<T extends BaseTheme> extends PaddingProps, StylingProps<T>, FontProps<T>, WithBaseTheme {}
 
 const DEFAULT_WIDTH = '0%'
 
@@ -40,7 +45,8 @@ const isDefaultWidth = (width: string | number | undefined) => {
 const calcBasis = (
   spacing: number | string | undefined,
   size: number | undefined,
-  width: number | string | undefined) => {
+  width: number | string | undefined
+) => {
   if (width && !isDefaultWidth(width)) {
     return addUnitIfNeeded(width)
   }
@@ -60,12 +66,15 @@ function createBaseStyles<T extends BaseTheme>(props: BaseStyleProps<T>, theme: 
   }
 }
 
-class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainerProps<T>> {
-
+class PanelContainer<T extends BaseTheme> extends React.Component<React.PropsWithChildren<PanelContainerProps<T>>> {
   public render() {
     // tslint:disable-next-line:no-shadowed-variable
-    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}):
-      IStyle => ({
+    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({
+      width,
+      size,
+      spacing,
+      ...otherProps
+    }): IStyle => ({
       ...createResponsiveStyles(otherProps, createBaseStyles),
       // mobile is always full width (flexGrow, flexShrink, width)
       flexGrow: 1,
@@ -97,8 +106,7 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
   }
 }
 
-export class Panel<T extends BaseTheme> extends React.Component<Props<T>> {
-
+export class Panel<T extends BaseTheme> extends React.Component<React.PropsWithChildren<Props<T>>> {
   public static defaultProps = {
     size: 1,
     width: DEFAULT_WIDTH,

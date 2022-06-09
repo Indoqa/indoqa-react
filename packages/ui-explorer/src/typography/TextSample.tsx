@@ -7,7 +7,7 @@ interface Props {
   as?: keyof React.ReactHTML
 }
 
-export const TextSample: React.FunctionComponent<Props> = ({fontStyles, children, as}) => {
+export const TextSample: React.FC<React.PropsWithChildren<Props>> = ({fontStyles, children, as}) => {
   const style: IStyle = {
     paddingBottom: 0,
   }

@@ -4,7 +4,7 @@ import * as React from 'react'
 import {WithUIETheme, withUIETheme} from '../uietheme/withUIETheme'
 import {scrollbarStyles} from './scrollbarStyles'
 
-const Menu: React.FC<WithUIETheme> = ({children, uieTheme}) => {
+const Menu: React.FC<React.PropsWithChildren<WithUIETheme>> = ({children, uieTheme}) => {
   const style: IStyle = {
     boxSizing: 'border-box',
     backgroundColor: uieTheme.colors.bgMenu,

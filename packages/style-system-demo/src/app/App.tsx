@@ -2,10 +2,9 @@ import {BaseCssProps, createFelaConfig, renderRebootCss} from '@indoqa/style-sys
 import {createRenderer} from 'fela'
 import * as React from 'react'
 import {RendererProvider, ThemeProvider} from 'react-fela'
-import {Router} from 'react-router'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Routes} from 'react-router'
+import {BrowserRouter as Router} from 'react-router-dom'
 import StyleSystemUIExplorer from '../StyleSystemUIExplorer'
-import history from './history'
 import theme from './theme'
 
 const felaConfig = createFelaConfig()
@@ -43,11 +42,11 @@ const App: React.FC = () => {
   }, [])
   return (
     <RendererProvider renderer={renderer}>
-      <Router history={history}>
+      <Router>
         <ThemeProvider theme={theme}>
-          <Switch>
-            <Route path="/" component={StyleSystemUIExplorer} />
-          </Switch>
+          <Routes>
+            <Route path="/*" element={<StyleSystemUIExplorer theme={theme} />} />
+          </Routes>
         </ThemeProvider>
       </Router>
     </RendererProvider>

@@ -1,8 +1,16 @@
-import {assertAlert, assertHeight, assertInnerText, assertMargin, assertPadding, assertStyle, clickEl} from '../utils/utils'
+import {
+  assertAlert,
+  assertHeight,
+  assertInnerText,
+  assertMargin,
+  assertPadding,
+  assertStyle,
+  clickEl,
+} from '../utils/utils'
 
 describe('Box samples', () => {
   before(() => {
-    clickEl('/base-components/box')
+    clickEl('base-components/box')
   })
 
   it('Box with margin, padding and bgContent color', () => {
@@ -32,10 +40,10 @@ describe('Box samples', () => {
 
 describe('Flex samples', () => {
   before(() => {
-    clickEl('/base-components/flex')
+    clickEl('base-components/flex')
   })
 
   it('Flex 1', () => {
-    cy.get('[data-testid="/base-components/flex"]').click()
+    cy.get('[data-testid="base-components/flex"]').click()
   })
 })
