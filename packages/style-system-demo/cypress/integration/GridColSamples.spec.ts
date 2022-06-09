@@ -2,7 +2,7 @@ import {clickEl, getEl} from '../utils/utils'
 
 describe('Grid Col samples', () => {
   it('Responsive (desktop)', () => {
-    clickEl('/grid-with-col/responsive')
+    clickEl('grid-with-col/responsive')
     cy.viewport(1600, 1200)
     getEl('col1').then(($col1) => {
       getEl('col2').then(($col2) => {
@@ -24,7 +24,7 @@ describe('Grid Col samples', () => {
   })
 
   it('Responsive (tablet)', () => {
-    clickEl('/grid-with-col/responsive')
+    clickEl('grid-with-col/responsive')
     cy.viewport('ipad-2')
     getEl('col1').then(($col1) => {
       getEl('col2').then(($col2) => {
@@ -48,7 +48,7 @@ describe('Grid Col samples', () => {
   })
 
   it('Responsive (mobile)', () => {
-    clickEl('/grid-with-col/responsive')
+    clickEl('grid-with-col/responsive')
     cy.viewport('iphone-6+')
     getEl('col1').then(($col1) => {
       getEl('col2').then(($col2) => {
@@ -74,7 +74,7 @@ describe('Grid Col samples', () => {
   })
 
   it('Nested - flexible height', () => {
-    clickEl('/grid-with-col/nested-flexible-height')
+    clickEl('grid-with-col/nested-flexible-height')
     getEl('col1').then(($col1) => {
       getEl('col2').then(($col2) => {
         assert.equal($col1.height(), $col2.height(), 'Col1 and col2 have to be of equal height.')
@@ -85,4 +85,3 @@ describe('Grid Col samples', () => {
     })
   })
 })
-
