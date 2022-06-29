@@ -37,7 +37,7 @@
     "fela-plugin-validator": ">=12.1",
     "fela-preset-web": ">=12.1",
     "fela-sort-media-query-mobile-first": ">=12.1",
-    "react": ">=18",
+    "react": ">=16.8",
     "react-fela": ">=12.1"
   },
   "devDependencies": {
