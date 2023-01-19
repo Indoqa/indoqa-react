@@ -26,7 +26,7 @@
     "strictNullChecks": true,
     "stripInternal": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "ES2020"
+    "target": "es5"
   },
   "compileOnSave": true
 }

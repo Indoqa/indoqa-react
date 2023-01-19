@@ -12,8 +12,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "browser": true,
   "dependencies": {
     "@manypkg/cli": "0.18.0",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "0.3.0",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@types/chai": "4.2.21",
     "@types/css": "0.0.33",
     "@types/enzyme": "3.10.9",
@@ -36,6 +41,10 @@
     "prettier": "2.3.2",
     "react-scripts": "5.0.1",
     "rimraf": "3.0.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-dts": "^5.1.1",
+    "rollup-plugin-node-externals": "^5.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "serve": "12.0.0",
     "source-map-explorer": "2.5.2",
     "start-server-and-test": "1.13.1",
