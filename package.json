@@ -7,48 +7,49 @@
     "pkg:run": "manypkg run",
     "pkg:check": "manypkg check",
     "pkg:fix": "manypkg fix",
-    "postinstall": "yarn package"
+    "postinstall": "yarn package",
+    "prepare": "husky install"
   },
   "workspaces": [
     "packages/*"
   ],
   "browser": true,
   "dependencies": {
-    "@manypkg/cli": "0.18.0",
-    "@rollup/plugin-commonjs": "^15.1.0",
+    "@manypkg/cli": "0.19.2",
+    "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "0.3.0",
     "@rollup/plugin-typescript": "^11.0.0",
-    "@types/chai": "4.2.21",
+    "@types/chai": "4.3.4",
     "@types/css": "0.0.33",
-    "@types/enzyme": "3.10.9",
+    "@types/enzyme": "3.10.12",
     "@types/enzyme-adapter-react-16": "1.0.6",
-    "@types/history": "4.7.9",
-    "@types/jest": "27.0.1",
-    "@types/lodash": "4.14.172",
-    "@types/mocha": "9.0.0",
-    "@types/node": "17.0.38",
-    "@types/react": "18.0.10",
-    "@types/react-dom": "18.0.5",
-    "@types/react-redux": "7.1.24",
-    "@types/react-router": "5.1.18",
+    "@types/history": "4.7.11",
+    "@types/jest": "29.2.6",
+    "@types/lodash": "4.14.191",
+    "@types/mocha": "10.0.1",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@types/react-redux": "7.1.25",
+    "@types/react-router": "5.1.20",
     "@types/react-router-dom": "5.3.3",
-    "@types/webpack-env": "1.16.2",
+    "@types/webpack-env": "1.18.0",
     "cypress": "6.1.0",
-    "husky": "4.3.6",
-    "lerna": "4.0.0",
-    "lint-staged": "10.5.4",
-    "prettier": "2.3.2",
+    "husky": "^8.0.0",
+    "lerna": "6.4.1",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.3",
     "react-scripts": "5.0.1",
-    "rimraf": "3.0.2",
-    "rollup": "^2.79.1",
+    "rimraf": "4.1.1",
+    "rollup": "^3.10.0",
     "rollup-plugin-dts": "^5.1.1",
     "rollup-plugin-node-externals": "^5.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "serve": "12.0.0",
-    "source-map-explorer": "2.5.2",
-    "start-server-and-test": "1.13.1",
-    "typescript": "^4.7.2"
+    "serve": "14.1.2",
+    "source-map-explorer": "2.5.3",
+    "start-server-and-test": "1.15.2",
+    "typescript": "^4.9.4"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -59,14 +60,7 @@
     "singleQuote": true,
     "bracketSpacing": false
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
   }
 }

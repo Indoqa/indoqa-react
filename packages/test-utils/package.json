@@ -44,14 +44,15 @@
   },
   "devDependencies": {
     "@indoqa/style-system": "^2.0.0-alpha.10",
-    "@testing-library/react": "^11.2.2",
+    "@testing-library/react": "^13.4.0",
     "css": "^3.0.0",
     "fela": "^12.2.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-fela": "^12.2.1",
     "react-testing-library": "^8.0.1",
     "redux-observable": "^1.2.0",
+    "rxjs": "^6.6.7",
     "typemoq": "^2.1.0"
   }
 }

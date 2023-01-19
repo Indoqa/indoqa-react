@@ -33,7 +33,7 @@
   "dependencies": {
     "@indoqa/style-system": "^2.0.0-alpha.10",
     "@indoqa/ui-explorer": "^2.0.0-alpha.10",
-    "@monaco-editor/react": "4.4.5",
+    "@monaco-editor/react": "4.4.6",
     "fela": "^12.2.1",
     "fela-monolithic": "^12.2.1",
     "fela-plugin-named-keys": "^12.2.1",
@@ -41,12 +41,12 @@
     "fela-preset-web": "^12.2.1",
     "fela-sort-media-query-mobile-first": "^12.2.1",
     "history": "^4.10.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-fela": "^12.2.1",
-    "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0",
-    "tslib": "^2.3.1"
+    "react-router": "^6.7.0",
+    "react-router-dom": "^6.7.0",
+    "tslib": "^2.4.1"
   },
   "browserslist": {
     "production": [
