@@ -34,7 +34,7 @@ function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string 
   return ''
 }
 
-export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps) => {
+export const createBoxModelCSSProps = (props: BoxModelProps) => {
   const {
     display,
     inline,
@@ -98,7 +98,7 @@ export const createBoxModelCSSProps = <T extends BaseTheme>(props: BoxModelProps
   return styles
 }
 
-export const createFlexChildCSSProps = <T extends BaseTheme>(
+export const createFlexChildCSSProps = (
   props: FlexChildProps,
   theme: BaseTheme,
   outsideMediaQuery: boolean

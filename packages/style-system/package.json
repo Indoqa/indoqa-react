@@ -10,11 +10,10 @@
   "sideEffects": false,
   "browser": true,
   "files": [
-    "lib",
     "dist"
   ],
   "scripts": {
-    "clean": "rimraf ./compiled ./dist",
+    "clean": "rimraf ./dist",
     "compile": "yarn clean && rollup -c",
     "compile:watch": "tsc -p tsconfig.json --watch",
     "lint": "eslint './src/**/*.tsx' './src/**/*.ts'",

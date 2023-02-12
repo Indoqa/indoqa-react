@@ -64,3 +64,14 @@ export const sample9 = `<VStack spacing={2} alignItems="center" justifyContent="
     2
   </Flex>
 </VStack>`
+
+export const sample10 = `<Box bg="blue" height={100} fullWidth>
+  <HStack spacing={2} bg="red" mx={3} py={3}>
+    <Flex center width={40} height={40} bg="yellow">
+      1
+    </Flex>
+    <Flex center width={40} height={40} bg="yellow">
+      2
+    </Flex>
+  </HStack>
+</Box>`

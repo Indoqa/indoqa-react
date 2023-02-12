@@ -3,15 +3,21 @@ import * as React from 'react'
 import {useFela} from 'react-fela'
 import {BaseTheme} from '../theming/baseTheme'
 import {createSpacing} from './base'
+import {createBoxCSSStyle} from './Box'
 import {Flex} from './Flex'
-import {AlignItems, JustifyContent, ResponsiveProps, Spacing} from './types'
+import {AlignItems, FlatBoxProps, JustifyContent, ResponsiveProps, Spacing} from './types'
 import {createResponsiveStyles, getValidChildren} from './utils'
 
-export interface StackProps extends ResponsiveProps<FlatStackProps> {
+export interface StackProps<T extends BaseTheme> extends ResponsiveProps<FlatStackProps<T>> {
   divider?: JSX.Element
+  children?: React.ReactNode
 }
 
-interface FlatStackProps {
+export type VStackProps<T extends BaseTheme> = Omit<StackProps<T>, 'stackDirection'>
+
+export type HStackProps<T extends BaseTheme> = Omit<StackProps<T>, 'stackDirection'>
+
+interface FlatStackProps<T extends BaseTheme> extends FlatBoxProps<T> {
   stackDirection: StackDirection
   spacing?: Spacing
   alignItems?: AlignItems
@@ -23,9 +29,14 @@ export enum StackDirection {
   HORIZONTAL = 'HORIZONTAL',
 }
 
-function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
+function createStackCssStyles<T extends BaseTheme>(
+  props: FlatStackProps<T>,
+  theme: BaseTheme,
+  outsideMediaQuery: boolean
+): IStyle {
   const {stackDirection, alignItems, justifyContent, spacing = 1} = props
   return {
+    ...createBoxCSSStyle(props, theme, outsideMediaQuery),
     flexDirection: stackDirection === StackDirection.VERTICAL ? 'column' : 'row',
     flexWrap: 'nowrap',
     alignItems,
@@ -44,7 +55,7 @@ function createStackCssStyles(props: FlatStackProps, theme: BaseTheme): IStyle {
 /**
  * implement the divider
  */
-export const Stack: React.FC<React.PropsWithChildren<StackProps>> = ({children, divider, ...otherProps}) => {
+export function Stack<T extends BaseTheme>({children, divider, ...otherProps}: StackProps<T>) {
   const {theme} = useFela<BaseTheme>()
   const style = createResponsiveStyles(otherProps, createStackCssStyles, theme)
 
@@ -67,10 +78,7 @@ export const Stack: React.FC<React.PropsWithChildren<StackProps>> = ({children, 
   return <Flex style={style}>{nextChildren}</Flex>
 }
 
-export const VStack: React.FC<React.PropsWithChildren<Omit<StackProps, 'stackDirection'>>> = ({
-  children,
-  ...otherProps
-}) => {
+export function VStack<T extends BaseTheme>({children, ...otherProps}: VStackProps<T>) {
   return (
     <Stack stackDirection={StackDirection.VERTICAL} {...otherProps}>
       {children}
@@ -78,10 +86,7 @@ export const VStack: React.FC<React.PropsWithChildren<Omit<StackProps, 'stackDir
   )
 }
 
-export const HStack: React.FC<React.PropsWithChildren<Omit<StackProps, 'stackDirection'>>> = ({
-  children,
-  ...otherProps
-}) => {
+export function HStack<T extends BaseTheme>({children, ...otherProps}: HStackProps<T>) {
   return (
     <Stack stackDirection={StackDirection.HORIZONTAL} {...otherProps}>
       {children}
