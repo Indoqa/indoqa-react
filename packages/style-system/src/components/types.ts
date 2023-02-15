@@ -166,7 +166,7 @@ export type Display =
   | 'initial'
   | 'inherit'
 export type Position = 'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | 'initial' | 'inherit'
-export type Direction = 'column' | 'column-reverse' | 'row-reverse' | 'initial' | 'inherit'
+export type Direction = 'column' | 'column-reverse' | 'row' | 'row-reverse' | 'initial' | 'inherit'
 export type AlignItems = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'initial' | 'inherit'
 export type JustifyContent = 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
 export type Spacing = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
