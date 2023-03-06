@@ -309,12 +309,20 @@ export const createSpacing = (theme: BaseTheme, propValue: Spacing) => {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
   switch (propValue) {
+    case 0:
+      return theme.spacing.space0
     case 1:
       return theme.spacing.space1
+    case 1.5:
+      return theme.spacing.space1_5
     case 2:
       return theme.spacing.space2
+    case 2.5:
+      return theme.spacing.space2_5
     case 3:
       return theme.spacing.space3
+    case 3.5:
+      return theme.spacing.space3_5
     case 4:
       return theme.spacing.space4
     case 5:
@@ -327,7 +335,45 @@ export const createSpacing = (theme: BaseTheme, propValue: Spacing) => {
       return theme.spacing.space8
     case 9:
       return theme.spacing.space9
-    default:
-      return theme.spacing.space0
+    case 10:
+      return theme.spacing.space10
+    case 11:
+      return theme.spacing.space11
+    case 12:
+      return theme.spacing.space12
+    case 14:
+      return theme.spacing.space14
+    case 16:
+      return theme.spacing.space16
+    case 20:
+      return theme.spacing.space20
+    case 24:
+      return theme.spacing.space24
+    case 28:
+      return theme.spacing.space28
+    case 32:
+      return theme.spacing.space32
+    case 36:
+      return theme.spacing.space36
+    case 40:
+      return theme.spacing.space40
+    case 44:
+      return theme.spacing.space44
+    case 48:
+      return theme.spacing.space48
+    case 52:
+      return theme.spacing.space52
+    case 56:
+      return theme.spacing.space56
+    case 60:
+      return theme.spacing.space60
+    case 64:
+      return theme.spacing.space64
+    case 72:
+      return theme.spacing.space72
+    case 80:
+      return theme.spacing.space80
+    case 96:
+      return theme.spacing.space96
   }
 }
