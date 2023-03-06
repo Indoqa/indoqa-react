@@ -20,15 +20,39 @@ export interface BaseColors {
 
 export interface BaseSpacing {
   readonly space0: number | string
+  readonly space0_5: number | string
   readonly space1: number | string
+  readonly space1_5: number | string
   readonly space2: number | string
+  readonly space2_5: number | string
   readonly space3: number | string
+  readonly space3_5: number | string
   readonly space4: number | string
   readonly space5: number | string
   readonly space6: number | string
   readonly space7: number | string
   readonly space8: number | string
   readonly space9: number | string
+  readonly space10: number | string
+  readonly space11: number | string
+  readonly space12: number | string
+  readonly space14: number | string
+  readonly space16: number | string
+  readonly space20: number | string
+  readonly space24: number | string
+  readonly space28: number | string
+  readonly space32: number | string
+  readonly space36: number | string
+  readonly space40: number | string
+  readonly space44: number | string
+  readonly space48: number | string
+  readonly space52: number | string
+  readonly space56: number | string
+  readonly space60: number | string
+  readonly space64: number | string
+  readonly space72: number | string
+  readonly space80: number | string
+  readonly space96: number | string
 }
 
 export interface BaseZIndexes {
@@ -136,17 +160,42 @@ export const baseTheme: BaseTheme = {
   colors: {
     text: '#000000',
   },
+  // see https://tailwindcss.com/docs/customizing-spacing
   spacing: {
     space0: 0,
+    space0_5: '0.125rem',
     space1: '0.25rem',
+    space1_5: '0.375rem',
     space2: '0.5rem',
+    space2_5: '0.625rem',
     space3: '0.75rem',
+    space3_5: '0.875rem',
     space4: '1rem',
-    space5: '1.5rem',
-    space6: '2rem',
-    space7: '2.5rem',
-    space8: '3rem',
-    space9: '4rem',
+    space5: '1.25rem',
+    space6: '1.5rem',
+    space7: '1.75rem',
+    space8: '2rem',
+    space9: '2.25rem',
+    space10: '2.5rem',
+    space11: '2.75rem',
+    space12: '3rem',
+    space14: '3.5rem',
+    space16: '4rem',
+    space20: '5rem',
+    space24: '6rem',
+    space28: '7rem',
+    space32: '8rem',
+    space36: '9rem',
+    space40: '10rem',
+    space44: '11rem',
+    space48: '12rem',
+    space52: '13rem',
+    space56: '14rem',
+    space60: '15rem',
+    space64: '16rem',
+    space72: '18rem',
+    space80: '20rem',
+    space96: '24rem',
   },
   zIndexes: {
     default: 0,
