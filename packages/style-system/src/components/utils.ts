@@ -1,7 +1,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaStyle, StyleFunction} from 'react-fela'
-import {BaseTheme} from '../theming/baseTheme'
+import {BaseTheme, CssPropValue, FontStyle} from '../theming/baseTheme'
 import {NamedBreakPoint, sortBreakpoints} from '../theming/sortBreakpoints'
 import {WithBaseTheme} from './types'
 
@@ -105,4 +105,16 @@ export function mergeThemedStyles<T extends BaseTheme, P>(
 
 export function getValidChildren(children: React.ReactNode) {
   return React.Children.toArray(children).filter((child) => React.isValidElement(child)) as React.ReactElement[]
+}
+
+export function getCssFontProps(fontProps: CssPropValue | FontStyle): IStyle {
+  if (Array.isArray(fontProps)) {
+    return {
+      fontSize: fontProps[0],
+      ...fontProps[1],
+    }
+  }
+  return {
+    fontSize: fontProps,
+  }
 }

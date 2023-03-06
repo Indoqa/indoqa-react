@@ -1,11 +1,34 @@
 import {IStyle} from 'fela'
 
+export type CssPropValue = number | string
+
+export interface CssFontProps {
+  lineHeight?: CssPropValue
+  letterSpacing?: CssPropValue
+  fontWeight?: CssPropValue
+}
+
+export type FontStyle = [CssPropValue, CssFontProps]
+
 export interface BaseFontSizes {
-  readonly verySmall: number | string
-  readonly small: number | string
-  readonly text: number | string
-  readonly big: number | string
-  readonly veryBig: number | string
+  readonly verySmall: CssPropValue | FontStyle
+  readonly small: CssPropValue | FontStyle
+  readonly text: CssPropValue | FontStyle
+  readonly big: CssPropValue | FontStyle
+  readonly veryBig: CssPropValue | FontStyle
+  readonly xs: CssPropValue | FontStyle
+  readonly sm: CssPropValue | FontStyle
+  readonly base: CssPropValue | FontStyle
+  readonly lg: CssPropValue | FontStyle
+  readonly xl: CssPropValue | FontStyle
+  readonly '2xl': CssPropValue | FontStyle
+  readonly '3xl': CssPropValue | FontStyle
+  readonly '4xl': CssPropValue | FontStyle
+  readonly '5xl': CssPropValue | FontStyle
+  readonly '6xl': CssPropValue | FontStyle
+  readonly '7xl': CssPropValue | FontStyle
+  readonly '8xl': CssPropValue | FontStyle
+  readonly '9xl': CssPropValue | FontStyle
 }
 
 export interface BaseFontStyles {
@@ -19,40 +42,40 @@ export interface BaseColors {
 }
 
 export interface BaseSpacing {
-  readonly space0: number | string
-  readonly space0_5: number | string
-  readonly space1: number | string
-  readonly space1_5: number | string
-  readonly space2: number | string
-  readonly space2_5: number | string
-  readonly space3: number | string
-  readonly space3_5: number | string
-  readonly space4: number | string
-  readonly space5: number | string
-  readonly space6: number | string
-  readonly space7: number | string
-  readonly space8: number | string
-  readonly space9: number | string
-  readonly space10: number | string
-  readonly space11: number | string
-  readonly space12: number | string
-  readonly space14: number | string
-  readonly space16: number | string
-  readonly space20: number | string
-  readonly space24: number | string
-  readonly space28: number | string
-  readonly space32: number | string
-  readonly space36: number | string
-  readonly space40: number | string
-  readonly space44: number | string
-  readonly space48: number | string
-  readonly space52: number | string
-  readonly space56: number | string
-  readonly space60: number | string
-  readonly space64: number | string
-  readonly space72: number | string
-  readonly space80: number | string
-  readonly space96: number | string
+  readonly space0: CssPropValue
+  readonly space0_5: CssPropValue
+  readonly space1: CssPropValue
+  readonly space1_5: CssPropValue
+  readonly space2: CssPropValue
+  readonly space2_5: CssPropValue
+  readonly space3: CssPropValue
+  readonly space3_5: CssPropValue
+  readonly space4: CssPropValue
+  readonly space5: CssPropValue
+  readonly space6: CssPropValue
+  readonly space7: CssPropValue
+  readonly space8: CssPropValue
+  readonly space9: CssPropValue
+  readonly space10: CssPropValue
+  readonly space11: CssPropValue
+  readonly space12: CssPropValue
+  readonly space14: CssPropValue
+  readonly space16: CssPropValue
+  readonly space20: CssPropValue
+  readonly space24: CssPropValue
+  readonly space28: CssPropValue
+  readonly space32: CssPropValue
+  readonly space36: CssPropValue
+  readonly space40: CssPropValue
+  readonly space44: CssPropValue
+  readonly space48: CssPropValue
+  readonly space52: CssPropValue
+  readonly space56: CssPropValue
+  readonly space60: CssPropValue
+  readonly space64: CssPropValue
+  readonly space72: CssPropValue
+  readonly space80: CssPropValue
+  readonly space96: CssPropValue
 }
 
 export interface BaseZIndexes {
@@ -140,6 +163,21 @@ export const baseTheme: BaseTheme = {
     veryBig: typeScale(2),
     small: typeScale(-1),
     verySmall: typeScale(-2),
+
+    // see https://tailwindcss.com/docs/font-size#setting-the-font-size
+    xs: ['0.75rem', {lineHeight: '1rem'}],
+    sm: ['0.875rem', {lineHeight: '1.25'}],
+    base: [16, {lineHeight: '1.5rem'}],
+    lg: ['1.125rem', {lineHeight: '1.75rem'}],
+    xl: ['1.25rem', {lineHeight: '1.75rem'}],
+    '2xl': ['1.5rem', {lineHeight: '2rem'}],
+    '3xl': ['1.875rem', {lineHeight: '2.25rem'}],
+    '4xl': ['2.25rem', {lineHeight: '2.5rem'}],
+    '5xl': ['3rem', {lineHeight: 1}],
+    '6xl': ['3.75rem', {lineHeight: 1}],
+    '7xl': ['4.5rem', {lineHeight: 1}],
+    '8xl': ['6rem', {lineHeight: 1}],
+    '9xl': ['8rem', {lineHeight: 1}],
   },
   fontStyles: {
     base: {

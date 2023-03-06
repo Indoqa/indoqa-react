@@ -1,3 +1,4 @@
+import {getCssFontProps} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {StyleFunction, useFela} from 'react-fela'
@@ -35,7 +36,7 @@ const ThemedElementWithChildren: React.FC<React.PropsWithChildren<{}>> = ({child
   const style: IStyle = {
     backgroundColor: theme.colors.accent,
     color: 'white',
-    fontSize: theme.fontSizes.small,
+    ...getCssFontProps(theme.fontSizes.small),
     paddingTop: 2,
     paddingRight: 4,
     paddingLeft: 4,
@@ -54,7 +55,7 @@ const ThemedElementWithChildrenAndProps: React.FC<React.PropsWithChildren<Props>
   const style: IStyle = {
     backgroundColor: theme.colors.accent,
     color: 'white',
-    fontSize: theme.fontSizes.small,
+    ...getCssFontProps(theme.fontSizes.small),
     paddingTop: 2,
     paddingRight: 4,
     paddingLeft: 4,
@@ -74,7 +75,7 @@ interface StyleProps {
 
 const themedElementWithStyleText: StyleFunction<Theme, StyleProps> = ({color, theme}): IStyle => ({
   color,
-  fontSize: theme.fontSizes.small,
+  ...getCssFontProps(theme.fontSizes.small),
 })
 
 const themedElementWithStyleBackground: StyleFunction<Theme> = ({theme}): IStyle => ({

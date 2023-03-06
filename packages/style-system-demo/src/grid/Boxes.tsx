@@ -19,7 +19,7 @@ const bgBoxStyle = (boxBackground: string, width: number | string, height: numbe
   return ({theme}) => {
     return {
       ...theme.fontStyles.base,
-      fontSize: theme.fontSizes.verySmall,
+      fontSize: Array.isArray(theme.fontSizes.verySmall) ? theme.fontSizes.verySmall[0] : theme.fontSizes.verySmall,
       backgroundColor: boxBackground,
       width,
       height,

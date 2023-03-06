@@ -1,7 +1,7 @@
-import {BaseColors, BaseFontSizes, baseTheme, BaseTheme, typeScale} from '@indoqa/style-system'
+import {BaseColors, BaseFontSizes, baseTheme, BaseTheme, CssPropValue, FontStyle, typeScale} from '@indoqa/style-system'
 
 interface FontSizes extends BaseFontSizes {
-  readonly extraBig: number | string
+  readonly extraBig: CssPropValue | FontStyle
 }
 
 interface Colors extends BaseColors {
@@ -38,6 +38,7 @@ const baseColors = {
 }
 
 const baseFontSizes: FontSizes = {
+  ...baseTheme.fontSizes,
   text: typeScale(1),
   big: typeScale(2),
   veryBig: typeScale(3),

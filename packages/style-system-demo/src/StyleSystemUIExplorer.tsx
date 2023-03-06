@@ -130,7 +130,6 @@ const getFelaGroup = (): Group => ({
 class StyleSystemUIExplorer extends React.Component<Props> {
   public render() {
     const {theme} = this.props
-    console.log('StyleSystemUIExplorer')
     return (
       <UIExplorer
         colors={getColors(theme)}
@@ -144,7 +143,7 @@ class StyleSystemUIExplorer extends React.Component<Props> {
         projectName="Indoqa Style-System"
         showFundamentals={true}
         textFonts={getTextFonts(theme)}
-        textFontSize={theme.fontSizes.text}
+        textFontSize={theme.fontSizes.text[0]}
       />
     )
   }

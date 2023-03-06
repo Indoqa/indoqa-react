@@ -20,3 +20,5 @@ export * from './fela/createFelaConfig'
 export * from './theming/baseTheme'
 export * from './theming/mediaQueryHelper'
 export * from './theming/sortBreakpoints'
+
+export {getCssFontProps} from './components/utils'

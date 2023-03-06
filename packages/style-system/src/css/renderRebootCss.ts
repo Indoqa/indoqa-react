@@ -1,5 +1,7 @@
 /* tslint:disable */
 import {IRenderer, IStyle} from 'fela'
+import {getCssFontProps} from '../components/utils'
+import {CssPropValue, FontStyle} from '../theming/baseTheme'
 
 type CssValue = string | number | undefined
 
@@ -15,10 +17,10 @@ export interface BaseCssProps {
     active: CssValue
   }
   fontSizes: {
-    text: CssValue
-    h1: CssValue
-    h2: CssValue
-    h3: CssValue
+    text: CssPropValue | FontStyle
+    h1: CssPropValue | FontStyle
+    h2: CssPropValue | FontStyle
+    h3: CssPropValue | FontStyle
   }
   fontStyles: {
     base: IStyle
@@ -64,12 +66,12 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
     
     h1, h2, h3, h4, h5, h6 {
       margin-top: 0;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
     
     p {
       margin-top: 0;
-      margin-bottom: ${props.spacing.space1};
+      margin-bottom: ${props.spacing.space2};
     }
     
     abbr[title],
@@ -359,7 +361,7 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
     {
       ...props.fontStyles.base,
       color: props.colors.text,
-      fontSize: props.fontSizes.text,
+      ...getCssFontProps(props.fontSizes.text),
     },
     'body'
   )
@@ -375,24 +377,9 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
     },
     '* + h1, * + h2, * + h3, * + h4, * + h5, * + h6'
   )
-  renderer.renderStatic(
-    {
-      fontSize: props.fontSizes.h1,
-    },
-    'h1'
-  )
-  renderer.renderStatic(
-    {
-      fontSize: props.fontSizes.h2,
-    },
-    'h2'
-  )
-  renderer.renderStatic(
-    {
-      fontSize: props.fontSizes.h3,
-    },
-    'h3'
-  )
+  renderer.renderStatic(getCssFontProps(props.fontSizes.h1), 'h1')
+  renderer.renderStatic(getCssFontProps(props.fontSizes.h2), 'h2')
+  renderer.renderStatic(getCssFontProps(props.fontSizes.h3), 'h3')
 
   // render lists
   renderer.renderStatic(

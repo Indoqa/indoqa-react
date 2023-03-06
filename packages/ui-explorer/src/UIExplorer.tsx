@@ -1,4 +1,4 @@
-import {BaseTheme, Box, Grid, Panel, Row} from '@indoqa/style-system'
+import {BaseTheme, Box, CssPropValue, FontStyle, Grid, Panel, Row} from '@indoqa/style-system'
 import {IRenderer, IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, RenderProps, useFela} from 'react-fela'
@@ -15,7 +15,7 @@ import MenuHeader from './layout/MenuHeader'
 import MenuIcon from './layout/MenuIcon'
 import MenuItem from './layout/MenuItem'
 import {OverviewPanel} from './overview/OverviewPanel'
-import {Color, Font, FontMix, FontSize, FontSizes, Group} from './types'
+import {Color, Font, FontMix, FontSizes, Group} from './types'
 import {TypographyPanel} from './typography/TypographyPanel'
 import {UIETheme} from './uietheme/UIETheme'
 import {UIEThemeContext} from './uietheme/UIEThemeContext'
@@ -37,7 +37,7 @@ interface Props {
   projectName: string
   showFundamentals?: boolean
   textFonts: Font[]
-  textFontSize: FontSize
+  textFontSize: CssPropValue | FontStyle
   uieTheme?: UIETheme
   renderer?: IRenderer
 }
@@ -119,7 +119,7 @@ const createComponentRoute = (name: string, component: React.ReactNode, mountPat
   )
 }
 
-const createMenuGroups = (groups: Group[], mountPath: string) => {
+const createMenuGroups = (groups: Group[]) => {
   return groups.map((componentDescription) => {
     const {name, descriptions} = componentDescription
     const menuItems = descriptions.map((description) => {
@@ -143,8 +143,6 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
   groups.forEach((componentDescription) => {
     const {name, descriptions} = componentDescription
     descriptions.forEach((description) => {
-      console.log(componentDescription)
-      console.log(description)
       routes.push(
         createComponentRoute(
           description.name,
@@ -244,7 +242,7 @@ export const UIExplorer = ({
                     <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
                   </MenuGroup>
                 )}
-                {createMenuGroups(groups, mountPath)}
+                {createMenuGroups(groups)}
               </InnerStyleGuideMenu>
             </StyleGuideMenu>
           </Panel>

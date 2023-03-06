@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 
-import {BaseTheme} from '..'
+import {BaseTheme, CssPropValue, FontStyle} from '..'
 import {
   BoxModelProps,
   FlexChildProps,
@@ -20,11 +20,11 @@ function getColor<T extends BaseTheme>(theme: T, color: string): string {
   return color
 }
 
-function getFontSize<T extends BaseTheme>(theme: T, fontSize: string): string {
+function getFontSize<T extends BaseTheme>(theme: T, fontSize: any): CssPropValue | FontStyle | undefined {
   if (fontSize in theme.fontSizes) {
     return theme.fontSizes[fontSize]
   }
-  return ''
+  return undefined
 }
 
 function getFontStyle<T extends BaseTheme>(theme: T, fontStyle: string): string {
@@ -218,7 +218,13 @@ export function createFontCSSProps<T extends BaseTheme>(props: FontProps<T> & Wi
     Object.assign(styles, getFontStyle(theme, fontStyle as string))
   }
   if (fontSize) {
-    Object.assign(styles, {fontSize: getFontSize(theme, fontSize as string)})
+    const fontSizeValue = getFontSize(theme, fontSize)
+    if (Array.isArray(fontSizeValue)) {
+      Object.assign(styles, {fontSize: fontSizeValue[0]})
+      Object.assign(styles, {...fontSizeValue[1]})
+    } else {
+      Object.assign(styles, {fontSize: fontSizeValue})
+    }
   }
   if (color) {
     Object.assign(styles, {color: getColor(theme, color as string)})

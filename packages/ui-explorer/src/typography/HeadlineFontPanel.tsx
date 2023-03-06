@@ -1,8 +1,8 @@
-import {Grid, Panel, Row} from '@indoqa/style-system'
+import {getCssFontProps, Grid, Panel, Row} from '@indoqa/style-system'
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
-import {FontSizes} from '../types'
+import {FontSize, FontSizes} from '../types'
 import {UIETheme} from '../uietheme/UIETheme'
 import {withUIETheme, WithUIETheme} from '../uietheme/withUIETheme'
 import {FontStylePanel} from './FontStylePanel'
@@ -13,7 +13,7 @@ interface HeadlineProps extends WithUIETheme {
 }
 
 interface WithFontSize {
-  fontSize: string | number | undefined
+  fontSize: FontSize
 }
 
 interface Props extends HeadlineProps {
@@ -29,15 +29,15 @@ const HeadlineSample: React.FC<React.PropsWithChildren<HeadlineProps & WithFontS
 }) => {
   const style: IStyle = {
     marginBottom: uieTheme.spacing.space2,
-    fontSize,
+    ...getCssFontProps(fontSize),
   }
   return <FelaComponent style={[fontStyles, style]}>{children}</FelaComponent>
 }
 
 const renderHeadlineSizeSamples = (fontStyles: IStyle, fontSizes: FontSizes, uieTheme: UIETheme) => {
-  return fontSizes.map((fontSize) => {
+  return fontSizes.map((fontSize, i) => {
     return (
-      <HeadlineSample fontStyles={fontStyles} fontSize={fontSize} uieTheme={uieTheme} key={fontSize}>
+      <HeadlineSample fontStyles={fontStyles} fontSize={fontSize} uieTheme={uieTheme} key={i}>
         The quick brown fox jumps over the lazy dog.
       </HeadlineSample>
     )
