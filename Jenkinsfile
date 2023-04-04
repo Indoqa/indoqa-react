@@ -29,7 +29,7 @@ pipeline {
   }
 
   tools {
-    nodejs '14.17.6'
+    nodejs '16.19.0'
   }
 
   stages {
