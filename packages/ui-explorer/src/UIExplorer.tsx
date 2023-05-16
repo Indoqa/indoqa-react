@@ -143,8 +143,6 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
   groups.forEach((componentDescription) => {
     const {name, descriptions} = componentDescription
     descriptions.forEach((description) => {
-      console.log(componentDescription)
-      console.log(description)
       routes.push(
         createComponentRoute(
           description.name,
