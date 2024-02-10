@@ -130,7 +130,6 @@ const getFelaGroup = (): Group => ({
 class StyleSystemUIExplorer extends React.Component<Props> {
   public render() {
     const {theme} = this.props
-    console.log('StyleSystemUIExplorer')
     return (
       <UIExplorer
         colors={getColors(theme)}

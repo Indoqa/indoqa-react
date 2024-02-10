@@ -119,7 +119,7 @@ const createComponentRoute = (name: string, component: React.ReactNode, mountPat
   )
 }
 
-const createMenuGroups = (groups: Group[], mountPath: string) => {
+const createMenuGroups = (groups: Group[]) => {
   return groups.map((componentDescription) => {
     const {name, descriptions} = componentDescription
     const menuItems = descriptions.map((description) => {
@@ -155,26 +155,6 @@ const createGroupsRoutes = (groups: Group[], mountPath: string, uieTheme: UIEThe
   })
   return routes
 }
-
-//   public UNSAFE_componentWillMount() {
-//     if (this.props.renderer) {
-//       this.props.renderer.renderStatic({
-//         backgroundColor: '#F0F2F5',
-//         paddingTop: '4px',
-//         paddingRight: '2px',
-//         paddingLeft: '2px',
-//       }, 'p code')
-//     }
-//   }
-//   public UNSAFE_componentWillUpdate(nextProps: Readonly<Props>) {
-//     const currentLocation = this.props.location
-//     const nextLocation = nextProps.location
-//     if (currentLocation !== nextLocation) {
-//       this.setState({showMenu: false})
-//     }
-//   }
-//
-
 export const UIExplorer = ({
   colors,
   description,
@@ -208,9 +188,11 @@ export const UIExplorer = ({
       'p code'
     )
   }, [localUieTheme.fontFamilyCSSImports, renderer])
+
   React.useLayoutEffect(() => {
     document.title = `${projectName} | UI-Explorer`
   }, [projectName])
+
   React.useLayoutEffect(() => {
     setShowMenu(false)
   }, [location])
@@ -242,7 +224,7 @@ export const UIExplorer = ({
                     <MenuItem to={`${mountPath}/typography`}>Typography</MenuItem>
                   </MenuGroup>
                 )}
-                {createMenuGroups(groups, mountPath)}
+                {createMenuGroups(groups)}
               </InnerStyleGuideMenu>
             </StyleGuideMenu>
           </Panel>
