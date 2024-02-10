@@ -37,7 +37,7 @@
     "@types/webpack-env": "1.18.0",
     "cypress": "6.1.0",
     "husky": "^8.0.0",
-    "lerna": "6.4.1",
+    "lerna": "8.1.2",
     "lint-staged": "13.1.0",
     "prettier": "2.8.3",
     "react-scripts": "5.0.1",
