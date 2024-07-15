@@ -3,6 +3,7 @@ export * from './components/Box'
 export * from './components/Flex'
 export * from './components/Stack'
 export * from './components/Text'
+export {createSpacing} from './components/base'
 
 export * from './components/grid/Col'
 export * from './components/grid/ColRow'
