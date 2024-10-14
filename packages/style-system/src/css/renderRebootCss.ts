@@ -30,6 +30,15 @@ export interface BaseCssProps {
 }
 
 export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
+  // Create an artificial selector that always changes the selector for each rendering.
+  // Note that this appends the new CSS but does not remove the previous one. This is the behavior with
+  // renderStatic(cssString). Without that change, it is not possible to switch back to a previous style because it has
+  // already been rendered and will not be appended again. This leads to a situation where the previous CSS
+  // remains active because later rules have precedence over earlier ones.
+  const uniqueCssSelector = (sel: string) => {
+    return `${sel}, .c${new Date().getTime()}`
+  }
+
   // boxSizing
   renderer.renderStatic(
     {
@@ -361,37 +370,37 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
       color: props.colors.text,
       fontSize: props.fontSizes.text,
     },
-    'body'
+    uniqueCssSelector('body')
   )
   renderer.renderStatic(
     {
       ...props.fontStyles.alt,
     },
-    'h1, h2, h3, h4, h5, h6'
+    uniqueCssSelector('h1, h2, h3, h4, h5, h6')
   )
   renderer.renderStatic(
     {
       marginTop: props.spacing.space2,
     },
-    '* + h1, * + h2, * + h3, * + h4, * + h5, * + h6'
+    uniqueCssSelector('* + h1, * + h2, * + h3, * + h4, * + h5, * + h6')
   )
   renderer.renderStatic(
     {
       fontSize: props.fontSizes.h1,
     },
-    'h1'
+    uniqueCssSelector('h1')
   )
   renderer.renderStatic(
     {
       fontSize: props.fontSizes.h2,
     },
-    'h2'
+    uniqueCssSelector('h2')
   )
   renderer.renderStatic(
     {
       fontSize: props.fontSizes.h3,
     },
-    'h3'
+    uniqueCssSelector('h3')
   )
 
   // render lists
@@ -399,13 +408,13 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
     {
       listStylePosition: 'outside',
     },
-    'ul, ol'
+    uniqueCssSelector('ul, ol')
   )
   renderer.renderStatic(
     {
       listStyleType: 'circle',
     },
-    'ul ul, ol ul'
+    uniqueCssSelector('ul ul, ol ul')
   )
 
   // printing
