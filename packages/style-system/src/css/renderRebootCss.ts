@@ -29,6 +29,8 @@ export interface BaseCssProps {
   }
 }
 
+const createUniqueClassRule = () => `.c${new Date().getTime()}`
+
 export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   // Create an artificial selector that always changes the selector for each rendering.
   // Note that this appends the new CSS but does not remove the previous one. This is the behavior with
@@ -36,7 +38,7 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   // already been rendered and will not be appended again. This leads to a situation where the previous CSS
   // remains active because later rules have precedence over earlier ones.
   const uniqueCssSelector = (sel: string) => {
-    return `${sel}, .c${new Date().getTime()}`
+    return `${sel}, ${createUniqueClassRule}`
   }
 
   // boxSizing
@@ -360,6 +362,8 @@ export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
     [hidden] {
       display: none !important;
     }
+    
+    ${createUniqueClassRule()}: {}
   `
   renderer.renderStatic(rebootCss)
 
